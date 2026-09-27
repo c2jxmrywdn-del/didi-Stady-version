@@ -87,10 +87,17 @@ Page({
   },
 
   onUnload() {
-    // 关键修复:不清理 stepTimer / rideTimer
-    // 原代码:用户切到其他 tab → 计时器被清 → 回页时模拟停滞
-    // 新行为:计时器在后台继续跑,本地订单实时回写,用户随时切回都能看到最新进度
-    // 仅在"确认到达 / 取消"时才清
+    // 页面卸载时彻底清理定时器,防止内存泄漏与对已销毁页面 setData。
+    // 说明:切到其它 tab 触发的是 onHide(不清定时器,模拟可继续);
+    //      onUnload 仅在页面被真正销毁(navigateBack/reLaunch)时触发,此时必须清。
+    if (this.data.stepTimer) {
+      clearInterval(this.data.stepTimer);
+      this.data.stepTimer = null;
+    }
+    if (this.data.rideTimer) {
+      clearInterval(this.data.rideTimer);
+      this.data.rideTimer = null;
+    }
   },
 
   onHide() {

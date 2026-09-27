@@ -7,6 +7,8 @@
 //  4) 失败重试一次(云函数偶发抖动常见)
 //  5) 统一错误格式 { code, message, data }
 
+const { ERR_MSG, isDefinitiveBusinessError } = require("./errorCodes");
+
 const CACHE = new Map();           // key -> { value, expire }
 const INFLIGHT = new Map();        // key -> Promise
 
@@ -81,7 +83,9 @@ function callOnce(type, data) {
           if (res.result.code === 0) {
             resolve(res.result);
           } else {
-            reject(new Error(res.result.message || "云函数返回错误"));
+            const err = new Error(res.result.message || ERR_MSG[res.result.code] || "云函数返回错误");
+            err.code = res.result.code; // 保留业务错误码,供前端区分权限/限流/不存在
+            reject(err);
           }
         } else {
           reject(new Error("云函数无返回"));
@@ -126,8 +130,8 @@ function callCloud(type, data, opts) {
       return result;
     })
     .catch((err) => {
-      // 对可重试 type 自动重试一次(但永久错误如 -501000 不重试)
-      if (o.retry !== false && RETRYABLE_TYPES.has(type) && !isPermanentError(err)) {
+      // 对可重试 type 自动重试一次(但永久错误如 -501000、以及带语义 code 的确定性业务错误不重试)
+      if (o.retry !== false && RETRYABLE_TYPES.has(type) && !isPermanentError(err) && !isDefinitiveBusinessError(err)) {
         return callOnce(type, data).then((result) => {
           if (ttl > 0) CACHE.set(key, { value: result, expire: Date.now() + ttl });
           return result;

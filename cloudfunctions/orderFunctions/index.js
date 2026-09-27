@@ -7,6 +7,17 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV });
 const db = cloud.database();
 const _ = db.command;
 
+// ---- 统一错误码(与前端 miniprogram/utils/errorCodes.js 保持数值一致)----
+const ERROR = {
+  OK: 0,
+  PARAM: -100,
+  PERMISSION_DENIED: -403,
+  NOT_FOUND: -404,
+  RATE_LIMITED: -429,
+  SERVER: -500,
+  UNKNOWN: -1,
+};
+
 // ===================== 创建订单 =====================
 async function createOrder(data, wxContext) {
   try {
@@ -80,7 +91,7 @@ async function getOrderDetail(data, wxContext) {
       .get();
     // 安全:只返回当前 openid 的订单
     if (!result.data || result.data._openid !== wxContext.OPENID) {
-      return { code: -1, message: "订单不存在或无权访问" };
+      return { code: ERROR.PERMISSION_DENIED, message: "订单不存在或无权访问" };
     }
     return { code: 0, data: result.data };
   } catch (err) {
@@ -95,11 +106,11 @@ async function cancelOrder(data, wxContext) {
     // 改用 doc(_id) + 二次校验 _openid 的两步走(性能足够,用户量级 1k 内 < 5ms)
     const OPENID = wxContext.OPENID;
     const orderId = data.orderId;
-    if (!orderId) return { code: -1, message: "订单 id 缺失" };
+    if (!orderId) return { code: ERROR.PARAM, message: "订单 id 缺失" };
 
     const order = await db.collection("orders").doc(orderId).get();
     if (!order.data || order.data._openid !== OPENID) {
-      return { code: -1, message: "订单不存在或无权操作" };
+      return { code: ERROR.PERMISSION_DENIED, message: "订单不存在或无权操作" };
     }
     const result = await db.collection("orders").doc(orderId).update({
       data: {
@@ -109,7 +120,7 @@ async function cancelOrder(data, wxContext) {
       },
     });
     if (!result.stats || result.stats.updated === 0) {
-      return { code: -1, message: "订单更新失败" };
+      return { code: ERROR.SERVER, message: "订单更新失败" };
     }
     return { code: 0, message: "订单已取消" };
   } catch (err) {
@@ -122,11 +133,11 @@ async function completeOrder(data, wxContext) {
   try {
     const OPENID = wxContext.OPENID;
     const orderId = data.orderId;
-    if (!orderId) return { code: -1, message: "订单 id 缺失" };
+    if (!orderId) return { code: ERROR.PARAM, message: "订单 id 缺失" };
 
     const order = await db.collection("orders").doc(orderId).get();
     if (!order.data || order.data._openid !== OPENID) {
-      return { code: -1, message: "订单不存在或无权操作" };
+      return { code: ERROR.PERMISSION_DENIED, message: "订单不存在或无权操作" };
     }
     const result = await db.collection("orders").doc(orderId).update({
       data: {
@@ -138,7 +149,7 @@ async function completeOrder(data, wxContext) {
       },
     });
     if (!result.stats || result.stats.updated === 0) {
-      return { code: -1, message: "订单更新失败" };
+      return { code: ERROR.SERVER, message: "订单更新失败" };
     }
     return { code: 0, message: "订单已完成" };
   } catch (err) {
@@ -151,11 +162,11 @@ async function payOrder(data, wxContext) {
   try {
     const OPENID = wxContext.OPENID;
     const orderId = data.orderId;
-    if (!orderId) return { code: -1, message: "订单 id 缺失" };
+    if (!orderId) return { code: ERROR.PARAM, message: "订单 id 缺失" };
 
     const order = await db.collection("orders").doc(orderId).get();
     if (!order.data || order.data._openid !== OPENID) {
-      return { code: -1, message: "订单不存在或无权操作" };
+      return { code: ERROR.PERMISSION_DENIED, message: "订单不存在或无权操作" };
     }
     const result = await db.collection("orders").doc(orderId).update({
       data: {
@@ -166,7 +177,7 @@ async function payOrder(data, wxContext) {
       },
     });
     if (!result.stats || result.stats.updated === 0) {
-      return { code: -1, message: "订单更新失败" };
+      return { code: ERROR.SERVER, message: "订单更新失败" };
     }
     return { code: 0, message: "支付成功" };
   } catch (err) {
@@ -179,11 +190,11 @@ async function rateDriver(data, wxContext) {
   try {
     const OPENID = wxContext.OPENID;
     const orderId = data.orderId;
-    if (!orderId) return { code: -1, message: "订单 id 缺失" };
+    if (!orderId) return { code: ERROR.PARAM, message: "订单 id 缺失" };
 
     const order = await db.collection("orders").doc(orderId).get();
     if (!order.data || order.data._openid !== OPENID) {
-      return { code: -1, message: "订单不存在或无权操作" };
+      return { code: ERROR.PERMISSION_DENIED, message: "订单不存在或无权操作" };
     }
     const updateData = {
       rating: data.rating,
@@ -195,7 +206,7 @@ async function rateDriver(data, wxContext) {
     if (data.appCommentTags) updateData.appCommentTags = data.appCommentTags;
     const result = await db.collection("orders").doc(orderId).update({ data: updateData });
     if (!result.stats || result.stats.updated === 0) {
-      return { code: -1, message: "订单更新失败" };
+      return { code: ERROR.SERVER, message: "订单更新失败" };
     }
     return { code: 0, message: "评价成功" };
   } catch (err) {

@@ -13,26 +13,82 @@ const DRIVER_POOL = [
   { name: "张师傅", car: "京C·99999", carModel: "大众帕萨特", rating: 4.95, trips: 8920, phone: "136****9999", avatar: "🧔" },
 ];
 
+// ---- 统一错误码(与前端 miniprogram/utils/errorCodes.js 保持数值一致)----
+const ERROR = {
+  OK: 0,
+  PARAM: -100,
+  PERMISSION_DENIED: -403,
+  NOT_FOUND: -404,
+  RATE_LIMITED: -429,
+  SERVER: -500,
+  UNKNOWN: -1,
+};
+
+// ---- 尽力而为的限流(单实例内存滑动窗口)----
+// 注意:云函数无状态、可能多实例并发且冷启动会清空本表,故此限流仅"尽力而为",
+// 只能挡住单实例内的重复刷取;生产环境请改用 Redis / 数据库等全局共享存储做分布式限流。
+const RATE_WINDOW_MS = 60000; // 60 秒窗口
+const RATE_MAX = 20;          // 每窗口最多 20 次
+const _rateBuckets = new Map(); // OPENID -> number[](命中时间戳)
+function isRateLimited(OPENID) {
+  if (!OPENID) return false;
+  const now = Date.now();
+  const recent = (_rateBuckets.get(OPENID) || []).filter((t) => now - t < RATE_WINDOW_MS);
+  if (recent.length >= RATE_MAX) {
+    _rateBuckets.set(OPENID, recent);
+    return true;
+  }
+  recent.push(now);
+  _rateBuckets.set(OPENID, recent);
+  // 防止 Map 无限增长:桶数偏多时清理过期键
+  if (_rateBuckets.size > 1000) {
+    for (const [k, v] of _rateBuckets) {
+      const alive = v.filter((t) => now - t < RATE_WINDOW_MS);
+      if (alive.length === 0) _rateBuckets.delete(k);
+      else _rateBuckets.set(k, alive);
+    }
+  }
+  return false;
+}
+
 // ===================== 匹配司机 =====================
 async function matchDriver(data, wxContext) {
+  const OPENID = wxContext.OPENID;
+
+  // 尽力而为限流:防止单实例内被高频刷取(详见 isRateLimited 注释)
+  if (isRateLimited(OPENID)) {
+    return { code: ERROR.RATE_LIMITED, message: "操作过于频繁,请稍后再试" };
+  }
+
+  // 安全:更新订单前必须校验该订单归属当前用户,防止越权篡改他人订单(IDOR)
+  // 步骤:先按 orderId 查询完整订单 → 比对 _openid → 不匹配直接返回权限错误
+  if (data.orderId) {
+    const order = await db.collection("orders").doc(data.orderId).get();
+    if (!order.data || order.data._openid !== OPENID) {
+      return { code: ERROR.PERMISSION_DENIED, message: "订单不存在或无权操作" };
+    }
+  }
+
   // 选司机
   const driver = DRIVER_POOL[Math.floor(Math.random() * DRIVER_POOL.length)];
 
-  // 并行/降级:订单状态更新失败不应阻塞返回司机信息
-  // 性能优化:where({_id,_openid}) 单次 update,不再做 where().get() 校验
+  // 归属已确认后才更新订单状态;写库失败不应阻塞返回司机信息
   if (data.orderId) {
-    // 修复:不能用 where({_id: ...}).update()(_id 是保留字段,会抛 sync-173-266)
-    // 用 doc(_id) 单文档更新(无 _openid 校验,因为匹配是异步推送,不影响前端体验)
-    db.collection("orders")
-      .doc(data.orderId)
-      .update({
-        data: {
-          status: "riding",
-          driverInfo: driver,
-          matchTime: db.serverDate(),
-        },
-      })
-      .catch(() => { /* 静默失败,匹配已成功 */ });
+    try {
+      await db
+        .collection("orders")
+        .doc(data.orderId)
+        .update({
+          data: {
+            status: "riding",
+            driverInfo: driver,
+            matchTime: db.serverDate(),
+          },
+        });
+    } catch (e) {
+      // 匹配本身已成功,状态回写失败不影响返回司机
+      console.warn("[matchDriver] 更新订单状态失败", e);
+    }
   }
 
   return { code: 0, data: driver };
