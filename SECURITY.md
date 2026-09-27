@@ -15,6 +15,40 @@
 | 腾讯地图 API Key(iOS) | `project.miniapp.json` | ✅ 已修复 | 改为 `${TENCENT_MAP_API_KEY_IOS}` |
 | WeChat AppSecret | (无) | ✅ 从未发现 | 项目中没有任何 AppSecret 明文 |
 
+## 🧯 依赖漏洞处置记录(Dependabot)
+
+GitHub Dependabot 曾在本仓库默认分支报告 6 个依赖漏洞(4 high + 2 moderate)。处置如下:
+
+### 已修复 ✅
+
+`index/`(Vite 脚手架,构建期 dev 依赖,不进入小程序运行时)——`npm audit fix` 非破坏性升级:
+
+| 包 | 旧 → 新 | 关联告警 |
+|---|---|---|
+| vite | 8.0.13 → 8.3.1 | `server.fs.deny` Windows 旁路、launch-editor NTLM 泄露 |
+| postcss | 8.5.14 → 8.5.28 | 源码映射 `sourceMappingURL` 路径遍历 |
+| nanoid | 3.3.12 → 3.3.19 | 非安全生成器可死循环 |
+
+根 `@wxcloud/cli` 依赖链:审计 0 漏洞。
+
+### 暂不处理·接受风险 ⚠️
+
+6 个云函数(`orderFunctions` / `userFunctions` / `matchFunctions` / `wxpayFunctions` / `baiduMap` / `quickstartFunctions`)均依赖 `wx-server-sdk@~2.4.0`,其传递链含:
+
+- `request` → `form-data`(**critical**:不安全随机边界、CRLF 注入)
+- `jsonwebtoken`(**high**:签名校验绕过、可伪造令牌)
+- 以及 `tough-cookie` / `xml2js` / `uuid`
+
+**决定:维持现状,不升级。** 理由:本项目为教学演示、不联网商用、云函数不对公网直接暴露(仅小程序经 `wx.cloud.callFunction` 调用),上述漏洞的实际可达攻击面很低。彻底修复需把 `wx-server-sdk` 升到 `^4.0.2`(该版本移除了 `request` 依赖链),属**破坏性大版本升级**,需重新部署并在云环境逐个接口回归,暂不在本轮处理。
+
+**Dependabot 忽略操作:** GitHub → Security → Dependabot alerts → 选中对应告警 → "Dismiss" → 理由选 "Not used in code paths I'm responsible for" / "Triggered by dev-only dependency",逐条标记,避免长期挂红。
+
+### 将来升级路径 📌
+
+若要根治:把各云函数 `package.json` 的 `"wx-server-sdk": "~2.4.0"` 改为 `"^4.0.2"` → 重新 `npm install` 生成 lock → **在微信开发者工具中重新部署全部云函数并冒烟测试**(下单/查询/支付回调/匹配/用户/地图各接口)。2.x→4.x 存在 API/行为差异,升级后务必回归,不要仅依赖 `npm audit fix --force`。
+
+---
+
 ## 🛡️ 配置流程
 
 ### 1. 微信云开发控制台(推荐)
