@@ -1,0 +1,445 @@
+/* pages/setting/setting.wxss — 设置页 */
+.page-setting {
+  min-height: 100vh;
+  background: #FAF8F5;
+  padding-bottom: 40rpx;
+}
+
+/* 个人资料卡片 */
+.section {
+  background: #FFFDF9;
+  margin: 16rpx 12rpx 0;
+  border-radius: 12rpx;
+  border: 1rpx solid #EDE8E0;
+  overflow: hidden;
+}
+.section-title {
+  font-size: 22rpx;
+  color: #999;
+  padding: 24rpx 24rpx 8rpx;
+  letter-spacing: 1rpx;
+}
+
+/* 资料卡片 */
+.profile-card {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+}
+.profile-card:active {
+  background: #f7f5f0;
+}
+.profile-avatar {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f0f0f0;
+  flex-shrink: 0;
+  border: 2rpx solid #EDE8E0;
+}
+.avatar-img {
+  width: 100%;
+  height: 100%;
+}
+.profile-info {
+  flex: 1;
+  margin-left: 20rpx;
+  min-width: 0;
+}
+.profile-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #111;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.profile-phone {
+  font-size: 26rpx;
+  color: #999;
+  display: block;
+  margin-top: 6rpx;
+}
+.profile-arrow {
+  font-size: 36rpx;
+  color: #c7c7cc;
+  flex-shrink: 0;
+  margin-left: 16rpx;
+}
+
+/* 菜单项 */
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 24rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+  min-height: 48rpx;
+}
+.menu-item:last-child {
+  border-bottom: none;
+}
+.menu-item:active {
+  background: #f7f5f0;
+}
+.menu-item-active {
+  background: #f7f5f0;
+  transition: background 0.12s;
+}
+.menu-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+.menu-label {
+  font-size: 28rpx;
+  color: #111;
+  margin-left: 20rpx;
+}
+.menu-right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.menu-hint {
+  font-size: 26rpx;
+  color: #c7c7cc;
+  margin-right: 8rpx;
+}
+.menu-hint-on {
+  color: #5CAA5C;
+}
+.menu-hint-off {
+  color: #C5B9A8;
+}
+.menu-arrow {
+  font-size: 32rpx;
+  color: #c7c7cc;
+}
+
+/* Switch 开关样式覆盖 */
+.menu-switch {
+  transform: scale(0.75);
+  transform-origin: right center;
+}
+
+/* 菜单纯CSS图标 (24x24 / 28x28) */
+.menu-icon {
+  width: 36rpx;
+  height: 36rpx;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* 锁/密码 */
+.mi-password {
+  width: 24rpx;
+  height: 30rpx;
+  border: 2rpx solid #111;
+  border-radius: 4rpx;
+  margin: 3rpx 6rpx;
+}
+.mi-password::after {
+  content: "";
+  position: absolute;
+  top: -10rpx;
+  left: 2rpx;
+  width: 16rpx;
+  height: 10rpx;
+  border: 2rpx solid #111;
+  border-bottom: none;
+  border-radius: 8rpx 8rpx 0 0;
+}
+
+/* 盾牌/保护 */
+.mi-shield {
+  border: 2rpx solid #111;
+  width: 26rpx;
+  height: 30rpx;
+  border-radius: 4rpx;
+  position: relative;
+  margin: 3rpx 5rpx;
+  background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.06) 50%);
+}
+.mi-shield::after {
+  content: "✓";
+  position: absolute;
+  bottom: 4rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16rpx;
+  font-weight: bold;
+  color: #111;
+}
+
+/* 铃铛 */
+.mi-bell {
+  width: 26rpx;
+  height: 28rpx;
+  border: 2rpx solid #111;
+  border-radius: 50% 50% 4rpx 4rpx;
+  margin: 4rpx 5rpx;
+}
+.mi-bell::after {
+  content: "";
+  position: absolute;
+  bottom: -6rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rpx;
+  height: 4rpx;
+  background: #111;
+  border-radius: 0 0 2rpx 2rpx;
+}
+
+/* 优惠券 */
+.mi-coupon-s {
+  width: 28rpx;
+  height: 22rpx;
+  border: 2rpx solid #111;
+  border-radius: 3rpx;
+  margin: 7rpx 4rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mi-coupon-s::after {
+  content: "¥";
+  font-size: 16rpx;
+  font-weight: bold;
+  color: #111;
+}
+
+/* 喇叭 */
+.mi-megaphone {
+  width: 30rpx;
+  height: 26rpx;
+  border: 2rpx solid #111;
+  border-radius: 2rpx;
+  margin: 5rpx 3rpx;
+}
+.mi-megaphone::after {
+  content: "";
+  position: absolute;
+  right: -8rpx;
+  top: 2rpx;
+  width: 0;
+  height: 0;
+  border-top: 10rpx solid transparent;
+  border-bottom: 10rpx solid transparent;
+  border-left: 10rpx solid #111;
+}
+
+/* 定位 */
+.mi-location-s {
+  width: 20rpx;
+  height: 20rpx;
+  border: 2rpx solid #111;
+  border-radius: 50%;
+  margin: 8rpx 8rpx;
+  position: relative;
+}
+.mi-location-s::after {
+  content: "";
+  position: absolute;
+  bottom: -5rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4rpx solid transparent;
+  border-right: 4rpx solid transparent;
+  border-top: 7rpx solid #111;
+}
+
+/* 分享 */
+.mi-share-s {
+  width: 20rpx;
+  height: 20rpx;
+  border: 2rpx solid #111;
+  border-radius: 50%;
+  margin: 8rpx 8rpx;
+  position: relative;
+  background: #111;
+}
+.mi-share-s::after {
+  content: "";
+  position: absolute;
+  top: -6rpx;
+  left: -2rpx;
+  width: 18rpx;
+  height: 18rpx;
+  border: 2rpx solid #111;
+  border-radius: 50%;
+  background: #FAF8F5;
+}
+
+/* 尺子 */
+.mi-ruler {
+  width: 28rpx;
+  height: 24rpx;
+  border: 2rpx solid #111;
+  border-radius: 2rpx;
+  margin: 6rpx 4rpx;
+  background: repeating-linear-gradient(
+    90deg,
+    #111 0rpx,
+    #111 2rpx,
+    transparent 2rpx,
+    transparent 8rpx
+  );
+  background-size: 8rpx 100%;
+  background-position: 2rpx center;
+}
+
+/* 地球 */
+.mi-globe {
+  width: 28rpx;
+  height: 28rpx;
+  border: 2rpx solid #111;
+  border-radius: 50%;
+  margin: 4rpx 4rpx;
+  overflow: hidden;
+}
+.mi-globe::after {
+  content: "";
+  position: absolute;
+  top: 2rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 20rpx;
+  border-left: 1rpx solid #111;
+}
+.mi-globe::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2rpx;
+  right: 2rpx;
+  height: 0;
+  border-top: 1rpx solid #111;
+}
+
+/* 清除 */
+.mi-clean {
+  width: 26rpx;
+  height: 28rpx;
+  border: 2rpx solid #111;
+  border-radius: 2rpx;
+  margin: 4rpx 5rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mi-clean::after {
+  content: "×";
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #111;
+  line-height: 1;
+}
+
+/* 关于 (圆圈i) */
+.mi-about-s {
+  width: 26rpx;
+  height: 26rpx;
+  border: 2rpx solid #111;
+  border-radius: 50%;
+  margin: 5rpx 5rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mi-about-s::after {
+  content: "i";
+  font-size: 18rpx;
+  font-weight: bold;
+  color: #111;
+  font-style: italic;
+}
+
+/* 退出登录 */
+.logout-section {
+  margin: 48rpx 30rpx;
+}
+.logout-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background: #FFFDF9;
+  color: #e74c3c;
+  font-size: 30rpx;
+  border: 1rpx solid #EDE8E0;
+  border-radius: 12rpx;
+  padding: 0;
+}
+.logout-btn:active {
+  background: #fef0ef;
+}
+
+/* 弹窗 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-mask.hidden {
+  display: none;
+}
+.modal-content {
+  background: #FFFDF9;
+  border-radius: 16rpx 16rpx 0 0;
+  padding: 32rpx 28rpx 48rpx;
+  width: 100%;
+  max-width: 750rpx;
+  box-sizing: border-box;
+}
+.modal-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #111;
+  display: block;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+.modal-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28rpx 16rpx;
+  font-size: 28rpx;
+  color: #333;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.modal-option:active {
+  background: #f7f5f0;
+}
+.modal-option-active {
+  color: #2D2A26;
+  font-weight: 500;
+}
+.modal-check {
+  color: #2D2A26;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.modal-cancel {
+  text-align: center;
+  padding: 28rpx 0 0;
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 16rpx;
+}
+@import 'setting-wxa-auto-dark.wxss'

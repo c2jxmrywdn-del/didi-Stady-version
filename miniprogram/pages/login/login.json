@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "登录",
+  "usingComponents": {
+    "t-input": "../../components/tdesign/t-input/index",
+    "t-divider": "../../components/tdesign/t-divider/index",
+    "t-button": "../../components/tdesign/t-button/index",
+    "t-message": "../../components/tdesign/t-message/index",
+    "t-dialog": "../../components/tdesign/t-dialog/index"
+  }
+}

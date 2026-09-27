@@ -1,0 +1,401 @@
+/* 
+使用方法：
+在 profile.wxss 文件末尾引入样式
+```
+@import "./profile-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-profile {
+        background: rgb(23, 22, 20);
+    }
+
+    .user-hero {
+        background: rgb(0, 0, 0);
+        color: rgb(223, 219, 214);
+    }
+
+    .deco-circle {
+        background: rgba(165, 46, 0, 0.05);
+    }
+
+    .deco-circle-2 {
+        background: rgba(31, 113, 40, 0.05);
+    }
+
+    .deco-circle-3 {
+        background: rgba(30, 115, 194, 0.05);
+    }
+
+    .hero-tool {
+        color: rgb(174, 165, 155);
+    }
+
+    .ht-icon {
+        background: rgba(20, 18, 15, 0.8);
+        border: rgb(0, 0, 0);
+        color: rgb(223, 219, 214);
+    }
+
+    .ht-icon-wallet {
+        background: rgb(33, 24, 14);
+        border-color: rgb(165, 46, 0);
+        color: rgb(165, 46, 0);
+    }
+
+    .ht-icon-coupon {
+        background: rgb(30, 24, 10);
+        border-color: rgb(109, 61, 0);
+        color: rgb(109, 61, 0);
+    }
+
+    .ht-icon-setting {
+        background: rgb(26, 24, 21);
+    }
+
+    .ht-icon-setting::before {
+        border: rgb(0, 0, 0);
+    }
+
+    .ht-badge {
+        background: rgb(213, 59, 47);
+        color: rgb(17, 17, 17);
+    }
+
+    .avatar-wrap {
+        border: rgb(0, 0, 0);
+        background: rgb(20, 18, 15);
+    }
+
+    .avatar-wrap-logged {
+        border-color: rgb(165, 46, 0);
+    }
+
+    .avatar-letter {
+        color: rgb(77, 67, 53);
+    }
+
+    .avatar-level-badge {
+        background: rgb(0, 0, 0);
+        color: rgb(17, 17, 17);
+        border: rgb(0, 0, 0);
+    }
+
+    .user-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .user-phone-tag {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+        color: rgb(174, 165, 155);
+    }
+
+    .user-tip {
+        color: rgb(126, 118, 108);
+    }
+
+    .level-badge {
+        color: rgb(17, 17, 17);
+    }
+
+    .level-text {
+        color: rgb(17, 17, 17);
+    }
+
+    .level-desc {
+        color: rgb(99, 99, 99);
+    }
+
+    .level-bar {
+        background: rgba(165, 46, 0, 0.15);
+    }
+
+    .level-fill-V1 {
+        background: rgb(0, 0, 0);
+    }
+
+    .level-fill-V2 {
+        background: rgb(0, 0, 0);
+    }
+
+    .level-fill-V3 {
+        background: rgb(0, 0, 0);
+    }
+
+    .level-fill-V4 {
+        background: rgb(0, 0, 0);
+    }
+
+    .level-fill-V5 {
+        background: rgb(0, 0, 0);
+    }
+
+    .level-fill-V6 {
+        background: rgb(0, 0, 0);
+    }
+
+    .level-badge-V1 {
+        background: rgb(0, 0, 0);
+    }
+
+    .level-badge-V2 {
+        background: rgb(0, 0, 0);
+    }
+
+    .level-badge-V3 {
+        background: rgb(0, 0, 0);
+    }
+
+    .level-badge-V4 {
+        background: rgb(0, 0, 0);
+    }
+
+    .level-badge-V5 {
+        background: rgb(0, 0, 0);
+    }
+
+    .level-badge-V6 {
+        background: rgb(0, 0, 0);
+    }
+
+    .benefit-pill {
+        background: rgba(20, 18, 15, 0.9);
+        border: rgb(0, 0, 0);
+        color: rgb(223, 219, 214);
+    }
+
+    .user-stats {
+        background: rgba(20, 18, 15, 0.7);
+    }
+
+    .stat-num {
+        color: rgb(223, 219, 214);
+    }
+
+    .stat-label {
+        color: rgb(126, 118, 108);
+    }
+
+    .stat-divider {
+        background: rgba(36, 33, 27, 0.6);
+    }
+
+    .assets-section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .asset-item {
+        border-right: rgb(0, 0, 0);
+    }
+
+    .asset-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .asset-num {
+        color: rgb(165, 46, 0);
+    }
+
+    .asset-label {
+        color: rgb(99, 99, 99);
+    }
+
+    .orders-section, .tools-section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .section-title-text {
+        color: rgb(223, 219, 214);
+    }
+
+    .section-action {
+        color: rgb(99, 99, 99);
+    }
+
+    .order-type:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .oi-letter {
+        color: rgb(17, 17, 17);
+    }
+
+    .oi-badge {
+        background: rgb(213, 59, 47);
+        color: rgb(17, 17, 17);
+    }
+
+    .order-icon-unpaid {
+        background: rgb(0, 0, 0);
+    }
+
+    .order-icon-ongoing {
+        background: rgb(0, 0, 0);
+    }
+
+    .order-icon-uncomment {
+        background: rgb(0, 0, 0);
+    }
+
+    .order-icon-completed {
+        background: rgb(0, 0, 0);
+    }
+
+    .order-name {
+        color: rgb(174, 165, 155);
+    }
+
+    .tool-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .tool-icon {
+        color: rgb(17, 17, 17);
+    }
+
+    .tool-icon-invoice {
+        background: rgb(165, 46, 0);
+    }
+
+    .tool-icon-share {
+        background: rgb(30, 115, 194);
+    }
+
+    .tool-icon-record {
+        background: rgb(31, 113, 40);
+    }
+
+    .tool-icon-credit {
+        background: rgb(151, 81, 131);
+    }
+
+    .tool-icon-mall {
+        background: rgb(109, 61, 0);
+    }
+
+    .tool-icon-invite {
+        background: rgb(213, 59, 47);
+    }
+
+    .tool-text {
+        color: rgb(174, 165, 155);
+    }
+
+    .menu-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .menu-list {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .menu-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .menu-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .menu-item-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .menu-badge {
+        background: rgb(213, 59, 47);
+        color: rgb(17, 17, 17);
+    }
+
+    .menu-arrow {
+        color: rgb(58, 58, 62);
+    }
+
+    .mi-wallet {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-wallet::before {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-coupon {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-coupon::before {
+        color: rgb(223, 219, 214);
+    }
+
+    .mi-address {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-address::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .mi-contact {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-contact::after {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-security {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-security::after {
+        color: rgb(223, 219, 214);
+    }
+
+    .mi-service {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-service::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .mi-setting {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-setting::before {
+        background: rgb(223, 219, 214);
+        box-shadow: rgb(0, 0, 0);
+    }
+
+    .mi-feedback {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-feedback::after {
+        border-left: rgb(0, 0, 0);
+    }
+
+    .mi-about {
+        border: rgb(0, 0, 0);
+        color: rgb(223, 219, 214);
+    }
+
+    .mi-about::after {
+        color: rgb(223, 219, 214);
+    }
+
+    .logout-btn {
+        background: rgb(20, 18, 15);
+        color: rgb(213, 59, 47);
+        border: rgb(0, 0, 0);
+    }
+
+    .logout-btn:active {
+        background: rgb(33, 23, 23);
+    }
+}

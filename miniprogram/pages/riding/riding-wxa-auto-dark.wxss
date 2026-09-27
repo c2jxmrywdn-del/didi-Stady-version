@@ -1,0 +1,124 @@
+/* 
+使用方法：
+在 riding.wxss 文件末尾引入样式
+```
+@import "./riding-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .top-status {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .status-riding .status-dot {
+        background: rgb(255, 255, 255);
+    }
+
+    .status-arriving .status-dot {
+        background: rgb(0, 98, 0);
+    }
+
+    .status-arrived .status-dot {
+        background: rgb(0, 98, 0);
+    }
+
+    .top-text {
+        color: rgb(255, 255, 255);
+    }
+
+    .bg-hint {
+        background: rgba(223, 219, 214, 0.92);
+    }
+
+    .bg-hint-text {
+        color: rgb(17, 17, 17);
+    }
+
+    .safety-item {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .si-share {
+        border: rgb(0, 0, 0);
+    }
+
+    .si-share::after {
+        border-left: rgb(0, 0, 0);
+    }
+
+    .si-help {
+        background: rgb(255, 255, 255);
+    }
+
+    .si-help::after {
+        background: rgb(255, 255, 255);
+    }
+
+    .si-phone {
+        border: rgb(0, 0, 0);
+    }
+
+    .safety-text {
+        color: rgb(149, 149, 149);
+    }
+
+    .bottom-panel {
+        background: rgb(20, 18, 15);
+    }
+
+    .driver-brief {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .driver-avatar-sm {
+        background: rgb(23, 23, 23);
+        border: rgb(0, 0, 0);
+    }
+
+    .driver-avatar-text {
+        color: rgb(99, 99, 99);
+    }
+
+    .driver-name-sm {
+        color: rgb(255, 255, 255);
+    }
+
+    .driver-car-sm {
+        color: rgb(99, 99, 99);
+    }
+
+    .dot-green {
+        background: rgb(0, 98, 0);
+    }
+
+    .dot-dark {
+        background: rgb(255, 255, 255);
+    }
+
+    .pp-text {
+        color: rgb(255, 255, 255);
+    }
+
+    .progress-line {
+        background: rgb(31, 31, 31);
+    }
+
+    .progress-fill {
+        background: rgb(255, 255, 255);
+    }
+
+    .rs-value {
+        color: rgb(255, 255, 255);
+    }
+
+    .rs-value.price {
+        color: rgb(255, 255, 255);
+    }
+
+    .rs-label {
+        color: rgb(99, 99, 99);
+    }
+}

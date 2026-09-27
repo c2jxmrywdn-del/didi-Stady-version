@@ -1,0 +1,122 @@
+/* 
+使用方法：
+在 feedback.wxss 文件末尾引入样式
+```
+@import "./feedback-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-fb {
+        background: rgb(23, 22, 20);
+    }
+
+    .fb-section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .fb-label {
+        color: rgb(223, 219, 214);
+    }
+
+    .fb-required {
+        color: rgb(213, 59, 47);
+    }
+
+    .fb-count {
+        color: rgb(77, 67, 53);
+    }
+
+    .fb-type {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+        color: rgb(174, 165, 155);
+    }
+
+    .fb-type:active {
+        background: rgb(31, 29, 26);
+    }
+
+    .fb-type-active {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+        border-color: rgb(223, 219, 214);
+    }
+
+    .fb-textarea {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+        color: rgb(223, 219, 214);
+    }
+
+    .fb-input {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+        color: rgb(223, 219, 214);
+    }
+
+    .fb-image-delete {
+        background: rgba(255, 255, 255, 0.5);
+        color: rgb(17, 17, 17);
+    }
+
+    .fb-image-add {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+        color: rgb(99, 99, 99);
+    }
+
+    .fb-image-add:active {
+        background: rgb(31, 29, 26);
+    }
+
+    .mi-camera {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-camera::before {
+        background: rgb(99, 99, 99);
+    }
+
+    .mi-camera::after {
+        border: rgb(0, 0, 0);
+    }
+
+    .fb-submit {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+    }
+
+    .fb-submit:active {
+        background: rgb(241, 238, 233);
+    }
+
+    .fb-history {
+        background: rgb(23, 22, 20);
+    }
+
+    .fb-history-type {
+        color: rgb(223, 219, 214);
+    }
+
+    .fb-history-time {
+        color: rgb(77, 67, 53);
+    }
+
+    .fb-history-content {
+        color: rgb(174, 165, 155);
+    }
+
+    .status-pending {
+        color: rgb(109, 61, 0);
+    }
+
+    .status-processing {
+        color: rgb(30, 115, 194);
+    }
+
+    .status-done {
+        color: rgb(31, 113, 40);
+    }
+}

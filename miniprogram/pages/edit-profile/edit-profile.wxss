@@ -1,0 +1,191 @@
+/* pages/edit-profile/edit-profile.wxss — 编辑资料页 */
+.page-edit-profile {
+  min-height: 100vh;
+  background: #FAF8F5;
+  padding-bottom: 120rpx;
+}
+
+/* 卡片区块 */
+.section {
+  background: #FFFDF9;
+  margin: 16rpx 12rpx 0;
+  border-radius: 12rpx;
+  border: 1rpx solid #EDE8E0;
+  overflow: hidden;
+}
+.section:last-of-type {
+  margin-bottom: 0;
+}
+.section-title {
+  font-size: 22rpx;
+  color: #999;
+  padding: 24rpx 24rpx 8rpx;
+  letter-spacing: 1rpx;
+}
+
+/* 头像区 */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0 32rpx;
+}
+.avatar-section:active {
+  background: #f7f5f0;
+}
+.avatar-wrap {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  border: 3rpx solid #EDE8E0;
+  background: #f0f0f0;
+}
+.avatar-img {
+  width: 100%;
+  height: 100%;
+}
+.avatar-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 44rpx;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-edit-text {
+  font-size: 20rpx;
+  color: #fff;
+  letter-spacing: 1rpx;
+}
+.avatar-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 12rpx;
+}
+
+/* 字段行 */
+.field-item {
+  display: flex;
+  align-items: center;
+  padding: 22rpx 24rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+  min-height: 56rpx;
+}
+.field-item:last-child {
+  border-bottom: none;
+}
+.field-label {
+  font-size: 28rpx;
+  color: #111;
+  width: 120rpx;
+  flex-shrink: 0;
+}
+.field-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+  padding: 8rpx 0;
+  min-height: 44rpx;
+}
+.field-input::placeholder {
+  color: #c7c7cc;
+}
+.field-count {
+  font-size: 22rpx;
+  color: #c7c7cc;
+  margin-left: 12rpx;
+  flex-shrink: 0;
+}
+
+/* 性别选择器 */
+.gender-selector {
+  display: flex;
+  gap: 12rpx;
+  flex: 1;
+}
+.gender-option {
+  flex: 1;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #EDE8E0;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: #FAF8F5;
+}
+.gender-option:active {
+  background: #f0ede8;
+}
+.gender-active {
+  background: #2D2A26;
+  color: #fff;
+  border-color: #2D2A26;
+}
+.gender-active:active {
+  background: #1f1d1a;
+}
+.gender-icon {
+  font-size: 28rpx;
+  margin-right: 6rpx;
+}
+
+/* 手机号显示 */
+.phone-display {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.phone-text {
+  font-size: 28rpx;
+  color: #333;
+}
+.phone-bind {
+  font-size: 26rpx;
+  color: #2D2A26;
+  margin-left: 16rpx;
+  text-decoration: underline;
+  padding: 8rpx;
+}
+.phone-badge {
+  font-size: 22rpx;
+  color: #999;
+  margin-left: 16rpx;
+  background: #f0ede8;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+}
+
+/* 保存按钮 */
+.save-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16rpx 30rpx 40rpx;
+  background: linear-gradient(180deg, transparent, #FAF8F5 20%);
+}
+.save-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #2D2A26;
+  color: #FFFDF9;
+  font-size: 30rpx;
+  border-radius: 12rpx;
+  text-align: center;
+  border: none;
+}
+.save-btn:active {
+  background: #1f1d1a;
+}
+.save-btn[disabled] {
+  opacity: 0.6;
+}
+@import 'edit-profile-wxa-auto-dark.wxss'

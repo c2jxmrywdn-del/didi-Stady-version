@@ -1,0 +1,97 @@
+/* components/tdesign/t-input/index.wxss */
+.t-input {
+  display: flex;
+  align-items: center;
+  min-height: 96rpx;
+  padding: 20rpx 32rpx;
+  background: #FFFFFF;
+  position: relative;
+  transition: background 0.12s;
+}
+.t-input--bordered::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 32rpx; right: 32rpx;
+  height: 1rpx;
+  background: #F0F0F2;
+  transform: scaleY(0.5);
+}
+.t-input--focused { background: #FAFAFA; }
+.t-input--disabled { background: #F5F5F7; opacity: 0.7; }
+
+.t-input__label {
+  width: 180rpx;
+  font-size: 30rpx;
+  color: #2D2A26;
+  font-weight: 500;
+  flex-shrink: 0;
+  letter-spacing: 0.3rpx;
+}
+.t-input__required {
+  color: #E74C3C;
+  margin-right: 4rpx;
+}
+.t-input__wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.t-input__control {
+  flex: 1;
+  font-size: 30rpx;
+  color: #2D2A26;
+  height: 56rpx;
+  letter-spacing: 0.3rpx;
+  min-width: 0;
+}
+.t-input--left   { text-align: left; }
+.t-input--center { text-align: center; }
+.t-input--right  { text-align: right; }
+.t-input__ph { color: #C5B9A8; }
+
+/* clear */
+.t-input__clear {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: #C7C7CC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8rpx;
+  flex-shrink: 0;
+}
+.t-input__clear-icon {
+  position: relative;
+  width: 20rpx;
+  height: 20rpx;
+}
+.t-input__clear-icon::before, .t-input__clear-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16rpx;
+  height: 2rpx;
+  background: #FFFFFF;
+}
+.t-input__clear-icon::before { transform: translate(-50%, -50%) rotate(45deg); }
+.t-input__clear-icon::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+
+/* status */
+.t-input--error .t-input__control { color: #E74C3C; }
+.t-input--warning .t-input__control { color: #F1C40F; }
+.t-input--success .t-input__control { color: #5CAA5C; }
+
+.t-input__tips {
+  font-size: 24rpx;
+  padding: 0 32rpx 12rpx;
+  line-height: 1.5;
+  letter-spacing: 0.3rpx;
+  color: #8A8278;
+}
+.t-input__tips--error { color: #E74C3C; }
+.t-input__tips--warning { color: #F1C40F; }
+.t-input__tips--success { color: #5CAA5C; }

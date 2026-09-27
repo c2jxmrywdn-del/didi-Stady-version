@@ -1,0 +1,394 @@
+<!-- pages/example/example.wxml — TDesign 14 个组件完整演示页 -->
+<view class="page-example page-enter">
+  <!-- 顶部 Banner -->
+  <view class="ex-banner">
+    <view class="ex-banner-bg">
+      <view class="ex-bg-circle ex-bg-1"></view>
+      <view class="ex-bg-circle ex-bg-2"></view>
+    </view>
+    <t-avatar src="{{userInfo.avatarUrl}}" text="{{userInfo.nickName}}" size="large" shape="circle" />
+    <view class="ex-banner-info">
+      <text class="ex-banner-title">TDesign 组件库</text>
+      <text class="ex-banner-sub">14 个组件 · 完整功能演示</text>
+    </view>
+    <t-tag theme="primary" variant="light" size="medium">v1.0.0</t-tag>
+  </view>
+
+  <!-- 1. t-progress 进度条 -->
+  <view class="ex-section">
+    <text class="ex-section-title">① t-progress 进度条</text>
+    <view class="ex-card">
+      <text class="ex-card-label">完成度 35%</text>
+      <t-progress percent="{{35}}" theme="primary" size="medium" label />
+      <text class="ex-card-label">评分 75%</text>
+      <t-progress percent="{{75}}" theme="success" size="medium" />
+      <text class="ex-card-label">警告 50%</text>
+      <t-progress percent="{{50}}" theme="warning" size="large" label />
+      <text class="ex-card-label">错误 20%</text>
+      <t-progress percent="{{20}}" theme="danger" size="small" label />
+    </view>
+  </view>
+
+  <!-- 2. t-tabs 标签页 -->
+  <view class="ex-section">
+    <text class="ex-section-title">② t-tabs 标签页</text>
+    <t-tabs
+      tabs="{{demoTabs}}"
+      current="{{tabIndex}}"
+      bind:change="onTabChange"
+    />
+    <view class="ex-tab-content">
+      <text wx:if="{{tabIndex === 0}}">📍 推荐:中关村、望京、国贸</text>
+      <text wx:elif="{{tabIndex === 1}}">🗺️ 附近:1km 内的热门地点</text>
+      <text wx:else>📜 历史:最近 7 天的访问记录</text>
+    </view>
+  </view>
+
+  <!-- 3. t-cell 单元格 -->
+  <view class="ex-section">
+    <text class="ex-section-title">③ t-cell 单元格</text>
+    <view class="ex-card">
+      <t-cell
+        title="用户协议"
+        note="请阅读并同意我们的服务条款"
+        iconName="info-circle"
+        iconBg="rgba(74, 144, 226, 0.12)"
+        arrow
+        hover
+        bind:tap="onViewAgreement"
+      />
+      <t-divider />
+      <t-cell
+        title="客服中心"
+        label="7×24"
+        value="在线客服"
+        iconName="phone"
+        iconBg="rgba(92, 170, 92, 0.12)"
+        arrow
+        hover
+        bind:tap="onContactCS"
+      />
+      <t-divider />
+      <t-cell
+        title="隐私设置"
+        note="管理您的数据可见性"
+        iconName="lock"
+        iconBg="rgba(255, 123, 0, 0.12)"
+        arrow
+      >
+        <view slot="right">
+          <t-switch value="{{privacy.location}}" data-key="location" bind:change="onSwitch" />
+        </view>
+      </t-cell>
+    </view>
+  </view>
+
+  <!-- 4. t-input 输入框 -->
+  <view class="ex-section">
+    <text class="ex-section-title">④ t-input 输入框</text>
+    <view class="ex-card">
+      <t-input
+        label="姓名"
+        placeholder="请输入您的姓名"
+        value="{{form.name}}"
+        clearable
+        bind:change="onInputChange"
+        data-field="name"
+      />
+      <t-input
+        label="手机号"
+        type="number"
+        maxlength="11"
+        placeholder="请输入手机号"
+        clearable
+        value="{{form.phone}}"
+        bind:change="onInputChange"
+        data-field="phone"
+      />
+      <t-input
+        label="密码"
+        password
+        placeholder="请输入密码"
+        value="{{form.password}}"
+        bind:change="onInputChange"
+        data-field="password"
+        status="{{form.password.length > 0 && form.password.length < 8 ? 'error' : ''}}"
+        tips="密码长度至少 8 位"
+      />
+      <t-input
+        label="已禁用"
+        value="不可编辑"
+        disabled
+      />
+    </view>
+  </view>
+
+  <!-- 5. t-button 按钮 -->
+  <view class="ex-section">
+    <text class="ex-section-title">⑤ t-button 按钮</text>
+    <view class="ex-card">
+      <view class="ex-btn-row">
+        <t-button theme="primary" size="small" bind:tap="onDemoTap" data-name="主要按钮">主要</t-button>
+        <t-button theme="success" size="small" bind:tap="onDemoTap" data-name="成功按钮">成功</t-button>
+        <t-button theme="warning" size="small" bind:tap="onDemoTap" data-name="警告按钮">警告</t-button>
+        <t-button theme="danger" size="small" bind:tap="onDemoTap" data-name="危险按钮">危险</t-button>
+      </view>
+      <view class="ex-btn-row">
+        <t-button theme="primary" variant="outline" size="small" bind:tap="onDemoTap" data-name="线框按钮">线框</t-button>
+        <t-button theme="primary" variant="text" size="small" bind:tap="onDemoTap" data-name="文字按钮">文字</t-button>
+        <t-button theme="default" size="small" bind:tap="onDemoTap" data-name="默认按钮">默认</t-button>
+        <t-button theme="light" size="small" bind:tap="onDemoTap" data-name="浅色按钮">浅色</t-button>
+      </view>
+      <t-button theme="primary" size="large" block loading="{{btnLoading}}" bind:tap="onSubmitDemo">提交演示(带 loading)</t-button>
+      <t-button theme="primary" size="large" block round bind:tap="onShowDialog">打开对话框</t-button>
+    </view>
+  </view>
+
+  <!-- 6. t-tag 标签 -->
+  <view class="ex-section">
+    <text class="ex-section-title">⑥ t-tag 标签</text>
+    <view class="ex-card">
+      <view class="ex-tag-row">
+        <t-tag theme="primary" variant="light">主要</t-tag>
+        <t-tag theme="success" variant="light">已完成</t-tag>
+        <t-tag theme="warning" variant="light">待处理</t-tag>
+        <t-tag theme="danger" variant="light">失败</t-tag>
+        <t-tag theme="default" variant="light">草稿</t-tag>
+      </view>
+      <view class="ex-tag-row">
+        <t-tag theme="primary" variant="dark">深色</t-tag>
+        <t-tag theme="success" variant="dark">已通过</t-tag>
+        <t-tag theme="danger" variant="dark">已驳回</t-tag>
+      </view>
+      <view class="ex-tag-row">
+        <t-tag theme="primary" variant="outline">线框</t-tag>
+        <t-tag theme="success" variant="outline">已确认</t-tag>
+        <t-tag theme="warning" variant="outline" closable bind:close="onTagClose">可关闭</t-tag>
+      </view>
+      <view class="ex-tag-row">
+        <t-tag theme="primary" variant="light" size="large" shape="round">圆角大</t-tag>
+        <t-tag theme="success" variant="light" size="medium" shape="round">圆角中</t-tag>
+        <t-tag theme="danger" variant="light" size="small" shape="round">圆角小</t-tag>
+      </view>
+    </view>
+  </view>
+
+  <!-- 7. t-icon 图标(32+) -->
+  <view class="ex-section">
+    <text class="ex-section-title">⑦ t-icon 图标(32+)</text>
+    <view class="ex-card">
+      <view class="ex-icon-grid">
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="user">
+          <t-icon name="user" size="medium" color="#FF7B00" />
+          <text class="ex-icon-text">user</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="lock">
+          <t-icon name="lock" size="medium" color="#E74C3C" />
+          <text class="ex-icon-text">lock</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="home">
+          <t-icon name="home" size="medium" color="#5CAA5C" />
+          <text class="ex-icon-text">home</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="location">
+          <t-icon name="location" size="medium" color="#4A90E2" />
+          <text class="ex-icon-text">location</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="phone">
+          <t-icon name="phone" size="medium" color="#7C5CE6" />
+          <text class="ex-icon-text">phone</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="setting">
+          <t-icon name="setting" size="medium" color="#999" />
+          <text class="ex-icon-text">setting</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="search">
+          <t-icon name="search" size="medium" color="#666" />
+          <text class="ex-icon-text">search</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="bell">
+          <t-icon name="bell" size="medium" color="#FF7B00" />
+          <text class="ex-icon-text">bell</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="message">
+          <t-icon name="message" size="medium" color="#4A90E2" />
+          <text class="ex-icon-text">message</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="heart">
+          <t-icon name="heart" size="medium" color="#E74C3C" />
+          <text class="ex-icon-text">heart</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="star">
+          <t-icon name="star" size="medium" color="#F1C40F" />
+          <text class="ex-icon-text">star</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="image">
+          <t-icon name="image" size="medium" color="#26A69A" />
+          <text class="ex-icon-text">image</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="cart">
+          <t-icon name="cart" size="medium" color="#FF7B00" />
+          <text class="ex-icon-text">cart</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="wallet">
+          <t-icon name="wallet" size="medium" color="#5CAA5C" />
+          <text class="ex-icon-text">wallet</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="gift">
+          <t-icon name="gift" size="medium" color="#E74C3C" />
+          <text class="ex-icon-text">gift</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="eye">
+          <t-icon name="eye" size="medium" color="#666" />
+          <text class="ex-icon-text">eye</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="edit">
+          <t-icon name="edit" size="medium" color="#4A90E2" />
+          <text class="ex-icon-text">edit</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="delete">
+          <t-icon name="delete" size="medium" color="#E74C3C" />
+          <text class="ex-icon-text">delete</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="check">
+          <t-icon name="success-circle" size="medium" color="#5CAA5C" />
+          <text class="ex-icon-text">check</text>
+        </view>
+        <view class="ex-icon-cell" bindtap="onIconTap" data-name="info">
+          <t-icon name="info-circle" size="medium" color="#4A90E2" />
+          <text class="ex-icon-text">info</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 8. t-avatar 头像(3 形状 × 3 尺寸) -->
+  <view class="ex-section">
+    <text class="ex-section-title">⑧ t-avatar 头像</text>
+    <view class="ex-card">
+      <view class="ex-avatar-row">
+        <t-avatar text="A" size="small" shape="circle" bgColor="#FF7B00" />
+        <t-avatar text="B" size="medium" shape="circle" bgColor="#E74C3C" />
+        <t-avatar text="C" size="large" shape="circle" bgColor="#5CAA5C" />
+        <t-avatar text="D" size="medium" shape="round" bgColor="#4A90E2" />
+        <t-avatar text="E" size="medium" shape="square" bgColor="#7C5CE6" />
+      </view>
+      <view class="ex-avatar-row" style="margin-top: 16rpx;">
+        <t-avatar src="https://thirdwx.qlogo.cn/mmopen/vi_32/POgEwh4mIHO4nibH0KlMECNbjGxLd37Q13GiaCErGziaJlbkb6U1GtzjPfuSYaib7kibECv9yOjA0vCAa9ibmBOq4w/132" size="large" bordered />
+        <t-avatar text="用户" size="large" shape="circle" bgColor="#26A69A" bordered />
+      </view>
+    </view>
+  </view>
+
+  <!-- 9. t-switch + t-cell 组合(权限设置示例) -->
+  <view class="ex-section">
+    <text class="ex-section-title">⑨ t-switch 开关</text>
+    <view class="ex-card">
+      <t-cell
+        title="推送通知"
+        note="接收订单 / 系统消息推送"
+        iconName="bell"
+        iconBg="rgba(255, 123, 0, 0.12)"
+      >
+        <view slot="right">
+          <t-switch value="{{switches.notify}}" data-key="notify" bind:change="onSwitch" />
+        </view>
+      </t-cell>
+      <t-divider />
+      <t-cell
+        title="指纹解锁"
+        note="进入 APP 时使用生物特征"
+        iconName="lock"
+        iconBg="rgba(124, 92, 230, 0.12)"
+      >
+        <view slot="right">
+          <t-switch value="{{switches.fingerprint}}" data-key="fingerprint" bind:change="onSwitch" />
+        </view>
+      </t-cell>
+      <t-divider />
+      <t-cell
+        title="夜间模式"
+        note="22:00 - 06:00 自动启用"
+        iconName="user"
+        iconBg="rgba(45, 42, 38, 0.12)"
+      >
+        <view slot="right">
+          <t-switch value="{{switches.darkMode}}" data-key="darkMode" bind:change="onSwitch" />
+        </view>
+      </t-cell>
+    </view>
+  </view>
+
+  <!-- 10. t-divider 分割线 -->
+  <view class="ex-section">
+    <text class="ex-section-title">⑩ t-divider 分割线</text>
+    <view class="ex-card">
+      <text class="ex-card-text">第一段内容</text>
+      <t-divider content="或者" align="center" />
+      <text class="ex-card-text">第二段内容</text>
+      <t-divider align="left" />
+      <text class="ex-card-text">第三段内容(左对齐分割线)</text>
+      <t-divider align="right" dashed />
+      <text class="ex-card-text">最后一段(右对齐虚线)</text>
+    </view>
+  </view>
+
+  <!-- 11. t-empty 空状态 -->
+  <view class="ex-section">
+    <text class="ex-section-title">⑪ t-empty 空状态</text>
+    <view class="ex-card" style="padding: 0;">
+      <t-empty
+        wx:if="{{showEmpty}}"
+        icon="📭"
+        description="暂无消息"
+        action-text="刷新一下"
+        bind:action="onRefreshEmpty"
+      />
+      <view wx:else class="ex-empty-toggled" bindtap="toggleEmpty">
+        <text>点击重新显示空状态</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 12. 反馈触发区(综合使用 t-message) -->
+  <view class="ex-section">
+    <text class="ex-section-title">⑫ t-message 消息条</text>
+    <view class="ex-card">
+      <view class="ex-btn-row">
+        <t-button theme="primary" size="small" bind:tap="onMsg">info</t-button>
+        <t-button theme="success" size="small" bind:tap="onMsg" data-theme="success">success</t-button>
+        <t-button theme="warning" size="small" bind:tap="onMsg" data-theme="warning">warning</t-button>
+        <t-button theme="danger" size="small" bind:tap="onMsg" data-theme="error">error</t-button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 13. t-dialog 对话框(由 t-button 触发) -->
+
+  <!-- 14. cloud-tip-modal 云开发环境提示 -->
+  <view class="ex-section">
+    <text class="ex-section-title">⑭ cloud-tip-modal 云开发提示</text>
+    <view class="ex-card">
+      <view class="ex-tip-row">
+        <t-icon name="info-circle" size="medium" color="#FF7B00" />
+        <view class="ex-tip-text-wrap">
+          <text class="ex-tip-title">云开发环境配置</text>
+          <text class="ex-tip-sub">点击下方按钮查看云开发环境配置说明</text>
+        </view>
+      </view>
+      <t-button theme="primary" block bind:tap="onShowCloudTip">查看云开发提示</t-button>
+    </view>
+  </view>
+
+  <!-- 底部:查看源码 -->
+  <view class="ex-footer">
+    <t-divider content="演示完毕" align="center" />
+    <text class="ex-footer-text">所有组件源码位于 miniprogram/components/tdesign/</text>
+    <text class="ex-footer-text">详细文档:miniprogram/components/tdesign/README.md</text>
+  </view>
+
+  <!-- TDesign 全局组件 -->
+  <t-message id="t-message" />
+  <t-dialog id="t-dialog" />
+  <cloud-tip-modal id="cloud-tip" show-tip-props="{{showCloudTip}}" title="云开发环境未配置" content="请先在 miniprogram/envList.js 中配置云开发 EnvId。" />
+</view>

@@ -1,0 +1,422 @@
+/* components/tdesign/t-icon/index.wxss — 32+ 纯 CSS 图标 */
+.t-icon {
+  position: relative;
+  display: inline-block;
+  color: currentColor;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+/* 关键:WeChat WXSS 不支持 * 通配符,必须显式列出所有子元素 */
+.t-icon__check,
+.t-icon__close-l1,
+.t-icon__close-l2,
+.t-icon__arrow,
+.t-icon__chevron,
+.t-icon__search-circle,
+.t-icon__search-line,
+.t-icon__plus-h,
+.t-icon__plus-v,
+.t-icon__minus,
+.t-icon__edit-pen,
+.t-icon__edit-body,
+.t-icon__del-body,
+.t-icon__del-line,
+.t-icon__lock-body,
+.t-icon__lock-shackle,
+.t-icon__eye,
+.t-icon__eye-pupil,
+.t-icon__eye-line,
+.t-icon__heart,
+.t-icon__star,
+.t-icon__bell,
+.t-icon__user-head,
+.t-icon__user-body,
+.t-icon__home,
+.t-icon__home-door,
+.t-icon__setting-gear,
+.t-icon__loc-pin,
+.t-icon__loc-dot,
+.t-icon__phone,
+.t-icon__phone-line,
+.t-icon__msg,
+.t-icon__img,
+.t-icon__img-sun,
+.t-icon__img-mountain,
+.t-icon__cart,
+.t-icon__cart-handle,
+.t-icon__cart-w1,
+.t-icon__cart-w2,
+.t-icon__wallet,
+.t-icon__wallet-coin,
+.t-icon__gift,
+.t-icon__gift-ribbon-v,
+.t-icon__gift-ribbon-h,
+.t-icon__info-circle,
+.t-icon__info-i,
+.t-icon__bang,
+.t-icon__placeholder { position: absolute; }
+.t-icon__placeholder { width: 100%; height: 100%; border-radius: 50%; background: #F0F0F2; }
+
+/* check */
+.t-icon__check {
+  width: 35%;
+  height: 18%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -60%) rotate(-45deg);
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+.t-icon__check--white { border-color: #FFFFFF; }
+
+/* close */
+.t-icon__close-l1, .t-icon__close-l2 {
+  width: 60%; height: 2px;
+  top: 50%; left: 50%;
+  background: currentColor;
+  border-radius: 1px;
+}
+.t-icon__close-l1 { transform: translate(-50%, -50%) rotate(45deg); }
+.t-icon__close-l2 { transform: translate(-50%, -50%) rotate(-45deg); }
+.t-icon__close-l1--white, .t-icon__close-l2--white { background: #FFFFFF; }
+
+/* arrow */
+.t-icon__arrow {
+  width: 50%; height: 50%;
+  top: 25%; left: 25%;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+.t-icon__arrow--down { transform: rotate(135deg); top: 12%; left: 25%; }
+.t-icon__arrow--up   { transform: rotate(-45deg); top: 38%; left: 25%; }
+.t-icon__arrow--left { transform: rotate(-135deg); top: 25%; left: 38%; }
+
+/* chevron */
+.t-icon__chevron {
+  width: 40%; height: 40%;
+  top: 30%; left: 30%;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+.t-icon__chevron--right { transform: rotate(45deg); }
+
+/* search */
+.t-icon__search-circle {
+  width: 65%; height: 65%;
+  top: 5%; left: 5%;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+.t-icon__search-line {
+  width: 35%; height: 2px;
+  top: 70%; left: 55%;
+  background: currentColor;
+  border-radius: 1px;
+  transform: rotate(45deg);
+  transform-origin: left center;
+}
+
+/* plus / minus */
+.t-icon__plus-h, .t-icon__plus-v, .t-icon__minus {
+  width: 60%; height: 2px;
+  top: 49%; left: 20%;
+  background: currentColor;
+  border-radius: 1px;
+}
+.t-icon__plus-v {
+  width: 2px; height: 60%;
+  top: 20%; left: 49%;
+}
+
+/* edit */
+.t-icon__edit-body {
+  width: 70%; height: 18%;
+  top: 60%; left: 15%;
+  background: currentColor;
+  border-radius: 2rpx;
+  transform: rotate(-30deg);
+}
+.t-icon__edit-pen {
+  width: 18%; height: 18%;
+  top: 18%; left: 60%;
+  background: currentColor;
+  border-radius: 50% 0 2rpx 0;
+  transform: rotate(-30deg);
+}
+
+/* delete */
+.t-icon__del-body {
+  width: 60%; height: 60%;
+  top: 25%; left: 20%;
+  border: 2px solid currentColor;
+  border-top-width: 5px;
+  border-radius: 3rpx;
+}
+.t-icon__del-line {
+  width: 70%; height: 2px;
+  top: 38%; left: 15%;
+  background: currentColor;
+}
+
+/* lock */
+.t-icon__lock-body {
+  width: 60%; height: 50%;
+  bottom: 10%; left: 20%;
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  background: transparent;
+}
+.t-icon__lock-shackle {
+  width: 36%; height: 36%;
+  top: 18%; left: 32%;
+  border: 2px solid currentColor;
+  border-bottom: none;
+  border-radius: 100% 100% 0 0;
+}
+.t-icon__lock-shackle--open { top: 8%; transform: translateX(20%) rotate(-15deg); }
+
+/* eye */
+.t-icon__eye {
+  width: 70%; height: 50%;
+  top: 25%; left: 15%;
+  border: 2px solid currentColor;
+  border-radius: 50% / 60%;
+}
+.t-icon__eye-pupil {
+  width: 30%; height: 30%;
+  top: 35%; left: 35%;
+  background: currentColor;
+  border-radius: 50%;
+}
+.t-icon__eye-line {
+  width: 90%; height: 2px;
+  top: 50%; left: 5%;
+  background: currentColor;
+  transform: translateY(-50%) rotate(20deg);
+}
+
+/* heart
+   关键:WXSS 不支持 clip-path: path(),改用 ::before/::after 双圆 + 旋转拼出心形 */
+.t-icon__heart {
+  width: 50%; height: 50%;
+  top: 28%; left: 25%;
+  background: currentColor;
+  position: absolute;
+}
+/* 心形左半圆 */
+.t-icon__heart::before {
+  content: "";
+  position: absolute;
+  top: -40%; left: 0;
+  width: 100%; height: 80%;
+  background: currentColor;
+  border-radius: 50% 50% 0 0;
+}
+/* 心形右半圆 */
+.t-icon__heart::after {
+  content: "";
+  position: absolute;
+  top: -40%; right: -100%;
+  width: 100%; height: 80%;
+  background: currentColor;
+  border-radius: 50% 50% 0 0;
+}
+
+/* star */
+.t-icon__star {
+  width: 80%; height: 80%;
+  top: 10%; left: 10%;
+  background: currentColor;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+.t-icon__star--fill { color: #FF7B00; }
+
+/* bell */
+.t-icon__bell {
+  width: 60%; height: 60%;
+  top: 15%; left: 20%;
+  border: 2px solid currentColor;
+  border-radius: 100% 100% 5px 5px;
+  background: transparent;
+}
+
+/* user */
+.t-icon__user-head {
+  width: 40%; height: 40%;
+  top: 10%; left: 30%;
+  background: currentColor;
+  border-radius: 50%;
+}
+.t-icon__user-body {
+  width: 70%; height: 40%;
+  bottom: 10%; left: 15%;
+  background: currentColor;
+  border-radius: 50% 50% 0 0;
+}
+
+/* home */
+.t-icon__home {
+  width: 80%; height: 70%;
+  top: 25%; left: 10%;
+  background: currentColor;
+  border-radius: 0 0 4rpx 4rpx;
+  clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 0 100%, 0 35%);
+}
+.t-icon__home-door {
+  width: 22%; height: 40%;
+  bottom: 12%; left: 39%;
+  background: #FFFDF9;
+  border-radius: 2rpx 2rpx 0 0;
+}
+
+/* setting (gear) */
+.t-icon__setting-gear {
+  width: 80%; height: 80%;
+  top: 10%; left: 10%;
+  background: currentColor;
+  border-radius: 25%;
+  position: relative;
+  box-shadow:
+    inset 0 0 0 2px #FFFDF9,
+    inset 0 0 0 12px currentColor;
+}
+
+/* location */
+.t-icon__loc-pin {
+  width: 60%; height: 60%;
+  top: 10%; left: 20%;
+  background: currentColor;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+.t-icon__loc-dot {
+  width: 22%; height: 22%;
+  top: 22%; left: 39%;
+  background: #FFFDF9;
+  border-radius: 50%;
+}
+
+/* phone */
+.t-icon__phone {
+  width: 60%; height: 80%;
+  top: 10%; left: 20%;
+  border: 2px solid currentColor;
+  border-radius: 6rpx;
+}
+.t-icon__phone-line {
+  width: 30%; height: 2px;
+  bottom: 22%; left: 35%;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+/* message */
+.t-icon__msg {
+  width: 80%; height: 60%;
+  top: 20%; left: 10%;
+  background: currentColor;
+  border-radius: 12rpx 12rpx 12rpx 2rpx;
+}
+
+/* image */
+.t-icon__img {
+  width: 80%; height: 70%;
+  top: 15%; left: 10%;
+  border: 2px solid currentColor;
+  border-radius: 4rpx;
+}
+.t-icon__img-sun {
+  width: 18%; height: 18%;
+  top: 22%; right: 22%;
+  background: currentColor;
+  border-radius: 50%;
+}
+.t-icon__img-mountain {
+  width: 50%; height: 30%;
+  bottom: 18%; left: 20%;
+  background: currentColor;
+  clip-path: polygon(0 100%, 35% 0, 65% 70%, 85% 30%, 100% 100%);
+}
+
+/* cart */
+.t-icon__cart {
+  width: 70%; height: 50%;
+  top: 25%; left: 18%;
+  border: 2px solid currentColor;
+  border-radius: 4rpx;
+  background: transparent;
+}
+.t-icon__cart-handle {
+  width: 35%; height: 30%;
+  top: 10%; left: 12%;
+  border: 2px solid currentColor;
+  border-bottom: none;
+  border-radius: 100% 100% 0 0;
+}
+.t-icon__cart-w1, .t-icon__cart-w2 {
+  width: 12%; height: 12%;
+  bottom: 5%;
+  background: currentColor;
+  border-radius: 50%;
+}
+.t-icon__cart-w1 { left: 25%; }
+.t-icon__cart-w2 { right: 25%; }
+
+/* wallet */
+.t-icon__wallet {
+  width: 80%; height: 60%;
+  top: 20%; left: 10%;
+  border: 2px solid currentColor;
+  border-radius: 4rpx;
+}
+.t-icon__wallet-coin {
+  width: 16%; height: 16%;
+  top: 42%; right: 18%;
+  background: currentColor;
+  border-radius: 50%;
+}
+
+/* gift */
+.t-icon__gift {
+  width: 80%; height: 65%;
+  top: 20%; left: 10%;
+  border: 2px solid currentColor;
+  border-radius: 4rpx;
+  background: transparent;
+}
+.t-icon__gift-ribbon-v {
+  width: 12%; height: 65%;
+  top: 20%; left: 44%;
+  background: currentColor;
+}
+.t-icon__gift-ribbon-h {
+  width: 80%; height: 12%;
+  top: 38%; left: 10%;
+  background: currentColor;
+}
+
+/* info / success / warning / error circle */
+.t-icon__info-circle {
+  width: 100%; height: 100%;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+}
+.t-icon__info-circle--error   { background: #E74C3C; border-color: #E74C3C; }
+.t-icon__info-circle--success { background: #5CAA5C; border-color: #5CAA5C; }
+.t-icon__info-circle--warning { background: #F1C40F; border-color: #F1C40F; }
+
+.t-icon__info-i {
+  width: 8%; height: 36%;
+  bottom: 22%; left: 46%;
+  background: currentColor;
+  border-radius: 1px;
+}
+.t-icon__bang {
+  width: 8%; height: 36%;
+  bottom: 22%; left: 46%;
+  background: #2D2A26;
+  border-radius: 1px;
+  font-size: 0;
+}

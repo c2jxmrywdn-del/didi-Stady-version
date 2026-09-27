@@ -1,0 +1,6 @@
+<scroll-view scroll-x="{{scrollable || tabs.length > 4}}" class="t-tabs t-tabs--{{theme}} t-tabs--{{size}}" enhanced show-scrollbar="{{false}}">
+  <view wx:for="{{tabs}}" wx:key="*this" class="t-tabs__item {{current === index ? 't-tabs__item--active' : ''}} {{theme === 'card' ? 't-tabs__item--card' : ''}}" data-index="{{index}}" bindtap="onTap">
+    <text class="t-tabs__text">{{item}}</text>
+    <view wx:if="{{theme === 'line'}}" class="t-tabs__indicator"></view>
+  </view>
+</scroll-view>

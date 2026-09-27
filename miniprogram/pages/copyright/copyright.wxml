@@ -1,0 +1,197 @@
+<!-- pages/copyright/copyright.wxml — 版权信息 -->
+<view class="page-copyright">
+  <!-- 顶部品牌标识 -->
+  <view class="cr-header">
+    <view class="cr-logo">
+      <view class="cr-logo-icon">©</view>
+    </view>
+    <text class="cr-app-name">滴滴学习版</text>
+    <text class="cr-version">Version 1.2.0</text>
+    <text class="cr-tagline">让学习更有趣 · 让代码改变生活</text>
+  </view>
+
+  <!-- 版权信息卡片 -->
+  <view class="cr-section">
+    <view class="cr-section-title">版权声明</view>
+    <view class="cr-card cr-card-primary">
+      <view class="cr-card-row">
+        <view class="cr-card-icon cr-card-icon-1">©</view>
+        <view class="cr-card-info">
+          <text class="cr-card-label">版权所有</text>
+          <text class="cr-card-value">@ouyang jason</text>
+        </view>
+      </view>
+      <view class="cr-card-row">
+        <view class="cr-card-icon cr-card-icon-2">⚝</view>
+        <view class="cr-card-info">
+          <text class="cr-card-label">版权年份</text>
+          <text class="cr-card-value">2024 - 2026</text>
+        </view>
+      </view>
+      <view class="cr-card-row">
+        <view class="cr-card-icon cr-card-icon-3">★</view>
+        <view class="cr-card-info">
+          <text class="cr-card-label">版本号</text>
+          <text class="cr-card-value">v1.2.0 (Build 20260515)</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 许可信息 -->
+  <view class="cr-section">
+    <view class="cr-section-title">许可协议</view>
+    <view class="cr-card">
+      <view class="cr-license-icon">📜</view>
+      <view class="cr-license-title">MIT License</view>
+      <view class="cr-license-desc">
+        <text>本项目基于 MIT 许可证开源，您可以自由使用、修改、分享本项目的源代码。</text>
+      </view>
+      <view class="cr-license-points">
+        <view class="cr-point">
+          <view class="cr-point-bullet cr-point-bullet-green">✓</view>
+          <text>商业使用：允许</text>
+        </view>
+        <view class="cr-point">
+          <view class="cr-point-bullet cr-point-bullet-green">✓</view>
+          <text>修改：允许</text>
+        </view>
+        <view class="cr-point">
+          <view class="cr-point-bullet cr-point-bullet-green">✓</view>
+          <text>分发：允许</text>
+        </view>
+        <view class="cr-point">
+          <view class="cr-point-bullet cr-point-bullet-green">✓</view>
+          <text>私有使用：允许</text>
+        </view>
+        <view class="cr-point">
+          <view class="cr-point-bullet cr-point-bullet-orange">!</view>
+          <text>需保留版权声明和许可声明</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 知识产权 -->
+  <view class="cr-section">
+    <view class="cr-section-title">知识产权</view>
+    <view class="cr-info-list">
+      <view class="cr-info-item">
+        <view class="cr-info-dot cr-info-dot-1"></view>
+        <view class="cr-info-content">
+          <text class="cr-info-title">源代码</text>
+          <text class="cr-info-desc">本项目的源代码（包括 .js、.wxml、.wxss、.json 文件）归开发者 @ouyang jason 所有，遵循 MIT 开源许可证。</text>
+        </view>
+      </view>
+      <view class="cr-info-item">
+        <view class="cr-info-dot cr-info-dot-2"></view>
+        <view class="cr-info-content">
+          <text class="cr-info-title">UI 设计</text>
+          <text class="cr-info-desc">本项目中的 UI 设计、配色方案、图标绘制（CSS 实现）归开发者 @ouyang jason 所有，未经许可不得用于商业用途。</text>
+        </view>
+      </view>
+      <view class="cr-info-item">
+        <view class="cr-info-dot cr-info-dot-3"></view>
+        <view class="cr-info-content">
+          <text class="cr-info-title">品牌标识</text>
+          <text class="cr-info-desc">"滴滴学习版"项目名称及 Logo 归开发者 @ouyang jason 所有。本项目与"滴滴出行"无任何关联。</text>
+        </view>
+      </view>
+      <view class="cr-info-item">
+        <view class="cr-info-dot cr-info-dot-4"></view>
+        <view class="cr-info-content">
+          <text class="cr-info-title">第三方组件</text>
+          <text class="cr-info-desc">本项目使用的开源组件、字体、图标等知识产权归原作者所有，遵循各自的开源协议。</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 使用许可 -->
+  <view class="cr-section">
+    <view class="cr-section-title">使用许可</view>
+    <view class="cr-permission-list">
+      <view class="cr-permission-item">
+        <view class="cr-permission-icon cr-permission-allowed">✓</view>
+        <view class="cr-permission-content">
+          <text class="cr-permission-title">允许</text>
+          <text class="cr-permission-desc">个人学习、毕业设计、课程作业、技术研究</text>
+        </view>
+      </view>
+      <view class="cr-permission-item">
+        <view class="cr-permission-icon cr-permission-allowed">✓</view>
+        <view class="cr-permission-content">
+          <text class="cr-permission-title">允许</text>
+          <text class="cr-permission-desc">fork、二次开发、提交 PR 改进项目</text>
+        </view>
+      </view>
+      <view class="cr-permission-item">
+        <view class="cr-permission-icon cr-permission-allowed">✓</view>
+        <view class="cr-permission-content">
+          <text class="cr-permission-title">允许</text>
+          <text class="cr-permission-desc">在注明原作者的前提下进行学习分享</text>
+        </view>
+      </view>
+      <view class="cr-permission-item">
+        <view class="cr-permission-icon cr-permission-warning">!</view>
+        <view class="cr-permission-content">
+          <text class="cr-permission-title">需授权</text>
+          <text class="cr-permission-desc">任何形式的商业使用，请联系开发者获取授权</text>
+        </view>
+      </view>
+      <view class="cr-permission-item">
+        <view class="cr-permission-icon cr-permission-forbidden">✕</view>
+        <view class="cr-permission-content">
+          <text class="cr-permission-title">禁止</text>
+          <text class="cr-permission-desc">未经许可用于违法、违规或损害第三方利益的用途</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 致谢 -->
+  <view class="cr-section">
+    <view class="cr-section-title">特别致谢</view>
+    <view class="cr-thanks-card">
+      <view class="cr-thanks-icon">💖</view>
+      <view class="cr-thanks-content">
+        <text class="cr-thanks-title">感谢您的使用</text>
+        <text class="cr-thanks-text">本项目作为学习交流项目，凝聚了开发者大量的时间和精力。如果您觉得本项目对您有帮助，欢迎分享给更多学习者。</text>
+      </view>
+    </view>
+    <view class="cr-tech-list">
+      <text class="cr-tech-title">技术栈</text>
+      <view class="cr-tech-tags">
+        <view class="cr-tech-tag">微信小程序</view>
+        <view class="cr-tech-tag">云开发</view>
+        <view class="cr-tech-tag">百度地图 API</view>
+        <view class="cr-tech-tag">原生 CSS</view>
+        <view class="cr-tech-tag">纯前端模拟</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="cr-contact">
+    <view class="cr-contact-title">联系作者</view>
+    <view class="cr-contact-row" bindtap="onCopyAuthor">
+      <text class="cr-contact-label">作者</text>
+      <text class="cr-contact-value">@ouyang jason</text>
+    </view>
+    <view class="cr-contact-row" bindtap="onCopyEmail">
+      <text class="cr-contact-label">邮箱</text>
+      <text class="cr-contact-value">3514485358@qq.com</text>
+    </view>
+    <view class="cr-contact-row">
+      <text class="cr-contact-label">项目</text>
+      <text class="cr-contact-value">微信小程序学习交流项目</text>
+    </view>
+  </view>
+
+  <!-- 底部 -->
+  <view class="cr-foot">
+    <text class="cr-foot-line">© 2024 - 2026 @ouyang jason. All rights reserved.</text>
+    <text class="cr-foot-line">本项目仅用于学习交流，不提供任何商业服务</text>
+    <text class="cr-foot-built">Built with ❤️ by @ouyang jason</text>
+  </view>
+</view>

@@ -1,0 +1,283 @@
+/* 
+使用方法：
+在 waiting.wxss 文件末尾引入样式
+```
+@import "./waiting-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .top-status {
+        background: rgb(17, 17, 17);
+        border: rgb(0, 0, 0);
+    }
+
+    .status-matching {
+        background: rgb(255, 255, 255);
+    }
+
+    .status-matched {
+        background: rgb(0, 98, 0);
+    }
+
+    .status-arriving {
+        background: rgb(0, 98, 0);
+    }
+
+    .status-pulse {
+        border: rgb(0, 0, 0);
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(0.5);
+            opacity: 1;
+        }
+
+        100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+
+    .status-text {
+        color: rgb(255, 255, 255);
+    }
+
+    .wait-time {
+        color: rgb(99, 99, 99);
+    }
+
+    .bottom-panel {
+        background: rgb(17, 17, 17);
+    }
+
+    .pulse-ring {
+        border: rgb(0, 0, 0);
+    }
+
+    @keyframes pulseRing {
+        0% {
+            transform: scale(0.5);
+            opacity: 0.6;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
+
+    .matching-car {
+        border: rgb(0, 0, 0);
+    }
+
+    .matching-car::before, .matching-car::after {
+        background: rgb(255, 255, 255);
+    }
+
+    .matching-text {
+        color: rgb(255, 255, 255);
+    }
+
+    .matching-sub {
+        color: rgb(99, 99, 99);
+    }
+
+    .driver-card {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .driver-avatar {
+        background: rgb(17, 17, 17);
+        border: rgb(0, 0, 0);
+    }
+
+    .driver-avatar-text {
+        color: rgb(99, 99, 99);
+    }
+
+    .driver-name {
+        color: rgb(255, 255, 255);
+    }
+
+    .rating-num {
+        color: rgb(255, 255, 255);
+    }
+
+    .rating-trips {
+        color: rgb(99, 99, 99);
+    }
+
+    .action-btn {
+        background: rgb(17, 17, 17);
+        border: rgb(0, 0, 0);
+    }
+
+    .ai-phone {
+        border: rgb(0, 0, 0);
+    }
+
+    .ai-msg {
+        border: rgb(0, 0, 0);
+    }
+
+    .ai-msg::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .driver-car {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .car-info {
+        color: rgb(149, 149, 149);
+    }
+
+    .dot-green {
+        background: rgb(0, 98, 0);
+    }
+
+    .dot-dark {
+        background: rgb(255, 255, 255);
+    }
+
+    .trip-address {
+        color: rgb(255, 255, 255);
+    }
+
+    .trip-line {
+        background: rgb(31, 31, 31);
+    }
+
+    .trip-meta {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .meta-car {
+        color: rgb(99, 99, 99);
+    }
+
+    .meta-price {
+        color: rgb(255, 255, 255);
+    }
+
+    .cancel-btn {
+        background: rgb(17, 17, 17);
+        color: rgb(149, 149, 149);
+        border: rgb(0, 0, 0);
+    }
+
+    .modal-mask {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    .modal-content {
+        background: rgb(17, 17, 17);
+    }
+
+    .modal-title {
+        color: rgb(255, 255, 255);
+    }
+
+    .modal-subtitle {
+        color: rgb(99, 99, 99);
+    }
+
+    .reason-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .reason-radio {
+        border: rgb(0, 0, 0);
+    }
+
+    .radio-checked {
+        border-color: rgb(255, 255, 255);
+        background: rgb(255, 255, 255);
+    }
+
+    .radio-checked::after {
+        background: rgb(17, 17, 17);
+    }
+
+    .reason-text {
+        color: rgb(255, 255, 255);
+    }
+
+    .modal-cancel {
+        background: rgb(23, 23, 23);
+        color: rgb(149, 149, 149);
+    }
+
+    .modal-confirm {
+        background: rgb(255, 255, 255);
+        color: rgb(17, 17, 17);
+    }
+
+    .chat-mask {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    .chat-panel {
+        background: rgb(20, 18, 15);
+    }
+
+    .chat-header {
+        border-bottom: rgb(0, 0, 0);
+        background: rgb(20, 18, 15);
+    }
+
+    .chat-avatar {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-avatar-text {
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-status {
+        color: rgb(126, 118, 108);
+    }
+
+    .chat-close {
+        color: rgb(77, 67, 53);
+    }
+
+    .chat-body {
+        background: rgb(23, 22, 20);
+    }
+
+    .chat-bubble {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-bubble-me {
+        background: rgb(223, 219, 214);
+        color: rgb(17, 17, 17);
+    }
+
+    .chat-quick {
+        background: rgb(20, 18, 15);
+        border-top: rgb(0, 0, 0);
+    }
+
+    .chat-quick-item {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-quick-item:active {
+        background: rgb(223, 219, 214);
+        color: rgb(17, 17, 17);
+    }
+}

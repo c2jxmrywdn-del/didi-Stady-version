@@ -1,0 +1,46 @@
+/* components/tdesign/t-divider/index.wxss */
+.t-divider {
+  display: flex;
+  align-items: center;
+  margin: 32rpx 0;
+  font-size: 24rpx;
+  color: #C5B9A8;
+  letter-spacing: 1rpx;
+}
+.t-divider--left   { justify-content: flex-start; }
+.t-divider--center { justify-content: center; }
+.t-divider--right  { justify-content: flex-end; }
+
+.t-divider__line {
+  flex: 1;
+  height: 1rpx;
+  background: #EDE8E0;
+  transform: scaleY(0.5);
+  margin: 0 16rpx;
+}
+.t-divider--dashed .t-divider__line {
+  background: repeating-linear-gradient(
+    90deg,
+    #EDE8E0 0rpx,
+    #EDE8E0 6rpx,
+    transparent 6rpx,
+    transparent 12rpx
+  );
+  height: 1rpx;
+}
+.t-divider__line--hide { display: none; }
+
+.t-divider__content { padding: 0 16rpx; }
+
+.t-divider--vertical {
+  display: inline-block;
+  width: 1rpx;
+  height: 32rpx;
+  margin: 0 16rpx;
+  vertical-align: middle;
+}
+.t-divider__vline {
+  width: 1rpx;
+  height: 100%;
+  background: #EDE8E0;
+}

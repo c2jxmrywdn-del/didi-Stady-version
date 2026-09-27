@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "设置",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "t-switch": "../../components/tdesign/t-switch/index",
+    "t-message": "../../components/tdesign/t-message/index",
+    "t-dialog": "../../components/tdesign/t-dialog/index"
+  }
+}

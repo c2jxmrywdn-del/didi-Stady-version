@@ -1,0 +1,14 @@
+<view wx:if="{{internalVisible}}" class="t-msg-mask" style="z-index: {{zIndex}};" catchtap="onTap">
+  <view class="t-msg t-msg--{{theme}} t-msg--enter" catchtap="">
+    <view class="t-msg__icon t-msg__icon--{{theme}}">
+      <view wx:if="{{theme === 'success'}}" class="t-msg__i-check"></view>
+      <view wx:elif="{{theme === 'error'}}" class="t-msg__i-cross">
+        <view class="t-msg__i-line t-msg__i-line-1"></view>
+        <view class="t-msg__i-line t-msg__i-line-2"></view>
+      </view>
+      <view wx:elif="{{theme === 'warning'}}" class="t-msg__i-bang">!</view>
+      <view wx:else class="t-msg__i-info">i</view>
+    </view>
+    <view class="t-msg__content {{marquee ? 't-msg__content--marquee' : ''}}">{{currentContent}}</view>
+  </view>
+</view>

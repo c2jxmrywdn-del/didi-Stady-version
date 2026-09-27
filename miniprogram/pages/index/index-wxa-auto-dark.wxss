@@ -1,0 +1,212 @@
+/* 
+使用方法：
+在 index.wxss 文件末尾引入样式
+```
+@import "./index-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .locate-btn {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .locate-icon::before {
+        border: rgb(0, 0, 0);
+    }
+
+    .locate-icon::after {
+        background: rgb(165, 46, 0);
+    }
+
+    .bottom-panel {
+        background: rgb(20, 18, 15);
+    }
+
+    .address-section {
+        background: rgb(23, 22, 20);
+    }
+
+    .dot-green {
+        background: rgb(31, 113, 40);
+    }
+
+    .dot-dark {
+        background: rgb(223, 219, 214);
+    }
+
+    .address-text {
+        color: rgb(223, 219, 214);
+    }
+
+    .address-text.placeholder {
+        color: rgb(77, 67, 53);
+    }
+
+    .address-arrow {
+        color: rgb(77, 67, 53);
+    }
+
+    .address-divider-line {
+        background: rgb(36, 33, 27);
+    }
+
+    .car-type-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .car-type-arrow {
+        color: rgb(77, 67, 53);
+    }
+
+    .car-type-active {
+        background: rgb(23, 22, 20);
+        border-color: rgb(223, 219, 214);
+    }
+
+    .car-type-icon-view::before {
+        background: rgb(223, 219, 214);
+    }
+
+    .car-type-icon-view::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .car-type-icon-view .car-wheel {
+        background: rgb(223, 219, 214);
+        box-shadow: rgb(0, 0, 0);
+    }
+
+    .car-type-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .car-type-desc {
+        color: rgb(126, 118, 108);
+    }
+
+    .price-num {
+        color: rgb(223, 219, 214);
+    }
+
+    .price-unit {
+        color: rgb(126, 118, 108);
+    }
+
+    .car-brief-item {
+        background: rgb(23, 22, 20);
+    }
+
+    .car-brief-active {
+        border-color: rgb(223, 219, 214);
+        background: rgb(20, 18, 15);
+    }
+
+    .car-brief-name {
+        color: rgb(126, 118, 108);
+    }
+
+    .estimate-label {
+        color: rgb(126, 118, 108);
+    }
+
+    .estimate-value {
+        color: rgb(223, 219, 214);
+    }
+
+    .estimate-divider {
+        background: rgb(36, 33, 27);
+    }
+
+    .call-car-btn {
+        background: rgb(223, 219, 214);
+        color: rgb(17, 17, 17);
+    }
+
+    .navi-bar {
+        background: rgb(33, 24, 14);
+        border: rgb(0, 0, 0);
+    }
+
+    .navi-bar-tip {
+        color: rgb(216, 142, 91);
+    }
+
+    .navi-bar-btn {
+        color: rgb(165, 46, 0);
+    }
+
+    .navi-bar-icon {
+        background: rgb(165, 46, 0);
+    }
+
+    .navi-bar-icon::before {
+        background: rgb(20, 18, 15);
+    }
+
+    .navi-bar-icon::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .navi-bar-arrow {
+        color: rgb(165, 46, 0);
+    }
+
+    .quick-item-hover {
+        background: rgb(23, 22, 20);
+    }
+
+    .quick-item:active {
+        background: rgb(31, 29, 24);
+    }
+
+    .quick-icon-wrap {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .qi-home::before {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .qi-home::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .qi-home .qi-home-door {
+        background: rgb(20, 18, 15);
+    }
+
+    .qi-building::before {
+        background: rgb(223, 219, 214);
+    }
+
+    .qi-building .qi-building-window {
+        background: rgb(20, 18, 15);
+    }
+
+    .qi-pin::before {
+        background: rgb(223, 219, 214);
+    }
+
+    .qi-pin::after {
+        background: rgb(20, 18, 15);
+    }
+
+    .qi-pin .qi-pin-tail {
+        background: rgb(223, 219, 214);
+    }
+
+    .qi-star::before {
+        background: rgb(223, 219, 214);
+    }
+
+    .quick-text {
+        color: rgb(126, 118, 108);
+    }
+
+    .status-bar {
+        background: rgba(0, 0, 0, 0);
+    }
+}

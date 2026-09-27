@@ -1,0 +1,181 @@
+/* pages/example/example.wxss — TDesign 14 个组件演示页 */
+.page-example {
+  min-height: 100vh;
+  background: #F5F5F7;
+  padding-bottom: calc(80rpx + env(safe-area-inset-bottom));
+}
+
+/* ============ Banner ============ */
+.ex-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 32rpx 24rpx 36rpx;
+  background: linear-gradient(135deg, #FF7B00 0%, #FF5500 100%);
+  overflow: hidden;
+  margin-bottom: 8rpx;
+}
+.ex-banner-bg { position: absolute; inset: 0; pointer-events: none; }
+.ex-bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+.ex-bg-1 { width: 320rpx; height: 320rpx; top: -120rpx; right: -80rpx; }
+.ex-bg-2 { width: 200rpx; height: 200rpx; bottom: -100rpx; left: -60rpx; background: rgba(255, 255, 255, 0.06); }
+
+.ex-banner-info { flex: 1; min-width: 0; }
+.ex-banner-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 1rpx;
+}
+.ex-banner-sub {
+  display: block;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 6rpx;
+  letter-spacing: 0.5rpx;
+}
+
+/* ============ Section / Card ============ */
+.ex-section {
+  margin: 24rpx 24rpx 0;
+}
+.ex-section-title {
+  display: block;
+  font-size: 26rpx;
+  color: #5C554C;
+  font-weight: 600;
+  letter-spacing: 0.5rpx;
+  padding: 0 4rpx 16rpx;
+}
+.ex-card {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+.ex-card-label {
+  display: block;
+  font-size: 24rpx;
+  color: #5C554C;
+  margin-bottom: 12rpx;
+  letter-spacing: 0.3rpx;
+}
+.ex-card-text {
+  display: block;
+  font-size: 28rpx;
+  color: #2D2A26;
+  line-height: 1.6;
+  letter-spacing: 0.3rpx;
+  padding: 8rpx 0;
+}
+
+/* ============ Buttons ============ */
+.ex-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+}
+.ex-btn-row:last-child { margin-bottom: 0; }
+.ex-btn-row .t-btn { flex: 0 0 auto; }
+
+/* ============ Tags ============ */
+.ex-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+.ex-tag-row:last-child { margin-bottom: 0; }
+
+/* ============ Tabs Content ============ */
+.ex-tab-content {
+  background: #FFFFFF;
+  border-radius: 0 0 16rpx 16rpx;
+  padding: 32rpx 24rpx;
+  margin-top: -1rpx;
+  text-align: center;
+  color: #5C554C;
+  font-size: 28rpx;
+}
+
+/* ============ Icon Grid ============ */
+.ex-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16rpx 0;
+}
+.ex-icon-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rpx 0;
+  transition: background 0.12s;
+}
+.ex-icon-cell:active { background: #F5F5F7; border-radius: 8rpx; }
+.ex-icon-text {
+  font-size: 20rpx;
+  color: #8A8278;
+  margin-top: 6rpx;
+  letter-spacing: 0.3rpx;
+}
+
+/* ============ Avatar Row ============ */
+.ex-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+/* ============ Tip Row (cloud-tip-modal 配套) ============ */
+.ex-tip-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 20rpx;
+}
+.ex-tip-text-wrap { flex: 1; min-width: 0; }
+.ex-tip-title {
+  display: block;
+  font-size: 30rpx;
+  color: #2D2A26;
+  font-weight: 500;
+  letter-spacing: 0.3rpx;
+}
+.ex-tip-sub {
+  display: block;
+  font-size: 24rpx;
+  color: #8A8278;
+  margin-top: 4rpx;
+  letter-spacing: 0.3rpx;
+}
+
+/* ============ Empty Toggle ============ */
+.ex-empty-toggled {
+  padding: 80rpx 24rpx;
+  text-align: center;
+  color: #C5B9A8;
+  font-size: 26rpx;
+  letter-spacing: 0.5rpx;
+}
+
+/* ============ Footer ============ */
+.ex-footer {
+  margin: 48rpx 24rpx 24rpx;
+  text-align: center;
+}
+.ex-footer-text {
+  display: block;
+  font-size: 22rpx;
+  color: #C5B9A8;
+  letter-spacing: 0.3rpx;
+  line-height: 1.6;
+  margin-top: 4rpx;
+}

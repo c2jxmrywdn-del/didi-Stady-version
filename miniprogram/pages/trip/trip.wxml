@@ -1,0 +1,70 @@
+<!--pages/trip/trip.wxml — 我的订单(全部/待支付/进行中/已完成/已取消)-->
+<view class="page-trip">
+  <!-- 顶部切换 (TDesign 标签页) -->
+  <t-tabs tabs="{{tabs}}" current="{{currentTab}}" bind:change="onTabChange" />
+
+  <!-- 加载中 -->
+  <view wx:if="{{loading}}" class="loading-wrap">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 空状态 (TDesign 空状态) -->
+  <t-empty
+    wx:elif="{{isEmpty}}"
+    icon="📋"
+    description="暂无{{currentTabName}}订单"
+    action-text="{{currentTab === 0 ? '去叫车' : ''}}"
+    bind:action="onReOrder"
+  />
+
+  <!-- 订单列表 -->
+  <view wx:else class="order-list">
+    <view
+      wx:for="{{orders}}"
+      wx:key="_id"
+      wx:for-item="o"
+      class="order-card card"
+      data-id="{{o._id}}"
+      bindtap="onOrderClick"
+    >
+      <view class="order-header">
+        <view class="order-header-left">
+          <text class="order-car-type">{{o.carName}}</text>
+          <text wx:if="{{o.distance}}" class="order-meta">· {{o.distance}}km</text>
+        </view>
+        <text class="order-status status-{{o.status}}">
+          {{o.statusText}}
+        </text>
+      </view>
+      <view class="order-route">
+        <view class="route-point">
+          <view class="route-dot dot-green"></view>
+          <text class="route-text ellipsis">{{o.startAddress.name}}</text>
+        </view>
+        <view class="route-point">
+          <view class="route-dot dot-dark"></view>
+          <text class="route-text ellipsis">{{o.endAddress.name}}</text>
+        </view>
+      </view>
+      <view class="order-footer">
+        <text class="order-time">{{o.rideTime}}</text>
+        <view class="order-footer-right">
+          <view class="order-share-btn" catchtap="onShareOrder" data-order="{{o}}">
+            <view class="share-mini-icon"></view>
+          </view>
+          <text class="order-price">{{o.paidText}}</text>
+        </view>
+      </view>
+      <!-- 操作区 -->
+      <view class="order-actions" wx:if="{{o.status === 'unpaid' || o.status === 'waiting' || o.status === 'completed' || o.status === 'riding' || o.status === 'cancelled'}}">
+        <view wx:if="{{o.status === 'unpaid'}}" class="action-btn action-btn-primary" catchtap="onPayOrder" data-id="{{o._id}}">立即支付</view>
+        <view wx:if="{{o.status === 'unpaid' || o.status === 'waiting'}}" class="action-btn" catchtap="onCancelOrder" data-id="{{o._id}}">取消订单</view>
+        <view wx:if="{{o.status === 'completed' && !o.commented}}" class="action-btn action-btn-primary" catchtap="onComment" data-id="{{o._id}}">立即评价</view>
+        <view wx:if="{{o.status === 'completed' && o.commented}}" class="action-btn" catchtap="onReOrder">再来一单</view>
+        <view wx:if="{{o.status === 'cancelled' || o.status === 'completed'}}" class="action-btn" catchtap="onReOrder">再次打车</view>
+        <view wx:if="{{o.status === 'completed' || o.status === 'cancelled'}}" class="action-btn" catchtap="onRefund" data-id="{{o._id}}">申请退款</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,530 @@
+/* pages/message-detail/message-detail.wxss */
+.page-message-detail {
+  min-height: 100vh;
+  background: #FAF8F5;
+  padding-bottom: 40rpx;
+}
+
+/* 顶部 */
+.detail-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 24rpx 24rpx;
+  background: #FFFDF9;
+  border-bottom: 1rpx solid #EDE8E0;
+}
+.detail-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #EDE8E0;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16rpx;
+}
+.detail-icon::before {
+  content: "";
+  position: absolute;
+  top: 8rpx;
+  left: 8rpx;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: #C5B9A8;
+}
+.msg-type-system::before { background: #8A8278; }
+.msg-type-promo::before { background: #e7a85f; }
+.msg-type-order::before { background: #5CAA5C; }
+.msg-type-safety::before { background: #2D2A26; }
+.msg-type-driver::before { background: #4a90e2; }
+.msg-type-service::before { background: #c47aae; }
+
+.msg-icon-inner {
+  width: 36rpx;
+  height: 36rpx;
+}
+.detail-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #2D2A26;
+  margin-bottom: 8rpx;
+  letter-spacing: 1rpx;
+  text-align: center;
+}
+.detail-time {
+  font-size: 24rpx;
+  color: #C5B9A8;
+}
+
+/* 复用消息页的图标 */
+.mi-bell {
+  width: 22rpx;
+  height: 22rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 50% 50% 0 0;
+  position: relative;
+  margin-top: 6rpx;
+}
+.mi-bell::after {
+  content: "";
+  position: absolute;
+  bottom: -4rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26rpx;
+  height: 3rpx;
+  background: #2D2A26;
+  border-radius: 2rpx;
+}
+.mi-gift {
+  width: 26rpx;
+  height: 20rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 2rpx;
+  position: relative;
+  margin-top: 6rpx;
+}
+.mi-gift::before {
+  content: "";
+  position: absolute;
+  top: -8rpx;
+  left: -4rpx;
+  width: 16rpx;
+  height: 8rpx;
+  border: 2rpx solid #2D2A26;
+  border-bottom: none;
+  border-radius: 8rpx 8rpx 0 0;
+}
+.mi-gift::after {
+  content: "";
+  position: absolute;
+  top: -6rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rpx;
+  height: 8rpx;
+  background: #2D2A26;
+}
+.mi-car {
+  width: 28rpx;
+  height: 18rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 4rpx;
+  position: relative;
+  margin-top: 8rpx;
+}
+.mi-car::before,
+.mi-car::after {
+  content: "";
+  position: absolute;
+  bottom: -4rpx;
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background: #2D2A26;
+}
+.mi-car::before { left: 2rpx; }
+.mi-car::after { right: 2rpx; }
+.mi-shield {
+  width: 22rpx;
+  height: 26rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 10rpx 10rpx 10rpx 0;
+  margin-top: 4rpx;
+}
+.mi-driver {
+  width: 22rpx;
+  height: 24rpx;
+  position: relative;
+  margin-top: 4rpx;
+}
+.mi-driver::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10rpx;
+  height: 10rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 50%;
+}
+.mi-driver::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22rpx;
+  height: 10rpx;
+  border: 2rpx solid #2D2A26;
+  border-bottom: none;
+  border-radius: 12rpx 12rpx 0 0;
+}
+.mi-service {
+  width: 26rpx;
+  height: 22rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 4rpx;
+  position: relative;
+  margin-top: 4rpx;
+}
+.mi-service::after {
+  content: "";
+  position: absolute;
+  bottom: -6rpx;
+  left: 4rpx;
+  width: 0;
+  height: 0;
+  border-left: 6rpx solid transparent;
+  border-right: 6rpx solid transparent;
+  border-top: 8rpx solid #2D2A26;
+}
+
+/* 内容卡片 */
+.detail-card {
+  margin: 16rpx 24rpx;
+  background: #FFFDF9;
+  border-radius: 12rpx;
+  border: 1rpx solid #EDE8E0;
+  padding: 24rpx;
+}
+.detail-summary {
+  font-size: 28rpx;
+  color: #2D2A26;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx dashed #EDE8E0;
+}
+.detail-content {
+  font-size: 28rpx;
+  color: #2D2A26;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  letter-spacing: 0.5rpx;
+}
+
+/* 订单详情 */
+.order-detail-card {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background: #FAF8F5;
+  border-radius: 8rpx;
+  border: 1rpx solid #EDE8E0;
+}
+.od-row {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 0;
+  font-size: 26rpx;
+}
+.od-row:not(:last-child) {
+  border-bottom: 1rpx dashed #EDE8E0;
+}
+.od-label {
+  width: 120rpx;
+  color: #999;
+  flex-shrink: 0;
+}
+.od-value {
+  flex: 1;
+  color: #2D2A26;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.od-price {
+  color: #e74c3c;
+  font-weight: 600;
+  font-size: 30rpx;
+}
+
+/* 优惠券详情 */
+.coupon-detail {
+  margin-top: 20rpx;
+}
+.coupon-card {
+  display: flex;
+  background: linear-gradient(135deg, #e7a85f 0%, #d89348 100%);
+  color: #fff;
+  border-radius: 12rpx;
+  padding: 28rpx 24rpx;
+  position: relative;
+}
+.coupon-card::before,
+.coupon-card::after {
+  content: "";
+  position: absolute;
+  width: 16rpx;
+  height: 16rpx;
+  background: #FAF8F5;
+  border-radius: 50%;
+  left: 180rpx;
+  top: -8rpx;
+}
+.coupon-card::after {
+  top: auto;
+  bottom: -8rpx;
+}
+.coupon-amount {
+  display: flex;
+  align-items: baseline;
+  border-right: 2rpx dashed rgba(255,255,255,0.4);
+  padding-right: 24rpx;
+  margin-right: 24rpx;
+}
+.coupon-currency {
+  font-size: 28rpx;
+  margin-bottom: 8rpx;
+}
+.coupon-num {
+  font-size: 64rpx;
+  font-weight: 600;
+  line-height: 1;
+}
+.coupon-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.coupon-name {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.coupon-condition,
+.coupon-expire {
+  font-size: 22rpx;
+  opacity: 0.9;
+  margin-top: 6rpx;
+}
+
+/* 安全提示 */
+.safety-tips {
+  margin-top: 20rpx;
+}
+.safety-tip-item {
+  display: flex;
+  align-items: center;
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.safety-tip-item:last-child {
+  border-bottom: none;
+}
+.safety-tip-num {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: #2D2A26;
+  color: #fff;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+.safety-tip-text {
+  font-size: 26rpx;
+  color: #2D2A26;
+  flex: 1;
+  line-height: 1.5;
+}
+
+/* 操作按钮 */
+.detail-actions {
+  margin: 32rpx 24rpx 0;
+}
+.detail-action-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #2D2A26;
+  color: #FFFDF9;
+  font-size: 30rpx;
+  border-radius: 12rpx;
+  border: none;
+  text-align: center;
+  padding: 0;
+  letter-spacing: 1rpx;
+}
+.detail-action-btn:active {
+  background: #1f1d1a;
+}
+.detail-action-btn::after {
+  border: none;
+}
+
+/* ========== 优惠合并堆叠样式 ========== */
+.coupon-stack {
+  margin-top: 20rpx;
+}
+.coupon-stack-head {
+  background: linear-gradient(135deg, #fdf3e3 0%, #FAF8F5 100%);
+  border: 1rpx solid #f0d6a8;
+  border-radius: 12rpx 12rpx 0 0;
+  padding: 18rpx 24rpx;
+  text-align: center;
+}
+.coupon-stack-title {
+  font-size: 30rpx;
+  color: #b8761f;
+  font-weight: 600;
+  display: block;
+}
+.coupon-stack-sub {
+  font-size: 24rpx;
+  color: #8A8278;
+  display: block;
+  margin-top: 4rpx;
+}
+.coupon-stack-item {
+  display: flex;
+  align-items: stretch;
+  background: linear-gradient(135deg, #e7a85f 0%, #d89348 100%);
+  color: #fff;
+  border-top: 1rpx dashed rgba(255,255,255,0.4);
+  position: relative;
+  min-height: 110rpx;
+}
+.coupon-stack-item:last-child {
+  border-radius: 0 0 12rpx 12rpx;
+}
+.cs-left {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  border-right: 2rpx dashed rgba(255,255,255,0.5);
+  padding: 16rpx 24rpx;
+  flex-shrink: 0;
+  min-width: 140rpx;
+}
+.cs-currency {
+  font-size: 24rpx;
+}
+.cs-num {
+  font-size: 56rpx;
+  font-weight: 600;
+  line-height: 1;
+  margin-left: 4rpx;
+}
+.cs-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 14rpx 20rpx;
+}
+.cs-name {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.cs-cond {
+  font-size: 22rpx;
+  opacity: 0.92;
+  margin-top: 4rpx;
+}
+.cs-expire {
+  font-size: 20rpx;
+  opacity: 0.85;
+  margin-top: 2rpx;
+}
+
+/* ========== 司机详情独立展示 ========== */
+.driver-detail {
+  margin-top: 20rpx;
+  background: #FFFDF9;
+  border-radius: 12rpx;
+  border: 1rpx solid #EDE8E0;
+  overflow: hidden;
+}
+.dd-head {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  color: #fff;
+}
+.dd-avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  border: 2rpx solid rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+.dd-emoji {
+  font-size: 56rpx;
+}
+.dd-info {
+  flex: 1;
+  min-width: 0;
+}
+.dd-name {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+}
+.dd-stats {
+  display: flex;
+  align-items: center;
+  margin-top: 6rpx;
+  gap: 16rpx;
+}
+.dd-rating {
+  font-size: 26rpx;
+  color: #FFD700;
+  font-weight: 600;
+}
+.dd-trips {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.18);
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+}
+.dd-car {
+  padding: 8rpx 24rpx 16rpx;
+}
+.dd-car-line {
+  display: flex;
+  align-items: center;
+  padding: 14rpx 0;
+  font-size: 26rpx;
+  border-bottom: 1rpx dashed #f0ede8;
+}
+.dd-car-line:last-child {
+  border-bottom: none;
+}
+.dd-car-label {
+  width: 120rpx;
+  color: #999;
+  flex-shrink: 0;
+}
+.dd-car-value {
+  flex: 1;
+  color: #2D2A26;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dd-price {
+  color: #e74c3c;
+  font-weight: 600;
+  font-size: 28rpx;
+}
+@import 'message-detail-wxa-auto-dark.wxss'

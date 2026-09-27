@@ -1,0 +1,160 @@
+/* 
+使用方法：
+在 fav-addresses.wxss 文件末尾引入样式
+```
+@import "./fav-addresses-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-fav {
+        background: rgb(23, 22, 20);
+    }
+
+    .page-tip {
+        background: rgb(20, 18, 15);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .page-tip text {
+        color: rgb(99, 99, 99);
+    }
+
+    .address-item {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .address-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .address-using {
+        background: rgb(30, 24, 10);
+        border-color: rgb(109, 61, 0);
+    }
+
+    .address-icon {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .address-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .address-using-badge {
+        background: rgb(109, 61, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .address-detail {
+        color: rgb(174, 165, 155);
+    }
+
+    .address-distance {
+        color: rgb(77, 67, 53);
+    }
+
+    .address-arrow {
+        color: rgb(58, 58, 62);
+    }
+
+    .addr-home {
+        border: rgb(0, 0, 0);
+    }
+
+    .addr-home::before {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .addr-office {
+        border: rgb(0, 0, 0);
+    }
+
+    .addr-office::before {
+        background: rgb(223, 219, 214);
+        box-shadow: rgb(0, 0, 0);
+    }
+
+    .addr-pin {
+        border: rgb(0, 0, 0);
+    }
+
+    .addr-pin::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .empty-illu {
+        background: rgb(30, 27, 21);
+    }
+
+    .empty-pin-circle {
+        border: rgb(0, 0, 0);
+    }
+
+    .empty-pin-tail {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .empty-text {
+        color: rgb(126, 118, 108);
+    }
+
+    .empty-sub {
+        color: rgb(77, 67, 53);
+    }
+
+    .add-section {
+        background: rgb(0, 0, 0);
+    }
+
+    .add-btn {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+    }
+
+    .add-btn:active {
+        background: rgb(241, 238, 233);
+    }
+
+    .mi-plus::before, .mi-plus::after {
+        background: rgb(20, 18, 15);
+    }
+
+    .action-mask {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    .action-card {
+        background: rgb(20, 18, 15);
+    }
+
+    .action-title {
+        color: rgb(99, 99, 99);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .action-item {
+        color: rgb(255, 255, 255);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .action-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .action-danger {
+        color: rgb(213, 59, 47);
+    }
+
+    .mi-trash::before {
+        background: rgb(0, 0, 0);
+    }
+
+    .action-cancel {
+        color: rgb(99, 99, 99);
+        background: rgb(23, 22, 20);
+        border-top: rgb(0, 0, 0);
+    }
+}

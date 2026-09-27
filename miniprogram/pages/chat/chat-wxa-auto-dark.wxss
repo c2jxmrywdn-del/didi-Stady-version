@@ -1,0 +1,254 @@
+/* 
+使用方法：
+在 chat.wxss 文件末尾引入样式
+```
+@import "./chat-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-chat {
+        background: rgb(23, 22, 20);
+    }
+
+    .chat-header {
+        background: rgb(20, 18, 15);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .chat-header-avatar {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-header-online {
+        background: rgb(31, 113, 40);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-header-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-header-sub {
+        color: rgb(99, 99, 99);
+    }
+
+    .chat-header-order {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-order-label {
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-order-arrow {
+        color: rgb(99, 99, 99);
+    }
+
+    .order-card {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .order-card-header {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .order-status.waiting {
+        color: rgb(109, 61, 0);
+        background: rgb(30, 24, 10);
+    }
+
+    .order-status.riding {
+        color: rgb(31, 113, 40);
+        background: rgb(20, 32, 21);
+    }
+
+    .order-status.arriving {
+        color: rgb(223, 219, 214);
+        background: rgb(31, 29, 26);
+    }
+
+    .order-status.arrived {
+        color: rgb(30, 115, 194);
+        background: rgb(23, 32, 39);
+    }
+
+    .order-status.completed {
+        color: rgb(99, 99, 99);
+        background: rgb(31, 29, 26);
+    }
+
+    .order-id {
+        color: rgb(77, 67, 53);
+    }
+
+    .dot-green {
+        background: rgb(31, 113, 40);
+    }
+
+    .dot-red {
+        background: rgb(213, 59, 47);
+    }
+
+    .order-line {
+        background: rgb(77, 67, 53);
+    }
+
+    .order-text {
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-time-divider text {
+        color: rgb(77, 67, 53);
+        background: rgb(31, 29, 26);
+    }
+
+    .chat-system text {
+        color: rgb(99, 99, 99);
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    .chat-msg-avatar {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-bubble-other {
+        background: rgb(20, 18, 15);
+        color: rgb(223, 219, 214);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-bubble-mine {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+    }
+
+    .chat-location {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-location-mine {
+        background: rgb(20, 18, 15);
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-location-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-location-map {
+        background: rgb(31, 29, 26);
+    }
+
+    .chat-location-pin {
+        background: rgb(213, 59, 47);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-location-text {
+        color: rgb(99, 99, 99);
+    }
+
+    .chat-voice-wave {
+        background: rgb(0, 0, 0);
+    }
+
+    .chat-voice-duration {
+        color: rgb(17, 17, 17);
+    }
+
+    .chat-bubble-other .chat-voice-duration {
+        color: rgb(223, 219, 214);
+    }
+
+    .quick-replies {
+        background: rgb(20, 18, 15);
+        border-top: rgb(0, 0, 0);
+    }
+
+    .quick-reply-item {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+        color: rgb(223, 219, 214);
+    }
+
+    .quick-reply-item:active {
+        background: rgb(31, 29, 26);
+    }
+
+    .chat-input-bar {
+        background: rgb(20, 18, 15);
+        border-top: rgb(0, 0, 0);
+    }
+
+    .chat-tool {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-tool-hover {
+        background: rgb(31, 29, 26);
+    }
+
+    .mi-quick {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-quick::before {
+        background: rgb(223, 219, 214);
+        box-shadow: rgb(0, 0, 0);
+    }
+
+    .mi-loc {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-loc::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .mi-mic {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-mic::before {
+        border-left: rgb(0, 0, 0);
+        border-right: rgb(0, 0, 0);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .mi-mic::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .chat-input-wrap {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-input {
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-send-btn {
+        background: rgb(23, 22, 20);
+        color: rgb(77, 67, 53);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-send-active {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+        border-color: rgb(223, 219, 214);
+    }
+
+    .chat-send-btn[disabled] {
+        background: rgb(23, 22, 20);
+        color: rgb(77, 67, 53);
+    }
+}

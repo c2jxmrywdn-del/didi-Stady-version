@@ -1,0 +1,27 @@
+<view
+  class="t-cell t-cell--{{align}} {{hover ? 't-cell--hover' : ''}} {{bordered ? 't-cell--bordered' : ''}}"
+  hover-class="{{hover ? 't-cell-active' : ''}}"
+  hover-stay-time="80"
+  bindtap="onTap"
+>
+  <!-- 左侧图标 -->
+  <view wx:if="{{image || iconName}}" class="t-cell__left-icon" style="{{iconBg ? 'background:' + iconBg : ''}}">
+    <image wx:if="{{image}}" class="t-cell__image" src="{{image}}" mode="aspectFill"/>
+    <view wx:elif="{{iconName}}" class="t-cell__icon t-icon-{{iconName}}"></view>
+  </view>
+  <!-- 中间标题/描述 -->
+  <view class="t-cell__title-wrap">
+    <view class="t-cell__title">
+      <slot name="title">{{title}}</slot>
+    </view>
+    <view wx:if="{{note}}" class="t-cell__note">{{note}}</view>
+  </view>
+  <!-- 右侧值/标签 -->
+  <view wx:if="{{value || label || rightIcon}}" class="t-cell__right">
+    <text wx:if="{{label}}" class="t-cell__label">{{label}}</text>
+    <text wx:if="{{value}}" class="t-cell__value">{{value}}</text>
+    <view wx:if="{{rightIcon}}" class="t-cell__right-icon t-icon-{{rightIcon}}"></view>
+    <view wx:if="{{arrow}}" class="t-cell__arrow"></view>
+  </view>
+  <slot name="right"></slot>
+</view>

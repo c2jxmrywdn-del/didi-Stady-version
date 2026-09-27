@@ -1,0 +1,154 @@
+/* 
+使用方法：
+在 customer-service.wxss 文件末尾引入样式
+```
+@import "./customer-service-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-cs {
+        background: rgb(23, 22, 20);
+    }
+
+    .cs-header {
+        background: rgb(0, 0, 0);
+    }
+
+    .cs-icon {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-headset-big {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-headset-big::before {
+        border: rgb(0, 0, 0);
+    }
+
+    .cs-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .cs-sub {
+        color: rgb(126, 118, 108);
+    }
+
+    .cs-section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .cs-section-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .cs-grid-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .cs-grid-icon-1 {
+        background: rgb(0, 0, 0);
+    }
+
+    .cs-grid-icon-2 {
+        background: rgb(0, 0, 0);
+    }
+
+    .cs-grid-icon-3 {
+        background: rgb(0, 0, 0);
+    }
+
+    .cs-grid-icon-4 {
+        background: rgb(0, 0, 0);
+    }
+
+    .cs-grid-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .cs-grid-sub {
+        color: rgb(77, 67, 53);
+    }
+
+    .mi-chat-bubble {
+        background: rgb(20, 18, 15);
+    }
+
+    .mi-chat-bubble::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .mi-phone-big {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-phone-big::after {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-question {
+        border: rgb(0, 0, 0);
+        color: rgb(20, 18, 15);
+    }
+
+    .mi-question::after {
+        color: rgb(20, 18, 15);
+    }
+
+    .mi-pen {
+        background: rgb(20, 18, 15);
+    }
+
+    .mi-pen::after {
+        border-left: rgb(0, 0, 0);
+    }
+
+    .faq-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .faq-a {
+        background: rgb(23, 22, 20);
+    }
+
+    .faq-tag {
+        background: rgb(109, 61, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .faq-tag-a {
+        background: rgb(31, 113, 40);
+    }
+
+    .faq-text {
+        color: rgb(223, 219, 214);
+    }
+
+    .contact-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .contact-label {
+        color: rgb(99, 99, 99);
+    }
+
+    .contact-value {
+        color: rgb(223, 219, 214);
+    }
+
+    .contact-btn {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+    }
+
+    .contact-btn:active {
+        background: rgb(241, 238, 233);
+    }
+
+    .cs-foot {
+        color: rgb(77, 67, 53);
+    }
+}

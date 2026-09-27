@@ -1,0 +1,21 @@
+{
+  "navigationBarTitleText": "TDesign 组件库演示",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "t-button": "../../components/tdesign/t-button/index",
+    "t-cell": "../../components/tdesign/t-cell/index",
+    "t-input": "../../components/tdesign/t-input/index",
+    "t-switch": "../../components/tdesign/t-switch/index",
+    "t-message": "../../components/tdesign/t-message/index",
+    "t-dialog": "../../components/tdesign/t-dialog/index",
+    "t-divider": "../../components/tdesign/t-divider/index",
+    "t-tag": "../../components/tdesign/t-tag/index",
+    "t-tabs": "../../components/tdesign/t-tabs/index",
+    "t-icon": "../../components/tdesign/t-icon/index",
+    "t-empty": "../../components/tdesign/t-empty/index",
+    "t-avatar": "../../components/tdesign/t-avatar/index",
+    "t-progress": "../../components/tdesign/t-progress/index",
+    "cloud-tip-modal": "../../components/cloudTipModal/index"
+  }
+}

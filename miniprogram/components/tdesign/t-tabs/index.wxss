@@ -1,0 +1,62 @@
+/* components/tdesign/t-tabs/index.wxss */
+.t-tabs {
+  white-space: nowrap;
+  background: #FFFDF9;
+  border-bottom: 1rpx solid #F0F0F2;
+  height: 80rpx;
+}
+.t-tabs--card {
+  background: transparent;
+  border-bottom: none;
+  height: 64rpx;
+  padding: 0 24rpx;
+}
+
+.t-tabs__item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 32rpx;
+  position: relative;
+  transition: color 0.18s;
+}
+
+.t-tabs__text {
+  font-size: 28rpx;
+  color: #5C554C;
+  letter-spacing: 0.5rpx;
+  font-weight: 400;
+  line-height: 1;
+}
+.t-tabs__item--active .t-tabs__text { color: #FF7B00; font-weight: 600; }
+
+.t-tabs__indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 48rpx;
+  height: 6rpx;
+  background: #FF7B00;
+  border-radius: 3rpx 3rpx 0 0;
+  transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: center bottom;
+}
+.t-tabs__item--active .t-tabs__indicator { transform: translateX(-50%) scaleX(1); }
+
+/* card 风格 */
+.t-tabs__item--card {
+  background: #FFFFFF;
+  border: 1rpx solid #EDE8E0;
+  border-radius: 12rpx;
+  margin-right: 12rpx;
+  height: 56rpx;
+  padding: 0 20rpx;
+}
+.t-tabs__item--card.t-tabs__item--active {
+  background: linear-gradient(135deg, #FF7B00 0%, #FF5500 100%);
+  border-color: transparent;
+}
+.t-tabs__item--card.t-tabs__item--active .t-tabs__text { color: #FFFFFF; }

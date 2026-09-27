@@ -1,0 +1,16 @@
+<view wx:if="{{internalVisible}}" class="t-dialog-mask" style="z-index: {{zIndex}};" catchtap="onMaskTap">
+  <view class="t-dialog t-dialog--{{theme}} t-dialog--enter" catchtap="">
+    <view wx:if="{{title}}" class="t-dialog__title">{{title}}</view>
+    <view class="t-dialog__content">
+      <slot>{{content}}</slot>
+    </view>
+    <view class="t-dialog__footer {{showCancel ? 't-dialog__footer--split' : ''}}">
+      <view wx:if="{{showCancel}}" class="t-dialog__btn t-dialog__btn--cancel" hover-class="t-dialog__btn--active" bindtap="onCancel">
+        {{cancelText}}
+      </view>
+      <view class="t-dialog__btn t-dialog__btn--confirm t-dialog__btn--{{theme}}" hover-class="t-dialog__btn--active" bindtap="onConfirm">
+        {{confirmText}}
+      </view>
+    </view>
+  </view>
+</view>

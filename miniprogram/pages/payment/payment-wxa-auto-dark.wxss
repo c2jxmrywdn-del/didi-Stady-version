@@ -1,0 +1,276 @@
+/* 
+使用方法：
+在 payment.wxss 文件末尾引入样式
+```
+@import "./payment-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-payment {
+        background: rgb(23, 22, 20);
+    }
+
+    @keyframes cardPulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 123, 0, 0.5);
+        }
+
+        50% {
+            box-shadow: 0 0 0 12rpx rgba(255, 123, 0, 0.15);
+        }
+
+        100% {
+            box-shadow: 0 0 0 6rpx rgba(255, 123, 0, 0.18);
+        }
+    }
+
+    .wallet-card {
+        background: rgb(0, 0, 0);
+        color: rgb(20, 18, 15);
+    }
+
+    .wallet-bg-circle {
+        background: rgba(17, 17, 17, 0.05);
+    }
+
+    .wallet-bg-circle-2 {
+        background: rgba(17, 17, 17, 0.03);
+    }
+
+    .wallet-action {
+        background: rgba(17, 17, 17, 0.1);
+    }
+
+    .wallet-action:active {
+        background: rgba(17, 17, 17, 0.18);
+    }
+
+    .wa-icon {
+        background: rgba(17, 17, 17, 0.15);
+    }
+
+    .wa-icon-recharge {
+        background: rgb(165, 46, 0);
+    }
+
+    .wa-icon-withdraw {
+        background: rgb(41, 125, 255);
+    }
+
+    .wa-icon-transfer {
+        background: rgb(31, 113, 40);
+    }
+
+    .wa-icon-card {
+        background: rgb(0, 105, 12);
+    }
+
+    .section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .section-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .section-title-inline {
+        color: rgb(99, 99, 99);
+    }
+
+    .section-action {
+        color: rgb(165, 46, 0);
+    }
+
+    .pay-method {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .pay-method:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .pm-icon {
+        color: rgb(17, 17, 17);
+    }
+
+    .pm-icon-wechat {
+        background: rgb(0, 105, 12);
+    }
+
+    .pm-icon-balance {
+        background: rgb(165, 46, 0);
+    }
+
+    .pm-icon-credit {
+        background: rgb(30, 115, 194);
+    }
+
+    .pm-icon-enterprise {
+        background: rgb(31, 113, 40);
+    }
+
+    .pm-wechat-shape {
+        background: rgb(17, 17, 17);
+    }
+
+    .pm-wechat-shape::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .pm-wechat-dot {
+        background: rgb(0, 105, 12);
+    }
+
+    .pm-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .pm-desc {
+        color: rgb(99, 99, 99);
+    }
+
+    .setting-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .setting-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .setting-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .setting-desc {
+        color: rgb(99, 99, 99);
+    }
+
+    .setting-arrow {
+        color: rgb(58, 58, 62);
+    }
+
+    .bank-card {
+        background: rgb(0, 0, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .bank-card:nth-child(2) {
+        background: rgb(0, 0, 0);
+    }
+
+    .bank-card:nth-child(3) {
+        background: rgb(0, 0, 0);
+    }
+
+    .bank-type {
+        background: rgba(17, 17, 17, 0.2);
+    }
+
+    .bank-default-badge {
+        background: rgb(17, 17, 17);
+        color: rgb(30, 115, 194);
+    }
+
+    .empty-card {
+        color: rgb(77, 67, 53);
+    }
+
+    .add-card-btn {
+        border: rgb(0, 0, 0);
+        color: rgb(99, 99, 99);
+    }
+
+    .add-card-btn:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .acb-icon {
+        background: rgb(165, 46, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .benefit-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .benefit-num-coupon {
+        color: rgb(109, 61, 0);
+    }
+
+    .benefit-num-points {
+        color: rgb(165, 46, 0);
+    }
+
+    .benefit-num-credit {
+        color: rgb(30, 115, 194);
+    }
+
+    .benefit-num-mall {
+        color: rgb(31, 113, 40);
+    }
+
+    .benefit-label {
+        color: rgb(99, 99, 99);
+    }
+
+    .tx-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .tx-icon {
+        color: rgb(17, 17, 17);
+    }
+
+    .tx-icon-pay {
+        background: rgb(109, 61, 0);
+    }
+
+    .tx-icon-recharge {
+        background: rgb(31, 113, 40);
+    }
+
+    .tx-icon-refund {
+        background: rgb(30, 115, 194);
+    }
+
+    .tx-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .tx-time {
+        color: rgb(77, 67, 53);
+    }
+
+    .tx-amount-in {
+        color: rgb(31, 113, 40);
+    }
+
+    .tx-amount-out {
+        color: rgb(223, 219, 214);
+    }
+
+    .tx-status-success {
+        color: rgb(31, 113, 40);
+        background: rgb(20, 32, 21);
+    }
+
+    .tx-status-pending {
+        color: rgb(109, 61, 0);
+        background: rgb(30, 24, 10);
+    }
+
+    .tx-status-failed {
+        color: rgb(213, 59, 47);
+        background: rgb(33, 23, 23);
+    }
+
+    .empty-tx {
+        color: rgb(77, 67, 53);
+    }
+
+    .pay-foot {
+        color: rgb(77, 67, 53);
+    }
+}

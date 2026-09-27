@@ -1,0 +1,44 @@
+<view class="tab-bar">
+  <view
+    wx:for="{{list}}"
+    wx:key="index"
+    class="tab-bar-item {{selected === index ? 'tab-icon-active' : ''}}"
+    data-path="{{item.pagePath}}"
+    data-index="{{index}}"
+    bindtap="switchTab"
+  >
+    <view class="tab-icon-wrap">
+      <view class="tab-icon-view">
+        <!-- 首页:尖顶小房子 + 烟囱 + 门 -->
+        <view wx:if="{{item.key === 'home'}}" class="icon-home">
+          <view class="home-chimney"></view>
+          <view class="home-door"></view>
+        </view>
+        <!-- 行程: -->
+        <view wx:elif="{{item.key === 'trip'}}" class="icon-trip">
+          <view class="trip-line trip-line-1"></view>
+          <view class="trip-line trip-line-2"></view>
+          <view class="trip-line trip-line-3"></view>
+        </view>
+        <!-- 消息:气泡 + 三个点 -->
+        <view wx:elif="{{item.key === 'msg'}}" class="icon-msg">
+          <view class="msg-dot-1"></view>
+          <view class="msg-dot-2"></view>
+          <view class="msg-dot-3"></view>
+        </view>
+        <!-- 我的:头像 -->
+        <view wx:elif="{{item.key === 'profile'}}" class="icon-profile">
+          <view class="profile-head"></view>
+          <view class="profile-body"></view>
+        </view>
+      </view>
+      <!-- 未读红点 -->
+      <!-- 关键:用 hidden 而非 wx:if,避免数字频繁变化时反复 create/destroy 节点 -->
+      <view
+        hidden="{{!(item.key === 'msg' && unreadCount > 0)}}"
+        class="tab-badge {{badgeSizeClass}}"
+      >{{badgeText}}</view>
+    </view>
+    <text class="tab-text">{{item.text}}</text>
+  </view>
+</view>

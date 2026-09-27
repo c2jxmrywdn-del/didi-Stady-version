@@ -1,0 +1,96 @@
+<!-- pages/chat-list/chat-list.wxml — 会话列表(司机/客服对话) -->
+<view class="page-chat-list">
+  <!-- 顶部 -->
+  <view class="chat-top">
+    <text class="chat-title">会话</text>
+    <text wx:if="{{unreadCount > 0}}" class="chat-unread">{{unreadCount}} 条未读</text>
+  </view>
+
+  <!-- 搜索栏 -->
+  <view class="chat-search">
+    <view class="chat-search-wrap">
+      <view class="chat-search-icon"></view>
+      <input
+        class="chat-search-input"
+        placeholder="搜索会话"
+        value="{{searchValue}}"
+        bindinput="onSearchInput"
+      />
+    </view>
+  </view>
+
+  <!-- 客服入口 -->
+  <view class="service-entry" bindtap="onServiceTap">
+    <view class="service-icon">
+      <view class="mi-headset"></view>
+    </view>
+    <view class="service-info">
+      <text class="service-name">滴滴学习版客服</text>
+      <text class="service-desc">{{serviceSubtitle}}</text>
+    </view>
+    <text class="service-arrow">›</text>
+  </view>
+
+  <!-- 会话列表 -->
+  <view wx:if="{{filteredSessions.length > 0}}" class="chat-list">
+    <view
+      wx:for="{{filteredSessions}}"
+      wx:key="id"
+      class="chat-item {{item.unread > 0 ? 'chat-unread' : ''}}"
+      data-session="{{item}}"
+      bindtap="onSessionTap"
+      bindlongpress="onSessionLongPress"
+    >
+      <!-- 头像 -->
+      <view class="chat-avatar">
+        <text class="chat-avatar-emoji">{{item.targetAvatar || '🚗'}}</text>
+        <view wx:if="{{item.orderStatus === 'riding'}}" class="chat-status-dot"></view>
+      </view>
+      <!-- 中间内容 -->
+      <view class="chat-content">
+        <view class="chat-header">
+          <text class="chat-name">{{item.targetName}}</text>
+          <text class="chat-time">{{item.lastTimeText}}</text>
+        </view>
+        <view class="chat-preview-row">
+          <text class="chat-preview" wx:if="{{item.lastMessageType === 'text'}}">{{item.lastMessage}}</text>
+          <text class="chat-preview" wx:elif="{{item.lastMessageType === 'location'}}">[位置] {{item.lastMessage}}</text>
+          <text class="chat-preview" wx:elif="{{item.lastMessageType === 'voice'}}">[语音]</text>
+          <text class="chat-preview" wx:elif="{{item.lastMessageType === 'image'}}">[图片]</text>
+          <text class="chat-preview" wx:elif="{{item.lastMessageType === 'system'}}">{{item.lastMessage}}</text>
+        </view>
+        <text class="chat-subtitle">{{item.targetSubtitle}}</text>
+      </view>
+      <!-- 未读红点 -->
+      <view wx:if="{{item.unread > 0}}" class="chat-unread-badge">{{item.unread > 99 ? '99+' : item.unread}}</view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:else class="empty-wrap">
+    <view class="empty-icon">
+      <view class="empty-bubble">
+        <view class="empty-bubble-tail"></view>
+      </view>
+    </view>
+    <text class="empty-text">暂无会话</text>
+    <text class="empty-sub">叫车后可与司机在线沟通</text>
+  </view>
+
+  <!-- 长按操作菜单 -->
+  <view wx:if="{{actionMenuSession}}" class="action-mask" bindtap="onCloseAction">
+    <view class="action-card">
+      <view class="action-title">{{actionMenuSession.targetName}}</view>
+      <view class="action-item" catchtap="onActionMarkRead">
+        <text>{{actionMenuSession.unread > 0 ? '标记为已读' : '标记为未读'}}</text>
+      </view>
+      <view class="action-item" catchtap="onActionClear">
+        <text>清空聊天记录</text>
+      </view>
+      <view class="action-item action-danger" catchtap="onActionDelete">
+        <text>删除会话</text>
+      </view>
+      <view class="action-cancel" catchtap="onCloseAction">取消</view>
+    </view>
+  </view>
+</view>

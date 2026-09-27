@@ -1,0 +1,62 @@
+<!-- pages/emergency-contact/emergency-contact.wxml — 紧急联系人 -->
+<view class="page-emg">
+  <view class="page-tip">
+    <text>· 紧急联系人将在行程异常时收到通知</text>
+    <text>· 最多可添加 5 位紧急联系人</text>
+  </view>
+
+  <view wx:if="{{contacts.length > 0}}" class="emg-list">
+    <view
+      wx:for="{{contacts}}"
+      wx:key="id"
+      class="emg-item"
+      data-id="{{item.id}}"
+      bindlongpress="onItemLongPress"
+    >
+      <view class="emg-avatar">
+        <text class="emg-avatar-letter">{{item.name[0]}}</text>
+      </view>
+      <view class="emg-info">
+        <view class="emg-line1">
+          <text class="emg-name">{{item.name}}</text>
+          <text class="emg-relation">{{item.relation}}</text>
+        </view>
+        <text class="emg-phone">{{item.phone}}</text>
+      </view>
+      <view class="emg-call" catchtap="onCall" data-phone="{{item.phone}}">
+        <view class="mi-phone"></view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="empty-wrap">
+    <view class="empty-illu">
+      <view class="empty-phone">
+        <view class="empty-phone-handle"></view>
+        <view class="empty-phone-body"></view>
+      </view>
+    </view>
+    <text class="empty-text">还没有紧急联系人</text>
+    <text class="empty-sub">添加紧急联系人可在行程异常时收到通知</text>
+  </view>
+
+  <view class="add-section">
+    <view class="add-btn" bindtap="onAddContact">
+      <view class="mi-plus"></view>
+      <text>添加紧急联系人</text>
+    </view>
+  </view>
+
+  <view wx:if="{{actionMenuContact}}" class="action-mask" bindtap="onCloseAction">
+    <view class="action-card">
+      <view class="action-title">{{actionMenuContact.name}}</view>
+      <view class="action-item" catchtap="onActionEdit">
+        <text>编辑联系人</text>
+      </view>
+      <view class="action-item action-danger" catchtap="onActionDelete">
+        <text>删除联系人</text>
+      </view>
+      <view class="action-cancel" catchtap="onCloseAction">取消</view>
+    </view>
+  </view>
+</view>

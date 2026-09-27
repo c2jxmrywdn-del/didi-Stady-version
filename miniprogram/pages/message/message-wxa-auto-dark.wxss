@@ -1,0 +1,482 @@
+/* 
+使用方法：
+在 message.wxss 文件末尾引入样式
+```
+@import "./message-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-message {
+        background: rgb(23, 22, 20);
+    }
+
+    .msg-top {
+        background: rgb(20, 18, 15);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .msg-top-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .msg-top-unread {
+        color: rgb(126, 118, 108);
+    }
+
+    .msg-btn-hover {
+        background: rgb(26, 24, 21);
+    }
+
+    .msg-top-btn-text {
+        color: rgb(223, 219, 214);
+    }
+
+    .msg-top-badge {
+        background: rgb(213, 59, 47);
+        color: rgb(17, 17, 17);
+    }
+
+    .mi-setting-sm {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-setting-sm::before {
+        background: rgb(223, 219, 214);
+        box-shadow: rgb(0, 0, 0);
+    }
+
+    .msg-cat {
+        color: rgb(126, 118, 108);
+    }
+
+    .msg-cat-active {
+        color: rgb(223, 219, 214);
+    }
+
+    .msg-cat-line {
+        background: rgb(223, 219, 214);
+    }
+
+    .msg-toolbar {
+        background: rgb(20, 18, 15);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .msg-toolbar-btn {
+        color: rgb(223, 219, 214);
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .toolbar-danger {
+        color: rgb(213, 59, 47);
+        border-color: rgb(57, 34, 31);
+        background: rgb(27, 21, 21);
+    }
+
+    .tb-icon-delete::before {
+        background: rgb(0, 0, 0);
+    }
+
+    .tb-icon-delete::after {
+        background: rgb(0, 0, 0);
+    }
+
+    .msg-group-label {
+        color: rgb(126, 118, 108);
+    }
+
+    .msg-item {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .msg-unread {
+        background: rgb(17, 17, 17);
+        border-color: rgb(41, 36, 26);
+    }
+
+    .msg-highlight {
+        background: rgb(0, 0, 0);
+    }
+
+    .msg-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .msg-checkbox {
+        border: rgb(0, 0, 0);
+        background: rgb(20, 18, 15);
+    }
+
+    .msg-checked {
+        border-color: rgb(223, 219, 214);
+        background: rgb(223, 219, 214);
+    }
+
+    .msg-checked-mark {
+        border-left: rgb(0, 0, 0);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .msg-icon-wrap {
+        border: rgb(0, 0, 0);
+    }
+
+    .msg-type-system, .msg-type-promo, .msg-type-order, .msg-type-safety,
+    .msg-type-driver, .msg-type-service {
+        background: rgb(23, 22, 20);
+    }
+
+    .msg-icon-wrap::before {
+        background: rgb(77, 67, 53);
+    }
+
+    .msg-type-system::before {
+        background: rgb(126, 118, 108);
+    }
+
+    .msg-type-promo::before {
+        background: rgb(109, 61, 0);
+    }
+
+    .msg-type-order::before {
+        background: rgb(31, 113, 40);
+    }
+
+    .msg-type-safety::before {
+        background: rgb(223, 219, 214);
+    }
+
+    .msg-type-driver::before {
+        background: rgb(30, 115, 194);
+    }
+
+    .msg-type-service::before {
+        background: rgb(151, 81, 131);
+    }
+
+    .mi-bell {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-bell::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-gift {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-gift::before {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-gift::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-car {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-car::before, .mi-car::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-shield {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-driver::before {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-driver::after {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-service {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-service::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .msg-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .msg-title-read {
+        color: rgb(126, 118, 108);
+    }
+
+    .msg-time {
+        color: rgb(77, 67, 53);
+    }
+
+    .msg-text {
+        color: rgb(174, 165, 155);
+    }
+
+    .msg-text-read {
+        color: rgb(126, 118, 108);
+    }
+
+    .msg-action {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .msg-action-text {
+        color: rgb(223, 219, 214);
+    }
+
+    .msg-action-arrow {
+        color: rgb(126, 118, 108);
+    }
+
+    .msg-dot {
+        background: rgb(213, 59, 47);
+    }
+
+    .msg-driver-avatar {
+        background: rgb(0, 0, 0);
+        border: rgb(0, 0, 0);
+    }
+
+    .msg-driver-meta {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .msg-driver-line {
+        color: rgb(223, 219, 214);
+    }
+
+    .msg-driver-rate {
+        color: rgb(109, 61, 0);
+    }
+
+    .msg-driver-car {
+        color: rgb(126, 118, 108);
+    }
+
+    .msg-promo-stack {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .msg-promo-head {
+        border-bottom: rgb(0, 0, 0);
+        background: rgb(0, 0, 0);
+    }
+
+    .msg-promo-tip {
+        color: rgb(165, 101, 8);
+    }
+
+    .msg-promo-badge {
+        background: rgb(109, 61, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .msg-promo-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .msg-promo-amount {
+        color: rgb(109, 61, 0);
+    }
+
+    .msg-promo-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .msg-promo-cond {
+        color: rgb(126, 118, 108);
+    }
+
+    .empty-illu {
+        background: rgb(30, 27, 21);
+    }
+
+    .empty-envelope-flap {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .empty-envelope-body {
+        background: rgb(77, 67, 53);
+    }
+
+    .empty-envelope-line {
+        background: rgb(23, 22, 20);
+    }
+
+    .empty-text {
+        color: rgb(126, 118, 108);
+    }
+
+    .empty-sub {
+        color: rgb(77, 67, 53);
+    }
+
+    .empty-btn {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+        color: rgb(223, 219, 214);
+    }
+
+    .msg-foot-link {
+        color: rgb(126, 118, 108);
+    }
+
+    .msg-foot-divider {
+        background: rgb(36, 33, 27);
+    }
+
+    .msg-foot-danger {
+        color: rgb(126, 118, 108);
+    }
+
+    .detail-mask {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    .detail-card {
+        background: rgb(20, 18, 15);
+    }
+
+    .detail-icon {
+        border: rgb(0, 0, 0);
+    }
+
+    .detail-close {
+        color: rgb(77, 67, 53);
+    }
+
+    .detail-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .detail-time {
+        color: rgb(77, 67, 53);
+    }
+
+    .detail-content {
+        color: rgb(223, 219, 214);
+        background: rgb(23, 22, 20);
+    }
+
+    .detail-btn-secondary {
+        background: rgb(23, 22, 20);
+        color: rgb(223, 219, 214);
+        border: rgb(0, 0, 0);
+    }
+
+    .detail-btn-primary {
+        background: rgb(223, 219, 214);
+        color: rgb(17, 17, 17);
+    }
+
+    .msg-section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .msg-section-head {
+        background: rgb(0, 0, 0);
+    }
+
+    .msg-section-head:active {
+        background: rgb(31, 29, 24);
+    }
+
+    .msg-section-icon {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .msg-section-label {
+        color: rgb(223, 219, 214);
+    }
+
+    .msg-section-unread {
+        background: rgb(165, 46, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .msg-section-summary {
+        color: rgb(126, 118, 108);
+    }
+
+    .msg-section-arrow {
+        color: rgb(77, 67, 53);
+    }
+
+    .msg-section-summary-list {
+        background: rgb(20, 18, 15);
+        border-top: rgb(0, 0, 0);
+    }
+
+    .msg-cluster {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .msg-cluster:active {
+        background: rgb(23, 22, 20);
+    }
+
+    .msg-cluster-icon {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .msg-cluster-count {
+        color: rgb(223, 219, 214);
+    }
+
+    .msg-cluster-dot {
+        background: rgb(77, 67, 53);
+    }
+
+    .msg-cluster-dot-unread {
+        background: rgb(165, 46, 0);
+    }
+
+    .msg-cluster-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .msg-cluster-sub {
+        color: rgb(126, 118, 108);
+    }
+
+    .msg-cluster-time {
+        color: rgb(77, 67, 53);
+    }
+
+    .msg-cluster-badge {
+        background: rgb(165, 46, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .msg-section-detail {
+        background: rgb(20, 18, 15);
+        border-top: rgb(0, 0, 0);
+    }
+
+    .msg-cluster-group-head {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .msg-cluster-group-title {
+        color: rgb(126, 118, 108);
+    }
+
+    .msg-cluster-group-count {
+        color: rgb(77, 67, 53);
+    }
+}

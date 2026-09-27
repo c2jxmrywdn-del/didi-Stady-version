@@ -1,0 +1,142 @@
+/* 
+使用方法：
+在 trip.wxss 文件末尾引入样式
+```
+@import "./trip-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-trip {
+        background: rgb(23, 22, 20);
+    }
+
+    .tab-bar {
+        background: rgb(20, 18, 15);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .tab-text {
+        color: rgb(77, 67, 53);
+    }
+
+    .tab-active .tab-text {
+        color: rgb(223, 219, 214);
+    }
+
+    .tab-indicator {
+        background: rgb(223, 219, 214);
+    }
+
+    .loading-spinner {
+        border: rgb(0, 0, 0);
+        border-top-color: rgb(223, 219, 214);
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .loading-text {
+        color: rgb(126, 118, 108);
+    }
+
+    .empty-line {
+        background: rgb(36, 33, 27);
+    }
+
+    .empty-text {
+        color: rgb(77, 67, 53);
+    }
+
+    .order-car-type {
+        color: rgb(223, 219, 214);
+    }
+
+    .status-waiting {
+        background: rgb(23, 22, 20);
+        color: rgb(126, 118, 108);
+    }
+
+    .status-riding {
+        background: rgb(223, 219, 214);
+        color: rgb(17, 17, 17);
+    }
+
+    .status-completed {
+        background: rgb(23, 22, 20);
+        color: rgb(223, 219, 214);
+    }
+
+    .status-cancelled {
+        background: rgb(23, 22, 20);
+        color: rgb(77, 67, 53);
+    }
+
+    .dot-green {
+        background: rgb(31, 113, 40);
+    }
+
+    .dot-dark {
+        background: rgb(223, 219, 214);
+    }
+
+    .route-text {
+        color: rgb(223, 219, 214);
+    }
+
+    .order-footer {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .order-time {
+        color: rgb(126, 118, 108);
+    }
+
+    .order-share-btn {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .share-mini-icon {
+        border: rgb(0, 0, 0);
+    }
+
+    .share-mini-icon::after {
+        border-left: rgb(0, 0, 0);
+    }
+
+    .order-price {
+        color: rgb(223, 219, 214);
+    }
+
+    .order-actions {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .action-btn {
+        color: rgb(223, 219, 214);
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .action-btn:active {
+        background: rgb(31, 29, 26);
+    }
+
+    .action-btn-primary {
+        background: rgb(0, 0, 0);
+        color: rgb(17, 17, 17);
+        border-color: rgb(165, 46, 0);
+    }
+
+    .order-meta {
+        color: rgb(126, 118, 108);
+    }
+
+    .empty-hint {
+        color: rgb(165, 46, 0);
+    }
+}

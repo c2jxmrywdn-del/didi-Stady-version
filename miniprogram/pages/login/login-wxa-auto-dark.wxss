@@ -1,0 +1,154 @@
+/* 
+使用方法：
+在 login.wxss 文件末尾引入样式
+```
+@import "./login-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-login {
+        background: rgb(0, 0, 0);
+    }
+
+    .brand-logo-bg {
+        background: rgb(0, 0, 0);
+    }
+
+    .brand-name {
+        color: rgb(255, 255, 255);
+    }
+
+    .brand-slogan {
+        color: rgb(99, 99, 99);
+    }
+
+    .login-card {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    .wechat-btn {
+        background: rgb(0, 0, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .wechat-icon-svg {
+        background: rgb(17, 17, 17);
+    }
+
+    .wechat-icon-shape {
+        background: rgb(0, 105, 12);
+    }
+
+    .wechat-icon-shape::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .wechat-icon-dot {
+        background: rgb(17, 17, 17);
+    }
+
+    .wechat-btn-text {
+        color: rgb(17, 17, 17);
+    }
+
+    .divider-line {
+        background: rgb(31, 31, 31);
+    }
+
+    .divider-text {
+        color: rgb(58, 58, 62);
+    }
+
+    .input-group {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .input-group:focus-within {
+        border-color: rgb(165, 46, 0);
+        background: rgb(17, 17, 17);
+    }
+
+    .input-prefix-wrap {
+        border-right: rgb(0, 0, 0);
+    }
+
+    .input-prefix {
+        color: rgb(255, 255, 255);
+    }
+
+    .input-field {
+        color: rgb(255, 255, 255);
+    }
+
+    .input-field::placeholder {
+        color: rgb(58, 58, 62);
+    }
+
+    .input-clear {
+        background: rgb(58, 58, 62);
+        color: rgb(17, 17, 17);
+    }
+
+    .send-code {
+        color: rgb(165, 46, 0);
+    }
+
+    .code-disabled {
+        color: rgb(58, 58, 62);
+    }
+
+    .agreement-check {
+        border: rgb(0, 0, 0);
+        background: rgb(20, 18, 15);
+    }
+
+    .agreement-check.checked {
+        background: rgb(165, 46, 0);
+        border-color: rgb(165, 46, 0);
+    }
+
+    .agreement-check-mark {
+        border-left: rgb(0, 0, 0);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .agreement-text {
+        color: rgb(99, 99, 99);
+    }
+
+    .agreement-link {
+        color: rgb(165, 46, 0);
+    }
+
+    .login-btn {
+        background: rgb(31, 29, 26);
+        color: rgb(17, 17, 17);
+    }
+
+    .login-btn-active {
+        background: rgb(0, 0, 0);
+    }
+
+    .login-btn[disabled] {
+        background: rgb(31, 29, 26);
+        color: rgb(58, 58, 62);
+    }
+
+    .login-foot text {
+        color: rgb(77, 67, 53);
+    }
+
+    .login-foot-link {
+        color: rgb(77, 67, 53);
+    }
+
+    .login-foot-link:active {
+        color: rgb(165, 46, 0);
+    }
+
+    .login-foot-divider {
+        color: rgb(44, 42, 37);
+    }
+}

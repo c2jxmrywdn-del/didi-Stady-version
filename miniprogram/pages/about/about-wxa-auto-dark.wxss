@@ -1,0 +1,212 @@
+/* 
+使用方法：
+在 about.wxss 文件末尾引入样式
+```
+@import "./about-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-about {
+        background: rgb(23, 22, 20);
+    }
+
+    .about-header {
+        background: rgb(0, 0, 0);
+    }
+
+    .logo {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .car-lower {
+        background: rgb(223, 219, 214);
+    }
+
+    .car-upper {
+        background: rgb(174, 165, 155);
+    }
+
+    .car-windshield {
+        background: rgb(45, 55, 61);
+    }
+
+    .car-hood {
+        background: rgb(223, 219, 214);
+    }
+
+    .car-headlight {
+        background: rgb(43, 35, 0);
+    }
+
+    .car-grille {
+        background: rgb(20, 18, 15);
+    }
+
+    .car-mirror {
+        background: rgb(223, 219, 214);
+    }
+
+    .car-arch-front {
+        background: rgb(20, 18, 15);
+    }
+
+    .car-arch-rear {
+        background: rgb(20, 18, 15);
+    }
+
+    .car-wheel-front {
+        background: rgb(223, 219, 214);
+    }
+
+    .car-wheel-rear {
+        background: rgb(223, 219, 214);
+    }
+
+    .app-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .app-version {
+        color: rgb(77, 67, 53);
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .app-slogan {
+        color: rgb(126, 118, 108);
+    }
+
+    .section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .section-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .section-hint {
+        color: rgb(77, 67, 53);
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .section-hint-link {
+        color: rgb(165, 46, 0);
+        background: rgba(165, 46, 0, 0.08);
+        border-color: rgba(165, 46, 0, 0.2);
+    }
+
+    .section-title-row-hover {
+        background: rgb(31, 29, 24);
+    }
+
+    .section-content {
+        color: rgb(174, 165, 155);
+    }
+
+    .stats-grid {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .stats-item {
+        border-right: rgb(0, 0, 0);
+    }
+
+    .stats-num {
+        color: rgb(223, 219, 214);
+    }
+
+    .stats-label {
+        color: rgb(126, 118, 108);
+    }
+
+    .feature-row {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .feature-num {
+        background: rgb(223, 219, 214);
+        color: rgb(17, 17, 17);
+    }
+
+    .feature-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .feature-desc {
+        color: rgb(99, 99, 99);
+    }
+
+    .team-card {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .team-avatar {
+        background: rgb(0, 0, 0);
+    }
+
+    .team-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .team-role {
+        color: rgb(165, 46, 0);
+        background: rgba(165, 46, 0, 0.1);
+    }
+
+    .team-desc {
+        color: rgb(126, 118, 108);
+    }
+
+    .team-block {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .team-block-link:active {
+        background: rgb(23, 22, 20);
+    }
+
+    .team-block-arrow {
+        color: rgb(77, 67, 53);
+    }
+
+    .team-block-link:active .team-block-arrow {
+        color: rgb(165, 46, 0);
+    }
+
+    .about-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .about-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .about-label {
+        color: rgb(223, 219, 214);
+    }
+
+    .about-value {
+        color: rgb(99, 99, 99);
+    }
+
+    .about-value-copy {
+        color: rgb(126, 118, 108);
+    }
+
+    .about-arrow {
+        color: rgb(58, 58, 62);
+    }
+
+    .about-foot {
+        color: rgb(77, 67, 53);
+    }
+
+    .about-foot-declare {
+        color: rgb(77, 67, 53);
+    }
+}

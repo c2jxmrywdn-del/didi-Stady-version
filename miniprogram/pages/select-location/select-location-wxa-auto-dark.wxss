@@ -1,0 +1,129 @@
+/* 
+在 select-location.wxss 文件末尾引入样式
+```
+@import "./select-location-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-select-location {
+        background: rgb(23, 22, 20);
+    }
+
+    .search-bar {
+        background: rgb(20, 18, 15);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .search-input-wrap {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .search-icon-css {
+        border: rgb(0, 0, 0);
+    }
+
+    .search-icon-css::after {
+        background: rgb(99, 99, 99);
+    }
+
+    .search-input {
+        color: rgb(255, 255, 255);
+    }
+
+    .quick-actions {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .quick-action {
+        background: rgb(23, 23, 23);
+        border: rgb(0, 0, 0);
+    }
+
+    .qa-locate {
+        border: rgb(0, 0, 0);
+    }
+
+    .qa-locate::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .qa-map {
+        border: rgb(0, 0, 0);
+    }
+
+    .qa-map::after {
+        border: rgb(0, 0, 0);
+    }
+
+    .qa-text {
+        color: rgb(255, 255, 255);
+    }
+
+    .section {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .section-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .location-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .location-icon-wrap {
+        background: rgb(23, 23, 23);
+        border: rgb(0, 0, 0);
+    }
+
+    .li-home {
+        border: rgb(0, 0, 0);
+    }
+
+    .li-home::before {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .li-office {
+        border: rgb(0, 0, 0);
+    }
+
+    .li-office::before {
+        background: rgb(255, 255, 255);
+        box-shadow: rgb(0, 0, 0);
+    }
+
+    .li-hot {
+        border: rgb(0, 0, 0);
+    }
+
+    .li-pin {
+        border: rgb(0, 0, 0);
+    }
+
+    .li-pin::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .location-name {
+        color: rgb(255, 255, 255);
+    }
+
+    .location-address {
+        color: rgb(99, 99, 99);
+    }
+
+    .location-distance {
+        color: rgb(58, 58, 62);
+    }
+
+    .searching-text {
+        color: rgb(99, 99, 99);
+    }
+
+    .location-tag {
+        color: rgb(83, 83, 83);
+    }
+}

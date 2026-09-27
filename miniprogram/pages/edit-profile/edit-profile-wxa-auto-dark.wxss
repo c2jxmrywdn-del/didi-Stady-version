@@ -1,0 +1,109 @@
+/* 
+使用方法：
+在 edit-profile.wxss 文件末尾引入样式
+```
+@import "./edit-profile-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-edit-profile {
+        background: rgb(23, 22, 20);
+    }
+
+    .section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .section-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .avatar-section:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .avatar-wrap {
+        border: rgb(0, 0, 0);
+        background: rgb(28, 28, 28);
+    }
+
+    .avatar-overlay {
+        background: rgba(255, 255, 255, 0.45);
+    }
+
+    .avatar-edit-text {
+        color: rgb(17, 17, 17);
+    }
+
+    .avatar-label {
+        color: rgb(99, 99, 99);
+    }
+
+    .field-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .field-label {
+        color: rgb(255, 255, 255);
+    }
+
+    .field-input {
+        color: rgb(209, 209, 209);
+    }
+
+    .field-input::placeholder {
+        color: rgb(58, 58, 62);
+    }
+
+    .field-count {
+        color: rgb(58, 58, 62);
+    }
+
+    .gender-option {
+        border: rgb(0, 0, 0);
+        color: rgb(149, 149, 149);
+        background: rgb(23, 22, 20);
+    }
+
+    .gender-option:active {
+        background: rgb(31, 29, 26);
+    }
+
+    .gender-active {
+        background: rgb(223, 219, 214);
+        color: rgb(17, 17, 17);
+        border-color: rgb(223, 219, 214);
+    }
+
+    .gender-active:active {
+        background: rgb(241, 238, 233);
+    }
+
+    .phone-text {
+        color: rgb(209, 209, 209);
+    }
+
+    .phone-bind {
+        color: rgb(223, 219, 214);
+    }
+
+    .phone-badge {
+        color: rgb(99, 99, 99);
+        background: rgb(31, 29, 26);
+    }
+
+    .save-section {
+        background: rgb(0, 0, 0);
+    }
+
+    .save-btn {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+    }
+
+    .save-btn:active {
+        background: rgb(241, 238, 233);
+    }
+}

@@ -1,0 +1,80 @@
+/* components/tdesign/t-message/index.wxss */
+.t-msg-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding-top: 24rpx;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  pointer-events: none;
+}
+.t-msg-mask > .t-msg { pointer-events: auto; }
+
+.t-msg {
+  min-width: 360rpx;
+  max-width: 80vw;
+  padding: 20rpx 28rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.18);
+  letter-spacing: 0.5rpx;
+  line-height: 1.5;
+}
+
+.t-msg--enter {
+  animation: tMsgIn 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes tMsgIn {
+  from { opacity: 0; transform: translateY(-32rpx); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.t-msg--info     { background: rgba(45, 42, 38, 0.94); }
+.t-msg--success  { background: linear-gradient(135deg, #5CAA5C 0%, #4A8A4A 100%); }
+.t-msg--warning  { background: linear-gradient(135deg, #F1C40F 0%, #D4AC0D 100%); color: #2D2A26; }
+.t-msg--error    { background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%); }
+
+.t-msg__icon {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 16rpx;
+  font-size: 22rpx;
+  font-weight: bold;
+}
+.t-msg__icon--info    { background: rgba(255, 255, 255, 0.18); }
+.t-msg__icon--success { background: rgba(255, 255, 255, 0.22); }
+.t-msg__icon--warning { background: rgba(45, 42, 38, 0.12); color: #2D2A26; }
+.t-msg__icon--error   { background: rgba(255, 255, 255, 0.22); }
+
+.t-msg__i-check {
+  width: 14rpx;
+  height: 8rpx;
+  border-left: 3rpx solid #FFFFFF;
+  border-bottom: 3rpx solid #FFFFFF;
+  transform: rotate(-45deg) translate(2rpx, -3rpx);
+}
+.t-msg__i-cross { position: relative; width: 24rpx; height: 24rpx; }
+.t-msg__i-line { position: absolute; top: 50%; left: 50%; width: 20rpx; height: 2rpx; background: #FFFFFF; }
+.t-msg__i-line-1 { transform: translate(-50%, -50%) rotate(45deg); }
+.t-msg__i-line-2 { transform: translate(-50%, -50%) rotate(-45deg); }
+.t-msg__i-bang { font-style: italic; }
+.t-msg__i-info { font-style: italic; font-family: serif; }
+
+.t-msg__content {
+  flex: 1;
+  min-width: 0;
+  word-break: break-all;
+}
+.t-msg__content--marquee { animation: tMsgMarquee 8s linear infinite; }
+@keyframes tMsgMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-30%); }
+}

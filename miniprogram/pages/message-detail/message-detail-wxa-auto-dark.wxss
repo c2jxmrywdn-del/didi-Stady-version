@@ -1,0 +1,233 @@
+/* 
+使用方法：
+在 message-detail.wxss 文件末尾引入样式
+```
+@import "./message-detail-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-message-detail {
+        background: rgb(23, 22, 20);
+    }
+
+    .detail-top {
+        background: rgb(20, 18, 15);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .detail-icon {
+        border: rgb(0, 0, 0);
+    }
+
+    .detail-icon::before {
+        background: rgb(77, 67, 53);
+    }
+
+    .msg-type-system::before {
+        background: rgb(126, 118, 108);
+    }
+
+    .msg-type-promo::before {
+        background: rgb(109, 61, 0);
+    }
+
+    .msg-type-order::before {
+        background: rgb(31, 113, 40);
+    }
+
+    .msg-type-safety::before {
+        background: rgb(223, 219, 214);
+    }
+
+    .msg-type-driver::before {
+        background: rgb(30, 115, 194);
+    }
+
+    .msg-type-service::before {
+        background: rgb(151, 81, 131);
+    }
+
+    .detail-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .detail-time {
+        color: rgb(77, 67, 53);
+    }
+
+    .mi-bell {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-bell::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-gift {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-gift::before {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-gift::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-car {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-car::before, .mi-car::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-shield {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-driver::before {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-driver::after {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-service {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-service::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .detail-card {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .detail-summary {
+        color: rgb(223, 219, 214);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .detail-content {
+        color: rgb(223, 219, 214);
+    }
+
+    .order-detail-card {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .od-row:not(:last-child) {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .od-label {
+        color: rgb(99, 99, 99);
+    }
+
+    .od-value {
+        color: rgb(223, 219, 214);
+    }
+
+    .od-price {
+        color: rgb(213, 59, 47);
+    }
+
+    .coupon-card {
+        background: rgb(0, 0, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .coupon-card::before, .coupon-card::after {
+        background: rgb(23, 22, 20);
+    }
+
+    .safety-tip-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .safety-tip-num {
+        background: rgb(223, 219, 214);
+        color: rgb(17, 17, 17);
+    }
+
+    .safety-tip-text {
+        color: rgb(223, 219, 214);
+    }
+
+    .detail-action-btn {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+    }
+
+    .detail-action-btn:active {
+        background: rgb(241, 238, 233);
+    }
+
+    .coupon-stack-head {
+        background: rgb(0, 0, 0);
+        border: rgb(0, 0, 0);
+    }
+
+    .coupon-stack-title {
+        color: rgb(165, 101, 8);
+    }
+
+    .coupon-stack-sub {
+        color: rgb(126, 118, 108);
+    }
+
+    .coupon-stack-item {
+        background: rgb(0, 0, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .driver-detail {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .dd-head {
+        background: rgb(0, 0, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .dd-avatar {
+        background: rgba(17, 17, 17, 0.2);
+    }
+
+    .dd-name {
+        color: rgb(17, 17, 17);
+    }
+
+    .dd-rating {
+        color: rgb(65, 40, 0);
+    }
+
+    .dd-trips {
+        color: rgba(17, 17, 17, 0.9);
+        background: rgba(17, 17, 17, 0.18);
+    }
+
+    .dd-car-line {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .dd-car-label {
+        color: rgb(99, 99, 99);
+    }
+
+    .dd-car-value {
+        color: rgb(223, 219, 214);
+    }
+
+    .dd-price {
+        color: rgb(213, 59, 47);
+    }
+}

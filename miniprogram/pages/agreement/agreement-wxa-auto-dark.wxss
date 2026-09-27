@@ -1,0 +1,96 @@
+/* 
+使用方法：
+在 agreement.wxss 文件末尾引入样式
+```
+@import "./agreement-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-agreement {
+        background: rgb(23, 22, 20);
+    }
+
+    .top-notice {
+        background: rgb(0, 0, 0);
+        border: rgb(0, 0, 0);
+    }
+
+    .notice-icon {
+        background: rgb(109, 61, 0);
+    }
+
+    .mi-info {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-info::after {
+        color: rgb(17, 17, 17);
+    }
+
+    .notice-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .notice-text {
+        color: rgb(159, 130, 90);
+    }
+
+    .update-info {
+        color: rgb(77, 67, 53);
+    }
+
+    .content-section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .content-title {
+        color: rgb(223, 219, 214);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .content-text {
+        color: rgb(174, 165, 155);
+    }
+
+    .text-bold {
+        color: rgb(213, 59, 47);
+    }
+
+    .bottom-agree {
+        background: rgb(20, 18, 15);
+        border-top: rgb(0, 0, 0);
+    }
+
+    .agree-check {
+        border: rgb(0, 0, 0);
+        background: rgb(20, 18, 15);
+    }
+
+    .agree-checked {
+        border-color: rgb(223, 219, 214);
+        background: rgb(223, 219, 214);
+    }
+
+    .agree-check-mark {
+        border-left: rgb(0, 0, 0);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .agree-text {
+        color: rgb(223, 219, 214);
+    }
+
+    .agree-btn {
+        background: rgb(23, 22, 20);
+        color: rgb(77, 67, 53);
+        border: rgb(0, 0, 0);
+    }
+
+    .agree-btn-active {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+        border-color: rgb(223, 219, 214);
+    }
+}

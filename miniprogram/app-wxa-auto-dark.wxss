@@ -1,0 +1,168 @@
+/* 
+使用方法：
+在 app.wxss 文件末尾引入样式
+```
+@import "./app-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    page {
+        background: rgb(23, 22, 20);
+        color: rgb(223, 219, 214);
+    }
+
+    .btn-primary {
+        background: rgb(223, 219, 214);
+        color: rgb(17, 17, 17);
+    }
+
+    .card {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .divider {
+        background: rgb(36, 33, 27);
+    }
+
+    ::-webkit-scrollbar {
+        color: rgba(0, 0, 0, 0);
+    }
+
+    .dot-green {
+        background: rgb(31, 113, 40);
+    }
+
+    .dot-dark {
+        background: rgb(223, 219, 214);
+    }
+
+    .dot-gray {
+        background: rgb(77, 67, 53);
+    }
+
+    .car-lower {
+        background: rgb(77, 67, 53);
+    }
+
+    .car-upper {
+        background: rgb(77, 67, 53);
+    }
+
+    .car-windshield {
+        background: rgb(23, 22, 20);
+        border-left: rgb(0, 0, 0);
+        border-top: rgb(0, 0, 0);
+    }
+
+    .car-rear-window {
+        background: rgb(23, 22, 20);
+        border-right: rgb(0, 0, 0);
+        border-top: rgb(0, 0, 0);
+    }
+
+    .car-hood {
+        background: rgb(77, 67, 53);
+    }
+
+    .car-headlight {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .car-grille {
+        border-right: rgb(0, 0, 0);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .car-door-line {
+        border-left: rgb(0, 0, 0);
+    }
+
+    .car-waist-line {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .car-wheel-front {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .car-wheel-front::after {
+        border: rgb(0, 0, 0);
+        background: rgb(23, 22, 20);
+    }
+
+    .car-wheel-rear {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .car-wheel-rear::after {
+        border: rgb(0, 0, 0);
+        background: rgb(23, 22, 20);
+    }
+
+    .car-mirror {
+        background: rgb(77, 67, 53);
+        border: rgb(0, 0, 0);
+    }
+
+    .car-arch-front {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .car-arch-rear {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .car-bottom-line {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .md-card {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .md-card:active {
+        background: rgb(23, 22, 20);
+    }
+
+    .md-section-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .md-h1 {
+        color: rgb(223, 219, 214);
+    }
+
+    .md-h2 {
+        color: rgb(223, 219, 214);
+    }
+
+    .md-h3 {
+        color: rgb(223, 219, 214);
+    }
+
+    .md-body {
+        color: rgb(223, 219, 214);
+    }
+
+    .md-cap {
+        color: rgb(126, 118, 108);
+    }
+
+    @keyframes pageEnter {
+        from {
+            opacity: 0;
+            transform: translateX(40rpx);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}

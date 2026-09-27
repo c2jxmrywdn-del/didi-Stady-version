@@ -1,0 +1,157 @@
+<!-- pages/message-detail/message-detail.wxml — 消息详情(系统通知/优惠/安全等) -->
+<view class="page-message-detail" wx:if="{{message}}">
+  <!-- 顶部 -->
+  <view class="detail-top">
+    <view class="detail-icon msg-type-{{message.type}}">
+      <view class="msg-icon-inner">
+        <view wx:if="{{message.type === 'system'}}" class="mi-bell"></view>
+        <view wx:elif="{{message.type === 'promo'}}" class="mi-gift"></view>
+        <view wx:elif="{{message.type === 'order'}}" class="mi-car"></view>
+        <view wx:elif="{{message.type === 'safety'}}" class="mi-shield"></view>
+        <view wx:elif="{{message.type === 'driver'}}" class="mi-driver"></view>
+        <view wx:elif="{{message.type === 'service'}}" class="mi-service"></view>
+        <view wx:else class="mi-bell"></view>
+      </view>
+    </view>
+    <text class="detail-title">{{message.title}}</text>
+    <text class="detail-time">{{message.time}}</text>
+  </view>
+
+  <!-- 主内容卡片 -->
+  <view class="detail-card">
+    <view wx:if="{{message.summary}}" class="detail-summary">
+      <text>{{message.summary}}</text>
+    </view>
+    <view class="detail-content">
+      <text>{{message.content}}</text>
+    </view>
+
+    <!-- 行程详情(订单类) -->
+    <view wx:if="{{message.type === 'order' && message.orderInfo}}" class="order-detail-card">
+      <view class="od-row">
+        <text class="od-label">出发地</text>
+        <text class="od-value">{{message.orderInfo.startAddress}}</text>
+      </view>
+      <view class="od-row">
+        <text class="od-label">目的地</text>
+        <text class="od-value">{{message.orderInfo.endAddress}}</text>
+      </view>
+      <view class="od-row">
+        <text class="od-label">车型</text>
+        <text class="od-value">{{message.orderInfo.carName}}</text>
+      </view>
+      <view class="od-row">
+        <text class="od-label">金额</text>
+        <text class="od-value od-price">¥{{message.orderInfo.price}}</text>
+      </view>
+      <view class="od-row">
+        <text class="od-label">时间</text>
+        <text class="od-value">{{message.orderInfo.time}}</text>
+      </view>
+      <view class="od-row" wx:if="{{message.orderInfo.driverName}}">
+        <text class="od-label">司机</text>
+        <text class="od-value">{{message.orderInfo.driverName}} {{message.orderInfo.driverCar || ''}}</text>
+      </view>
+    </view>
+
+    <!-- 优惠详情(单券) -->
+    <view wx:if="{{message.type === 'promo' && message.couponInfo}}" class="coupon-detail">
+      <view class="coupon-card">
+        <view class="coupon-amount">
+          <text class="coupon-currency">¥</text>
+          <text class="coupon-num">{{message.couponInfo.amount}}</text>
+        </view>
+        <view class="coupon-info">
+          <text class="coupon-name">{{message.couponInfo.name}}</text>
+          <text class="coupon-condition">满{{message.couponInfo.minAmount}}元可用</text>
+          <text class="coupon-expire">有效期至 {{message.couponInfo.expire}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 优惠详情(多券合并) -->
+    <view wx:if="{{message.type === 'promo' && message.coupons && !message.couponInfo}}" class="coupon-stack">
+      <view class="coupon-stack-head">
+        <text class="coupon-stack-title">您共有 {{message.coupons.length}} 张优惠卷</text>
+        <text class="coupon-stack-sub">点击下方按钮立即使用</text>
+      </view>
+      <view
+        wx:for="{{message.coupons}}"
+        wx:for-item="cp"
+        wx:key="name"
+        class="coupon-stack-item"
+      >
+        <view class="cs-left">
+          <text class="cs-currency">¥</text>
+          <text class="cs-num">{{cp.amount}}</text>
+        </view>
+        <view class="cs-right">
+          <text class="cs-name">{{cp.name}}</text>
+          <text class="cs-cond">满{{cp.minAmount}}元可用</text>
+          <text class="cs-expire">{{cp.expire}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 司机详情(独立) -->
+    <view wx:if="{{message.type === 'driver' && message.driverInfo}}" class="driver-detail">
+      <view class="dd-head">
+        <view class="dd-avatar">
+          <text class="dd-emoji">{{message.driverInfo.avatar || '🚗'}}</text>
+        </view>
+        <view class="dd-info">
+          <text class="dd-name">{{message.driverInfo.name}}</text>
+          <view class="dd-stats">
+            <text class="dd-rating">★ {{message.driverInfo.rating}}</text>
+            <text class="dd-trips">{{message.driverInfo.trips || 0}} 单</text>
+          </view>
+        </view>
+      </view>
+      <view class="dd-car">
+        <view class="dd-car-line">
+          <text class="dd-car-label">车牌号</text>
+          <text class="dd-car-value">{{message.driverInfo.car}}</text>
+        </view>
+        <view class="dd-car-line">
+          <text class="dd-car-label">车型</text>
+          <text class="dd-car-value">{{message.driverInfo.carModel}}</text>
+        </view>
+        <view wx:if="{{message.orderInfo}}" class="dd-car-line">
+          <text class="dd-car-label">订单</text>
+          <text class="dd-car-value">{{message.orderInfo.startAddress}} → {{message.orderInfo.endAddress}}</text>
+        </view>
+        <view wx:if="{{message.orderInfo}}" class="dd-car-line">
+          <text class="dd-car-label">金额</text>
+          <text class="dd-car-value dd-price">¥{{message.orderInfo.price}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 安全类详情 -->
+    <view wx:if="{{message.type === 'safety'}}" class="safety-tips">
+      <view class="safety-tip-item">
+        <view class="safety-tip-num">1</view>
+        <view class="safety-tip-text">上车前核对车牌号和司机信息</view>
+      </view>
+      <view class="safety-tip-item">
+        <view class="safety-tip-num">2</view>
+        <view class="safety-tip-text">全程系好安全带</view>
+      </view>
+      <view class="safety-tip-item">
+        <view class="safety-tip-num">3</view>
+        <view class="safety-tip-text">可使用行程分享功能告知家人朋友</view>
+      </view>
+      <view class="safety-tip-item">
+        <view class="safety-tip-num">4</view>
+        <view class="safety-tip-text">遇到紧急情况可点击"紧急求助"</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="detail-actions" wx:if="{{message.action}}">
+    <button class="detail-action-btn" bindtap="onActionClick">
+      {{message.action.label || '查看详情'}}
+    </button>
+  </view>
+</view>

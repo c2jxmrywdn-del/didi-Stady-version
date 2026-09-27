@@ -1,0 +1,9 @@
+{
+  "name": "orderFunctions",
+  "version": "1.0.0",
+  "description": "订单/行程相关云函数(由 quickstartFunctions 拆分)",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.4.0"
+  }
+}

@@ -1,0 +1,272 @@
+<!--pages/order-detail/order-detail.wxml—极简订单详情-->
+<view class="page-order-detail">
+  <view wx:if="{{order}}">
+    <!-- 状态卡片 -->
+    <view class="status-card">
+      <!-- 小车装饰 -->
+      <view class="car-deco">
+        <view class="car-lower"></view>
+        <view class="car-upper"></view>
+        <view class="car-windshield"></view>
+        <view class="car-rear-window"></view>
+        <view class="car-hood"></view>
+        <view class="car-headlight"></view>
+        <view class="car-grille"></view>
+        <view class="car-mirror"></view>
+        <view class="car-door-line"></view>
+        <view class="car-waist-line"></view>
+        <view class="car-bottom-line"></view>
+        <view class="car-arch-front"></view>
+        <view class="car-arch-rear"></view>
+        <view class="car-wheel-front"></view>
+        <view class="car-wheel-rear"></view>
+      </view>
+      <text class="status-icon">{{order.status === 'completed' ? 'DONE' : order.status === 'cancelled' ? 'CANCELLED' : order.status === 'riding' ? 'ON TRIP' : 'IN PROGRESS'}}</text>
+      <text class="status-text">{{order.statusText}}</text>
+    </view>
+
+    <!-- 路线信息 -->
+    <view class="route-card card">
+      <view class="route-point">
+        <view class="route-dot dot-green"></view>
+        <view class="route-detail">
+          <text class="route-name">{{order.startAddress.name}}</text>
+        </view>
+      </view>
+      <view class="route-connector"></view>
+      <view class="route-point">
+        <view class="route-dot dot-dark"></view>
+        <view class="route-detail">
+          <text class="route-name">{{order.endAddress.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 费用明细 -->
+    <view class="fee-card card" wx:if="{{isComplete}}">
+      <text class="card-title">费用明细</text>
+      <view class="fee-row">
+        <text class="fee-label">{{order.carName}}</text>
+        <text class="fee-value">¥{{order.actualPrice || order.estimatePrice}}</text>
+      </view>
+      <view class="fee-row">
+        <text class="fee-label">里程费</text>
+        <text class="fee-value">¥{{order.mileageFee}}</text>
+      </view>
+      <view class="fee-row">
+        <text class="fee-label">时长费</text>
+        <text class="fee-value">¥{{order.timeFee}}</text>
+      </view>
+      <view class="fee-row">
+        <text class="fee-label">远途费</text>
+        <text class="fee-value">¥{{order.longFee}}</text>
+      </view>
+      <view class="fee-total">
+        <text class="fee-total-label">实付金额</text>
+        <text class="fee-total-value">¥{{order.actualPrice || order.estimatePrice}}</text>
+      </view>
+    </view>
+
+    <!-- 行程数据 -->
+    <view class="stats-card card">
+      <view class="stats-row">
+        <view class="stats-item">
+          <text class="stats-value">{{order.distance || '--'}}km</text>
+          <text class="stats-label">总里程</text>
+        </view>
+        <view class="stats-item">
+          <text class="stats-value">{{order.durationText}}</text>
+          <text class="stats-label">总时长</text>
+        </view>
+        <view class="stats-item">
+          <text class="stats-value">{{order.carName}}</text>
+          <text class="stats-label">车型</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 进行中状态:展示司机/已走里程/继续查看 -->
+    <view wx:if="{{!isComplete && order.status !== 'cancelled'}}" class="progress-card card">
+      <view class="progress-head">
+        <view class="progress-icon">🚗</view>
+        <view class="progress-info">
+          <text class="progress-title">{{order.status === 'riding' ? '司机正在送您前往目的地' : '司机正在赶来'}}</text>
+          <text wx:if="{{order.driverInfo}}" class="progress-sub">{{order.driverInfo.name}} · {{order.driverInfo.car}} · {{order.driverInfo.carModel || ''}}</text>
+          <text wx:else class="progress-sub">系统正在为您匹配附近司机</text>
+        </view>
+      </view>
+      <view class="progress-stats">
+        <view class="progress-stat">
+          <text class="progress-stat-value">{{order.distance || '0.0'}}km</text>
+          <text class="progress-stat-label">已行驶</text>
+        </view>
+        <view class="progress-stat">
+          <text class="progress-stat-value">{{order.durationText || '--'}}</text>
+          <text class="progress-stat-label">已耗时</text>
+        </view>
+        <view class="progress-stat">
+          <text class="progress-stat-value">{{order.estimatePrice ? '¥' + order.estimatePrice : '--'}}</text>
+          <text class="progress-stat-label">预估</text>
+        </view>
+      </view>
+      <view class="progress-actions">
+        <view class="progress-btn" bindtap="onResumeRide">
+          <text>查看实时行程</text>
+          <text class="progress-btn-arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 支付区域 -->
+    <view class="pay-card card" wx:if="{{isComplete && !showPaySuccess}}">
+      <text class="card-title">支付方式</text>
+      <view
+        wx:for="{{payMethods}}"
+        wx:key="key"
+        class="pay-method {{item.selected ? 'pay-selected' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="onSelectPayMethod"
+      >
+        <view class="pay-icon pay-icon-{{item.key}}"></view>
+        <text class="pay-name">{{item.name}}</text>
+        <view wx:if="{{item.key === 'wallet'}}" class="pay-extra">余额 ¥{{balance}}</view>
+        <view wx:if="{{item.key === 'credit'}}" class="pay-extra">剩 ¥{{creditRemain}}</view>
+        <view class="pay-check {{item.selected ? 'pay-checked' : ''}}"></view>
+      </view>
+      <button class="pay-btn btn-primary" bindtap="onPay">确认支付 ¥{{order.actualPrice || order.estimatePrice}}</button>
+    </view>
+
+    <!-- 支付成功 -->
+    <view class="pay-success card" wx:if="{{showPaySuccess}}">
+      <view class="success-dot">
+        <view class="success-check"></view>
+      </view>
+      <text class="success-text">支付成功</text>
+      <view class="share-order-btn" bindtap="onShareOrder">
+        <view class="share-icon-css"></view>
+        <text class="share-text-sm">分享行程</text>
+      </view>
+    </view>
+
+    <!-- 司机评价区域 -->
+    <view class="rate-card card" wx:if="{{isComplete && showPaySuccess && rateStep === 'driver'}}">
+      <view class="rate-step-header">
+        <text class="card-title">评价司机</text>
+        <text class="rate-step-indicator">1/2</text>
+      </view>
+      <view class="rate-driver-brief" wx:if="{{order.driverInfo}}">
+        <view class="rate-driver-avatar">{{order.driverInfo.name[0]}}</view>
+        <view class="rate-driver-meta">
+          <text class="rate-driver-name">{{order.driverInfo.name}}</text>
+          <text class="rate-driver-car">{{order.driverInfo.carModel}} · {{order.driverInfo.car}}</text>
+        </view>
+      </view>
+      <view class="rate-stars">
+        <view
+          wx:for="{{stars}}"
+          wx:key="*this"
+          class="star {{rating >= item ? 'star-active' : ''}}"
+          data-score="{{item}}"
+          bindtap="onRate"
+        >
+          <view class="star-inner"></view>
+        </view>
+      </view>
+      <view class="rate-hint" wx:if="{{rating > 0}}">
+        <text>{{rating === 5 ? '非常满意' : rating === 4 ? '比较满意' : rating === 3 ? '一般' : rating === 2 ? '不太满意' : '很不满意'}}</text>
+      </view>
+      <view class="tag-list">
+        <view
+          wx:for="{{commentTags}}"
+          wx:key="*this"
+          class="tag-item {{tagSelectedMap[item] ? 'tag-selected' : ''}}"
+          data-tag="{{item}}"
+          bindtap="onTagSelect"
+        >{{item}}</view>
+      </view>
+      <button class="submit-btn btn-primary" bindtap="onDriverRateNext" wx:if="{{rating > 0}}">下一步</button>
+    </view>
+
+    <!-- APP满意度评价区域 -->
+    <view class="rate-card card" wx:if="{{isComplete && showPaySuccess && rateStep === 'app'}}">
+      <view class="rate-step-header">
+        <text class="card-title">评价滴滴学习版</text>
+        <text class="rate-step-indicator">2/2</text>
+      </view>
+      <view class="phone-icon-css"></view>
+      <view class="rate-stars">
+        <view
+          wx:for="{{appStars}}"
+          wx:key="*this"
+          class="star {{appRating >= item ? 'star-active' : ''}}"
+          data-score="{{item}}"
+          bindtap="onAppRate"
+        >
+          <view class="star-inner"></view>
+        </view>
+      </view>
+      <view class="rate-hint" wx:if="{{appRating > 0}}">
+        <text>{{appRating === 5 ? '非常满意' : appRating === 4 ? '比较满意' : appRating === 3 ? '一般' : appRating === 2 ? '不太满意' : '很不满意'}}</text>
+      </view>
+      <view class="tag-list">
+        <view
+          wx:for="{{appCommentTags}}"
+          wx:key="*this"
+          class="tag-item {{appTagSelectedMap[item] ? 'tag-selected' : ''}}"
+          data-tag="{{item}}"
+          bindtap="onAppTagSelect"
+        >{{item}}</view>
+      </view>
+      <view class="rate-btn-group">
+        <button class="skip-btn" bindtap="onSkipAppRate">跳过</button>
+        <button class="submit-btn btn-primary" bindtap="onSubmitReview" wx:if="{{appRating > 0}}">提交评价</button>
+      </view>
+    </view>
+
+    <!-- 司机信息 -->
+    <view class="driver-card card" wx:if="{{order.driverInfo}}">
+      <view class="driver-info-row">
+        <view class="driver-avatar-lg">{{order.driverInfo.name[0]}}</view>
+        <view class="driver-meta">
+          <text class="driver-name-lg">{{order.driverInfo.name}}</text>
+          <text class="driver-car-lg">{{order.driverInfo.carModel}} · {{order.driverInfo.car}}</text>
+          <text class="driver-rating-lg">{{order.driverInfo.rating}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部操作 -->
+    <view class="bottom-actions" wx:if="{{isComplete}}">
+      <button class="reorder-btn btn-primary" bindtap="onReOrder">再来一单</button>
+    </view>
+  </view>
+
+  <!-- 分享弹窗 -->
+  <view class="share-mask" wx:if="{{showShareModal}}" bindtap="onCloseShareModal"></view>
+  <view class="share-modal {{showShareModal ? 'share-modal-show' : ''}}">
+    <view class="share-modal-header">
+      <text class="share-modal-title">分享行程</text>
+      <view class="share-modal-close" bindtap="onCloseShareModal">✕</view>
+    </view>
+    <view class="share-modal-body">
+      <view class="share-order-info" wx:if="{{order}}">
+        <view class="share-route">
+          <text class="share-from">{{order.startAddress.name}}</text>
+          <text class="share-arrow">→</text>
+          <text class="share-to">{{order.endAddress.name}}</text>
+        </view>
+        <text class="share-price">¥{{order.actualPrice || order.estimatePrice}}</text>
+      </view>
+      <view class="share-options">
+        <view class="share-option-btn" bindtap="onShareToTimeline">
+          <view class="share-option-icon"><view class="soi-friend"></view></view>
+          <text class="share-option-text">分享给好友</text>
+        </view>
+        <view class="share-option-btn" bindtap="onShareToTimeline">
+          <view class="share-option-icon"><view class="soi-moments"></view></view>
+          <text class="share-option-text">分享到朋友圈</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

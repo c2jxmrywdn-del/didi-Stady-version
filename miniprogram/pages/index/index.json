@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "滴滴学习版",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "t-message": "../../components/tdesign/t-message/index",
+    "t-dialog": "../../components/tdesign/t-dialog/index",
+    "cloud-tip-modal": "../../components/cloudTipModal/index"
+  }
+}

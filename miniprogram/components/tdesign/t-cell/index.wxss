@@ -1,0 +1,110 @@
+/* components/tdesign/t-cell/index.wxss */
+.t-cell {
+  display: flex;
+  align-items: center;
+  min-height: 96rpx;
+  padding: 20rpx 32rpx;
+  background: #FFFFFF;
+  position: relative;
+  transition: background 0.12s;
+}
+
+.t-cell--top    { align-items: flex-start; }
+.t-cell--middle { align-items: center; }
+.t-cell--bottom { align-items: flex-end; }
+
+.t-cell--bordered::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 32rpx;
+  right: 32rpx;
+  height: 1rpx;
+  background: #F0F0F2;
+  transform: scaleY(0.5);
+}
+
+.t-cell--hover:active { background: #FAFAFA; }
+.t-cell-active { background: #FAFAFA; }
+
+.t-cell__left-icon {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+  background: rgba(255, 123, 0, 0.1);
+  overflow: hidden;
+}
+.t-cell__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}
+.t-cell__icon { font-size: 32rpx; color: #FF7B00; }
+
+.t-cell__title-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.t-cell__title {
+  font-size: 30rpx;
+  color: #2D2A26;
+  font-weight: 500;
+  letter-spacing: 0.3rpx;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.t-cell__note {
+  font-size: 24rpx;
+  color: #8A8278;
+  margin-top: 4rpx;
+  letter-spacing: 0.3rpx;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.t-cell__right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 16rpx;
+}
+.t-cell__label {
+  font-size: 24rpx;
+  color: #C5B9A8;
+  background: #F5F5F7;
+  padding: 2rpx 12rpx;
+  border-radius: 8rpx;
+  margin-right: 8rpx;
+}
+.t-cell__value {
+  font-size: 26rpx;
+  color: #8A8278;
+  letter-spacing: 0.3rpx;
+}
+.t-cell__right-icon {
+  font-size: 28rpx;
+  color: #C7C7CC;
+  margin-left: 8rpx;
+}
+.t-cell__arrow {
+  width: 16rpx;
+  height: 16rpx;
+  border-top: 2rpx solid #C7C7CC;
+  border-right: 2rpx solid #C7C7CC;
+  transform: rotate(45deg);
+  margin-left: 16rpx;
+  margin-right: 4rpx;
+  flex-shrink: 0;
+}

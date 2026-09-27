@@ -1,0 +1,107 @@
+# 🔒 安全规范 · SECURITY.md
+
+> **该项目不会进行任何的商业化，仅供学习使用。所有密钥与第三方服务凭据均不得硬编码到源代码。**
+
+## ⚠️ 已修复的安全问题(本轮)
+
+| 类别 | 位置 | 状态 | 说明 |
+|---|---|---|---|
+| 微信支付商户密钥 | `cloudfunctions/wxpayFunctions/index.js` | ✅ 已修复 | 移除硬编码 `'PUB_KEY_ID_011...'` 字符串,改为 `process.env.WXPAY_MCH_KEY` 强校验 |
+| 微信支付商户号 | `cloudfunctions/wxpayFunctions/index.js` | ✅ 已修复 | 移除硬编码 `'1746178875'`,改为 `process.env.WXPAY_MCH_ID` |
+| 微信支付回调 URL | `cloudfunctions/wxpayFunctions/index.js` | ✅ 已修复 | 移除 `https://pay.weixin.qq.com/...` 占位符,改为 `process.env.WXPAY_NOTIFY_URL` |
+| 百度地图 AK | `cloudfunctions/baiduMap/index.js` | ✅ 已修复 | 移除硬编码 `'gw0Pjd...NLpBX'`,改为 `process.env.BAIDU_MAP_AK` |
+| 百度地图 MCP Key | `.mcp.json` | ✅ 已修复 | 改为 `${BAIDU_MAP_API_KEY}` 占位符 |
+| 腾讯地图 API Key(Android) | `project.miniapp.json` | ✅ 已修复 | 改为 `${TENCENT_MAP_API_KEY_ANDROID}` |
+| 腾讯地图 API Key(iOS) | `project.miniapp.json` | ✅ 已修复 | 改为 `${TENCENT_MAP_API_KEY_IOS}` |
+| WeChat AppSecret | (无) | ✅ 从未发现 | 项目中没有任何 AppSecret 明文 |
+
+## 🛡️ 配置流程
+
+### 1. 微信云开发控制台(推荐)
+
+访问 [微信云开发控制台](https://console.cloud.tencent.com/tcb) → 你的环境 → 云函数 → 选择函数 → 配置 → 环境变量:
+
+```
+WXPAY_MCH_ID     = 1900000109
+WXPAY_MCH_KEY    = 0123456789abcdef0123456789abcdef
+WXPAY_NOTIFY_URL = https://your-domain.com/pay/notify
+BAIDU_MAP_AK     = your_baidu_map_server_ak
+```
+
+### 2. `.env` 文件(本地开发)
+
+```bash
+# 1. 复制模板
+cp .env.example .env
+
+# 2. 编辑 .env 填入真实值
+# 3. .gitignore 已忽略 .env
+```
+
+### 3. IDE 终端注入
+
+```bash
+# macOS / Linux
+export $(cat .env | xargs)
+
+# Windows PowerShell
+Get-Content .env | ForEach-Object { Invoke-Expression "`n$_" }
+```
+
+### 4. 微信云托管 / CI
+
+在云托管控制台配置环境变量,或在 GitHub Actions 中:
+
+```yaml
+env:
+  WXPAY_MCH_KEY: ${{ secrets.WXPAY_MCH_KEY }}
+  BAIDU_MAP_AK: ${{ secrets.BAIDU_MAP_AK }}
+```
+
+## 🔍 安全审计清单
+
+部署前请逐项确认:
+
+- [ ] 微信云函数环境变量已配置 `WXPAY_MCH_ID` / `WXPAY_MCH_KEY` / `WXPAY_NOTIFY_URL`
+- [ ] 微信云函数环境变量已配置 `BAIDU_MAP_AK`(百度地图服务端类型)
+- [ ] `.env` 文件已创建且未提交到 Git
+- [ ] `.gitignore` 包含 `.env` / `.env.local` / `project.local.config.json`
+- [ ] 历史 commit 中没有泄露过密钥(用 `git log -p | grep -i "key\|secret"` 检查)
+- [ ] 如果历史 commit 中有泄露,**必须** 撤销并重新生成所有密钥
+- [ ] 生产部署前**必须** 关闭 devtools 的"允许跨域请求"等调试选项
+- [ ] `.mcp.json` 改为环境变量引用(本地通过 `~/.mcp_env` 或 IDE 注入)
+
+## 📜 安全原则
+
+1. **零硬编码**:任何密钥、令牌、密码都不应出现在源代码中
+2. **最小权限**:云函数只申请必需的权限,数据库只暴露需要的集合
+3. **环境隔离**:开发/测试/生产用不同的密钥和 AppID
+4. **定期轮换**:生产密钥每 3-6 个月轮换一次
+5. **审计日志**:启用云函数的日志查询,定期检查异常调用
+6. **HTTPS only**:所有回调 URL 必须是 https,禁止 http
+
+## 🛠 工具支持
+
+- **git-secrets**:防止密钥被提交
+  ```bash
+  brew install git-secrets
+  cd your-repo
+  git secrets --install
+  git secrets --register-aws  # 或自定义
+  ```
+
+- **truffleHog**:扫描历史 commit 中的密钥
+  ```bash
+  pip install truffleHog
+  truffleHog --regex --entropy=False /path/to/repo
+  ```
+
+- **gitleaks**:类似工具,更快
+  ```bash
+  brew install gitleaks
+  gitleaks detect --source ./
+  ```
+
+## 📞 问题反馈
+
+发现安全问题请联系:项目维护者(本项目为学习项目,无商业支持)

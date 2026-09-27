@@ -1,0 +1,473 @@
+/* pages/payment/payment.wxss */
+.page-payment {
+  min-height: 100vh;
+  background: #FAF8F5;
+  padding-bottom: 60rpx;
+}
+
+/* 来自 ?tab= 的高亮定位 */
+.card-highlight {
+  animation: cardPulse 1.2s ease;
+  box-shadow: 0 0 0 6rpx rgba(255, 123, 0, 0.18);
+}
+@keyframes cardPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 123, 0, 0.5); }
+  50%  { box-shadow: 0 0 0 12rpx rgba(255, 123, 0, 0.15); }
+  100% { box-shadow: 0 0 0 6rpx rgba(255, 123, 0, 0.18); }
+}
+
+/* ============ 钱包卡片 ============ */
+.wallet-card {
+  position: relative;
+  margin: 16rpx 16rpx 0;
+  padding: 32rpx 28rpx 28rpx;
+  background: linear-gradient(135deg, #2D2A26 0%, #5C554C 50%, #FF7B00 100%);
+  border-radius: 16rpx;
+  overflow: hidden;
+  color: #FFFDF9;
+}
+.wallet-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.wallet-bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+.wallet-bg-circle-1 {
+  width: 200rpx;
+  height: 200rpx;
+  top: -60rpx;
+  right: -40rpx;
+}
+.wallet-bg-circle-2 {
+  width: 140rpx;
+  height: 140rpx;
+  bottom: -50rpx;
+  left: -30rpx;
+  background: rgba(255,255,255,0.03);
+}
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.wallet-title {
+  font-size: 28rpx;
+  letter-spacing: 1rpx;
+  opacity: 0.9;
+}
+.wallet-detail-btn {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  opacity: 0.85;
+  padding: 6rpx 0;
+}
+.wallet-arrow {
+  font-size: 28rpx;
+  margin-left: 4rpx;
+  line-height: 1;
+}
+.wallet-balance {
+  display: flex;
+  align-items: baseline;
+  margin: 24rpx 0 32rpx;
+  position: relative;
+}
+.balance-symbol {
+  font-size: 36rpx;
+  font-weight: 500;
+  margin-right: 4rpx;
+}
+.balance-num {
+  font-size: 80rpx;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1rpx;
+}
+.balance-decimal {
+  font-size: 36rpx;
+  opacity: 0.7;
+  margin-left: 2rpx;
+}
+.wallet-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 16rpx;
+  position: relative;
+}
+.wallet-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12rpx;
+  padding: 20rpx 0;
+  font-size: 24rpx;
+}
+.wallet-action:active {
+  background: rgba(255,255,255,0.18);
+}
+.wa-icon {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+  font-weight: 500;
+}
+.wa-icon-recharge { background: #FF7B00; }
+.wa-icon-withdraw { background: #1677FF; }
+.wa-icon-transfer { background: #5CAA5C; }
+.wa-icon-card { background: #07C160; }
+
+/* ============ 通用 section ============ */
+.section {
+  background: #FFFDF9;
+  margin: 16rpx 16rpx 0;
+  border-radius: 12rpx;
+  border: 1rpx solid #EDE8E0;
+  overflow: hidden;
+}
+.section-title {
+  font-size: 22rpx;
+  color: #999;
+  padding: 20rpx 24rpx 8rpx;
+  letter-spacing: 1rpx;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 24rpx 8rpx;
+}
+.section-title-inline {
+  font-size: 22rpx;
+  color: #999;
+  letter-spacing: 1rpx;
+}
+.section-action {
+  font-size: 24rpx;
+  color: #FF7B00;
+}
+
+/* ============ 支付方式 ============ */
+.pay-method {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.pay-method:last-child { border-bottom: none; }
+.pay-method:active { background: #f7f5f0; }
+.pm-icon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+  position: relative;
+  color: #fff;
+  font-weight: 500;
+}
+.pm-icon-wechat { background: #07C160; }
+.pm-icon-balance { background: #FF7B00; font-size: 36rpx; }
+.pm-icon-credit { background: #4a90e2; font-size: 30rpx; }
+.pm-icon-enterprise { background: #5CAA5C; font-size: 30rpx; }
+.pm-icon-wechat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pm-wechat-shape {
+  width: 36rpx;
+  height: 28rpx;
+  background: #fff;
+  border-radius: 8rpx 8rpx 6rpx 6rpx;
+  position: relative;
+}
+.pm-wechat-shape::after {
+  content: "";
+  position: absolute;
+  bottom: -3rpx;
+  left: 4rpx;
+  border-left: 4rpx solid transparent;
+  border-right: 4rpx solid transparent;
+  border-top: 4rpx solid #fff;
+}
+.pm-wechat-dot {
+  position: absolute;
+  width: 4rpx;
+  height: 4rpx;
+  background: #07C160;
+  border-radius: 50%;
+}
+.pm-wechat-dot-1 { top: 24rpx; left: 26rpx; }
+.pm-wechat-dot-2 { bottom: 24rpx; right: 26rpx; }
+.pm-info {
+  flex: 1;
+  min-width: 0;
+}
+.pm-name {
+  font-size: 28rpx;
+  color: #2D2A26;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4rpx;
+}
+.pm-desc {
+  font-size: 22rpx;
+  color: #999;
+  display: block;
+}
+.pm-switch {
+  transform: scale(0.85);
+  transform-origin: right center;
+  flex-shrink: 0;
+}
+
+/* ============ 设置项 ============ */
+.setting-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.setting-item:last-child { border-bottom: none; }
+.setting-item:active { background: #f7f5f0; }
+.setting-info {
+  flex: 1;
+  min-width: 0;
+}
+.setting-name {
+  font-size: 28rpx;
+  color: #2D2A26;
+  display: block;
+  margin-bottom: 4rpx;
+}
+.setting-desc {
+  font-size: 22rpx;
+  color: #999;
+  display: block;
+}
+.setting-switch {
+  transform: scale(0.85);
+  transform-origin: right center;
+  flex-shrink: 0;
+}
+.setting-arrow {
+  font-size: 32rpx;
+  color: #c7c7cc;
+}
+
+/* ============ 银行卡 ============ */
+.bank-list {
+  padding: 8rpx 24rpx 16rpx;
+}
+.bank-card {
+  position: relative;
+  height: 180rpx;
+  border-radius: 12rpx;
+  margin-bottom: 16rpx;
+  overflow: hidden;
+  background: linear-gradient(135deg, #4a90e2 0%, #1677FF 100%);
+  color: #fff;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(74, 144, 226, 0.2);
+}
+.bank-card:nth-child(2) { background: linear-gradient(135deg, #FF7B00 0%, #FF5500 100%); box-shadow: 0 4rpx 12rpx rgba(255, 123, 0, 0.2); }
+.bank-card:nth-child(3) { background: linear-gradient(135deg, #5CAA5C 0%, #4a8a4a 100%); box-shadow: 0 4rpx 12rpx rgba(92, 170, 92, 0.2); }
+.bank-card-bg {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32rpx;
+}
+.bank-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+}
+.bank-type {
+  font-size: 22rpx;
+  opacity: 0.85;
+  background: rgba(255,255,255,0.2);
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+}
+.bank-card-num {
+  font-size: 36rpx;
+  letter-spacing: 4rpx;
+  font-family: monospace;
+  margin-bottom: 16rpx;
+}
+.bank-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+}
+.bank-default-badge {
+  background: #fff;
+  color: #4a90e2;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  font-weight: 500;
+}
+.empty-card {
+  text-align: center;
+  padding: 40rpx 0;
+  color: #C5B9A8;
+  font-size: 26rpx;
+}
+.add-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  margin: 0 24rpx 24rpx;
+  height: 80rpx;
+  border: 2rpx dashed #C5B9A8;
+  border-radius: 12rpx;
+  color: #999;
+  font-size: 26rpx;
+}
+.add-card-btn:active { background: #f7f5f0; }
+.acb-icon {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background: #FF7B00;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  line-height: 1;
+}
+
+/* ============ 优惠券/积分网格 ============ */
+.benefit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 8rpx 16rpx 24rpx;
+  gap: 12rpx;
+}
+.benefit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 0;
+  border-radius: 8rpx;
+}
+.benefit-item:active { background: #f7f5f0; }
+.benefit-num {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 6rpx;
+}
+.benefit-num-coupon { color: #e7a85f; }
+.benefit-num-points { color: #FF7B00; }
+.benefit-num-credit { color: #4a90e2; }
+.benefit-num-mall { color: #5CAA5C; }
+.benefit-label {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* ============ 交易记录 ============ */
+.tx-list {
+  padding-bottom: 8rpx;
+}
+.tx-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.tx-item:last-child { border-bottom: none; }
+.tx-icon {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+.tx-icon-pay { background: #e7a85f; }
+.tx-icon-recharge { background: #5CAA5C; }
+.tx-icon-refund { background: #4a90e2; }
+.tx-info {
+  flex: 1;
+  min-width: 0;
+}
+.tx-title {
+  font-size: 26rpx;
+  color: #2D2A26;
+  display: block;
+  margin-bottom: 4rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tx-time {
+  font-size: 22rpx;
+  color: #C5B9A8;
+  display: block;
+}
+.tx-amount-wrap {
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: 12rpx;
+}
+.tx-amount {
+  font-size: 30rpx;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2rpx;
+}
+.tx-amount-in { color: #5CAA5C; }
+.tx-amount-out { color: #2D2A26; }
+.tx-status {
+  font-size: 20rpx;
+  display: inline-block;
+  padding: 2rpx 8rpx;
+  border-radius: 3rpx;
+}
+.tx-status-success { color: #5CAA5C; background: #e3f3e3; }
+.tx-status-pending { color: #e7a85f; background: #fdf3e3; }
+.tx-status-failed { color: #e74c3c; background: #fef0ef; }
+.empty-tx {
+  text-align: center;
+  padding: 40rpx 0;
+  color: #C5B9A8;
+  font-size: 26rpx;
+}
+
+/* ============ 底部 ============ */
+.pay-foot {
+  text-align: center;
+  font-size: 22rpx;
+  color: #C5B9A8;
+  padding: 40rpx 24rpx 20rpx;
+  letter-spacing: 1rpx;
+}
+@import 'payment-wxa-auto-dark.wxss'

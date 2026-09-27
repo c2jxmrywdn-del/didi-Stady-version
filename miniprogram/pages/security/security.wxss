@@ -1,0 +1,341 @@
+/* pages/security/security.wxss */
+.page-security {
+  min-height: 100vh;
+  background: #FAF8F5;
+  padding-bottom: 60rpx;
+}
+
+.security-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48rpx 24rpx 40rpx;
+  background: linear-gradient(180deg, #F5F0E8 0%, #FAF8F5 100%);
+}
+.status-icon {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  background: #FFFDF9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  border: 2rpx solid #EDE8E0;
+}
+.mi-shield-big {
+  width: 70rpx;
+  height: 80rpx;
+  background: #5CAA5C;
+  border-radius: 40rpx 40rpx 40rpx 8rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mi-shield-check {
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.status-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2D2A26;
+  letter-spacing: 1rpx;
+}
+.status-sub {
+  font-size: 24rpx;
+  color: #8A8278;
+  margin-top: 8rpx;
+}
+
+.section {
+  background: #FFFDF9;
+  margin: 16rpx 12rpx 0;
+  border-radius: 12rpx;
+  border: 1rpx solid #EDE8E0;
+  overflow: hidden;
+}
+.section-title {
+  font-size: 22rpx;
+  color: #999;
+  padding: 24rpx 24rpx 8rpx;
+  letter-spacing: 1rpx;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.feature-item:last-child { border-bottom: none; }
+.feature-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+.feature-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+.feature-icon-green { background: #e3f3e3; }
+.feature-icon-blue { background: #e3eef9; }
+.feature-icon-orange { background: #fdf3e3; }
+.feature-icon-purple { background: #f3e8f3; }
+.feature-icon-red { background: #fef0ef; }
+.feature-icon-inner {
+  width: 28rpx;
+  height: 28rpx;
+  position: relative;
+}
+.feature-info {
+  flex: 1;
+  min-width: 0;
+}
+.feature-name {
+  font-size: 28rpx;
+  color: #2D2A26;
+  display: block;
+  font-weight: 500;
+}
+.feature-desc {
+  font-size: 22rpx;
+  color: #999;
+  display: block;
+  margin-top: 4rpx;
+}
+.feature-switch {
+  transform: scale(0.8);
+  transform-origin: right center;
+  flex-shrink: 0;
+}
+
+/* 功能图标 */
+.mi-share {
+  width: 22rpx;
+  height: 22rpx;
+  border-radius: 50%;
+  background: #2D2A26;
+  position: relative;
+}
+.mi-share::after {
+  content: "";
+  position: absolute;
+  top: -4rpx;
+  left: -4rpx;
+  width: 18rpx;
+  height: 18rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 50%;
+  background: #FFFDF9;
+}
+.mi-call {
+  width: 22rpx;
+  height: 22rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 4rpx;
+  transform: rotate(135deg);
+  position: relative;
+}
+.mi-call::after {
+  content: "";
+  position: absolute;
+  top: -6rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rpx;
+  height: 8rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 4rpx 4rpx 0 0;
+  border-bottom: none;
+}
+.mi-mask {
+  width: 24rpx;
+  height: 18rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 6rpx;
+  position: relative;
+}
+.mi-mask::before,
+.mi-mask::after {
+  content: "";
+  position: absolute;
+  width: 6rpx;
+  height: 4rpx;
+  background: #2D2A26;
+}
+.mi-mask::before { top: 2rpx; left: 2rpx; }
+.mi-mask::after { top: 2rpx; right: 2rpx; }
+.mi-record {
+  width: 22rpx;
+  height: 22rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 50%;
+  position: relative;
+}
+.mi-record::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8rpx;
+  height: 8rpx;
+  background: #2D2A26;
+  border-radius: 50%;
+}
+.mi-verify {
+  width: 24rpx;
+  height: 24rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 4rpx;
+  position: relative;
+}
+.mi-verify::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18rpx;
+  font-weight: bold;
+  color: #2D2A26;
+}
+
+/* 工具网格 */
+.tool-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 16rpx;
+  padding: 24rpx;
+}
+.tool-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 8rpx;
+  border-radius: 8rpx;
+}
+.tool-item:active { background: #f7f5f0; }
+.tool-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  background: #FAF8F5;
+  border: 1rpx solid #EDE8E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12rpx;
+  position: relative;
+}
+.tool-icon-red {
+  background: #fef0ef;
+  border-color: #f7d7d2;
+}
+.tool-name {
+  font-size: 24rpx;
+  color: #2D2A26;
+  text-align: center;
+}
+.tool-desc {
+  font-size: 20rpx;
+  color: #C5B9A8;
+  text-align: center;
+  margin-top: 2rpx;
+}
+.mi-emergency {
+  width: 32rpx;
+  height: 28rpx;
+  background: #e74c3c;
+  border-radius: 4rpx 4rpx 0 0;
+  position: relative;
+}
+.mi-emergency::after {
+  content: "!";
+  position: absolute;
+  top: 4rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: bold;
+  line-height: 1;
+}
+.mi-fake {
+  width: 22rpx;
+  height: 28rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 4rpx 4rpx 8rpx 8rpx;
+  position: relative;
+}
+.mi-fake::before {
+  content: "";
+  position: absolute;
+  top: 8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rpx;
+  height: 8rpx;
+  background: #2D2A26;
+}
+.mi-fake::after {
+  content: "";
+  position: absolute;
+  bottom: 2rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rpx;
+  height: 2rpx;
+  background: #2D2A26;
+  border-radius: 1rpx;
+}
+.mi-flag {
+  width: 4rpx;
+  height: 28rpx;
+  background: #2D2A26;
+  position: relative;
+}
+.mi-flag::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 4rpx;
+  width: 16rpx;
+  height: 12rpx;
+  background: #2D2A26;
+  border-radius: 0 4rpx 4rpx 0;
+}
+
+/* 提示 */
+.tips {
+  margin: 24rpx 24rpx 0;
+  padding: 24rpx;
+  background: #FFFDF9;
+  border-radius: 12rpx;
+  border: 1rpx solid #EDE8E0;
+}
+.tips-title {
+  font-size: 24rpx;
+  color: #999;
+  display: block;
+  margin-bottom: 12rpx;
+}
+.tips-item {
+  font-size: 24rpx;
+  color: #8A8278;
+  display: block;
+  line-height: 1.7;
+  margin-top: 6rpx;
+}
+@import 'security-wxa-auto-dark.wxss'

@@ -1,0 +1,61 @@
+/* components/tdesign/t-tag/index.wxss */
+.t-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 22rpx;
+  font-weight: 500;
+  letter-spacing: 0.5rpx;
+  line-height: 1;
+  border-radius: 6rpx;
+  padding: 4rpx 12rpx;
+  vertical-align: middle;
+}
+.t-tag--small  { font-size: 20rpx; padding: 2rpx 8rpx;  border-radius: 4rpx; }
+.t-tag--medium { font-size: 24rpx; padding: 6rpx 14rpx; border-radius: 6rpx; }
+.t-tag--large  { font-size: 28rpx; padding: 8rpx 18rpx; border-radius: 8rpx; }
+
+.t-tag--round  { border-radius: 1000rpx; padding-left: 16rpx; padding-right: 16rpx; }
+
+.t-tag--light  { background: rgba(255, 123, 0, 0.12); color: #FF7B00; }
+.t-tag--light.t-tag--success  { background: rgba(92, 170, 92, 0.12); color: #5CAA5C; }
+.t-tag--light.t-tag--warning  { background: rgba(241, 196, 15, 0.16); color: #B7950B; }
+.t-tag--light.t-tag--danger   { background: rgba(231, 76, 60, 0.12); color: #E74C3C; }
+.t-tag--light.t-tag--default  { background: #F5F5F7; color: #5C554C; }
+
+.t-tag--dark   { background: #FF7B00; color: #FFFFFF; }
+.t-tag--dark.t-tag--success  { background: #5CAA5C; color: #FFFFFF; }
+.t-tag--dark.t-tag--warning  { background: #F1C40F; color: #2D2A26; }
+.t-tag--dark.t-tag--danger   { background: #E74C3C; color: #FFFFFF; }
+.t-tag--dark.t-tag--default  { background: #5C554C; color: #FFFFFF; }
+
+.t-tag--outline { background: transparent; border: 1rpx solid #FF7B00; color: #FF7B00; }
+.t-tag--outline.t-tag--success  { border-color: #5CAA5C; color: #5CAA5C; }
+.t-tag--outline.t-tag--warning  { border-color: #F1C40F; color: #B7950B; }
+.t-tag--outline.t-tag--danger   { border-color: #E74C3C; color: #E74C3C; }
+.t-tag--outline.t-tag--default  { border-color: #C7C7CC; color: #5C554C; }
+
+.t-tag--light-outline {
+  background: rgba(255, 123, 0, 0.08);
+  border: 1rpx solid rgba(255, 123, 0, 0.32);
+  color: #FF7B00;
+}
+
+.t-tag__close {
+  position: relative;
+  width: 18rpx;
+  height: 18rpx;
+  margin-left: 6rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.t-tag__close-line {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 14rpx;
+  height: 2rpx;
+  background: currentColor;
+  border-radius: 1rpx;
+}
+.t-tag__close-line-1 { transform: translate(-50%, -50%) rotate(45deg); }
+.t-tag__close-line-2 { transform: translate(-50%, -50%) rotate(-45deg); }

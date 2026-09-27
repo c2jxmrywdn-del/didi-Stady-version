@@ -1,0 +1,185 @@
+/* 
+使用方法：
+在 chat-list.wxss 文件末尾引入样式
+```
+@import "./chat-list-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-chat-list {
+        background: rgb(23, 22, 20);
+    }
+
+    .chat-top {
+        background: rgb(20, 18, 15);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .chat-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-unread {
+        color: rgb(126, 118, 108);
+    }
+
+    .chat-search {
+        background: rgb(20, 18, 15);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .chat-search-wrap {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-search-icon {
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-search-icon::after {
+        background: rgb(99, 99, 99);
+    }
+
+    .chat-search-input {
+        color: rgb(255, 255, 255);
+    }
+
+    .service-entry {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .service-entry:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .service-icon {
+        background: rgb(0, 0, 0);
+    }
+
+    .mi-headset {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-headset::before {
+        border: rgb(0, 0, 0);
+    }
+
+    .service-name {
+        color: rgb(255, 255, 255);
+    }
+
+    .service-desc {
+        color: rgb(99, 99, 99);
+    }
+
+    .service-arrow {
+        color: rgb(58, 58, 62);
+    }
+
+    .chat-list {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .chat-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .chat-unread {
+        background: rgb(17, 17, 17);
+    }
+
+    .chat-avatar {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-status-dot {
+        background: rgb(31, 113, 40);
+        border: rgb(0, 0, 0);
+    }
+
+    .chat-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-time {
+        color: rgb(77, 67, 53);
+    }
+
+    .chat-preview {
+        color: rgb(174, 165, 155);
+    }
+
+    .chat-unread .chat-preview {
+        color: rgb(223, 219, 214);
+    }
+
+    .chat-subtitle {
+        color: rgb(77, 67, 53);
+    }
+
+    .chat-unread-badge {
+        background: rgb(213, 59, 47);
+        color: rgb(17, 17, 17);
+    }
+
+    .empty-icon {
+        background: rgb(30, 27, 21);
+    }
+
+    .empty-bubble {
+        background: rgb(77, 67, 53);
+    }
+
+    .empty-bubble-tail {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .empty-text {
+        color: rgb(126, 118, 108);
+    }
+
+    .empty-sub {
+        color: rgb(77, 67, 53);
+    }
+
+    .action-mask {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    .action-card {
+        background: rgb(20, 18, 15);
+    }
+
+    .action-title {
+        color: rgb(99, 99, 99);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .action-item {
+        color: rgb(255, 255, 255);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .action-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .action-danger {
+        color: rgb(213, 59, 47);
+    }
+
+    .action-cancel {
+        color: rgb(99, 99, 99);
+        background: rgb(23, 22, 20);
+        border-top: rgb(0, 0, 0);
+    }
+}

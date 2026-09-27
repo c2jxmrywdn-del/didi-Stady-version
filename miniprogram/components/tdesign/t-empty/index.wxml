@@ -1,0 +1,12 @@
+<view class="t-empty t-empty--{{size}}">
+  <view class="t-empty__icon">
+    <block wx:if="{{icon.startsWith('http') || icon.startsWith('/') || icon.startsWith('data:image')}}">
+      <image class="t-empty__image" src="{{icon}}" mode="aspectFit"/>
+    </block>
+    <block wx:else>
+      <text class="t-empty__emoji">{{icon || '📋'}}</text>
+    </block>
+  </view>
+  <text class="t-empty__desc">{{description}}</text>
+  <view wx:if="{{actionText}}" class="t-empty__action" bindtap="onAction">{{actionText}}</view>
+</view>

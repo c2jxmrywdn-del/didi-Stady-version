@@ -1,0 +1,83 @@
+<!-- pages/my-coupons/my-coupons.wxml — 我的优惠卷 -->
+<view class="page-my-coupons">
+  <!-- 标签切换 -->
+  <view class="coupons-tabs">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="key"
+      class="coupons-tab {{currentTab === item.key ? 'coupons-tab-active' : ''}}"
+      data-key="{{item.key}}"
+      bindtap="onTabChange"
+    >
+      <text>{{item.label}}</text>
+      <view wx:if="{{item.count > 0}}" class="coupons-tab-count">{{item.count}}</view>
+    </view>
+  </view>
+
+  <!-- 优惠卷列表 -->
+  <view wx:if="{{displayCoupons.length > 0}}" class="coupons-list">
+    <view
+      wx:for="{{displayCoupons}}"
+      wx:key="id"
+      class="coupon-item {{item.status === 'used' ? 'coupon-used' : ''}} {{item.status === 'expired' ? 'coupon-expired' : ''}}"
+    >
+      <!-- 左侧金额 -->
+      <view class="coupon-left">
+        <view class="coupon-amount">
+          <text wx:if="{{item.type === 'cash'}}" class="coupon-currency">¥</text>
+          <text wx:elif="{{item.type === 'discount'}}" class="coupon-discount">{{item.discount}}</text>
+          <text wx:else class="coupon-currency">¥</text>
+          <text wx:if="{{item.type !== 'discount'}}" class="coupon-num">{{item.amount}}</text>
+          <text wx:if="{{item.type === 'discount'}}" class="coupon-discount-text">折</text>
+        </view>
+        <text class="coupon-condition">{{item.minAmount > 0 ? '满' + item.minAmount + '元可用' : '无门槛'}}</text>
+      </view>
+
+      <!-- 分割线 -->
+      <view class="coupon-divider">
+        <view class="coupon-divider-circle coupon-divider-top"></view>
+        <view class="coupon-divider-line"></view>
+        <view class="coupon-divider-circle coupon-divider-bottom"></view>
+      </view>
+
+      <!-- 右侧信息 -->
+      <view class="coupon-right">
+        <text class="coupon-name">{{item.name}}</text>
+        <text class="coupon-scope">{{item.scope || '全场可用'}}</text>
+        <text class="coupon-expire">有效期：{{item.expireText}}</text>
+        <view class="coupon-status-wrap">
+          <text wx:if="{{item.status === 'unused'}}" class="coupon-status coupon-status-unused">未使用</text>
+          <text wx:elif="{{item.status === 'used'}}" class="coupon-status coupon-status-used">已使用</text>
+          <text wx:elif="{{item.status === 'expired'}}" class="coupon-status coupon-status-expired">已过期</text>
+          <view wx:if="{{item.status === 'unused'}}" class="coupon-action" bindtap="onUseCoupon" data-id="{{item.id}}">
+            <text>立即使用</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:else class="empty-wrap">
+    <view class="empty-illu">
+      <view class="empty-ticket">
+        <view class="empty-ticket-line"></view>
+        <view class="empty-ticket-line"></view>
+      </view>
+    </view>
+    <text class="empty-text">暂无{{currentTabLabel}}</text>
+    <text class="empty-sub">{{emptyHint}}</text>
+    <view class="empty-btn" bindtap="onGetMore">
+      <text>领取更多优惠卷</text>
+    </view>
+  </view>
+
+  <!-- 底部使用说明 -->
+  <view wx:if="{{displayCoupons.length > 0}}" class="coupons-foot">
+    <text class="foot-title">使用说明</text>
+    <view class="foot-item">· 优惠卷仅限本账号使用，不可转让</view>
+    <view class="foot-item">· 每笔订单仅可使用一张优惠卷，不可叠加</view>
+    <view class="foot-item">· 优惠卷不可兑换现金，找零不返还</view>
+    <view class="foot-item">· 如有疑问请联系客服 400-000-0999</view>
+  </view>
+</view>

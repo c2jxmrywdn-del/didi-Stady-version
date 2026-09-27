@@ -1,0 +1,222 @@
+<!-- pages/payment/payment.wxml — 支付管理 -->
+<view class="page-payment">
+  <!-- 钱包卡片 -->
+  <view id="wallet-card" class="wallet-card {{highlightTab === 'balance' ? 'card-highlight' : ''}}">
+    <view class="wallet-bg">
+      <view class="wallet-bg-circle wallet-bg-circle-1"></view>
+      <view class="wallet-bg-circle wallet-bg-circle-2"></view>
+    </view>
+    <view class="wallet-header">
+      <text class="wallet-title">我的钱包</text>
+      <view class="wallet-detail-btn" bindtap="onWalletDetail">
+        <text>账单明细</text>
+        <text class="wallet-arrow">›</text>
+      </view>
+    </view>
+    <view class="wallet-balance">
+      <text class="balance-symbol">¥</text>
+      <text class="balance-num">{{balance}}</text>
+      <text class="balance-decimal">.{{balanceDecimal}}</text>
+    </view>
+    <view class="wallet-actions">
+      <view class="wallet-action" bindtap="onRecharge">
+        <view class="wa-icon wa-icon-recharge">+</view>
+        <text>充值</text>
+      </view>
+      <view class="wallet-action" bindtap="onWithdraw">
+        <view class="wa-icon wa-icon-withdraw">↑</view>
+        <text>提现</text>
+      </view>
+      <view class="wallet-action" bindtap="onTransfer">
+        <view class="wa-icon wa-icon-transfer">⇆</view>
+        <text>转账</text>
+      </view>
+      <view class="wallet-action" bindtap="onBankCard">
+        <view class="wa-icon wa-icon-card">卡</view>
+        <text>银行卡</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 支付方式 -->
+  <view class="section">
+    <view class="section-title">支付方式</view>
+
+    <view class="pay-method" bindtap="onPayMethodToggle" data-method="wechat">
+      <view class="pm-icon pm-icon-wechat">
+        <view class="pm-wechat-shape"></view>
+        <view class="pm-wechat-dot pm-wechat-dot-1"></view>
+        <view class="pm-wechat-dot pm-wechat-dot-2"></view>
+      </view>
+      <view class="pm-info">
+        <text class="pm-name">微信支付</text>
+        <text class="pm-desc">{{payMethods.wechat ? '已开启' : '未开启'}} · 推荐使用</text>
+      </view>
+      <switch class="pm-switch" checked="{{payMethods.wechat}}" color="#07C160" data-method="wechat" bindchange="onPayMethodChange" />
+    </view>
+
+    <view class="pay-method" bindtap="onPayMethodToggle" data-method="balance">
+      <view class="pm-icon pm-icon-balance">¥</view>
+      <view class="pm-info">
+        <text class="pm-name">钱包余额</text>
+        <text class="pm-desc">余额 ¥{{balance}} 元 · 自动扣款</text>
+      </view>
+      <switch class="pm-switch" checked="{{payMethods.balance}}" color="#FF7B00" data-method="balance" bindchange="onPayMethodChange" />
+    </view>
+
+    <view class="pay-method" bindtap="onPayMethodToggle" data-method="credit">
+      <view class="pm-icon pm-icon-credit">信</view>
+      <view class="pm-info">
+        <text class="pm-name">信用支付</text>
+        <text class="pm-desc">先用后付 · 信用额度 ¥{{creditLimit}}</text>
+      </view>
+      <switch class="pm-switch" checked="{{payMethods.credit}}" color="#4a90e2" data-method="credit" bindchange="onPayMethodChange" />
+    </view>
+
+    <view class="pay-method" bindtap="onPayMethodToggle" data-method="enterprise">
+      <view class="pm-icon pm-icon-enterprise">企</view>
+      <view class="pm-info">
+        <text class="pm-name">企业账户</text>
+        <text class="pm-desc">差旅月结 · 需要企业认证</text>
+      </view>
+      <switch class="pm-switch" checked="{{payMethods.enterprise}}" color="#5CAA5C" data-method="enterprise" bindchange="onPayMethodChange" />
+    </view>
+  </view>
+
+  <!-- 免密支付 -->
+  <view class="section">
+    <view class="section-title">免密支付</view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-name">免密支付</text>
+        <text class="setting-desc">订单金额 ≤{{freePayLimit}} 元可免密扣款</text>
+      </view>
+      <switch class="setting-switch" checked="{{freePayEnabled}}" color="#FF7B00" bindchange="onFreePayChange" />
+    </view>
+    <view class="setting-item" bindtap="onSetLimit">
+      <view class="setting-info">
+        <text class="setting-name">免密额度</text>
+        <text class="setting-desc">当前 ¥{{freePayLimit}} 元，可调整</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 银行卡 -->
+  <view class="section">
+    <view class="section-title">银行卡</view>
+    <view wx:if="{{bankCards.length > 0}}" class="bank-list">
+      <view
+        wx:for="{{bankCards}}"
+        wx:key="id"
+        class="bank-card"
+        bindlongpress="onBankCardLongPress"
+        data-id="{{item.id}}"
+      >
+        <view class="bank-card-bg">
+          <text class="bank-name">{{item.bankName}}</text>
+          <text class="bank-type">{{item.cardType}}</text>
+        </view>
+        <view class="bank-card-num">{{item.cardNum}}</view>
+        <view class="bank-card-bottom">
+          <text class="bank-card-holder">{{item.holder}}</text>
+          <text wx:if="{{item.isDefault}}" class="bank-default-badge">默认</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="empty-card">
+      <text>暂未绑定银行卡</text>
+    </view>
+    <view class="add-card-btn" bindtap="onAddBankCard">
+      <view class="acb-icon">+</view>
+      <text>添加银行卡</text>
+    </view>
+  </view>
+
+  <!-- 优惠券/积分 -->
+  <view class="section">
+    <view class="section-title">优惠券与积分</view>
+    <view class="benefit-grid">
+      <view class="benefit-item" bindtap="onViewCoupons">
+        <view class="benefit-num benefit-num-coupon">{{couponCount}}</view>
+        <text class="benefit-label">优惠卷</text>
+      </view>
+      <view class="benefit-item" id="points-card" bindtap="onExchangePoints">
+        <view class="benefit-num benefit-num-points">{{points}}</view>
+        <text class="benefit-label">可用积分(兑换)</text>
+      </view>
+      <view class="benefit-item" id="credit-card" bindtap="onRepayCredit">
+        <view class="benefit-num benefit-num-credit">¥{{creditRemain}}</view>
+        <text class="benefit-label">信用余额(已用 ¥{{creditUsed}})</text>
+      </view>
+      <view class="benefit-item">
+        <view class="benefit-num benefit-num-mall">0</view>
+        <text class="benefit-label">商城权益</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 交易记录 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title-inline">最近交易</text>
+      <text class="section-action" bindtap="onViewAllTransactions">查看全部 ›</text>
+    </view>
+    <view wx:if="{{transactions.length > 0}}" class="tx-list">
+      <view
+        wx:for="{{transactions}}"
+        wx:key="id"
+        class="tx-item"
+      >
+        <view class="tx-icon tx-icon-{{item.type}}">
+          <text wx:if="{{item.type === 'pay'}}">↓</text>
+          <text wx:elif="{{item.type === 'recharge'}}">+</text>
+          <text wx:elif="{{item.type === 'refund'}}">↑</text>
+        </view>
+        <view class="tx-info">
+          <text class="tx-title">{{item.title}}</text>
+          <text class="tx-time">{{item.timeText}}</text>
+        </view>
+        <view class="tx-amount-wrap">
+          <text class="tx-amount {{item.type === 'recharge' || item.type === 'refund' ? 'tx-amount-in' : 'tx-amount-out'}}">
+            {{item.type === 'recharge' || item.type === 'refund' ? '+' : '-'}}{{item.amount}}
+          </text>
+          <text class="tx-status tx-status-{{item.status}}">{{item.statusText}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="empty-tx">
+      <text>暂无交易记录</text>
+    </view>
+  </view>
+
+  <!-- 支付设置 -->
+  <view class="section">
+    <view class="section-title">支付设置</view>
+    <view class="setting-item" bindtap="onAutoPay">
+      <view class="setting-info">
+        <text class="setting-name">自动支付</text>
+        <text class="setting-desc">行程结束后自动扣款，无需手动确认</text>
+      </view>
+      <switch class="setting-switch" checked="{{autoPayEnabled}}" color="#FF7B00" bindchange="onAutoPayChange" />
+    </view>
+    <view class="setting-item" bindtap="onInvoiceSetting">
+      <view class="setting-info">
+        <text class="setting-name">发票管理</text>
+        <text class="setting-desc">申请发票 / 查看历史发票</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="onPayHistory">
+      <view class="setting-info">
+        <text class="setting-name">扣费记录</text>
+        <text class="setting-desc">查看所有历史扣费明细</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="pay-foot">
+    <text>支付服务由微信支付提供 · 资金安全保障</text>
+  </view>
+</view>

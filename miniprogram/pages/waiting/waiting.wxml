@@ -1,0 +1,170 @@
+<!--pages/waiting/waiting.wxml—极简等待页-->
+<view class="page-waiting">
+  <map
+    id="map"
+    class="map"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    markers="{{markers}}"
+    polyline="{{polyline}}"
+    show-location
+  ></map>
+
+  <!-- 顶部状态 -->
+  <view class="top-status">
+    <view class="status-badge status-{{matchStatus}}">
+      <view class="status-pulse" wx:if="{{matchStatus === 'matching'}}"></view>
+    </view>
+    <text class="status-text">{{matchStatusText}}</text>
+    <text class="wait-time">等待 {{waitTime}}s</text>
+  </view>
+
+  <!-- 底部面板 -->
+  <view class="bottom-panel">
+    <!-- 匹配中动画 -->
+    <view wx:if="{{matchStatus === 'matching'}}" class="matching-section">
+      <view class="matching-animation">
+        <view class="pulse-ring ring-1"></view>
+        <view class="pulse-ring ring-2"></view>
+        <view class="pulse-ring ring-3"></view>
+        <!-- 小车装饰 -->
+        <view class="car-deco">
+          <view class="car-lower"></view>
+          <view class="car-upper"></view>
+          <view class="car-windshield"></view>
+          <view class="car-rear-window"></view>
+          <view class="car-hood"></view>
+          <view class="car-headlight"></view>
+          <view class="car-grille"></view>
+          <view class="car-mirror"></view>
+          <view class="car-door-line"></view>
+          <view class="car-waist-line"></view>
+          <view class="car-bottom-line"></view>
+          <view class="car-arch-front"></view>
+          <view class="car-arch-rear"></view>
+          <view class="car-wheel-front"></view>
+          <view class="car-wheel-rear"></view>
+        </view>
+      </view>
+      <text class="matching-text">正在寻找附近司机</text>
+      <text class="matching-sub">预计等待1-3分钟</text>
+    </view>
+
+    <!-- 司机信息 -->
+    <view wx:if="{{matchStatus !== 'matching' && driverInfo}}" class="driver-section">
+      <view class="driver-card">
+        <view class="driver-top">
+          <view class="driver-avatar">
+            <text class="driver-avatar-text">{{driverInfo.name[0]}}</text>
+          </view>
+          <view class="driver-info">
+            <text class="driver-name">{{driverInfo.name}}</text>
+            <view class="driver-rating">
+              <text class="rating-num">{{driverInfo.rating}}</text>
+              <text class="rating-trips">{{driverInfo.trips}}单</text>
+            </view>
+          </view>
+          <view class="driver-actions">
+            <view class="action-btn" bindtap="onCallDriver">
+              <view class="action-icon-view"><view class="ai-phone"></view></view>
+            </view>
+            <view class="action-btn" bindtap="onMessageDriver">
+              <view class="action-icon-view"><view class="ai-msg"></view></view>
+            </view>
+          </view>
+        </view>
+        <view class="driver-car">
+          <text class="car-info">{{driverInfo.carModel}} · {{driverInfo.car}}</text>
+        </view>
+      </view>
+
+      <!-- 行程信息 -->
+      <view class="trip-info card">
+        <view class="trip-point">
+          <view class="trip-dot dot-green"></view>
+          <text class="trip-address ellipsis">{{orderInfo.startAddress.name}}</text>
+        </view>
+        <view class="trip-line"></view>
+        <view class="trip-point">
+          <view class="trip-dot dot-dark"></view>
+          <text class="trip-address ellipsis">{{orderInfo.endAddress.name}}</text>
+        </view>
+        <view class="trip-meta">
+          <text class="meta-car">{{orderInfo.carName}}</text>
+          <text class="meta-price">预估 ¥{{orderInfo.estimatePrice}}</text>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="action-section">
+        <button class="cancel-btn" bindtap="onShowCancel">取消订单</button>
+        <button wx:if="{{matchStatus === 'arriving'}}" class="ride-btn btn-primary" bindtap="onSimulateRide">模拟上车</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 取消弹窗 -->
+  <view wx:if="{{showCancelModal}}" class="modal-mask">
+    <view class="modal-content">
+      <text class="modal-title">取消订单</text>
+      <text class="modal-subtitle">请选择取消原因</text>
+      <view class="reason-list">
+        <view
+          wx:for="{{cancelReasons}}"
+          wx:key="index"
+          class="reason-item {{selectedReason === index ? 'reason-selected' : ''}}"
+          data-index="{{index}}"
+          bindtap="onSelectReason"
+        >
+          <view class="reason-radio {{selectedReason === index ? 'radio-checked' : ''}}"></view>
+          <text class="reason-text">{{item}}</text>
+        </view>
+      </view>
+      <view class="modal-actions">
+        <button class="modal-cancel" bindtap="onHideCancel">返回</button>
+        <button class="modal-confirm" bindtap="onConfirmCancel">确认取消</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 司机轻聊弹窗 -->
+  <view wx:if="{{showChatPanel && driverInfo}}" class="chat-mask" bindtap="closeChatPanel">
+    <view class="chat-panel">
+      <view class="chat-header">
+        <view class="chat-avatar">
+          <text class="chat-avatar-text">{{driverInfo.name[0]}}</text>
+        </view>
+        <view class="chat-header-info">
+          <text class="chat-name">{{driverInfo.name}}</text>
+          <text class="chat-status">司机 · {{driverInfo.carModel}}</text>
+        </view>
+        <view class="chat-close" catchtap="closeChatPanel">✕</view>
+      </view>
+      <scroll-view class="chat-body" scroll-y>
+        <view class="chat-msg chat-msg-driver">
+          <text class="chat-bubble">{{driverMsg1}}</text>
+        </view>
+        <view class="chat-msg chat-msg-driver">
+          <text class="chat-bubble">{{driverMsg2}}</text>
+        </view>
+        <view wx:if="{{sentQuickMsg}}" class="chat-msg chat-msg-me">
+          <text class="chat-bubble chat-bubble-me">{{sentQuickMsg}}</text>
+        </view>
+      </scroll-view>
+      <view class="chat-quick">
+        <view class="chat-quick-item" bindtap="onSendQuick" data-msg="我马上到">
+          <text>我马上到</text>
+        </view>
+        <view class="chat-quick-item" bindtap="onSendQuick" data-msg="请在原地等我">
+          <text>请在原地等我</text>
+        </view>
+        <view class="chat-quick-item" bindtap="onSendQuick" data-msg="车牌号多少？">
+          <text>车牌号多少？</text>
+        </view>
+        <view class="chat-quick-item" bindtap="onSendQuick" data-msg="到了请打电话">
+          <text>到了请打电话</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

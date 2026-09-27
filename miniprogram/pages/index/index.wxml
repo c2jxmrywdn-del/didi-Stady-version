@@ -1,0 +1,182 @@
+<!--pages/index/index.wxml—极简首页-->
+<view class="page-index">
+  <view class="status-bar" style="height: {{statusBarHeight}}px"></view>
+
+  <map
+    id="map"
+    class="map"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    scale="15"
+    markers="{{nearbyDrivers}}"
+    polyline="{{polyline}}"
+    show-location
+    enable-traffic
+  ></map>
+
+  <!-- 定位按钮 -->
+  <view class="locate-btn" bindtap="onMoveToLocation">
+    <view class="locate-icon"></view>
+  </view>
+
+  <!-- 底部面板 -->
+  <view class="bottom-panel {{showTypePanel ? 'panel-expanded' : ''}}">
+    <!-- 地址输入 -->
+    <view class="address-section">
+      <view class="address-row" bindtap="onChooseStart">
+        <view class="address-dot dot-green"></view>
+        <view class="address-info">
+          <text class="address-text">{{startAddress.name || '请选择出发地'}}</text>
+        </view>
+        <text class="address-arrow">›</text>
+      </view>
+      <view class="address-divider">
+        <view class="address-divider-line"></view>
+      </view>
+      <view class="address-row" bindtap="onChooseEnd">
+        <view class="address-dot dot-dark"></view>
+        <view class="address-info">
+          <text class="address-text {{endAddress ? '' : 'placeholder'}}">{{endAddress.name || '你要去哪儿？'}}</text>
+        </view>
+        <text class="address-arrow">›</text>
+      </view>
+    </view>
+
+    <!-- 车型选择 -->
+    <view class="car-type-section" wx:if="{{showTypePanel || endAddress}}">
+      <view class="car-type-header" bindtap="onTogglePanel">
+        <text class="car-type-title">选择车型</text>
+        <text class="car-type-arrow {{showTypePanel ? 'arrow-up' : ''}}">›</text>
+      </view>
+      <view class="car-type-list" wx:if="{{showTypePanel}}">
+        <view
+          wx:for="{{carTypes}}"
+          wx:key="key"
+          class="car-type-item {{item.active ? 'car-type-active' : ''}}"
+          data-key="{{item.key}}"
+          bindtap="onTypeSelect"
+        >
+          <view class="car-type-icon-view">
+            <view class="car-wheel car-wheel-front"></view>
+            <view class="car-wheel car-wheel-rear"></view>
+          </view>
+          <view class="car-type-info">
+            <text class="car-type-name">{{item.name}}</text>
+            <text class="car-type-desc">{{item.desc}}</text>
+          </view>
+          <view class="car-type-price">
+            <text class="price-num">{{item.price}}</text>
+            <text class="price-unit">元/公里</text>
+          </view>
+        </view>
+      </view>
+      <view class="car-type-brief" wx:else>
+        <view
+          wx:for="{{carTypes}}"
+          wx:key="key"
+          class="car-brief-item {{item.active ? 'car-brief-active' : ''}}"
+          data-key="{{item.key}}"
+          bindtap="onTypeSelect"
+        >
+          <text class="car-brief-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 估算信息 & 叫车按钮 -->
+    <view class="call-section" wx:if="{{endAddress}}">
+      <view class="estimate-info">
+        <view class="estimate-item">
+          <text class="estimate-label">预估费用</text>
+          <text class="estimate-value">¥{{estimatePrice}}</text>
+        </view>
+        <view class="estimate-divider"></view>
+        <view class="estimate-item">
+          <text class="estimate-label">预估时间</text>
+          <text class="estimate-value">{{estimateTime}}分钟</text>
+        </view>
+      </view>
+      <button class="call-car-btn" bindtap="onCallCar">呼叫{{currentCarName}}</button>
+      <!-- 跳转到手机原生地图 App 导航 -->
+      <view class="navi-bar" wx:if="{{endAddress}}">
+        <view class="navi-bar-tip">查看实时路线 / 导航,请使用您手机上的地图 App</view>
+        <view class="navi-bar-btn" bindtap="onOpenNaviApp">
+          <view class="navi-bar-icon"></view>
+          <text>使用地图 App 导航</text>
+          <text class="navi-bar-arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 快捷入口 -->
+    <view class="quick-section" wx:if="{{!endAddress}}">
+      <view class="quick-row">
+        <view
+          class="quick-item"
+          data-tag="home"
+          bindtap="onQuickTap"
+          hover-class="quick-item-hover"
+          hover-stay-time="80"
+        >
+          <view class="quick-icon-wrap">
+            <view class="qi-home">
+              <view class="qi-home-door"></view>
+            </view>
+          </view>
+          <text class="quick-text">回家</text>
+        </view>
+        <view
+          class="quick-item"
+          data-tag="company"
+          bindtap="onQuickTap"
+          hover-class="quick-item-hover"
+          hover-stay-time="80"
+        >
+          <view class="quick-icon-wrap">
+            <view class="qi-building">
+              <view class="qi-building-window qi-building-window-1"></view>
+              <view class="qi-building-window qi-building-window-2"></view>
+              <view class="qi-building-window qi-building-window-3"></view>
+              <view class="qi-building-window qi-building-window-4"></view>
+            </view>
+          </view>
+          <text class="quick-text">公司</text>
+        </view>
+        <view
+          class="quick-item"
+          data-tag="favorite"
+          bindtap="onQuickTap"
+          hover-class="quick-item-hover"
+          hover-stay-time="80"
+        >
+          <view class="quick-icon-wrap">
+            <view class="qi-pin">
+              <view class="qi-pin-tail"></view>
+            </view>
+          </view>
+          <text class="quick-text">常去</text>
+        </view>
+        <view
+          class="quick-item"
+          data-tag="favorites"
+          bindtap="onQuickTap"
+          hover-class="quick-item-hover"
+          hover-stay-time="80"
+        >
+          <view class="quick-icon-wrap">
+            <view class="qi-star"></view>
+          </view>
+          <text class="quick-text">收藏</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- ============== TDesign 组件集成 ============== -->
+<!-- 顶部消息条 -->
+<t-message id="t-message" />
+<!-- 对话框 -->
+<t-dialog id="t-dialog" />
+<!-- 云开发环境提示(原有 cloudTipModal 组件) -->
+<cloud-tip-modal id="cloud-tip" show-tip-props="{{showCloudTip}}" title="云开发环境未配置" content="请先在 miniprogram/envList.js 中配置云开发 EnvId,云端能力(订单同步 / 支付 / 消息推送)才能生效。\n\n未配置时,小程序会使用本地缓存作为数据源,可正常演示叫车流程。" />

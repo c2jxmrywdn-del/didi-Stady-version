@@ -1,0 +1,345 @@
+/**app.wxss — 暖白极简设计系统**/
+/* 关键:WeChat WXSS 不支持标签选择器(view/text/image 等)和 ID 选择器(#xxx)
+   所以 box-sizing: border-box 不能写在 view/text/image 上,改为在 page 上设置,
+   然后用 ::before / ::after 兼容。box-sizing 默认继承 */
+page {
+  background: #FAF8F5;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue",
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 28rpx;
+  color: #2D2A26;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 关键修复:删除 view, text, image, scroll-view 标签选择器
+   WXSS 编译器会报"标签选择器不允许"错误
+   改为在每个 view/text 上用 class 选择器单独控制 box-sizing */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* 主色按钮 — 深棕 */
+.btn-primary {
+  background: #2D2A26;
+  color: #fff;
+  border: none;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  padding: 0;
+  line-height: 88rpx;
+  text-align: center;
+  letter-spacing: 1rpx;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+/* 通用卡片 — 暖白 */
+.card {
+  background: #FFFDF9;
+  border-radius: 12rpx;
+  margin: 16rpx 24rpx;
+  padding: 24rpx;
+  border: 1rpx solid #EDE8E0;
+}
+
+/* 分隔线 */
+.divider {
+  height: 1rpx;
+  background: #EDE8E0;
+  margin: 16rpx 0;
+}
+
+/* 安全距离 */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 文字省略 */
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+/* 点状指示器 */
+.dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-green { background: #5CAA5C; }
+.dot-dark { background: #2D2A26; }
+.dot-gray { background: #C5B9A8; }
+
+/* ========== 米灰色小车前半身装饰 ========== */
+.car-deco {
+  position: relative;
+  width: 280rpx;
+  height: 130rpx;
+  margin: 0 auto;
+  opacity: 0.18;
+}
+
+/* 车身下半（底盘+裙边） */
+.car-lower {
+  position: absolute;
+  bottom: 20rpx;
+  left: 10rpx;
+  width: 260rpx;
+  height: 44rpx;
+  background: #C5B9A8;
+  border-radius: 8rpx 22rpx 4rpx 4rpx;
+}
+
+/* 车身上半（车顶+前柱+后柱） */
+.car-upper {
+  position: absolute;
+  bottom: 60rpx;
+  left: 80rpx;
+  width: 160rpx;
+  height: 52rpx;
+  background: #C5B9A8;
+  border-radius: 16rpx 24rpx 0 0;
+}
+
+/* 前挡风玻璃 */
+.car-windshield {
+  position: absolute;
+  bottom: 60rpx;
+  left: 64rpx;
+  width: 60rpx;
+  height: 52rpx;
+  background: #FAF8F5;
+  transform: skewX(-22deg);
+  border-radius: 8rpx 0 0 0;
+  border-left: 3rpx solid #B0A48E;
+  border-top: 3rpx solid #B0A48E;
+}
+
+/* 后窗 */
+.car-rear-window {
+  position: absolute;
+  bottom: 60rpx;
+  right: 20rpx;
+  width: 70rpx;
+  height: 46rpx;
+  background: #FAF8F5;
+  border-right: 3rpx solid #B0A48E;
+  border-top: 3rpx solid #B0A48E;
+  border-radius: 0 12rpx 0 0;
+}
+
+/* 引擎盖 */
+.car-hood {
+  position: absolute;
+  bottom: 60rpx;
+  left: 0rpx;
+  width: 78rpx;
+  height: 20rpx;
+  background: #C5B9A8;
+  border-radius: 6rpx 0 0 0;
+  transform: skewY(-6deg);
+}
+
+/* 前车灯 */
+.car-headlight {
+  position: absolute;
+  bottom: 62rpx;
+  left: 6rpx;
+  width: 16rpx;
+  height: 10rpx;
+  background: #FAF8F5;
+  border: 2rpx solid #B0A48E;
+  border-radius: 3rpx;
+}
+
+/* 前格栅 */
+.car-grille {
+  position: absolute;
+  bottom: 44rpx;
+  left: 6rpx;
+  width: 6rpx;
+  height: 18rpx;
+  border-right: 2rpx solid #B0A48E;
+  border-bottom: 2rpx solid #B0A48E;
+  border-radius: 0 0 2rpx 0;
+}
+
+/* 门线 */
+.car-door-line {
+  position: absolute;
+  bottom: 60rpx;
+  left: 140rpx;
+  width: 0;
+  height: 44rpx;
+  border-left: 2rpx solid #B0A48E;
+}
+
+/* 腰线 */
+.car-waist-line {
+  position: absolute;
+  bottom: 58rpx;
+  left: 10rpx;
+  width: 260rpx;
+  height: 0;
+  border-top: 2rpx solid #B0A48E;
+}
+
+/* 前轮 */
+.car-wheel-front {
+  position: absolute;
+  bottom: 4rpx;
+  left: 36rpx;
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: #FAF8F5;
+  border: 5rpx solid #B0A48E;
+}
+
+/* 前轮毂 */
+.car-wheel-front::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  border: 2rpx solid #B0A48E;
+  background: #FAF8F5;
+}
+
+/* 后轮（前半身只露一半） */
+.car-wheel-rear {
+  position: absolute;
+  bottom: 4rpx;
+  right: 20rpx;
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: #FAF8F5;
+  border: 5rpx solid #B0A48E;
+}
+
+.car-wheel-rear::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  border: 2rpx solid #B0A48E;
+  background: #FAF8F5;
+}
+
+/* 后视镜 */
+.car-mirror {
+  position: absolute;
+  bottom: 74rpx;
+  left: 78rpx;
+  width: 10rpx;
+  height: 8rpx;
+  background: #C5B9A8;
+  border-radius: 2rpx 2rpx 4rpx 2rpx;
+  border: 2rpx solid #B0A48E;
+}
+
+/* 轮拱线 */
+.car-arch-front {
+  position: absolute;
+  bottom: 28rpx;
+  left: 22rpx;
+  width: 72rpx;
+  height: 28rpx;
+  border-bottom: 3rpx solid #B0A48E;
+  border-radius: 0 0 50% 50%;
+}
+
+.car-arch-rear {
+  position: absolute;
+  bottom: 28rpx;
+  right: 6rpx;
+  width: 72rpx;
+  height: 28rpx;
+  border-bottom: 3rpx solid #B0A48E;
+  border-radius: 0 0 50% 50%;
+}
+
+/* 底部边线 */
+.car-bottom-line {
+  position: absolute;
+  bottom: 20rpx;
+  left: 10rpx;
+  width: 260rpx;
+  height: 0;
+  border-top: 2rpx solid #B0A48E;
+}
+
+/* ============ MUI 风格设计系统(跨页统一) ============ */
+/* 设计原则:
+   - 圆角统一(4 / 8 / 12 / 16 / 24)
+   - 阴影 elevation 1~5(Material elevation 规范)
+   - 间距 4 / 8 / 12 / 16 / 24 / 32
+   - 颜色:主色 #FF7B00(品牌橙) + 中性 #FAF8F5 ~ #2D2A26
+   - 字体:正文 28rpx、标题 32-44rpx、辅助 22-24rpx
+   - 点击态:opacity 0.7 + transform 0.12s
+*/
+.md-card {
+  background: #FFFDF9;
+  border-radius: 12rpx;
+  border: 1rpx solid #EDE8E0;
+  transition: transform 0.12s, box-shadow 0.18s, background 0.12s;
+}
+.md-card:active {
+  background: #FAF8F5;
+  transform: scale(0.985);
+}
+.md-elev-1 { box-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.04); }
+.md-elev-2 { box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06); }
+.md-elev-3 { box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08); }
+.md-elev-4 { box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.10); }
+
+.md-section-title {
+  font-size: 22rpx;
+  color: #999;
+  letter-spacing: 1rpx;
+  font-weight: 500;
+}
+
+.md-h1 { font-size: 44rpx; font-weight: 700; color: #2D2A26; letter-spacing: 1rpx; }
+.md-h2 { font-size: 36rpx; font-weight: 700; color: #2D2A26; letter-spacing: 0.5rpx; }
+.md-h3 { font-size: 30rpx; font-weight: 600; color: #2D2A26; letter-spacing: 0.5rpx; }
+.md-body { font-size: 28rpx; color: #2D2A26; line-height: 1.6; }
+.md-cap { font-size: 22rpx; color: #8A8278; letter-spacing: 0.3rpx; }
+
+/* 跨页统一转场:与 wx.navigateTo 配合,无卡顿 */
+.page-enter {
+  animation: pageEnter 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateX(40rpx); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@import 'app-wxa-auto-dark.wxss'

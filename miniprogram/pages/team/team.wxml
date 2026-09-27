@@ -1,0 +1,136 @@
+<!-- pages/team/team.wxml — 开发团队完整展示页 -->
+<view class="page-team page-enter">
+  <!-- 顶部 Banner(团队大背景;返回由系统导航栏提供) -->
+  <view class="team-banner">
+    <view class="team-banner-deco">
+      <view class="banner-circle banner-circle-1"></view>
+      <view class="banner-circle banner-circle-2"></view>
+      <view class="banner-circle banner-circle-3"></view>
+    </view>
+    <view class="team-banner-content">
+      <view class="team-banner-icon">👥</view>
+      <text class="team-banner-title">开发团队</text>
+      <text class="team-banner-subtitle">Meet the team behind 滴滴学习版</text>
+    </view>
+  </view>
+
+  <!-- 团队统计 -->
+  <view class="team-stats">
+    <view class="team-stat-item">
+      <text class="team-stat-num">{{stats.pages}}</text>
+      <text class="team-stat-label">页面 / Pages</text>
+    </view>
+    <view class="team-stat-divider"></view>
+    <view class="team-stat-item">
+      <text class="team-stat-num">{{stats.cloudFunctions}}</text>
+      <text class="team-stat-label">云函数 / CF</text>
+    </view>
+    <view class="team-stat-divider"></view>
+    <view class="team-stat-item">
+      <text class="team-stat-num">{{stats.features}}</text>
+      <text class="team-stat-label">产品特色</text>
+    </view>
+  </view>
+
+  <!-- 团队成员 -->
+  <view class="section">
+    <view class="section-title">核心成员</view>
+    <view
+      wx:for="{{teamMembers}}"
+      wx:key="id"
+      wx:for-item="member"
+      class="member-block"
+    >
+      <!-- 成员 Hero 卡片 -->
+      <view class="member-hero">
+        <view class="member-hero-avatar">{{member.avatar}}</view>
+        <view class="member-hero-info">
+          <view class="member-hero-name-row">
+            <text class="member-hero-name">{{member.name}}</text>
+            <text class="member-hero-role">{{member.role}}</text>
+          </view>
+          <view class="member-hero-tags">
+            <text wx:for="{{member.tags}}" wx:key="*this" wx:for-item="t" class="member-tag">{{t}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 成员描述 -->
+      <view class="member-bio">{{member.bio}}</view>
+
+      <!-- 成员 meta 信息 -->
+      <view class="member-meta">
+        <view class="member-meta-item">
+          <text class="member-meta-label">所在地</text>
+          <text class="member-meta-value">{{member.location}}</text>
+        </view>
+        <view class="member-meta-item">
+          <text class="member-meta-label">加入时间</text>
+          <text class="member-meta-value">{{member.joinedAt}}</text>
+        </view>
+      </view>
+
+      <!-- 联系方式列表(默认展开) -->
+      <view class="member-contacts">
+        <view class="member-contacts-head">
+          <text class="member-contacts-title">联系方式</text>
+          <text class="member-contacts-hint">点按复制</text>
+        </view>
+        <view
+          wx:for="{{member.socials}}"
+          wx:key="key"
+          wx:for-item="social"
+          class="member-social-row"
+          data-url="{{social.url}}"
+          data-name="{{social.name}}"
+          bindtap="onSocialTap"
+          hover-class="member-social-row-hover"
+          hover-stay-time="80"
+        >
+          <view class="member-social-icon" style="background: {{social.bg}};">
+            <text style="color: {{social.color}};">{{social.icon}}</text>
+          </view>
+          <view class="member-social-text">
+            <text class="member-social-name">{{social.name}}</text>
+            <text class="member-social-handle">{{social.handle}}</text>
+          </view>
+          <view class="member-social-arrow">›</view>
+        </view>
+        <view class="member-copy-all" bindtap="onCopyAll">
+          <text>一键复制所有联系方式</text>
+          <text class="copy-all-arrow">⧉</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 项目里程碑 -->
+  <view class="section">
+    <view class="section-title">项目里程碑</view>
+    <view class="milestone-list">
+      <view
+        wx:for="{{milestones}}"
+        wx:key="date"
+        wx:for-item="ms"
+        class="milestone-item"
+      >
+        <view class="milestone-dot"></view>
+        <view class="milestone-content">
+          <view class="milestone-head">
+            <text class="milestone-date">{{ms.date}}</text>
+            <text class="milestone-title">{{ms.title}}</text>
+          </view>
+          <text class="milestone-desc">{{ms.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 致谢/声明 -->
+  <view class="team-declare">
+    <text class="declare-title">项目声明</text>
+    <text class="declare-line">本项目(滴滴学习版)由 Ouyang Jason 独立开发,</text>
+    <text class="declare-line">仅作技术研究与教学演示用途,非商业应用。</text>
+    <text class="declare-line">若您希望交流技术或反馈建议,可通过上方任一方式联系作者。</text>
+  </view>
+</view>

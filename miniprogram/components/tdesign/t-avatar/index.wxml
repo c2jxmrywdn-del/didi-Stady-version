@@ -1,0 +1,7 @@
+<view
+  class="t-avatar t-avatar--{{shape}} t-avatar--{{size}} {{bordered ? 't-avatar--bordered' : ''}}"
+  style="background: {{bgColor || ''}}; {{color ? 'color:' + color : ''}}"
+>
+  <image wx:if="{{src}}" class="t-avatar__img" src="{{src}}" mode="aspectFill" binderror="onError"/>
+  <text wx:else class="t-avatar__text">{{initial}}</text>
+</view>

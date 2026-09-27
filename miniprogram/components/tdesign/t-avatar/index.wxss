@@ -1,0 +1,34 @@
+/* components/tdesign/t-avatar/index.wxss */
+.t-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #FF7B00 0%, #FF5500 100%);
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.t-avatar--circle { border-radius: 50%; }
+.t-avatar--round  { border-radius: 12rpx; }
+.t-avatar--square { border-radius: 4rpx; }
+
+.t-avatar--small  { width: 64rpx;  height: 64rpx;  font-size: 28rpx; }
+.t-avatar--medium { width: 96rpx;  height: 96rpx;  font-size: 36rpx; }
+.t-avatar--large  { width: 128rpx; height: 128rpx; font-size: 48rpx; }
+
+.t-avatar--bordered {
+  border: 4rpx solid #FFFDF9;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.t-avatar__img {
+  width: 100%;
+  height: 100%;
+}
+.t-avatar__text {
+  font-weight: 500;
+  letter-spacing: 0.5rpx;
+  line-height: 1;
+}

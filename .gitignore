@@ -1,0 +1,73 @@
+# ============================================
+# 滴滴学习版 · Git Ignore
+# ============================================
+
+# ---------- 敏感信息(严禁提交)----------
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.cert
+.mcp_env
+secrets/
+config.local.json
+project.local.config.json
+
+# ---------- Node / 构建产物 ----------
+node_modules/
+dist/
+build/
+*.tgz
+.miniprogram/
+miniprogram_npm/
+
+# ---------- 微信开发者工具 ----------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ---------- 微信开发者工具自动生成 ----------
+miniprogram_npm/
+project.private.config.json.bak
+
+# ---------- 日志 ----------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---------- 测试 ----------
+coverage/
+.nyc_output/
+*.lcov
+.cache/
+
+# ---------- 临时文件 ----------
+tmp/
+.temp/
+*.tmp
+*.bak
+*.swp
+.DS_Store
+
+# ---------- IDE ----------
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# ---------- 系统 ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- CloudBase 本地工具状态 ----------
+.cloudbase/

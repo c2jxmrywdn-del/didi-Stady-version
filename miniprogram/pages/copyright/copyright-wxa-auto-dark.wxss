@@ -1,0 +1,231 @@
+/* 
+使用方法：
+在 copyright.wxss 文件末尾引入样式
+```
+@import "./copyright-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-copyright {
+        background: rgb(23, 22, 20);
+    }
+
+    .cr-header {
+        background: rgb(0, 0, 0);
+        color: rgb(20, 18, 15);
+    }
+
+    .cr-logo {
+        background: rgba(17, 17, 17, 0.1);
+    }
+
+    .cr-logo-icon {
+        color: rgb(20, 18, 15);
+    }
+
+    .cr-version {
+        color: rgba(17, 17, 17, 0.7);
+        background: rgba(17, 17, 17, 0.1);
+    }
+
+    .cr-tagline {
+        color: rgba(17, 17, 17, 0.85);
+    }
+
+    .cr-section {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    .cr-section-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .cr-card {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .cr-card-primary {
+        background: rgb(0, 0, 0);
+        border-color: rgb(109, 61, 0);
+    }
+
+    .cr-card-row {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .cr-card-icon-1 {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+    }
+
+    .cr-card-icon-2 {
+        background: rgb(109, 61, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .cr-card-icon-3 {
+        background: rgb(31, 113, 40);
+        color: rgb(17, 17, 17);
+    }
+
+    .cr-card-label {
+        color: rgb(99, 99, 99);
+    }
+
+    .cr-card-value {
+        color: rgb(223, 219, 214);
+    }
+
+    .cr-license-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .cr-license-desc text {
+        color: rgb(174, 165, 155);
+    }
+
+    .cr-point-bullet {
+        color: rgb(17, 17, 17);
+    }
+
+    .cr-point-bullet-green {
+        background: rgb(31, 113, 40);
+    }
+
+    .cr-point-bullet-orange {
+        background: rgb(109, 61, 0);
+    }
+
+    .cr-point text {
+        color: rgb(174, 165, 155);
+    }
+
+    .cr-info-list {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .cr-info-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .cr-info-dot-1 {
+        background: rgb(223, 219, 214);
+    }
+
+    .cr-info-dot-2 {
+        background: rgb(109, 61, 0);
+    }
+
+    .cr-info-dot-3 {
+        background: rgb(31, 113, 40);
+    }
+
+    .cr-info-dot-4 {
+        background: rgb(30, 115, 194);
+    }
+
+    .cr-info-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .cr-info-desc {
+        color: rgb(174, 165, 155);
+    }
+
+    .cr-permission-list {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .cr-permission-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .cr-permission-icon {
+        color: rgb(17, 17, 17);
+    }
+
+    .cr-permission-allowed {
+        background: rgb(31, 113, 40);
+    }
+
+    .cr-permission-warning {
+        background: rgb(109, 61, 0);
+    }
+
+    .cr-permission-forbidden {
+        background: rgb(213, 59, 47);
+    }
+
+    .cr-permission-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .cr-permission-desc {
+        color: rgb(174, 165, 155);
+    }
+
+    .cr-thanks-card {
+        background: rgb(0, 0, 0);
+        border: rgb(0, 0, 0);
+    }
+
+    .cr-thanks-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .cr-thanks-text {
+        color: rgb(174, 165, 155);
+    }
+
+    .cr-tech-list {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .cr-tech-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .cr-tech-tag {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+        color: rgb(174, 165, 155);
+    }
+
+    .cr-contact {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .cr-contact-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .cr-contact-row {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .cr-contact-row:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .cr-contact-label {
+        color: rgb(99, 99, 99);
+    }
+
+    .cr-contact-value {
+        color: rgb(223, 219, 214);
+    }
+
+    .cr-foot {
+        color: rgb(77, 67, 53);
+    }
+
+    .cr-foot-built {
+        color: rgb(31, 113, 40);
+    }
+}

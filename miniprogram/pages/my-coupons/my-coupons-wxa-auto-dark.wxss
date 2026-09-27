@@ -1,0 +1,148 @@
+/* 
+使用方法：
+在 my-coupons.wxss 文件末尾引入样式
+```
+@import "./my-coupons-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-my-coupons {
+        background: rgb(23, 22, 20);
+    }
+
+    .coupons-tabs {
+        background: rgb(20, 18, 15);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .coupons-tab {
+        color: rgb(126, 118, 108);
+    }
+
+    .coupons-tab-active {
+        color: rgb(223, 219, 214);
+    }
+
+    .coupons-tab-active::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .coupons-tab-count {
+        background: rgb(213, 59, 47);
+        color: rgb(17, 17, 17);
+    }
+
+    .coupon-item {
+        background: rgb(0, 0, 0);
+        border: rgb(0, 0, 0);
+    }
+
+    .coupon-item.coupon-used {
+        background: rgb(23, 22, 20);
+    }
+
+    .coupon-item.coupon-expired {
+        background: rgb(23, 22, 20);
+    }
+
+    .coupon-left {
+        background: rgb(0, 0, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .coupon-condition {
+        color: rgba(17, 17, 17, 0.9);
+    }
+
+    .coupon-divider {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    .coupon-divider-line {
+        border-left: rgb(0, 0, 0);
+    }
+
+    .coupon-divider-circle {
+        background: rgb(23, 22, 20);
+    }
+
+    .coupon-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .coupon-scope {
+        color: rgb(99, 99, 99);
+    }
+
+    .coupon-expire {
+        color: rgb(77, 67, 53);
+    }
+
+    .coupon-status-unused {
+        color: rgb(109, 61, 0);
+        background: rgb(30, 24, 10);
+    }
+
+    .coupon-status-used {
+        color: rgb(99, 99, 99);
+        background: rgb(31, 29, 26);
+    }
+
+    .coupon-status-expired {
+        color: rgb(77, 67, 53);
+        background: rgb(31, 29, 26);
+    }
+
+    .coupon-action {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+    }
+
+    .coupon-action:active {
+        background: rgb(241, 238, 233);
+    }
+
+    .empty-illu {
+        background: rgb(30, 27, 21);
+    }
+
+    .empty-ticket {
+        background: rgb(77, 67, 53);
+    }
+
+    .empty-ticket-line {
+        background: rgb(23, 22, 20);
+    }
+
+    .empty-text {
+        color: rgb(126, 118, 108);
+    }
+
+    .empty-sub {
+        color: rgb(77, 67, 53);
+    }
+
+    .empty-btn {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+        color: rgb(223, 219, 214);
+    }
+
+    .empty-btn:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .coupons-foot {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .foot-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .foot-item {
+        color: rgb(126, 118, 108);
+    }
+}

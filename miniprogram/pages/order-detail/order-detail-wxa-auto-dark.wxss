@@ -1,0 +1,332 @@
+/* 
+使用方法：
+在 order-detail.wxss 文件末尾引入样式
+```
+@import "./order-detail-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-order-detail {
+        background: rgb(23, 22, 20);
+    }
+
+    .status-card {
+        background: rgb(30, 27, 21);
+        color: rgb(223, 219, 214);
+    }
+
+    .dot-green {
+        background: rgb(0, 98, 0);
+    }
+
+    .dot-dark {
+        background: rgb(255, 255, 255);
+    }
+
+    .route-name {
+        color: rgb(255, 255, 255);
+    }
+
+    .route-connector {
+        background: rgb(31, 31, 31);
+    }
+
+    .card-title {
+        color: rgb(255, 255, 255);
+    }
+
+    .fee-card {
+        background: rgb(20, 18, 15);
+    }
+
+    .fee-label {
+        color: rgb(99, 99, 99);
+    }
+
+    .fee-value {
+        color: rgb(223, 219, 214);
+    }
+
+    .fee-total {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .fee-total-label {
+        color: rgb(255, 255, 255);
+    }
+
+    .fee-total-value {
+        color: rgb(255, 255, 255);
+    }
+
+    .stats-value {
+        color: rgb(255, 255, 255);
+    }
+
+    .stats-label {
+        color: rgb(99, 99, 99);
+    }
+
+    .pay-method {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .pay-icon {
+        border: rgb(0, 0, 0);
+    }
+
+    .pay-icon-wechat {
+        background: rgb(0, 98, 0);
+    }
+
+    .pay-icon-alipay {
+        background: rgb(255, 255, 255);
+    }
+
+    .pay-icon-wallet {
+        background: rgb(23, 23, 23);
+    }
+
+    .pay-name {
+        color: rgb(255, 255, 255);
+    }
+
+    .pay-extra {
+        color: rgb(165, 46, 0);
+    }
+
+    .pay-check {
+        border: rgb(0, 0, 0);
+    }
+
+    .pay-checked {
+        border-color: rgb(255, 255, 255);
+        background: rgb(255, 255, 255);
+    }
+
+    .pay-checked::after {
+        border-left: rgb(0, 0, 0);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .success-dot {
+        background: rgb(0, 98, 0);
+    }
+
+    .success-check {
+        border-left: rgb(0, 0, 0);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .success-text {
+        color: rgb(255, 255, 255);
+    }
+
+    .share-order-btn {
+        background: rgb(17, 17, 17);
+        border: rgb(0, 0, 0);
+    }
+
+    .share-text-sm {
+        color: rgb(255, 255, 255);
+    }
+
+    .share-icon-css {
+        border: rgb(0, 0, 0);
+    }
+
+    .rate-step-indicator {
+        color: rgb(99, 99, 99);
+    }
+
+    .rate-driver-brief {
+        background: rgb(23, 23, 23);
+        border: rgb(0, 0, 0);
+    }
+
+    .rate-driver-avatar {
+        background: rgb(17, 17, 17);
+        color: rgb(99, 99, 99);
+        border: rgb(0, 0, 0);
+    }
+
+    .rate-driver-name {
+        color: rgb(255, 255, 255);
+    }
+
+    .rate-driver-car {
+        color: rgb(99, 99, 99);
+    }
+
+    .star {
+        border: rgb(0, 0, 0);
+    }
+
+    .star-active {
+        border-color: rgb(255, 255, 255);
+        background: rgb(255, 255, 255);
+    }
+
+    .star-inner {
+        background: rgb(58, 58, 62);
+    }
+
+    .star-active .star-inner {
+        background: rgb(17, 17, 17);
+    }
+
+    .rate-hint {
+        color: rgb(99, 99, 99);
+    }
+
+    .app-rate-icon {
+        color: rgb(255, 255, 255);
+    }
+
+    .phone-icon-css {
+        border: rgb(0, 0, 0);
+    }
+
+    .phone-icon-css::after {
+        background: rgb(255, 255, 255);
+    }
+
+    .tag-item {
+        color: rgb(149, 149, 149);
+        background: rgb(23, 23, 23);
+        border: rgb(0, 0, 0);
+    }
+
+    .tag-selected {
+        color: rgb(255, 255, 255);
+        background: rgb(17, 17, 17);
+        border-color: rgb(255, 255, 255);
+    }
+
+    .skip-btn {
+        color: rgb(99, 99, 99);
+        background: rgb(23, 23, 23);
+    }
+
+    .driver-avatar-lg {
+        background: rgb(23, 23, 23);
+        color: rgb(99, 99, 99);
+        border: rgb(0, 0, 0);
+    }
+
+    .driver-name-lg {
+        color: rgb(255, 255, 255);
+    }
+
+    .driver-car-lg {
+        color: rgb(99, 99, 99);
+    }
+
+    .driver-rating-lg {
+        color: rgb(255, 255, 255);
+    }
+
+    .bottom-actions {
+        background: rgb(20, 18, 15);
+        border-top: rgb(0, 0, 0);
+    }
+
+    .share-mask {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    .share-modal {
+        background: rgb(17, 17, 17);
+    }
+
+    .share-modal-title {
+        color: rgb(255, 255, 255);
+    }
+
+    .share-modal-close {
+        color: rgb(99, 99, 99);
+    }
+
+    .share-order-info {
+        background: rgb(23, 23, 23);
+        border: rgb(0, 0, 0);
+    }
+
+    .share-from {
+        color: rgb(255, 255, 255);
+    }
+
+    .share-arrow {
+        color: rgb(58, 58, 62);
+    }
+
+    .share-to {
+        color: rgb(255, 255, 255);
+    }
+
+    .share-price {
+        color: rgb(255, 255, 255);
+    }
+
+    .share-option-btn {
+        background: rgb(23, 23, 23);
+        border: rgb(0, 0, 0);
+    }
+
+    .soi-friend {
+        border: rgb(0, 0, 0);
+    }
+
+    .soi-moments {
+        border: rgb(0, 0, 0);
+    }
+
+    .soi-moments::after {
+        border: rgb(0, 0, 0);
+    }
+
+    .share-option-text {
+        color: rgb(255, 255, 255);
+    }
+
+    .progress-card {
+        background: rgb(0, 0, 0);
+        border: rgb(0, 0, 0);
+    }
+
+    .progress-icon {
+        background: rgb(165, 46, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .progress-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .progress-sub {
+        color: rgb(126, 118, 108);
+    }
+
+    .progress-stats {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .progress-stat + .progress-stat::before {
+        background: rgb(36, 33, 27);
+    }
+
+    .progress-stat-value {
+        color: rgb(223, 219, 214);
+    }
+
+    .progress-stat-label {
+        color: rgb(126, 118, 108);
+    }
+
+    .progress-btn {
+        background: rgb(223, 219, 214);
+        color: rgb(17, 17, 17);
+    }
+}

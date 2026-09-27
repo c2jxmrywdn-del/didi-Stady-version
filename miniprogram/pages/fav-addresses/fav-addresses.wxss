@@ -1,0 +1,340 @@
+/* pages/fav-addresses/fav-addresses.wxss */
+.page-fav {
+  min-height: 100vh;
+  background: #FAF8F5;
+  padding-bottom: 160rpx;
+}
+
+.page-tip {
+  background: #FFFDF9;
+  padding: 16rpx 24rpx;
+  border-bottom: 1rpx solid #EDE8E0;
+}
+.page-tip text {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1.7;
+}
+
+.address-list {
+  padding: 16rpx 24rpx;
+}
+.address-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  background: #FFFDF9;
+  border-radius: 12rpx;
+  border: 1rpx solid #EDE8E0;
+  margin-bottom: 16rpx;
+}
+.address-item:active {
+  background: #f7f5f0;
+}
+.address-using {
+  background: #fdf3e3;
+  border-color: #e7a85f;
+}
+.address-icon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 8rpx;
+  background: #FAF8F5;
+  border: 1rpx solid #EDE8E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+.address-info {
+  flex: 1;
+  min-width: 0;
+}
+.address-line1 {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+.address-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #2D2A26;
+}
+.address-using-badge {
+  font-size: 20rpx;
+  padding: 2rpx 10rpx;
+  background: #e7a85f;
+  color: #fff;
+  border-radius: 4rpx;
+}
+.address-detail {
+  font-size: 26rpx;
+  color: #5C554C;
+  display: block;
+  margin-top: 6rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.address-distance {
+  font-size: 22rpx;
+  color: #C5B9A8;
+  margin-top: 4rpx;
+  display: block;
+}
+.address-arrow {
+  font-size: 32rpx;
+  color: #c7c7cc;
+  flex-shrink: 0;
+  margin-left: 12rpx;
+}
+
+/* 图标 */
+.addr-home {
+  width: 24rpx;
+  height: 18rpx;
+  border: 2rpx solid #2D2A26;
+  border-top: none;
+  position: relative;
+}
+.addr-home::before {
+  content: "";
+  position: absolute;
+  top: -10rpx;
+  left: -2rpx;
+  border-left: 14rpx solid transparent;
+  border-right: 14rpx solid transparent;
+  border-bottom: 10rpx solid #2D2A26;
+}
+.addr-office {
+  width: 22rpx;
+  height: 26rpx;
+  border: 2rpx solid #2D2A26;
+  position: relative;
+}
+.addr-office::before {
+  content: "";
+  position: absolute;
+  top: 6rpx;
+  left: 5rpx;
+  width: 4rpx;
+  height: 4rpx;
+  background: #2D2A26;
+  box-shadow: 6rpx 0 0 #2D2A26, 0 6rpx 0 #2D2A26, 6rpx 6rpx 0 #2D2A26;
+}
+.addr-pin {
+  width: 16rpx;
+  height: 16rpx;
+  border: 2rpx solid #2D2A26;
+  border-radius: 50%;
+  position: relative;
+}
+.addr-pin::after {
+  content: "";
+  position: absolute;
+  bottom: -6rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4rpx solid transparent;
+  border-right: 4rpx solid transparent;
+  border-top: 6rpx solid #2D2A26;
+}
+
+/* 空状态 */
+.empty-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 160rpx;
+}
+.empty-illu {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  background: #F5F0E8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24rpx;
+}
+.empty-pin {
+  width: 40rpx;
+  height: 50rpx;
+  position: relative;
+}
+.empty-pin-circle {
+  width: 32rpx;
+  height: 32rpx;
+  border: 3rpx solid #C5B9A8;
+  border-radius: 50%;
+}
+.empty-pin-tail {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6rpx solid transparent;
+  border-right: 6rpx solid transparent;
+  border-top: 12rpx solid #C5B9A8;
+}
+.empty-text {
+  font-size: 30rpx;
+  color: #8A8278;
+  margin-bottom: 8rpx;
+}
+.empty-sub {
+  font-size: 24rpx;
+  color: #C5B9A8;
+}
+
+/* 添加按钮 */
+.add-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16rpx 32rpx 40rpx;
+  background: linear-gradient(180deg, transparent, #FAF8F5 20%);
+}
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  width: 100%;
+  height: 88rpx;
+  background: #2D2A26;
+  color: #FFFDF9;
+  font-size: 30rpx;
+  border-radius: 12rpx;
+  letter-spacing: 1rpx;
+}
+.add-btn:active {
+  background: #1f1d1a;
+}
+.mi-plus {
+  width: 24rpx;
+  height: 24rpx;
+  position: relative;
+}
+.mi-plus::before,
+.mi-plus::after {
+  content: "";
+  position: absolute;
+  background: #FFFDF9;
+}
+.mi-plus::before {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2rpx;
+  transform: translateY(-50%);
+}
+.mi-plus::after {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2rpx;
+  transform: translateX(-50%);
+}
+
+/* 操作菜单 */
+.action-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 500;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.action-card {
+  background: #FFFDF9;
+  width: 100%;
+  border-radius: 16rpx 16rpx 0 0;
+  padding: 32rpx 0 48rpx;
+}
+.action-title {
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid #f0ede8;
+}
+.action-item {
+  padding: 28rpx 32rpx;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  font-size: 30rpx;
+  color: #111;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.action-item:active {
+  background: #f7f5f0;
+}
+.action-danger {
+  color: #e74c3c;
+}
+.action-icon {
+  width: 24rpx;
+  height: 24rpx;
+  position: relative;
+}
+.mi-edit {
+  border: 2rpx solid currentColor;
+  border-radius: 2rpx;
+  position: relative;
+}
+.mi-edit::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 0; height: 0;
+  border-bottom: 6rpx solid currentColor;
+  border-left: 6rpx solid transparent;
+}
+.mi-check {
+  border: 2rpx solid currentColor;
+  border-radius: 50%;
+}
+.mi-check::after {
+  content: "";
+  position: absolute;
+  top: 4rpx; left: 5rpx;
+  width: 8rpx; height: 4rpx;
+  border-left: 2rpx solid currentColor;
+  border-bottom: 2rpx solid currentColor;
+  transform: rotate(-45deg);
+}
+.mi-trash {
+  border: 2rpx solid currentColor;
+  border-top: none;
+  border-radius: 2rpx 2rpx 4rpx 4rpx;
+  position: relative;
+}
+.mi-trash::before {
+  content: "";
+  position: absolute;
+  top: -4rpx;
+  left: 4rpx; right: 4rpx;
+  height: 3rpx;
+  background: currentColor;
+  border-radius: 2rpx;
+}
+.action-cancel {
+  margin-top: 16rpx;
+  padding: 24rpx 0;
+  text-align: center;
+  font-size: 30rpx;
+  color: #999;
+  background: #FAF8F5;
+  border-top: 6rpx solid #FFFDF9;
+}
+@import 'fav-addresses-wxa-auto-dark.wxss'

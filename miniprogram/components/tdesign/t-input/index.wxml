@@ -1,0 +1,30 @@
+<view class="t-input t-input--{{status}} {{focused ? 't-input--focused' : ''}} {{bordered ? 't-input--bordered' : ''}} {{disabled ? 't-input--disabled' : ''}}">
+  <view wx:if="{{label}}" class="t-input__label">
+    <text wx:if="{{required}}" class="t-input__required">*</text>
+    {{label}}
+  </view>
+  <view class="t-input__wrap">
+    <!-- 关键修复:不再动态切换 type,避免触发 WeChat autofill 内部错误
+         WeChat 的 <input password="{{true}}"> 即可实现密码隐藏,
+         无需动态切换 type='password'。showPwd 仅通过 password 属性控制 -->
+    <input
+      class="t-input__control t-input--{{align}}"
+      type="{{type}}"
+      password="{{password}}"
+      value="{{value}}"
+      placeholder="{{placeholder}}"
+      placeholder-class="{{placeholderClass}}"
+      maxlength="{{maxlength}}"
+      disabled="{{disabled}}"
+      readonly="{{readonly}}"
+      bindinput="onInput"
+      bindfocus="onFocus"
+      bindblur="onBlur"
+      bindconfirm="onConfirm"
+    />
+    <view wx:if="{{clearable && value && !disabled && !readonly}}" class="t-input__clear" bindtap="onClear">
+      <view class="t-input__clear-icon"></view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{tips}}" class="t-input__tips t-input__tips--{{status}}">{{tips}}</view>

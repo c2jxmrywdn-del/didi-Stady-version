@@ -1,0 +1,90 @@
+<!-- pages/security/security.wxml — 安全中心 -->
+<view class="page-security">
+  <!-- 顶部状态 -->
+  <view class="security-status">
+    <view class="status-icon">
+      <view class="mi-shield-big">
+        <view class="mi-shield-check">✓</view>
+      </view>
+    </view>
+    <text class="status-title">已开启安全保护</text>
+    <text class="status-sub">行程中全程守护您的安全</text>
+  </view>
+
+  <!-- 安全功能列表 -->
+  <view class="section">
+    <view class="section-title">安全功能</view>
+    <view
+      wx:for="{{features}}"
+      wx:key="key"
+      class="feature-item"
+    >
+      <view class="feature-left">
+        <view class="feature-icon feature-icon-{{item.color}}">
+          <view class="feature-icon-inner">
+            <view wx:if="{{item.key === 'tripShare'}}" class="mi-share"></view>
+            <view wx:elif="{{item.key === 'emergencyCall'}}" class="mi-call"></view>
+            <view wx:elif="{{item.key === 'numberProtect'}}" class="mi-mask"></view>
+            <view wx:elif="{{item.key === 'record'}}" class="mi-record"></view>
+            <view wx:elif="{{item.key === 'verification'}}" class="mi-verify"></view>
+          </view>
+        </view>
+        <view class="feature-info">
+          <text class="feature-name">{{item.name}}</text>
+          <text class="feature-desc">{{item.desc}}</text>
+        </view>
+      </view>
+      <switch
+        class="feature-switch"
+        checked="{{item.enabled}}"
+        color="#2D2A26"
+        data-key="{{item.key}}"
+        bindchange="onSwitchChange"
+      />
+    </view>
+  </view>
+
+  <!-- 安全工具 -->
+  <view class="section">
+    <view class="section-title">安全工具</view>
+    <view class="tool-grid">
+      <view class="tool-item" bindtap="onEmergencyCall">
+        <view class="tool-icon tool-icon-red">
+          <view class="mi-emergency"></view>
+        </view>
+        <text class="tool-name">紧急求助</text>
+        <text class="tool-desc">一键拨打110</text>
+      </view>
+      <view class="tool-item" bindtap="onFakeCall">
+        <view class="tool-icon">
+          <view class="mi-fake"></view>
+        </view>
+        <text class="tool-name">虚拟来电</text>
+        <text class="tool-desc">摆脱尴尬</text>
+      </view>
+      <view class="tool-item" bindtap="onShareLocation">
+        <view class="tool-icon">
+          <view class="mi-share"></view>
+        </view>
+        <text class="tool-name">行程分享</text>
+        <text class="tool-desc">实时分享位置</text>
+      </view>
+      <view class="tool-item" bindtap="onReport">
+        <view class="tool-icon">
+          <view class="mi-flag"></view>
+        </view>
+        <text class="tool-name">一键举报</text>
+        <text class="tool-desc">违规行为举报</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 安全提示 -->
+  <view class="tips">
+    <view class="tips-title">温馨提示</view>
+    <view class="tips-item">· 上车前请核对车牌号和司机信息</view>
+    <view class="tips-item">· 全程请系好安全带</view>
+    <view class="tips-item">· 夜间出行请将行程分享给亲友</view>
+    <view class="tips-item">· 遇到紧急情况请及时使用「紧急求助」</view>
+  </view>
+</view>

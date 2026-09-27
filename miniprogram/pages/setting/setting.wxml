@@ -1,0 +1,186 @@
+<!-- pages/setting/setting.wxml — 设置页 -->
+<view class="page-setting">
+  <!-- 个人资料卡片 -->
+  <view class="section">
+    <view class="profile-card" bindtap="onProfileTap">
+      <view class="profile-avatar">
+        <image class="avatar-img" src="{{userInfo.avatarUrl || defaultAvatar}}" mode="aspectFill" />
+      </view>
+      <view class="profile-info">
+        <text class="profile-name">{{userInfo.nickName || '未设置昵称'}}</text>
+        <text class="profile-phone">{{userInfo.phoneNumber || '未绑定手机号'}}</text>
+      </view>
+      <view class="profile-arrow">›</view>
+    </view>
+  </view>
+
+  <!-- 账号安全 -->
+  <view class="section">
+    <view class="section-title">账号安全</view>
+    <view class="menu-item" hover-class="menu-item-active" hover-stay-time="100" bindtap="onMenuTap" data-action="password">
+      <view class="menu-left">
+        <view class="menu-icon mi-password"></view>
+        <text class="menu-label">修改密码</text>
+      </view>
+      <view class="menu-right">
+        <text class="menu-hint {{hasSetPwd ? 'menu-hint-on' : 'menu-hint-off'}}">{{hasSetPwd ? '已设置' : '未设置'}}</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+    <view class="menu-item" hover-class="menu-item-active" hover-stay-time="100" bindtap="onMenuTap" data-action="security">
+      <view class="menu-left">
+        <view class="menu-icon mi-shield"></view>
+        <text class="menu-label">账号保护</text>
+      </view>
+      <view class="menu-right">
+        <text class="menu-hint menu-hint-on">已开启</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 通知设置 (TDesign 风格) -->
+  <view class="section">
+    <view class="section-title">通知设置</view>
+    <view class="menu-item">
+      <view class="menu-left">
+        <view class="menu-icon mi-bell"></view>
+        <text class="menu-label">行程通知</text>
+      </view>
+      <view class="menu-right">
+        <t-switch value="{{notify.trip}}" data-key="trip" data-section="notify" bind:change="onSwitchChange" />
+      </view>
+    </view>
+    <view class="menu-item">
+      <view class="menu-left">
+        <view class="menu-icon mi-coupon-s"></view>
+        <text class="menu-label">优惠通知</text>
+      </view>
+      <view class="menu-right">
+        <t-switch value="{{notify.promotion}}" data-key="promotion" data-section="notify" bind:change="onSwitchChange" />
+      </view>
+    </view>
+    <view class="menu-item">
+      <view class="menu-left">
+        <view class="menu-icon mi-megaphone"></view>
+        <text class="menu-label">系统通知</text>
+      </view>
+      <view class="menu-right">
+        <t-switch value="{{notify.system}}" data-key="system" data-section="notify" bind:change="onSwitchChange" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 隐私设置 (TDesign 风格) -->
+  <view class="section">
+    <view class="section-title">隐私设置</view>
+    <view class="menu-item">
+      <view class="menu-left">
+        <view class="menu-icon mi-location-s"></view>
+        <text class="menu-label">允许获取位置</text>
+      </view>
+      <view class="menu-right">
+        <t-switch value="{{privacy.location}}" data-key="location" data-section="privacy" bind:change="onSwitchChange" />
+      </view>
+    </view>
+    <view class="menu-item">
+      <view class="menu-left">
+        <view class="menu-icon mi-share-s"></view>
+        <text class="menu-label">允许行程分享</text>
+      </view>
+      <view class="menu-right">
+        <t-switch value="{{privacy.shareRide}}" data-key="shareRide" data-section="privacy" bind:change="onSwitchChange" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 通用设置 -->
+  <view class="section">
+    <view class="section-title">通用设置</view>
+    <view class="menu-item" bindtap="onMenuTap" data-action="unit">
+      <view class="menu-left">
+        <view class="menu-icon mi-ruler"></view>
+        <text class="menu-label">计量单位</text>
+      </view>
+      <view class="menu-right">
+        <text class="menu-hint">{{unit === 'metric' ? '公里' : '英里'}}</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+    <view class="menu-item" bindtap="onMenuTap" data-action="language">
+      <view class="menu-left">
+        <view class="menu-icon mi-globe"></view>
+        <text class="menu-label">语言</text>
+      </view>
+      <view class="menu-right">
+        <text class="menu-hint">{{language === 'zh' ? '简体中文' : 'English'}}</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 缓存与数据 -->
+  <view class="section">
+    <view class="menu-item" bindtap="onMenuTap" data-action="cache">
+      <view class="menu-left">
+        <view class="menu-icon mi-clean"></view>
+        <text class="menu-label">清除缓存</text>
+      </view>
+      <view class="menu-right">
+        <text class="menu-hint">{{cacheSize}}</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+    <view class="menu-item" bindtap="onMenuTap" data-action="about">
+      <view class="menu-left">
+        <view class="menu-icon mi-about-s"></view>
+        <text class="menu-label">关于滴滴学习版</text>
+      </view>
+      <view class="menu-right">
+        <text class="menu-hint">v1.0.0</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-section" wx:if="{{hasLogin}}">
+    <button class="logout-btn" bindtap="onLogout">退出登录</button>
+  </view>
+
+  <!-- TDesign 组件 -->
+  <t-message id="t-message" />
+  <t-dialog id="t-dialog" />
+
+  <!-- 单位选择弹窗 -->
+  <view class="modal-mask {{showUnitModal ? '' : 'hidden'}}" bindtap="closeModals">
+    <view class="modal-content" catchtap="stopPropagation">
+      <text class="modal-title">计量单位</text>
+      <view class="modal-option {{unit === 'metric' ? 'modal-option-active' : ''}}" bindtap="onUnitSelect" data-unit="metric">
+        <text>公里 (km)</text>
+        <text wx:if="{{unit === 'metric'}}" class="modal-check">✓</text>
+      </view>
+      <view class="modal-option {{unit === 'imperial' ? 'modal-option-active' : ''}}" bindtap="onUnitSelect" data-unit="imperial">
+        <text>英里 (mi)</text>
+        <text wx:if="{{unit === 'imperial'}}" class="modal-check">✓</text>
+      </view>
+      <view class="modal-cancel" bindtap="closeModals">取消</view>
+    </view>
+  </view>
+
+  <!-- 语言选择弹窗 -->
+  <view class="modal-mask {{showLangModal ? '' : 'hidden'}}" bindtap="closeModals">
+    <view class="modal-content" catchtap="stopPropagation">
+      <text class="modal-title">选择语言</text>
+      <view class="modal-option {{language === 'zh' ? 'modal-option-active' : ''}}" bindtap="onLangSelect" data-lang="zh">
+        <text>简体中文</text>
+        <text wx:if="{{language === 'zh'}}" class="modal-check">✓</text>
+      </view>
+      <view class="modal-option {{language === 'en' ? 'modal-option-active' : ''}}" bindtap="onLangSelect" data-lang="en">
+        <text>English</text>
+        <text wx:if="{{language === 'en'}}" class="modal-check">✓</text>
+      </view>
+      <view class="modal-cancel" bindtap="closeModals">取消</view>
+    </view>
+  </view>
+</view>

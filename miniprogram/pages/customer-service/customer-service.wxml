@@ -1,0 +1,90 @@
+<!-- pages/customer-service/customer-service.wxml — 客服中心 -->
+<view class="page-cs">
+  <!-- 头部 -->
+  <view class="cs-header">
+    <view class="cs-icon">
+      <view class="mi-headset-big"></view>
+    </view>
+    <text class="cs-title">在线客服</text>
+    <text class="cs-sub">7×24 小时为您服务</text>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="cs-section">
+    <view class="cs-section-title">快捷入口</view>
+    <view class="cs-grid">
+      <view class="cs-grid-item" bindtap="onOnlineService">
+        <view class="cs-grid-icon cs-grid-icon-1">
+          <view class="mi-chat-bubble"></view>
+        </view>
+        <text class="cs-grid-name">在线客服</text>
+        <text class="cs-grid-sub">立即接入</text>
+      </view>
+      <view class="cs-grid-item" bindtap="onPhoneService">
+        <view class="cs-grid-icon cs-grid-icon-2">
+          <view class="mi-phone-big"></view>
+        </view>
+        <text class="cs-grid-name">电话客服</text>
+        <text class="cs-grid-sub">400-000-0999</text>
+      </view>
+      <view class="cs-grid-item" bindtap="onCommonQues">
+        <view class="cs-grid-icon cs-grid-icon-3">
+          <view class="mi-question"></view>
+        </view>
+        <text class="cs-grid-name">常见问题</text>
+        <text class="cs-grid-sub">自助查询</text>
+      </view>
+      <view class="cs-grid-item" bindtap="onFeedback">
+        <view class="cs-grid-icon cs-grid-icon-4">
+          <view class="mi-pen"></view>
+        </view>
+        <text class="cs-grid-name">意见反馈</text>
+        <text class="cs-grid-sub">提建议</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 常见问题 -->
+  <view class="cs-section">
+    <view class="cs-section-title">常见问题</view>
+    <view
+      wx:for="{{faqs}}"
+      wx:key="id"
+      class="faq-item"
+      data-id="{{item.id}}"
+      bindtap="onFaqTap"
+    >
+      <view class="faq-q">
+        <text class="faq-tag">问</text>
+        <text class="faq-text">{{item.question}}</text>
+      </view>
+      <view wx:if="{{item.expanded}}" class="faq-a">
+        <text class="faq-tag faq-tag-a">答</text>
+        <text class="faq-text">{{item.answer}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="cs-section">
+    <view class="cs-section-title">联系方式</view>
+    <view class="contact-item">
+      <text class="contact-label">客服电话</text>
+      <text class="contact-value">400-000-0999</text>
+      <view class="contact-btn" bindtap="onPhoneService">拨打</view>
+    </view>
+    <view class="contact-item">
+      <text class="contact-label">客服邮箱</text>
+      <text class="contact-value">3514485358@qq.com</text>
+      <view class="contact-btn" bindtap="onCopyEmail">复制</view>
+    </view>
+    <view class="contact-item">
+      <text class="contact-label">工作时间</text>
+      <text class="contact-value">7×24 小时</text>
+    </view>
+  </view>
+
+  <view class="cs-foot">
+    <text>本服务由滴滴学习版提供 · 让每一次出行都更安心</text>
+  </view>
+</view>

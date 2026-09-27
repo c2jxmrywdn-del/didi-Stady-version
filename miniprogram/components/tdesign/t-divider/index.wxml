@@ -1,0 +1,9 @@
+<view class="t-divider t-divider--{{layout}} t-divider--{{align}} {{dashed ? 't-divider--dashed' : ''}}">
+  <view wx:if="{{layout === 'horizontal' && !content}}" class="t-divider__line"></view>
+  <block wx:elif="{{layout === 'horizontal' && content}}">
+    <view class="t-divider__line t-divider__line--{{align === 'right' ? 'hide' : 'show'}}"></view>
+    <text class="t-divider__content">{{content}}</text>
+    <view class="t-divider__line t-divider__line--{{align === 'left' ? 'hide' : 'show'}}"></view>
+  </block>
+  <view wx:elif="{{layout === 'vertical'}}" class="t-divider__vline"></view>
+</view>

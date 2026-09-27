@@ -1,0 +1,239 @@
+<!--pages/profile/profile.wxml—个人中心(完整版)-->
+<view class="page-profile">
+  <!-- 顶部用户背景 -->
+  <view class="user-hero">
+    <!-- 装饰背景 -->
+    <view class="hero-deco">
+      <view class="deco-circle deco-circle-1"></view>
+      <view class="deco-circle deco-circle-2"></view>
+      <view class="deco-circle deco-circle-3"></view>
+    </view>
+    <!-- 顶部小工具栏 -->
+    <view class="hero-toolbar">
+      <view class="hero-tool" bindtap="onViewWallet">
+        <view class="ht-icon ht-icon-wallet">¥</view>
+        <text>钱包</text>
+      </view>
+      <view class="hero-tool" bindtap="onViewCoupons">
+        <view class="ht-icon ht-icon-coupon">券</view>
+        <text>优惠券</text>
+        <view wx:if="{{couponCount > 0}}" class="ht-badge">{{couponCount}}</view>
+      </view>
+      <view class="hero-tool" bindtap="onViewSettings">
+        <view class="ht-icon ht-icon-setting"></view>
+        <text>设置</text>
+      </view>
+    </view>
+
+    <!-- 用户信息 -->
+    <view class="user-info" bindtap="onAvatarTap">
+      <view class="avatar-wrap {{hasLogin ? 'avatar-wrap-logged' : ''}}">
+        <text wx:if="{{!hasLogin}}" class="avatar-letter">?</text>
+        <text wx:elif="{{userInfo && !userInfo.avatarUrl}}" class="avatar-letter">{{avatarLetter}}</text>
+        <image
+          wx:else
+          class="avatar"
+          src="{{userInfo.avatarUrl}}"
+          mode="aspectFill"
+        />
+        <view wx:if="{{hasLogin && level}}" class="avatar-level-badge">{{level.shortName || 'V1'}}</view>
+      </view>
+      <view class="user-detail">
+        <view class="user-name-row">
+          <text class="user-name">{{hasLogin ? userInfo.nickName : '点击登录'}}</text>
+          <view wx:if="{{hasLogin && userInfo.phone}}" class="user-phone-tag">
+            <text class="phone-icon">📱</text>
+            <text>{{maskPhone(userInfo.phone)}}</text>
+          </view>
+        </view>
+        <view class="user-level" wx:if="{{hasLogin && level}}">
+          <view class="level-badge {{'level-badge-' + (level.shortName || 'V1')}}">
+            <text class="level-text">{{level.name || '会员'}}</text>
+          </view>
+          <text class="level-desc">{{level.exp || 0}} / {{level.maxExp === Infinity ? '∞' : (level.maxExp || 0)}} 成长值</text>
+          <view class="level-bar">
+            <!-- 等级进度条填充:背景按等级 class 切换,宽度按 5 档进度 class 切换(避免行内 style 触发 IDE linter CSS 误报) -->
+            <view class="level-bar-fill {{'level-fill-' + (level.shortName || 'V1') + ' ' + (levelBarPctClass || 'bar-pct-0')}}"></view>
+          </view>
+        </view>
+        <text wx:else class="user-tip">登录后享受更多会员特权</text>
+      </view>
+    </view>
+
+    <!-- 会员特权标签 -->
+    <view wx:if="{{hasLogin}}" class="benefits-row">
+      <view class="benefit-pill">
+        <text class="benefit-pill-icon">⚡</text>
+        <text>优先派单</text>
+      </view>
+      <view class="benefit-pill">
+        <text class="benefit-pill-icon">🎁</text>
+        <text>生日礼包</text>
+      </view>
+      <view class="benefit-pill">
+        <text class="benefit-pill-icon">🛡️</text>
+        <text>出行保障</text>
+      </view>
+      <view class="benefit-pill">
+        <text class="benefit-pill-icon">💎</text>
+        <text>专属客服</text>
+      </view>
+    </view>
+
+    <!-- 数据统计 -->
+    <view class="user-stats" wx:if="{{hasLogin}}">
+      <view class="stat-item" bindtap="onStatTap" data-stat="trips">
+        <text class="stat-num">{{stats.totalTrips}}</text>
+        <text class="stat-label">行程(次)</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item" bindtap="onStatTap" data-stat="distance">
+        <text class="stat-num">{{stats.totalDistance}}</text>
+        <text class="stat-label">里程(km)</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item" bindtap="onStatTap" data-stat="amount">
+        <text class="stat-num">¥{{stats.totalAmount}}</text>
+        <text class="stat-label">总花费</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item" bindtap="onStatTap" data-stat="points">
+        <text class="stat-num">{{stats.points}}</text>
+        <text class="stat-label">积分</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的钱包/资产 -->
+  <view wx:if="{{hasLogin}}" class="assets-section">
+    <view class="asset-item" bindtap="onAssetTap" data-asset="balance">
+      <text class="asset-num">¥{{balance}}</text>
+      <text class="asset-label">钱包余额</text>
+    </view>
+    <view class="asset-item" bindtap="onAssetTap" data-asset="credit">
+      <text class="asset-num">¥{{creditRemain}}</text>
+      <text class="asset-label">信用额度</text>
+    </view>
+    <view class="asset-item" bindtap="onAssetTap" data-asset="points">
+      <text class="asset-num">{{points}}</text>
+      <text class="asset-label">可用积分</text>
+    </view>
+  </view>
+
+  <!-- 订单类型快捷入口 -->
+  <view wx:if="{{hasLogin}}" class="orders-section">
+    <view class="section-title-row">
+      <text class="section-title-text">我的订单</text>
+      <text class="section-action" bindtap="onViewAllOrders">全部订单 ›</text>
+    </view>
+    <view class="orders-grid">
+      <view class="order-type" bindtap="onOrderType" data-type="unpaid">
+        <view class="order-icon order-icon-unpaid">
+          <text class="oi-letter">付</text>
+          <view wx:if="{{orderStats.unpaid > 0}}" class="oi-badge">{{orderStats.unpaid}}</view>
+        </view>
+        <text class="order-name">待支付</text>
+      </view>
+      <view class="order-type" bindtap="onOrderType" data-type="ongoing">
+        <view class="order-icon order-icon-ongoing">
+          <text class="oi-letter">行</text>
+          <view wx:if="{{orderStats.ongoing > 0}}" class="oi-badge">{{orderStats.ongoing}}</view>
+        </view>
+        <text class="order-name">进行中</text>
+      </view>
+      <view class="order-type" bindtap="onOrderType" data-type="uncomment">
+        <view class="order-icon order-icon-uncomment">
+          <text class="oi-letter">评</text>
+          <view wx:if="{{orderStats.uncomment > 0}}" class="oi-badge">{{orderStats.uncomment}}</view>
+        </view>
+        <text class="order-name">待评价</text>
+      </view>
+      <view class="order-type" bindtap="onOrderType" data-type="completed">
+        <view class="order-icon order-icon-completed">
+          <text class="oi-letter">已</text>
+          <view wx:if="{{orderStats.completed > 0}}" class="oi-badge">{{orderStats.completed}}</view>
+        </view>
+        <text class="order-name">已完成</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 工具宫格(常用工具) -->
+  <view wx:if="{{hasLogin}}" class="tools-section">
+    <view class="section-title-row">
+      <text class="section-title-text">常用工具</text>
+    </view>
+    <view class="tools-grid">
+      <view class="tool-item" bindtap="onToolTap" data-tool="invoice">
+        <view class="tool-icon tool-icon-invoice">票</view>
+        <text class="tool-text">申请发票</text>
+      </view>
+      <view class="tool-item" bindtap="onToolTap" data-tool="tripShare">
+        <view class="tool-icon tool-icon-share">⇆</view>
+        <text class="tool-text">行程分享</text>
+      </view>
+      <view class="tool-item" bindtap="onToolTap" data-tool="invoiceHistory">
+        <view class="tool-icon tool-icon-record">📋</view>
+        <text class="tool-text">历史发票</text>
+      </view>
+      <view class="tool-item" bindtap="onToolTap" data-tool="creditScore">
+        <view class="tool-icon tool-icon-credit">信</view>
+        <text class="tool-text">信用分</text>
+      </view>
+      <view class="tool-item" bindtap="onToolTap" data-tool="levelMall">
+        <view class="tool-icon tool-icon-mall">🛒</view>
+        <text class="tool-text">会员商城</text>
+      </view>
+      <view class="tool-item" bindtap="onToolTap" data-tool="invite">
+        <view class="tool-icon tool-icon-invite">邀</view>
+        <text class="tool-text">邀请好友</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 菜单列表 -->
+  <view wx:for="{{menuList}}" wx:key="title" class="menu-section">
+    <text class="menu-title">{{item.title}}</text>
+    <view class="menu-list card">
+      <view
+        wx:for="{{item.items}}"
+        wx:for-item="menuItem"
+        wx:key="name"
+        class="menu-item"
+        data-name="{{menuItem.name}}"
+        data-page="{{menuItem.page}}"
+        bindtap="onMenuClick"
+      >
+        <view class="menu-item-left">
+          <view class="menu-icon-css">
+            <view wx:if="{{menuItem.iconKey === 'wallet'}}" class="mi-wallet"></view>
+            <view wx:elif="{{menuItem.iconKey === 'coupon'}}" class="mi-coupon"></view>
+            <view wx:elif="{{menuItem.iconKey === 'address'}}" class="mi-address"></view>
+            <view wx:elif="{{menuItem.iconKey === 'contact'}}" class="mi-contact"></view>
+            <view wx:elif="{{menuItem.iconKey === 'shield'}}" class="mi-shield"></view>
+            <view wx:elif="{{menuItem.iconKey === 'lock'}}" class="mi-lock"></view>
+            <view wx:elif="{{menuItem.iconKey === 'security'}}" class="mi-security"></view>
+            <view wx:elif="{{menuItem.iconKey === 'service'}}" class="mi-service"></view>
+            <view wx:elif="{{menuItem.iconKey === 'setting'}}" class="mi-setting"></view>
+            <view wx:elif="{{menuItem.iconKey === 'feedback'}}" class="mi-feedback"></view>
+            <view wx:elif="{{menuItem.iconKey === 'about'}}" class="mi-about"></view>
+          </view>
+          <text class="menu-item-name">{{menuItem.name}}</text>
+        </view>
+        <view class="menu-item-right">
+          <view wx:if="{{menuItem.badge}}" class="menu-badge">{{menuItem.badge}}</view>
+          <text class="menu-arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-section" wx:if="{{hasLogin}}">
+    <button class="logout-btn" bindtap="onLogout">退出登录</button>
+  </view>
+
+  <!-- TDesign 组件 -->
+  <t-message id="t-message" />
+  <t-dialog id="t-dialog" />
+</view>

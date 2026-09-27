@@ -1,0 +1,289 @@
+/* custom-tab-bar — 暖白底栏(紧凑版) */
+/* ============ 尺寸基准 ============ */
+/* 总高 = 90rpx(可视区) + env(safe-area-inset-bottom) 安全区 */
+/* 较旧版 110rpx 缩减 20rpx,整体更紧凑 */
+/* 内容区 90rpx:icon 区 40rpx + 2rpx gap + 文字 22rpx + 上下留白共 26rpx */
+/* 4 个 tab 等分整屏宽度,每项宽 = 100% / 4,高度严格 100% */
+/* 红点溢出到 wrap 之外属于"角标"正常行为,不算越界 */
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;                       /* 保持贴底,不调整位置 */
+  left: 0;
+  right: 0;
+  height: calc(90rpx + env(safe-area-inset-bottom));
+  box-sizing: content-box;
+  background: #FFFDF9;
+  display: flex;
+  align-items: stretch;
+  border-top: 1rpx solid #EDE8E0;
+  z-index: 999;
+  padding-bottom: 0;
+}
+
+/* 单个 tab 项:严格 90rpx 高,内容居中 */
+.tab-bar-item {
+  flex: 1;
+  height: 90rpx;                   /* 旧 110rpx → 90rpx(-20rpx ≈ -10px) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #8A8278;
+  transition: transform 0.18s;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+.tab-bar-item:active { transform: scale(0.94); }
+
+/* 图标外壳 40rpx × 40rpx(较旧 48rpx 缩小 8rpx) */
+.tab-icon-wrap {
+  position: relative;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 2rpx;
+}
+
+/* 图标可视区 40rpx × 40rpx,严格裁剪 */
+.tab-icon-view {
+  position: relative;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.45;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.tab-icon-active .tab-icon-view {
+  opacity: 1;
+}
+
+/* 未读红点(同步缩小) */
+.tab-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 28rpx;
+  height: 28rpx;
+  padding: 0 8rpx;
+  line-height: 24rpx;          /* 24rpx 行高,28rpx 容器,留 4rpx 上下间距,避免裁字 */
+  background: #e74c3c;
+  color: #fff;
+  font-size: 20rpx;            /* 16rpx → 20rpx,数字更清晰 */
+  border-radius: 14rpx;
+  text-align: center;
+  font-weight: 500;
+  box-sizing: border-box;
+  border: 2rpx solid #FFFDF9;  /* 描边颜色与 tab 背景一致,形成"切角"效果 */
+  z-index: 5;
+  transform: translate(40%, -40%); /* 红点偏移到图标右上角外,符合"角标"视觉 */
+  letter-spacing: 0;
+}
+/* 2 位数字 (10~99) */
+.tab-badge-long { padding: 0 8rpx; min-width: 32rpx; }
+/* 3 位 "99+" */
+.tab-badge-xl   { padding: 0 8rpx; min-width: 40rpx; }
+
+/* ===================== 图标设计(40rpx 容器版) ===================== */
+/* 旧 48 → 新 40:整体缩小约 17%,等比缩放,所有偏移重新校准 */
+
+/* ---------- 首页(尖顶小房子) ---------- */
+/* 房子 28×22,尖顶 -10rpx(配 margin-top 12rpx),烟囱 -7rpx → 整体 ≤ 34rpx,余 6rpx */
+.icon-home {
+  position: relative;
+  width: 28rpx;
+  height: 22rpx;
+  margin-top: 12rpx;
+  box-sizing: border-box;
+}
+.icon-home::before {
+  content: "";
+  position: absolute;
+  top: -10rpx;                     /* 12 - 10 = 2rpx 余量 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 16rpx solid transparent;
+  border-right: 16rpx solid transparent;
+  border-bottom: 10rpx solid currentColor;
+}
+.icon-home::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 28rpx;
+  height: 22rpx;
+  background: currentColor;
+  border-radius: 2rpx 2rpx 3rpx 3rpx;
+}
+.icon-home .home-chimney {
+  position: absolute;
+  top: -7rpx;                      /* 12 - 7 = 5rpx 余量,烟囱 4rpx 高,安全 */
+  right: 3rpx;
+  width: 3rpx;
+  height: 4rpx;
+  background: currentColor;
+  border-radius: 1rpx;
+}
+.icon-home .home-door {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7rpx;
+  height: 9rpx;
+  background: #FFFDF9;
+  border-radius: 1rpx 1rpx 0 0;
+}
+
+/* ---------- 行程(剪贴板) ---------- */
+/* 26×26,顶部夹子 4rpx,总高 5+4+26=35,余 5rpx */
+.icon-trip {
+  position: relative;
+  width: 26rpx;
+  height: 26rpx;
+  margin-top: 5rpx;
+  box-sizing: border-box;
+}
+.icon-trip::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10rpx;
+  height: 4rpx;
+  background: currentColor;
+  border-radius: 1rpx 1rpx 0 0;
+  z-index: 1;
+}
+.icon-trip::after {
+  content: "";
+  position: absolute;
+  top: 3rpx;
+  left: 0;
+  width: 26rpx;
+  height: 23rpx;
+  background: currentColor;
+  border-radius: 3rpx 3rpx 4rpx 4rpx;
+}
+.icon-trip .trip-line {
+  position: absolute;
+  left: 4rpx;
+  right: 4rpx;
+  height: 2rpx;
+  background: #FFFDF9;
+  border-radius: 1rpx;
+  z-index: 1;
+}
+.icon-trip .trip-line-1 { top: 10rpx; }
+.icon-trip .trip-line-2 { top: 16rpx; width: 12rpx; left: 4rpx; }
+.icon-trip .trip-line-3 { top: 22rpx; }
+
+/* ---------- 消息(对话气泡) ---------- */
+/* 32×26,主气泡 20×15,副气泡 14×11,完全在容器内 */
+.icon-msg {
+  position: relative;
+  width: 32rpx;
+  height: 26rpx;
+  box-sizing: border-box;
+}
+.icon-msg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20rpx;
+  height: 15rpx;
+  background: currentColor;
+  border-radius: 5rpx 5rpx 5rpx 2rpx;
+}
+.icon-msg::after {
+  content: "";
+  position: absolute;
+  top: 10rpx;
+  right: 0;
+  width: 14rpx;
+  height: 11rpx;
+  background: currentColor;
+  border-radius: 5rpx 5rpx 2rpx 5rpx;
+  opacity: 0.7;
+}
+.icon-msg .msg-dot-1,
+.icon-msg .msg-dot-2,
+.icon-msg .msg-dot-3 {
+  position: absolute;
+  top: 5rpx;
+  width: 3rpx;
+  height: 3rpx;
+  background: #FFFDF9;
+  border-radius: 50%;
+  z-index: 1;
+}
+.icon-msg .msg-dot-1 { left: 4rpx; }
+.icon-msg .msg-dot-2 { left: 9rpx; }
+.icon-msg .msg-dot-3 { left: 14rpx; }
+
+/* ---------- 我的(人头像) ---------- */
+/* 头 12×12 + 身 26×18,总占 30rpx,容器 40,余 10rpx,安全 */
+.icon-profile {
+  position: relative;
+  width: 30rpx;
+  height: 32rpx;
+  box-sizing: border-box;
+}
+.icon-profile .profile-head {
+  position: absolute;
+  top: 2rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12rpx;
+  height: 12rpx;
+  background: currentColor;
+  border-radius: 50%;
+  z-index: 2;
+}
+.icon-profile .profile-body {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26rpx;
+  height: 18rpx;
+  background: currentColor;
+  border-radius: 13rpx 13rpx 3rpx 3rpx;
+  z-index: 1;
+}
+
+/* 文字:保持 20rpx,行高 22rpx,绝不溢出 */
+.tab-text {
+  font-size: 20rpx;
+  line-height: 22rpx;
+  color: #C5B9A8;
+  transition: color 0.2s;
+  margin-top: 0;
+  text-align: center;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+.tab-icon-active .tab-text {
+  color: #2D2A26;
+  font-weight: 500;
+}
+
+/* 选中态颜色(传给 currentColor) */
+.tab-icon-active {
+  color: #FF7B00;
+}

@@ -1,0 +1,70 @@
+/* components/tdesign/t-switch/index.wxss */
+.t-switch {
+  width: 88rpx;
+  height: 48rpx;
+  border-radius: 24rpx;
+  background: #E0E0E2;
+  position: relative;
+  transition: background 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.t-switch--small {
+  width: 72rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+}
+
+.t-switch--on {
+  background: linear-gradient(135deg, #FF7B00 0%, #FF5500 100%);
+  box-shadow: 0 2rpx 8rpx rgba(255, 123, 0, 0.24);
+}
+
+.t-switch--disabled {
+  opacity: 0.4;
+}
+
+.t-switch__dot {
+  position: absolute;
+  top: 4rpx;
+  left: 4rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background: #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.18);
+  transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.t-switch--small .t-switch__dot {
+  width: 32rpx;
+  height: 32rpx;
+  top: 4rpx;
+  left: 4rpx;
+}
+
+.t-switch--on .t-switch__dot {
+  transform: translateX(40rpx);
+}
+.t-switch--small.t-switch--on .t-switch__dot {
+  transform: translateX(32rpx);
+}
+
+.t-switch__check {
+  width: 16rpx;
+  height: 8rpx;
+  border-left: 3rpx solid #FF7B00;
+  border-bottom: 3rpx solid #FF7B00;
+  transform: rotate(-45deg) translate(2rpx, -2rpx);
+}
+
+.t-switch__label {
+  font-size: 26rpx;
+  color: #5C554C;
+  margin-left: 12rpx;
+  letter-spacing: 0.3rpx;
+}

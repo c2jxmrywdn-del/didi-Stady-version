@@ -1,0 +1,188 @@
+/* 
+使用方法：
+在 team.wxss 文件末尾引入样式
+```
+@import "./team-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-team {
+        background: rgb(23, 22, 20);
+    }
+
+    .team-banner {
+        background: rgb(0, 0, 0);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .banner-circle {
+        background: rgba(17, 17, 17, 0.06);
+    }
+
+    .banner-circle-2 {
+        background: rgba(165, 46, 0, 0.12);
+    }
+
+    .banner-circle-3 {
+        background: rgba(17, 17, 17, 0.08);
+    }
+
+    .team-banner-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .team-banner-subtitle {
+        color: rgb(126, 118, 108);
+    }
+
+    .team-stats {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .team-stat-divider {
+        background: rgb(36, 33, 27);
+    }
+
+    .team-stat-num {
+        color: rgb(223, 219, 214);
+    }
+
+    .team-stat-label {
+        color: rgb(126, 118, 108);
+    }
+
+    .section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .section-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .member-block {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .member-hero {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .member-hero-avatar {
+        background: rgb(0, 0, 0);
+    }
+
+    .member-hero-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .member-hero-role {
+        color: rgb(165, 46, 0);
+        background: rgba(165, 46, 0, 0.1);
+    }
+
+    .member-tag {
+        color: rgb(174, 165, 155);
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .member-bio {
+        color: rgb(174, 165, 155);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .member-meta {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .member-meta-label {
+        color: rgb(99, 99, 99);
+    }
+
+    .member-meta-value {
+        color: rgb(223, 219, 214);
+    }
+
+    .member-contacts-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .member-contacts-title::before {
+        background: rgb(165, 46, 0);
+    }
+
+    .member-contacts-hint {
+        color: rgb(77, 67, 53);
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .member-social-row {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .member-social-row-hover {
+        background: rgb(31, 29, 24);
+    }
+
+    .member-social-row:active {
+        background: rgb(31, 29, 24);
+    }
+
+    .member-social-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .member-social-handle {
+        color: rgb(126, 118, 108);
+    }
+
+    .member-social-arrow {
+        color: rgb(77, 67, 53);
+    }
+
+    .member-copy-all {
+        background: rgb(0, 0, 0);
+        color: rgb(17, 17, 17);
+    }
+
+    .milestone-list::before {
+        background: rgb(0, 0, 0);
+    }
+
+    .milestone-dot {
+        background: rgb(165, 46, 0);
+        border: rgb(0, 0, 0);
+        box-shadow: rgb(0, 0, 0);
+    }
+
+    .milestone-date {
+        color: rgb(165, 46, 0);
+        background: rgba(165, 46, 0, 0.08);
+    }
+
+    .milestone-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .milestone-desc {
+        color: rgb(126, 118, 108);
+    }
+
+    .team-declare {
+        background: rgb(0, 0, 0);
+        border: rgb(0, 0, 0);
+    }
+
+    .declare-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .declare-line {
+        color: rgb(126, 118, 108);
+    }
+}

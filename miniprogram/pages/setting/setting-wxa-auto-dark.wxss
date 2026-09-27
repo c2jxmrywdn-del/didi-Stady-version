@@ -1,0 +1,197 @@
+/* 
+使用方法：
+在 setting.wxss 文件末尾引入样式
+```
+@import "./setting-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-setting {
+        background: rgb(23, 22, 20);
+    }
+
+    .section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .section-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .profile-card:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .profile-avatar {
+        background: rgb(28, 28, 28);
+        border: rgb(0, 0, 0);
+    }
+
+    .profile-name {
+        color: rgb(255, 255, 255);
+    }
+
+    .profile-phone {
+        color: rgb(99, 99, 99);
+    }
+
+    .profile-arrow {
+        color: rgb(58, 58, 62);
+    }
+
+    .menu-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .menu-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .menu-label {
+        color: rgb(255, 255, 255);
+    }
+
+    .menu-hint {
+        color: rgb(58, 58, 62);
+    }
+
+    .menu-arrow {
+        color: rgb(58, 58, 62);
+    }
+
+    .mi-password {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-password::after {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-shield {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-shield::after {
+        color: rgb(255, 255, 255);
+    }
+
+    .mi-bell {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-bell::after {
+        background: rgb(255, 255, 255);
+    }
+
+    .mi-coupon-s {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-coupon-s::after {
+        color: rgb(255, 255, 255);
+    }
+
+    .mi-megaphone {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-megaphone::after {
+        border-left: rgb(0, 0, 0);
+    }
+
+    .mi-location-s {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-location-s::after {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .mi-share-s {
+        border: rgb(0, 0, 0);
+        background: rgb(255, 255, 255);
+    }
+
+    .mi-share-s::after {
+        border: rgb(0, 0, 0);
+        background: rgb(23, 22, 20);
+    }
+
+    .mi-ruler {
+        border: rgb(0, 0, 0);
+        background: rgb(0, 0, 0);
+    }
+
+    .mi-globe {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-globe::after {
+        border-left: rgb(0, 0, 0);
+    }
+
+    .mi-globe::before {
+        border-top: rgb(0, 0, 0);
+    }
+
+    .mi-clean {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-clean::after {
+        color: rgb(255, 255, 255);
+    }
+
+    .mi-about-s {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-about-s::after {
+        color: rgb(255, 255, 255);
+    }
+
+    .logout-btn {
+        background: rgb(20, 18, 15);
+        color: rgb(213, 59, 47);
+        border: rgb(0, 0, 0);
+    }
+
+    .logout-btn:active {
+        background: rgb(33, 23, 23);
+    }
+
+    .modal-mask {
+        background: rgba(255, 255, 255, 0.35);
+    }
+
+    .modal-content {
+        background: rgb(20, 18, 15);
+    }
+
+    .modal-title {
+        color: rgb(255, 255, 255);
+    }
+
+    .modal-option {
+        color: rgb(209, 209, 209);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .modal-option:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .modal-option-active {
+        color: rgb(223, 219, 214);
+    }
+
+    .modal-check {
+        color: rgb(223, 219, 214);
+    }
+
+    .modal-cancel {
+        color: rgb(99, 99, 99);
+    }
+}

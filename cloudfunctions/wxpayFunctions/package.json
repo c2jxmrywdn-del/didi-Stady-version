@@ -1,0 +1,9 @@
+{
+  "name": "wxpayFunctions",
+  "version": "1.0.0",
+  "description": "微信支付云函数 - 统一下单/支付回调/查询/退款/关闭订单",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.4.0"
+  }
+}

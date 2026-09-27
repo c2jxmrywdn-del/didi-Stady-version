@@ -1,0 +1,106 @@
+<!-- pages/feedback/feedback.wxml — 意见反馈 -->
+<view class="page-fb">
+  <!-- 问题类型 -->
+  <view class="fb-section">
+    <view class="fb-label">
+      <text class="fb-required">*</text>
+      <text>问题类型</text>
+    </view>
+    <view class="fb-types">
+      <view
+        wx:for="{{types}}"
+        wx:key="key"
+        class="fb-type {{currentType === item.key ? 'fb-type-active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="onTypeSelect"
+      >
+        <text>{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 问题描述 -->
+  <view class="fb-section">
+    <view class="fb-label">
+      <text class="fb-required">*</text>
+      <text>问题描述</text>
+      <text class="fb-count">{{content.length}}/500</text>
+    </view>
+    <textarea
+      class="fb-textarea"
+      placeholder="请详细描述您遇到的问题或建议，我们会尽快处理"
+      maxlength="500"
+      auto-height
+      value="{{content}}"
+      bindinput="onContentInput"
+    ></textarea>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="fb-section">
+    <view class="fb-label">
+      <text>联系方式（选填）</text>
+    </view>
+    <input
+      class="fb-input"
+      type="text"
+      placeholder="手机号/微信号/QQ"
+      value="{{contact}}"
+      bindinput="onContactInput"
+    />
+  </view>
+
+  <!-- 图片上传 -->
+  <view class="fb-section">
+    <view class="fb-label">
+      <text>截图（最多 3 张）</text>
+    </view>
+    <view class="fb-images">
+      <view
+        wx:for="{{images}}"
+        wx:key="*this"
+        class="fb-image-item"
+        data-index="{{index}}"
+        bindtap="onImageTap"
+      >
+        <image class="fb-image" src="{{item}}" mode="aspectFill" />
+        <view class="fb-image-delete" catchtap="onImageDelete" data-index="{{index}}">×</view>
+      </view>
+      <view wx:if="{{images.length < 3}}" class="fb-image-add" bindtap="onAddImage">
+        <view class="mi-camera"></view>
+        <text>添加图片</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="fb-submit-section">
+    <button class="fb-submit" bindtap="onSubmit" disabled="{{!canSubmit}}">
+      <text wx:if="{{submitting}}">提交中...</text>
+      <text wx:else>提交反馈</text>
+    </button>
+  </view>
+
+  <!-- 历史反馈 -->
+  <view wx:if="{{history.length > 0}}" class="fb-section">
+    <view class="fb-label">
+      <text>我的反馈 ({{history.length}})</text>
+    </view>
+    <view
+      wx:for="{{history}}"
+      wx:key="id"
+      class="fb-history"
+    >
+      <view class="fb-history-head">
+        <text class="fb-history-type">{{item.typeLabel}}</text>
+        <text class="fb-history-time">{{item.timeText}}</text>
+      </view>
+      <text class="fb-history-content">{{item.content}}</text>
+      <view class="fb-history-status">
+        <text wx:if="{{item.status === 'pending'}}" class="status-pending">待处理</text>
+        <text wx:elif="{{item.status === 'processing'}}" class="status-processing">处理中</text>
+        <text wx:elif="{{item.status === 'done'}}" class="status-done">已处理</text>
+      </view>
+    </view>
+  </view>
+</view>

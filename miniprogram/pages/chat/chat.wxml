@@ -1,0 +1,163 @@
+<!-- pages/chat/chat.wxml — 聊天详情页(乘客 ↔ 司机) -->
+<view class="page-chat">
+  <!-- 顶部用户信息 -->
+  <view class="chat-header">
+    <view class="chat-header-avatar">
+      <text class="chat-header-emoji">{{target.avatar || '🚗'}}</text>
+      <view wx:if="{{target.online}}" class="chat-header-online"></view>
+    </view>
+    <view class="chat-header-info">
+      <text class="chat-header-name">{{target.name || '滴滴学习版客服'}}</text>
+      <text class="chat-header-sub">{{target.subtitle || serviceSubtitle}}</text>
+    </view>
+    <view wx:if="{{showOrder && order}}" class="chat-header-order" bindtap="onOrderTap">
+      <text class="chat-order-label">查看行程</text>
+      <text class="chat-order-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 订单卡片(行程中显示) -->
+  <view wx:if="{{showOrder && order}}" class="order-card" bindtap="onOrderTap">
+    <view class="order-card-header">
+      <text class="order-status {{order.status}}">{{order.statusText}}</text>
+      <text class="order-id">订单号: {{order.id}}</text>
+    </view>
+    <view class="order-route">
+      <view class="order-point">
+        <view class="order-dot dot-green"></view>
+        <text class="order-text">{{order.startAddress}}</text>
+      </view>
+      <view class="order-line"></view>
+      <view class="order-point">
+        <view class="order-dot dot-red"></view>
+        <text class="order-text">{{order.endAddress}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 消息列表 -->
+  <scroll-view
+    class="chat-scroll"
+    scroll-y
+    scroll-into-view="{{scrollIntoView}}"
+    scroll-with-animation
+  >
+    <view class="chat-messages">
+      <view wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}">
+        <!-- 时间分隔 -->
+        <view wx:if="{{item.showTime}}" class="chat-time-divider">
+          <text>{{item.timeText}}</text>
+        </view>
+
+        <!-- 系统消息 -->
+        <view wx:if="{{item.type === 'system'}}" class="chat-system">
+          <text>{{item.content}}</text>
+        </view>
+
+        <!-- 文本消息 -->
+        <view wx:else class="chat-row {{item.from === currentUserId ? 'chat-row-mine' : 'chat-row-other'}}">
+          <view wx:if="{{item.from !== currentUserId}}" class="chat-msg-avatar">
+            <text class="chat-msg-emoji">{{item.avatar || target.avatar || '🚗'}}</text>
+          </view>
+          <view class="chat-msg-body">
+            <view
+              wx:if="{{item.type === 'text'}}"
+              class="chat-bubble {{item.from === currentUserId ? 'chat-bubble-mine' : 'chat-bubble-other'}}"
+            >
+              <text>{{item.content}}</text>
+            </view>
+
+            <!-- 位置消息 -->
+            <view
+              wx:elif="{{item.type === 'location'}}"
+              class="chat-location {{item.from === currentUserId ? 'chat-location-mine' : 'chat-location-other'}}"
+              bindtap="onLocationTap"
+              data-item="{{item}}"
+            >
+              <view class="chat-location-title">[位置] {{item.content}}</view>
+              <view class="chat-location-map">
+                <view class="chat-location-pin"></view>
+                <view class="chat-location-text">
+                  纬度: {{item.latitude}}\n经度: {{item.longitude}}
+                </view>
+              </view>
+            </view>
+
+            <!-- 语音消息 -->
+            <view
+              wx:elif="{{item.type === 'voice'}}"
+              class="chat-voice {{item.from === currentUserId ? 'chat-bubble-mine' : 'chat-bubble-other'}}"
+              bindtap="onPlayVoice"
+              data-item="{{item}}"
+            >
+              <view class="chat-voice-icon">
+                <view class="chat-voice-wave"></view>
+                <view class="chat-voice-wave"></view>
+                <view class="chat-voice-wave"></view>
+              </view>
+              <text class="chat-voice-duration">{{item.duration || 0}}"</text>
+            </view>
+
+            <!-- 图片消息 -->
+            <view
+              wx:elif="{{item.type === 'image'}}"
+              class="chat-image"
+              bindtap="onImageTap"
+              data-item="{{item}}"
+            >
+              <image class="chat-image-img" src="{{item.content}}" mode="aspectFill" />
+            </view>
+          </view>
+          <view wx:if="{{item.from === currentUserId}}" class="chat-msg-avatar">
+            <text class="chat-msg-emoji">{{item.avatar || '🙋'}}</text>
+          </view>
+        </view>
+      </view>
+      <view id="chat-bottom-anchor" style="height: 1rpx;"></view>
+    </view>
+  </scroll-view>
+
+  <!-- 快捷回复面板 -->
+  <view wx:if="{{showQuickReplies}}" class="quick-replies">
+    <view
+      wx:for="{{quickReplies}}"
+      wx:key="*this"
+      class="quick-reply-item"
+      bindtap="onQuickReply"
+      data-text="{{item}}"
+    >
+      {{item}}
+    </view>
+  </view>
+
+  <!-- 输入栏 -->
+  <view class="chat-input-bar">
+    <view class="chat-input-tools">
+      <view class="chat-tool" bindtap="onToggleQuickReplies" hover-class="chat-tool-hover">
+        <view class="mi-quick"></view>
+      </view>
+      <view class="chat-tool" bindtap="onSendLocation" hover-class="chat-tool-hover">
+        <view class="mi-loc"></view>
+      </view>
+      <view class="chat-tool" bindtap="onSendVoice" hover-class="chat-tool-hover">
+        <view class="mi-mic"></view>
+      </view>
+    </view>
+    <view class="chat-input-wrap">
+      <textarea
+        class="chat-input"
+        value="{{inputValue}}"
+        placeholder="输入消息..."
+        maxlength="500"
+        auto-height
+        cursor-spacing="20"
+        bindinput="onInputChange"
+        bindconfirm="onSend"
+        adjust-position="{{true}}"
+        show-confirm-bar="{{false}}"
+        hold-keyboard="{{true}}"
+      ></textarea>
+    </view>
+    <button class="chat-send-btn {{inputValue ? 'chat-send-active' : ''}}" bindtap="onSend" disabled="{{!inputValue}}">发送</button>
+  </view>
+</view>

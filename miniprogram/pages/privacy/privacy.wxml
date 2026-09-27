@@ -1,0 +1,153 @@
+<!-- pages/privacy/privacy.wxml — 隐私政策 -->
+<view class="page-privacy">
+  <!-- 顶部声明 -->
+  <view class="top-notice">
+    <view class="notice-icon">
+      <view class="mi-shield-w"></view>
+    </view>
+    <view class="notice-content">
+      <text class="notice-title">隐私保护</text>
+      <text class="notice-text">我们重视并保护您的个人信息，本项目仅用于学习交流</text>
+    </view>
+  </view>
+
+  <!-- 最后更新 -->
+  <view class="update-info">
+    <text>最后更新时间：2026 年 5 月 15 日</text>
+  </view>
+
+  <!-- 隐私摘要卡片 -->
+  <view class="summary-section">
+    <view class="summary-title">本项目特别声明</view>
+    <view class="summary-item">
+      <view class="summary-bullet summary-bullet-green">✓</view>
+      <text>本项目为学习交流演示项目，不收集任何真实的个人信息用于商业用途</text>
+    </view>
+    <view class="summary-item">
+      <view class="summary-bullet summary-bullet-green">✓</view>
+      <text>所有数据均存储在用户本地设备（微信本地缓存）中</text>
+    </view>
+    <view class="summary-item">
+      <view class="summary-bullet summary-bullet-green">✓</view>
+      <text>未启用任何第三方数据收集 SDK</text>
+    </view>
+    <view class="summary-item">
+      <view class="summary-bullet summary-bullet-green">✓</view>
+      <text>用户可随时清除本地数据，开发者不会保留任何副本</text>
+    </view>
+  </view>
+
+  <!-- 协议内容 -->
+  <view class="content-section">
+    <view class="content-title">一、信息收集范围</view>
+    <view class="content-text">
+      <text>本项目（滴滴学习版）由开发者 @ouyang jason 出于学习交流目的开发，仅作为微信小程序开发技术的学习演示项目。</text>
+      <text>本项目可能涉及收集的信息类型如下：</text>
+      <text>1. <text class="text-bold">位置信息</text>：用于显示用户当前位置和推荐附近车辆，仅在用户主动授权后获取，存储于本地。</text>
+      <text>2. <text class="text-bold">微信用户信息</text>：仅在用户主动使用微信一键登录功能时获取（昵称、头像、性别、地区等），存储于本地。</text>
+      <text>3. <text class="text-bold">手机号信息</text>：仅在用户主动使用手机号登录功能时获取，存储于本地。</text>
+      <text>4. <text class="text-bold">设备信息</text>：微信平台自动收集的标准设备信息（设备型号、系统版本等），本项目不会主动收集。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">二、信息使用方式</view>
+    <view class="content-text">
+      <text>1. 上述信息 <text class="text-bold">仅用于本项目内部的模拟功能演示</text>（如显示用户位置、模拟叫车、模拟司机匹配等）。</text>
+      <text>2. 信息 <text class="text-bold">不会用于商业用途</text>，不会被出售、交换或转让给任何第三方。</text>
+      <text>3. 信息 <text class="text-bold">不会用于个性化广告推送</text> 或用户画像分析。</text>
+      <text>4. 信息 <text class="text-bold">不会用于任何机器学习或人工智能模型训练</text>。</text>
+      <text>5. 模拟数据（订单、司机、优惠卷等） <text class="text-bold">不会与真实世界的数据进行任何匹配或关联</text>。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">三、信息存储与保护</view>
+    <view class="content-text">
+      <text>1. 本项目所有用户数据均 <text class="text-bold">存储于用户本地设备</text>（通过 wx.setStorageSync / wx.getStorageSync 等微信小程序 API）。</text>
+      <text>2. 开发者 <text class="text-bold">不在服务器端存储任何用户数据</text>（云函数仅用于模拟数据生成，无用户身份数据持久化）。</text>
+      <text>3. 用户可随时在「设置」→「清除缓存」中清除所有本地数据。</text>
+      <text>4. 用户卸载本小程序后，所有本地数据将自动清除。</text>
+      <text>5. 开发者采用合理的技术措施保障数据安全，但由于本项目为学习交流项目，<text class="text-bold">不建议用户上传真实敏感信息</text>（如真实身份证号、银行卡密码等）。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">四、第三方服务</view>
+    <view class="content-text">
+      <text>本项目使用的第三方服务如下：</text>
+      <text>1. <text class="text-bold">微信小程序平台</text>：用于基础框架支持，遵循《微信小程序平台运营规范》和《微信开放平台开发者协议》。</text>
+      <text>2. <text class="text-bold">百度地图 API</text>：用于位置显示和地图功能，遵循百度地图开放平台的使用条款，API Key 由开发者配置，不会向百度发送用户身份信息。</text>
+      <text>3. <text class="text-bold">微信云开发（可选）</text>：本项目代码中包含云函数调用逻辑，但默认情况下不依赖云开发即可运行。</text>
+      <text>本项目 <text class="text-bold">未集成</text> 任何广告 SDK、用户行为分析 SDK、社交分享统计 SDK 等第三方数据收集服务。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">五、权限使用说明</view>
+    <view class="content-text">
+      <text>本项目申请了以下微信小程序权限：</text>
+      <text>1. <text class="text-bold">scope.userLocation</text>（位置权限）：用于显示用户当前位置和推荐附近车辆。<text class="text-bold">用户可随时在设置中关闭此权限</text>。</text>
+      <text>2. <text class="text-bold">chooseLocation</text>（选择位置）：用于用户在叫车时选择出发地或目的地。</text>
+      <text>3. <text class="text-bold">getLocation</text>（获取位置）：同上。</text>
+      <text>所有权限申请均 <text class="text-bold">仅在用户主动触发相关功能时才会请求</text>，不会在应用启动时强制索取。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">六、未成年人保护</view>
+    <view class="content-text">
+      <text>1. 本项目为学习交流项目，未成年人应在监护人陪同下使用。</text>
+      <text>2. 监护人应指导未成年人合理使用电子产品，注意保护个人隐私。</text>
+      <text>3. 如发现未成年人未经监护人同意上传了个人信息，请联系开发者删除。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">七、Cookie 与追踪</view>
+    <view class="content-text">
+      <text>1. 本项目 <text class="text-bold">不使用任何 Cookie</text> 或类似技术进行用户追踪。</text>
+      <text>2. 本项目 <text class="text-bold">不使用任何行为分析工具</text>（如 Google Analytics、友盟、百度统计等）。</text>
+      <text>3. 本项目 <text class="text-bold">不收集用户的浏览历史、操作记录或位置轨迹</text> 用于商业分析。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">八、用户权利</view>
+    <view class="content-text">
+      <text>您对自己的个人信息享有以下权利：</text>
+      <text>1. <text class="text-bold">查询权</text>：您可以在「我的」→「编辑资料」中查看您的个人信息。</text>
+      <text>2. <text class="text-bold">修改权</text>：您可以随时修改昵称、头像、性别等个人信息。</text>
+      <text>3. <text class="text-bold">删除权</text>：您可以在「设置」→「退出登录」中清除个人数据，或卸载本小程序彻底删除所有数据。</text>
+      <text>4. <text class="text-bold">注销权</text>：由于本项目不存储服务器端数据，您清除本地缓存即等同于注销账户。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">九、隐私政策变更</view>
+    <view class="content-text">
+      <text>1. 开发者有权根据需要随时修改本隐私政策，修改后的政策自发布之日起生效。</text>
+      <text>2. 重大变更将通过应用内公告等方式通知用户。</text>
+      <text>3. 用户继续使用本项目即视为同意接受修改后的隐私政策。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">十、联系方式</view>
+    <view class="content-text">
+      <text>如对本隐私政策有任何疑问或建议，或需要行使您的个人信息权利，请通过以下方式联系开发者：</text>
+      <text>开发者：@ouyang jason</text>
+      <text>项目类型：微信小程序学习交流项目</text>
+      <text>项目用途：仅用于学习交流</text>
+      <text>特别提示：本项目 <text class="text-bold">不会</text> 收集您的任何信息用于商业用途，请放心使用。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">十一、结语</view>
+    <view class="content-text">
+      <text>本项目作为学习交流演示项目，严格遵循最小化收集、最大化保护的原则。开发者承诺不会收集任何与本项目学习演示目的无关的个人信息。</text>
+      <text class="text-thanks">感谢您选择本项目，希望它对您的微信小程序学习之旅有所帮助！</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,589 @@
+/* pages/index/index.wxss — 暖白首页 */
+.page-index {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  /* 不用 overflow: hidden,让页面整体可上下滑 */
+}
+
+.map {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.locate-btn {
+  position: fixed;
+  right: 24rpx;
+  bottom: 620rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: #FFFDF9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #EDE8E0;
+  z-index: 100;
+}
+
+.locate-icon {
+  position: relative;
+  width: 32rpx;
+  height: 32rpx;
+}
+/* 外环 */
+.locate-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3rpx solid #2D2A26;
+  border-radius: 50%;
+}
+/* 中心点 */
+.locate-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10rpx;
+  height: 10rpx;
+  background: #FF7B00;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bottom-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFFDF9;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 32rpx 32rpx 0;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+  z-index: 200;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 -8rpx 24rpx rgba(0, 0, 0, 0.06);
+}
+
+.address-section {
+  background: #FAF8F5;
+  border-radius: 12rpx;
+  padding: 24rpx;
+}
+
+.address-row {
+  display: flex;
+  align-items: center;
+  padding: 14rpx 0;
+}
+
+.address-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.dot-green { background: #5CAA5C; }
+.dot-dark { background: #2D2A26; }
+
+.address-info { flex: 1; }
+
+.address-text {
+  font-size: 30rpx;
+  color: #2D2A26;
+}
+
+.address-text.placeholder {
+  color: #C5B9A8;
+}
+
+.address-arrow {
+  font-size: 36rpx;
+  color: #C5B9A8;
+  margin-left: 16rpx;
+  flex-shrink: 0;
+}
+
+.address-divider {
+  padding: 6rpx 0 6rpx 36rpx;
+}
+
+.address-divider-line {
+  height: 1rpx;
+  background: #EDE8E0;
+}
+
+.car-type-section {
+  margin-top: 24rpx;
+}
+
+.car-type-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12rpx 0;
+}
+
+.car-type-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2D2A26;
+  letter-spacing: 1rpx;
+}
+
+.car-type-arrow {
+  font-size: 28rpx;
+  color: #C5B9A8;
+  transition: transform 0.3s;
+}
+
+.car-type-arrow.arrow-up {
+  transform: rotate(-90deg);
+}
+
+.car-type-list {
+  margin-top: 12rpx;
+}
+
+.car-type-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 16rpx;
+  border-radius: 8rpx;
+  margin-bottom: 4rpx;
+  border: 1rpx solid transparent;
+  transition: all 0.2s;
+}
+
+.car-type-active {
+  background: #FAF8F5;
+  border-color: #2D2A26;
+}
+
+.car-type-icon-view {
+  position: relative;
+  width: 56rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+/* 车身上半 */
+.car-type-icon-view::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8rpx;
+  right: 8rpx;
+  height: 14rpx;
+  background: #2D2A26;
+  border-radius: 6rpx 6rpx 2rpx 2rpx;
+}
+/* 车身下半 */
+.car-type-icon-view::after {
+  content: "";
+  position: absolute;
+  bottom: 4rpx;
+  left: 0;
+  right: 0;
+  height: 16rpx;
+  background: #2D2A26;
+  border-radius: 4rpx 4rpx 5rpx 5rpx;
+}
+/* 车轮 */
+.car-type-icon-view .car-wheel {
+  position: absolute;
+  bottom: 0;
+  width: 12rpx;
+  height: 12rpx;
+  background: #2D2A26;
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: inset 0 0 0 3rpx #FFFDF9;
+}
+.car-type-icon-view .car-wheel-front { left: 4rpx; }
+.car-type-icon-view .car-wheel-rear { right: 4rpx; }
+
+.car-type-info { flex: 1; }
+
+.car-type-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  display: block;
+  color: #2D2A26;
+}
+
+.car-type-desc {
+  font-size: 22rpx;
+  color: #8A8278;
+  display: block;
+  margin-top: 2rpx;
+}
+
+.car-type-price {
+  text-align: right;
+}
+
+.price-num {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2D2A26;
+}
+
+.price-unit {
+  font-size: 20rpx;
+  color: #8A8278;
+  display: block;
+}
+
+.car-type-brief {
+  display: flex;
+  margin-top: 16rpx;
+}
+
+.car-brief-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 0;
+  border-radius: 8rpx;
+  margin-right: 8rpx;
+  background: #FAF8F5;
+  border: 1rpx solid transparent;
+}
+
+.car-brief-item:last-child {
+  margin-right: 0;
+}
+
+.car-brief-active {
+  border-color: #2D2A26;
+  background: #FFFDF9;
+}
+
+.car-brief-name {
+  font-size: 22rpx;
+  margin-top: 6rpx;
+  color: #8A8278;
+}
+
+.call-section {
+  margin-top: 24rpx;
+  padding-bottom: 20rpx;
+}
+
+.estimate-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+
+.estimate-item {
+  text-align: center;
+  flex: 1;
+}
+
+.estimate-label {
+  font-size: 22rpx;
+  color: #8A8278;
+  display: block;
+  letter-spacing: 1rpx;
+}
+
+.estimate-value {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2D2A26;
+  display: block;
+  margin-top: 4rpx;
+}
+
+.estimate-divider {
+  width: 1rpx;
+  height: 60rpx;
+  background: #EDE8E0;
+}
+
+.call-car-btn {
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  background: #2D2A26;
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 8rpx;
+  border: none;
+  text-align: center;
+  letter-spacing: 2rpx;
+}
+
+.call-car-btn::after {
+  border: none;
+}
+
+/* ============ 导航跳转(原生地图 App) ============ */
+.navi-bar {
+  margin-top: 16rpx;
+  padding: 16rpx 20rpx;
+  background: #FFF1E5;
+  border: 1rpx solid #FFD4B0;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+.navi-bar-tip {
+  font-size: 22rpx;
+  color: #8A4A1A;
+  letter-spacing: 1rpx;
+}
+.navi-bar-btn {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 0;
+  font-size: 26rpx;
+  color: #FF7B00;
+  font-weight: 500;
+}
+.navi-bar-btn:active { opacity: 0.7; }
+.navi-bar-icon {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  background: #FF7B00;
+  margin-right: 12rpx;
+  position: relative;
+}
+.navi-bar-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14rpx;
+  height: 14rpx;
+  background: #FFFDF9;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.navi-bar-icon::after {
+  content: "";
+  position: absolute;
+  bottom: -4rpx;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 6rpx solid transparent;
+  border-right: 6rpx solid transparent;
+  border-top: 8rpx solid #FF7B00;
+  transform: translateX(-50%);
+}
+.navi-bar-arrow {
+  margin-left: auto;
+  color: #FF7B00;
+  font-size: 30rpx;
+}
+
+.quick-section {
+  margin-top: 24rpx;
+  padding-bottom: 20rpx;
+}
+
+.quick-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.quick-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rpx 16rpx;
+  border-radius: 12rpx;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.quick-item-hover {
+  background: #FAF8F5;
+  transform: scale(0.96);
+}
+
+.quick-item:active {
+  background: #F2EEE7;
+}
+
+.quick-icon-wrap {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8rpx;
+  background: #FAF8F5;
+  border: 1rpx solid #EDE8E0;
+}
+
+/* 快捷入口 4 个精致图标:统一 32~36rpx 尺寸,圆角风,与 tabBar 风格统一 */
+
+/* 回家:尖顶小房子 + 门 */
+.qi-home {
+  position: relative;
+  width: 32rpx;
+  height: 26rpx;
+  margin-top: 2rpx;
+}
+.qi-home::before {
+  content: "";
+  position: absolute;
+  top: -12rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18rpx solid transparent;
+  border-right: 18rpx solid transparent;
+  border-bottom: 14rpx solid #2D2A26;
+}
+.qi-home::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 32rpx;
+  height: 26rpx;
+  background: #2D2A26;
+  border-radius: 3rpx 3rpx 4rpx 4rpx;
+}
+.qi-home .qi-home-door {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rpx;
+  height: 10rpx;
+  background: #FFFDF9;
+  border-radius: 2rpx 2rpx 0 0;
+}
+
+/* 公司:楼宇 + 窗户 */
+.qi-building {
+  position: relative;
+  width: 26rpx;
+  height: 32rpx;
+}
+.qi-building::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #2D2A26;
+  border-radius: 2rpx;
+  clip-path: polygon(
+    0 0, 100% 0, 100% 100%, 70% 100%, 70% 60%, 30% 60%, 30% 100%, 0 100%
+  );
+}
+.qi-building .qi-building-window {
+  position: absolute;
+  top: 6rpx;
+  width: 4rpx;
+  height: 4rpx;
+  background: #FFFDF9;
+  border-radius: 1rpx;
+}
+.qi-building .qi-building-window-1 { left: 5rpx; }
+.qi-building .qi-building-window-2 { right: 5rpx; }
+.qi-building .qi-building-window-3 { left: 5rpx; top: 16rpx; }
+.qi-building .qi-building-window-4 { right: 5rpx; top: 16rpx; }
+
+/* 常去:定位图钉 */
+.qi-pin {
+  position: relative;
+  width: 22rpx;
+  height: 30rpx;
+}
+.qi-pin::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22rpx;
+  height: 22rpx;
+  background: #2D2A26;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  transform-origin: center;
+}
+.qi-pin::after {
+  content: "";
+  position: absolute;
+  top: 6rpx;
+  left: 6rpx;
+  width: 10rpx;
+  height: 10rpx;
+  background: #FFFDF9;
+  border-radius: 50%;
+}
+.qi-pin .qi-pin-tail {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rpx;
+  height: 8rpx;
+  background: #2D2A26;
+  border-radius: 1rpx;
+}
+
+/* 收藏:五角星 */
+.qi-star {
+  position: relative;
+  width: 32rpx;
+  height: 30rpx;
+}
+.qi-star::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28rpx;
+  height: 28rpx;
+  background: #2D2A26;
+  transform: translate(-50%, -50%);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.quick-text {
+  font-size: 22rpx;
+  color: #8A8278;
+}
+
+.status-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: transparent;
+}
+
+@import 'index-wxa-auto-dark.wxss'

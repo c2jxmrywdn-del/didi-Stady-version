@@ -1,0 +1,72 @@
+/* components/tdesign/t-dialog/index.wxss */
+.t-dialog-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: tDialogMaskIn 200ms ease both;
+}
+@keyframes tDialogMaskIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.t-dialog {
+  width: 600rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  overflow: hidden;
+  animation: tDialogIn 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  box-shadow: 0 12rpx 48rpx rgba(0, 0, 0, 0.18);
+}
+@keyframes tDialogIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.t-dialog__title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #2D2A26;
+  text-align: center;
+  padding: 40rpx 40rpx 12rpx;
+  letter-spacing: 0.5rpx;
+}
+
+.t-dialog__content {
+  font-size: 28rpx;
+  color: #5C554C;
+  line-height: 1.6;
+  padding: 16rpx 40rpx 36rpx;
+  text-align: center;
+  letter-spacing: 0.3rpx;
+  word-break: break-all;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.t-dialog__footer {
+  display: flex;
+  border-top: 1rpx solid #F0F0F2;
+  height: 100rpx;
+}
+.t-dialog__footer--split .t-dialog__btn--cancel { border-right: 1rpx solid #F0F0F2; }
+
+.t-dialog__btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  letter-spacing: 0.5rpx;
+  transition: background 0.12s;
+}
+.t-dialog__btn--cancel { color: #5C554C; }
+.t-dialog__btn--confirm { color: #FF7B00; }
+.t-dialog__btn--success { color: #5CAA5C; }
+.t-dialog__btn--warning { color: #F1C40F; }
+.t-dialog__btn--danger  { color: #E74C3C; }
+.t-dialog__btn--active  { background: #FAFAFA; }

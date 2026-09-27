@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "账号保护",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "t-cell": "../../components/tdesign/t-cell/index",
+    "t-switch": "../../components/tdesign/t-switch/index",
+    "t-tag": "../../components/tdesign/t-tag/index",
+    "t-message": "../../components/tdesign/t-message/index",
+    "t-dialog": "../../components/tdesign/t-dialog/index"
+  }
+}

@@ -1,0 +1,183 @@
+/* 
+使用方法：
+在 security.wxss 文件末尾引入样式
+```
+@import "./security-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-security {
+        background: rgb(23, 22, 20);
+    }
+
+    .security-status {
+        background: rgb(0, 0, 0);
+    }
+
+    .status-icon {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-shield-big {
+        background: rgb(31, 113, 40);
+    }
+
+    .mi-shield-check {
+        color: rgb(17, 17, 17);
+    }
+
+    .status-title {
+        color: rgb(223, 219, 214);
+    }
+
+    .status-sub {
+        color: rgb(126, 118, 108);
+    }
+
+    .section {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .section-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .feature-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .feature-icon-green {
+        background: rgb(20, 32, 21);
+    }
+
+    .feature-icon-blue {
+        background: rgb(23, 32, 39);
+    }
+
+    .feature-icon-orange {
+        background: rgb(30, 24, 10);
+    }
+
+    .feature-icon-purple {
+        background: rgb(37, 29, 37);
+    }
+
+    .feature-icon-red {
+        background: rgb(33, 23, 23);
+    }
+
+    .feature-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .feature-desc {
+        color: rgb(99, 99, 99);
+    }
+
+    .mi-share {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-share::after {
+        border: rgb(0, 0, 0);
+        background: rgb(20, 18, 15);
+    }
+
+    .mi-call {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-call::after {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-mask {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-mask::before, .mi-mask::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-record {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-record::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-verify {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-verify::after {
+        color: rgb(223, 219, 214);
+    }
+
+    .tool-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .tool-icon {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .tool-icon-red {
+        background: rgb(33, 23, 23);
+        border-color: rgb(57, 34, 31);
+    }
+
+    .tool-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .tool-desc {
+        color: rgb(77, 67, 53);
+    }
+
+    .mi-emergency {
+        background: rgb(213, 59, 47);
+    }
+
+    .mi-emergency::after {
+        color: rgb(17, 17, 17);
+    }
+
+    .mi-fake {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-fake::before {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-fake::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-flag {
+        background: rgb(223, 219, 214);
+    }
+
+    .mi-flag::after {
+        background: rgb(223, 219, 214);
+    }
+
+    .tips {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .tips-title {
+        color: rgb(99, 99, 99);
+    }
+
+    .tips-item {
+        color: rgb(126, 118, 108);
+    }
+}

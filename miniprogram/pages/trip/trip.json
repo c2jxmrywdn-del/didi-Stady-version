@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我的行程",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "t-tabs": "../../components/tdesign/t-tabs/index",
+    "t-empty": "../../components/tdesign/t-empty/index"
+  }
+}

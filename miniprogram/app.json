@@ -1,0 +1,77 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/trip/trip",
+    "pages/message/message",
+    "pages/profile/profile",
+    "pages/waiting/waiting",
+    "pages/riding/riding",
+    "pages/order-detail/order-detail",
+    "pages/select-location/select-location",
+    "pages/login/login",
+    "pages/setting/setting",
+    "pages/edit-profile/edit-profile",
+    "pages/chat-list/chat-list",
+    "pages/chat/chat",
+    "pages/message-detail/message-detail",
+    "pages/my-coupons/my-coupons",
+    "pages/fav-addresses/fav-addresses",
+    "pages/emergency-contact/emergency-contact",
+    "pages/security/security",
+    "pages/customer-service/customer-service",
+    "pages/feedback/feedback",
+    "pages/about/about",
+    "pages/team/team",
+    "pages/account-protection/account-protection",
+    "pages/change-password/change-password",
+    "pages/example/example",
+    "pages/agreement/agreement",
+    "pages/privacy/privacy",
+    "pages/copyright/copyright",
+    "pages/payment/payment"
+  ],
+  "window": {
+    "backgroundColor": "#FAF8F5",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "滴滴学习版",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#999999",
+    "selectedColor": "#333333",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/trip/trip",
+        "text": "行程"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

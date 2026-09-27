@@ -1,0 +1,120 @@
+<!--pages/select-location/select-location.wxml—极简选址页-->
+<view class="page-select-location">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-wrap">
+      <view class="search-icon-css"></view>
+      <input
+        class="search-input"
+        placeholder="搜索地点"
+        value="{{searchValue}}"
+        bindinput="onSearchInput"
+        focus
+        confirm-type="search"
+      />
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="quick-actions">
+    <view class="quick-action" bindtap="onCurrentLocation">
+      <view class="qa-icon-css"><view class="qa-locate"></view></view>
+      <text class="qa-text">当前位置</text>
+    </view>
+    <view class="quick-action" bindtap="onMapChoose">
+      <view class="qa-icon-css"><view class="qa-map"></view></view>
+      <text class="qa-text">地图选点</text>
+    </view>
+  </view>
+
+  <!-- 搜索结果 -->
+  <view wx:if="{{searchResults.length > 0 || searching}}" class="section">
+    <view wx:if="{{searching}}" class="searching-tip">
+      <text class="searching-text">搜索中...</text>
+    </view>
+    <view
+      wx:for="{{searchResults}}"
+      wx:key="name"
+      class="location-item"
+      data-location="{{item}}"
+      bindtap="onSelectLocation"
+    >
+      <view class="location-icon-wrap">
+        <view class="li-pin"></view>
+      </view>
+      <view class="location-info">
+        <text class="location-name">{{item.name}}</text>
+        <text class="location-address">{{item.address}}</text>
+      </view>
+      <view class="location-right">
+        <text wx:if="{{item.tag}}" class="location-tag">{{item.tag}}</text>
+        <text wx:if="{{item.distance}}" class="location-distance">{{item.distance}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 没有搜索时显示推荐 -->
+  <view wx:else>
+    <!-- 常用地址 -->
+    <view wx:if="{{historyLocations.length > 0}}" class="section">
+      <text class="section-title">常用地址</text>
+      <view
+        wx:for="{{historyLocations}}"
+        wx:key="name"
+        class="location-item"
+        data-location="{{item}}"
+        bindtap="onSelectLocation"
+      >
+        <view class="location-icon-wrap">
+          <view wx:if="{{index === 0}}" class="li-home"></view>
+          <view wx:else class="li-office"></view>
+        </view>
+        <view class="location-info">
+          <text class="location-name">{{item.name}}</text>
+          <text class="location-address">{{item.address}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 热门位置 -->
+    <view class="section">
+      <text class="section-title">热门地点</text>
+      <view
+        wx:for="{{hotLocations}}"
+        wx:key="name"
+        class="location-item"
+        data-location="{{item}}"
+        bindtap="onSelectLocation"
+      >
+        <view class="location-icon-wrap">
+          <view class="li-hot"></view>
+        </view>
+        <view class="location-info">
+          <text class="location-name">{{item.name}}</text>
+          <text class="location-address">{{item.address}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 附近位置 -->
+    <view class="section">
+      <text class="section-title">附近地点</text>
+      <view
+        wx:for="{{nearbyLocations}}"
+        wx:key="name"
+        class="location-item"
+        data-location="{{item}}"
+        bindtap="onSelectLocation"
+      >
+        <view class="location-icon-wrap">
+          <view class="li-pin"></view>
+        </view>
+        <view class="location-info">
+          <text class="location-name">{{item.name}}</text>
+          <text class="location-address">{{item.address}}</text>
+        </view>
+        <text class="location-distance">{{item.distance}}</text>
+      </view>
+    </view>
+  </view>
+</view>

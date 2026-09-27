@@ -1,0 +1,252 @@
+<!-- pages/account-protection/account-protection.wxml — TDesign 风格 -->
+<view class="page-ap page-enter">
+  <!-- 顶部安全评分卡 -->
+  <view class="score-card">
+    <view class="score-card-bg">
+      <view class="score-bg-circle score-bg-1"></view>
+      <view class="score-bg-circle score-bg-2"></view>
+    </view>
+    <view class="score-row">
+      <view class="score-info">
+        <text class="score-label">账号安全评分</text>
+        <view class="score-num-row">
+          <text class="score-num" style="color:{{scoreColor}};">{{securityScore}}</text>
+          <text class="score-unit">/100</text>
+        </view>
+        <text class="score-tip">{{scoreTip}}</text>
+      </view>
+      <view class="score-ring">
+        <view class="score-ring-svg" style="--ring-color: {{scoreColor}}; --ring-pct: {{securityScore}}%;">
+          <view class="score-ring-inner">
+            <text class="score-ring-num" style="color:{{scoreColor}};">{{securityScore}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 登录保护 (TDesign 风格 cell 列表) -->
+  <view class="ap-section">
+    <view class="ap-section-head">
+      <text class="ap-section-title">登录保护</text>
+      <t-tag theme="primary" variant="light" size="small">{{settings.fingerprintUnlock ? '已开启' : '未开启'}}</t-tag>
+    </view>
+    <view class="ap-card">
+      <t-cell
+        title="指纹/面容解锁"
+        note="进入 APP 时使用生物特征验证"
+        iconName="lock"
+        iconBg="rgba(74, 144, 226, 0.12)"
+        value="{{settings.fingerprintUnlock ? '已开启' : '已关闭'}}"
+      >
+        <view slot="right">
+          <t-switch value="{{settings.fingerprintUnlock}}" data-key="fingerprintUnlock" bind:change="onSwitchChange" />
+        </view>
+      </t-cell>
+      <view class="ap-divider"></view>
+      <t-cell
+        title="启动 PIN 码"
+        note="为 APP 增加一层 4-6 位数字密码"
+        iconName="lock"
+        iconBg="rgba(124, 92, 230, 0.12)"
+        value="{{settings.pinCode ? '已设置' : '未设置'}}"
+      >
+        <view slot="right">
+          <t-switch value="{{settings.pinCode}}" data-key="pinCode" bind:change="onSwitchChange" />
+        </view>
+      </t-cell>
+      <view class="ap-divider"></view>
+      <t-cell
+        title="支付前生物认证"
+        note="每次支付前需指纹/面容确认"
+        iconName="lock"
+        iconBg="rgba(255, 123, 0, 0.12)"
+        value="{{settings.biometricPay ? '已开启' : '已关闭'}}"
+      >
+        <view slot="right">
+          <t-switch value="{{settings.biometricPay}}" data-key="biometricPay" bind:change="onSwitchChange" />
+        </view>
+      </t-cell>
+    </view>
+  </view>
+
+  <!-- 隐私保护 -->
+  <view class="ap-section">
+    <text class="ap-section-title">隐私保护</text>
+    <view class="ap-card">
+      <view class="ap-item">
+        <view class="ap-item-left">
+          <view class="ap-icon ap-icon-green">
+            <view class="ap-mi-mask"></view>
+          </view>
+          <view class="ap-item-text">
+            <text class="ap-item-name">隐藏真实手机号</text>
+            <text class="ap-item-desc">订单详情展示虚拟号,保护隐私</text>
+          </view>
+        </view>
+        <switch checked="{{settings.hidePhoneInApp}}" color="#FF7B00" data-key="hidePhoneInApp" bindchange="onSwitchChange"/>
+      </view>
+      <view class="ap-divider"></view>
+      <view class="ap-item">
+        <view class="ap-item-left">
+          <view class="ap-icon ap-icon-teal">
+            <view class="ap-mi-avatar-mask"></view>
+          </view>
+          <view class="ap-item-text">
+            <text class="ap-item-name">列表中隐藏头像</text>
+            <text class="ap-item-desc">订单列表页不展示您的头像</text>
+          </view>
+        </view>
+        <switch checked="{{settings.hideAvatarInList}}" color="#FF7B00" data-key="hideAvatarInList" bindchange="onSwitchChange"/>
+      </view>
+    </view>
+  </view>
+
+  <!-- 消息通知 -->
+  <view class="ap-section">
+    <text class="ap-section-title">消息通知</text>
+    <view class="ap-card">
+      <view class="ap-item">
+        <view class="ap-item-left">
+          <view class="ap-icon ap-icon-red">
+            <view class="ap-mi-bell"></view>
+          </view>
+          <view class="ap-item-text">
+            <text class="ap-item-name">新设备登录通知</text>
+            <text class="ap-item-desc">检测到新设备登录时立即通知您</text>
+          </view>
+        </view>
+        <switch checked="{{settings.loginNotify}}" color="#FF7B00" data-key="loginNotify" bindchange="onSwitchChange"/>
+      </view>
+      <view class="ap-divider"></view>
+      <view class="ap-item">
+        <view class="ap-item-left">
+          <view class="ap-icon ap-icon-yellow">
+            <view class="ap-mi-bell"></view>
+          </view>
+          <view class="ap-item-text">
+            <text class="ap-item-name">支付结果通知</text>
+            <text class="ap-item-desc">支付成功/失败时推送通知</text>
+          </view>
+        </view>
+        <switch checked="{{settings.payNotify}}" color="#FF7B00" data-key="payNotify" bindchange="onSwitchChange"/>
+      </view>
+    </view>
+  </view>
+
+  <!-- 自动锁定 -->
+  <view class="ap-section">
+    <text class="ap-section-title">自动锁定</text>
+    <view class="ap-card">
+      <view class="ap-item ap-item-tap" bindtap="onSelectAutoLock">
+        <view class="ap-item-left">
+          <view class="ap-icon ap-icon-gray">
+            <view class="ap-mi-clock"></view>
+          </view>
+          <view class="ap-item-text">
+            <text class="ap-item-name">后台自动锁定</text>
+            <text class="ap-item-desc">切到后台超过该时长后再次进入需解锁</text>
+          </view>
+        </view>
+        <view class="ap-item-right">
+          <text class="ap-item-value">{{settings.autoLockMinutes}} 分钟</text>
+          <text class="ap-arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 登录设备管理 -->
+  <view class="ap-section">
+    <view class="ap-section-head">
+      <text class="ap-section-title">登录设备</text>
+      <text wx:if="{{loginHistory.length > 0}}" class="ap-section-action" bindtap="onClearLoginHistory">清空记录</text>
+    </view>
+    <view wx:if="{{loginHistory.length === 0}}" class="ap-empty">
+      <text class="ap-empty-text">暂无登录设备记录</text>
+    </view>
+    <view wx:else class="ap-device-list">
+      <view wx:for="{{loginHistory}}" wx:key="id" class="ap-device-item">
+        <view class="ap-device-icon">
+          <view class="ap-mi-device"></view>
+        </view>
+        <view class="ap-device-info">
+          <view class="ap-device-row1">
+            <text class="ap-device-name">{{item.device}}</text>
+            <view wx:if="{{item.current}}" class="ap-device-tag ap-device-tag-current">当前</view>
+            <view wx:else class="ap-device-tag">可退出</view>
+          </view>
+          <text class="ap-device-meta">{{item.os}} · {{item.city}} · {{item.ip}}</text>
+          <text class="ap-device-time">{{item.timeText}}</text>
+        </view>
+        <view wx:if="{{!item.current}}" class="ap-device-kick" data-id="{{item.id}}" bindtap="onKickDevice">退出</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 账号操作 -->
+  <view class="ap-section">
+    <text class="ap-section-title">账号操作</text>
+    <view class="ap-card ap-card-nopad">
+      <view class="ap-row" bindtap="onChangePhone">
+        <view class="ap-row-left">
+          <view class="ap-icon ap-icon-blue-sm">
+            <view class="ap-mi-phone"></view>
+          </view>
+          <text class="ap-row-name">修改手机号</text>
+        </view>
+        <text class="ap-arrow">›</text>
+      </view>
+      <view class="ap-divider"></view>
+      <view class="ap-row" bindtap="onChangePassword">
+        <view class="ap-row-left">
+          <view class="ap-icon ap-icon-purple-sm">
+            <view class="ap-mi-lock-row"></view>
+          </view>
+          <text class="ap-row-name">修改登录密码</text>
+        </view>
+        <text class="ap-arrow">›</text>
+      </view>
+      <view class="ap-divider"></view>
+      <view class="ap-row" bindtap="onEmergencyFreeze">
+        <view class="ap-row-left">
+          <view class="ap-icon ap-icon-orange-sm">
+            <view class="ap-mi-snow"></view>
+          </view>
+          <text class="ap-row-name">紧急冻结账号</text>
+        </view>
+        <text class="ap-arrow">›</text>
+      </view>
+      <view class="ap-divider"></view>
+      <view class="ap-row ap-row-danger" bindtap="onDestroyAccount">
+        <view class="ap-row-left">
+          <view class="ap-icon ap-icon-red-sm">
+            <view class="ap-mi-trash"></view>
+          </view>
+          <text class="ap-row-name ap-row-name-danger">注销账号</text>
+        </view>
+        <text class="ap-arrow ap-arrow-danger">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- PIN 码设置弹窗 -->
+  <view wx:if="{{showPinDialog}}" class="ap-mask" catchtap="onStopTap">
+    <view class="ap-dialog" catchtap="onStopTap">
+      <view class="ap-dialog-title">设置启动 PIN 码</view>
+      <view class="ap-dialog-sub">请输入 4-6 位数字,每次启动 APP 时将要求输入</view>
+      <input class="ap-dialog-input" type="number" password maxlength="6" value="{{pinInput}}" bindinput="onPinInput" placeholder="请输入 PIN 码" placeholder-class="ap-dialog-input-ph" focus="{{showPinDialog}}"/>
+      <view class="ap-dialog-actions">
+        <view class="ap-dialog-btn ap-dialog-btn-cancel" bindtap="onPinCancel">取消</view>
+        <view class="ap-dialog-btn ap-dialog-btn-confirm" bindtap="onPinConfirm">确认</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Toast -->
+  <view wx:if="{{showToast}}" class="ap-toast">{{toastText}}</view>
+
+  <!-- TDesign 组件 -->
+  <t-message id="t-message" />
+  <t-dialog id="t-dialog" />
+</view>

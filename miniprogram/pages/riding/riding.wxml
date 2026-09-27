@@ -1,0 +1,90 @@
+<!--pages/riding/riding.wxml—极简行程中-->
+<view class="page-riding">
+  <map
+    id="map"
+    class="map"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    markers="{{markers}}"
+    polyline="{{polyline}}"
+    show-location
+    enable-traffic
+  ></map>
+
+  <!-- 顶部状态 -->
+  <view class="top-bar">
+    <view class="top-status status-{{status}}">
+      <view class="status-dot"></view>
+      <text class="top-text">{{statusText}}</text>
+    </view>
+  </view>
+
+  <!-- 后台模拟提示(用户切到别的 tab 时,顶部出现) -->
+  <view wx:if="{{isBackground}}" class="bg-hint">
+    <text class="bg-hint-text">⏸ 行程在后台模拟中,继续查看可随时切回</text>
+  </view>
+
+  <!-- 安全工具栏 -->
+  <view class="safety-bar">
+    <view class="safety-item" bindtap="onShareRide">
+      <view class="safety-icon-view"><view class="si-share"></view></view>
+      <text class="safety-text">分享</text>
+    </view>
+    <view class="safety-item" bindtap="onEmergency">
+      <view class="safety-icon-view"><view class="si-help"></view></view>
+      <text class="safety-text">求助</text>
+    </view>
+    <view class="safety-item" bindtap="onCallDriver">
+      <view class="safety-icon-view"><view class="si-phone"></view></view>
+      <text class="safety-text">联系</text>
+    </view>
+  </view>
+
+  <!-- 底部面板 -->
+  <view class="bottom-panel">
+    <view class="driver-brief" wx:if="{{rideInfo.driverInfo}}">
+      <view class="driver-avatar-sm">
+        <text class="driver-avatar-text">{{rideInfo.driverInfo.name[0]}}</text>
+      </view>
+      <view class="driver-detail-sm">
+        <text class="driver-name-sm">{{rideInfo.driverInfo.name}}</text>
+        <text class="driver-car-sm">{{rideInfo.driverInfo.carModel}} · {{rideInfo.driverInfo.car}}</text>
+      </view>
+    </view>
+
+    <view class="ride-progress">
+      <view class="progress-points">
+        <view class="progress-point">
+          <view class="pp-dot dot-green"></view>
+          <text class="pp-text ellipsis">{{rideInfo.startAddress.name}}</text>
+        </view>
+        <view class="progress-line">
+          <view class="progress-fill" style="width: {{progressPercent}};"></view>
+        </view>
+        <view class="progress-point">
+          <view class="pp-dot dot-dark"></view>
+          <text class="pp-text ellipsis">{{rideInfo.endAddress.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="ride-stats">
+      <view class="ride-stat">
+        <text class="rs-value">{{rideDurationText}}</text>
+        <text class="rs-label">行程时间</text>
+      </view>
+      <view class="ride-stat">
+        <text class="rs-value">{{rideDistance}}km</text>
+        <text class="rs-label">行驶距离</text>
+      </view>
+      <view class="ride-stat">
+        <text class="rs-value price">¥{{currentPrice || rideInfo.estimatePrice}}</text>
+        <text class="rs-label">当前费用</text>
+      </view>
+    </view>
+
+    <button class="finish-btn btn-primary" bindtap="onFinishRide">
+      {{status === 'arrived' ? '确认到达' : '结束行程'}}
+    </button>
+  </view>
+</view>

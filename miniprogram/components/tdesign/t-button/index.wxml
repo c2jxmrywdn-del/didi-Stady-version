@@ -1,0 +1,14 @@
+<view
+  class="t-btn t-btn--{{theme}} t-btn--{{variant}} t-btn--{{size}} t-btn--{{shape}} {{block ? 't-btn--block' : ''}} {{disabled ? 't-btn--disabled' : ''}} {{loading ? 't-btn--loading' : ''}}"
+  hover-class="{{disabled || loading ? '' : hoverClass}}"
+  hover-stay-time="80"
+  bindtap="onTap"
+>
+  <view wx:if="{{loading}}" class="t-btn__loading">
+    <view class="t-btn__spinner"></view>
+  </view>
+  <view wx:elif="{{icon}}" class="t-btn__icon t-icon-{{icon}}"></view>
+  <view class="t-btn__content">
+    <slot></slot>
+  </view>
+</view>

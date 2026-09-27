@@ -1,0 +1,311 @@
+<!--pages/message/message.wxml—消息中心-->
+<view class="page-message">
+  <!-- 顶部头 -->
+  <view class="msg-top">
+    <view class="msg-top-row">
+      <view>
+        <text class="msg-top-title">消息</text>
+        <text wx:if="{{unreadCount > 0}}" class="msg-top-unread">{{unreadCount}} 条未读</text>
+      </view>
+      <view class="msg-top-actions" wx:if="{{!selectMode}}">
+        <view class="msg-top-btn" bindtap="onOpenChatList" hover-class="msg-btn-hover">
+          <text class="msg-top-btn-text">会话</text>
+          <view wx:if="{{chatUnread > 0}}" class="msg-top-badge">{{chatUnread > 99 ? '99+' : chatUnread}}</view>
+        </view>
+        <view class="msg-top-btn" bindtap="onOpenSettings" hover-class="msg-btn-hover">
+          <view class="mi-setting-sm"></view>
+        </view>
+        <view class="msg-top-btn" bindtap="onReadAll" wx:if="{{hasUnread}}" hover-class="msg-btn-hover">
+          <text class="msg-top-btn-text">全部已读</text>
+        </view>
+      </view>
+      <view class="msg-top-actions" wx:else>
+        <view class="msg-top-btn" bindtap="onSelectAll" hover-class="msg-btn-hover">
+          <text class="msg-top-btn-text">全选</text>
+        </view>
+        <view class="msg-top-btn" bindtap="exitSelectMode" hover-class="msg-btn-hover">
+          <text class="msg-top-btn-text">取消</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 类别筛选 -->
+    <scroll-view class="msg-categories" scroll-x enable-flex>
+      <view
+        wx:for="{{categories}}"
+        wx:key="key"
+        class="msg-cat {{currentCategory === item.key ? 'msg-cat-active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="onCategoryChange"
+      >
+        <text>{{item.label}}</text>
+        <view wx:if="{{currentCategory === item.key}}" class="msg-cat-line"></view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 多选操作栏 -->
+  <view wx:if="{{selectMode}}" class="msg-toolbar">
+    <view class="msg-toolbar-btn" bindtap="onMarkReadSelected">
+      <view class="tb-icon tb-icon-read"></view>
+      <text>标为已读</text>
+    </view>
+    <view class="msg-toolbar-btn toolbar-danger" bindtap="onDeleteSelected">
+      <view class="tb-icon tb-icon-delete"></view>
+      <text>删除</text>
+    </view>
+  </view>
+
+  <!-- 列表 -->
+  <view wx:if="{{currentCategory === 'all' && sections.length > 0}}" class="msg-sections">
+    <view wx:for="{{sections}}" wx:for-item="sec" wx:key="key" class="msg-section">
+      <!-- 门类 header(点击切换展开) -->
+      <view class="msg-section-head" bindtap="onToggleSection" data-key="{{sec.key}}">
+        <view class="msg-section-icon msg-type-{{sec.key}}">
+          <view class="msg-icon-inner">
+            <view wx:if="{{sec.key === 'order'}}" class="mi-car"></view>
+            <view wx:elif="{{sec.key === 'driver'}}" class="mi-driver"></view>
+            <view wx:elif="{{sec.key === 'promo'}}" class="mi-gift"></view>
+            <view wx:elif="{{sec.key === 'system'}}" class="mi-bell"></view>
+            <view wx:elif="{{sec.key === 'safety'}}" class="mi-shield"></view>
+            <view wx:elif="{{sec.key === 'service'}}" class="mi-service"></view>
+          </view>
+        </view>
+        <view class="msg-section-info">
+          <view class="msg-section-title-row">
+            <text class="msg-section-label">{{sec.label}}</text>
+            <view wx:if="{{sec.unread > 0}}" class="msg-section-unread">{{sec.unread}}</view>
+          </view>
+          <text class="msg-section-summary">
+            <block wx:if="{{sec.total === 1}}">1 条消息 · {{sec.latestTime || ''}}</block>
+            <block wx:else>{{sec.total}} 条消息 · 最近 {{sec.latestTime || ''}}</block>
+          </text>
+        </view>
+        <text class="msg-section-arrow {{expandedSection === sec.key ? 'msg-section-arrow-up' : ''}}">›</text>
+      </view>
+
+      <!-- 收起状态:同门类按"主标题"合并的汇总卡片 -->
+      <view wx:if="{{expandedSection !== sec.key}}" class="msg-section-summary-list">
+        <view
+          wx:for="{{sec.clusters}}"
+          wx:for-item="cluster"
+          wx:key="title"
+          class="msg-cluster {{cluster.unread > 0 ? 'msg-cluster-unread' : ''}}"
+          data-section="{{sec.key}}"
+          data-cluster-idx="{{index}}"
+          bindtap="onClusterTap"
+        >
+          <view class="msg-cluster-icon">
+            <view class="msg-cluster-count" wx:if="{{cluster.count > 1}}">{{cluster.count}}</view>
+            <view wx:else class="msg-cluster-dot {{cluster.unread > 0 ? 'msg-cluster-dot-unread' : ''}}"></view>
+          </view>
+          <view class="msg-cluster-info">
+            <text class="msg-cluster-title">{{cluster.title}}</text>
+            <text class="msg-cluster-sub">{{cluster.latest.summary || cluster.latest.content || ''}}</text>
+          </view>
+          <text class="msg-cluster-time">{{cluster.latest.time}}</text>
+          <view wx:if="{{cluster.unread > 0}}" class="msg-cluster-badge">{{cluster.unread}}</view>
+        </view>
+      </view>
+
+      <!-- 展开状态:显示该 section 下所有明细(按 cluster 排序) -->
+      <view wx:else class="msg-section-detail">
+        <view
+          wx:for="{{sec.clusters}}"
+          wx:for-item="cluster"
+          wx:key="title"
+          class="msg-cluster-group"
+        >
+          <view class="msg-cluster-group-head">
+            <text class="msg-cluster-group-title">{{cluster.title}}</text>
+            <text class="msg-cluster-group-count">×{{cluster.count}}</text>
+          </view>
+          <view
+            wx:for="{{cluster.items}}"
+            wx:for-item="msg"
+            wx:key="id"
+            class="msg-item {{msg.read ? '' : 'msg-unread'}} {{msg.highlight ? 'msg-highlight' : ''}} {{selectMode ? 'msg-select-mode' : ''}}"
+            data-id="{{msg.id}}"
+            data-section="{{sec.key}}"
+            bindtap="onClusterItemTap"
+            bindlongpress="onItemLongPress"
+          >
+            <view wx:if="{{selectMode}}" class="msg-checkbox {{selectedIds.indexOf(msg.id) > -1 ? 'msg-checked' : ''}}">
+              <view wx:if="{{selectedIds.indexOf(msg.id) > -1}}" class="msg-checked-mark"></view>
+            </view>
+            <view wx:if="{{msg.type === 'driver' && msg.driverInfo}}" class="msg-driver-avatar">
+              <text class="msg-driver-emoji">{{msg.driverInfo.avatar || '🚗'}}</text>
+            </view>
+            <view wx:else class="msg-icon-wrap msg-type-{{msg.type}}">
+              <view class="msg-icon-inner">
+                <view wx:if="{{msg.type === 'system'}}" class="mi-bell"></view>
+                <view wx:elif="{{msg.type === 'promo'}}" class="mi-gift"></view>
+                <view wx:elif="{{msg.type === 'order'}}" class="mi-car"></view>
+                <view wx:elif="{{msg.type === 'safety'}}" class="mi-shield"></view>
+                <view wx:elif="{{msg.type === 'service'}}" class="mi-service"></view>
+              </view>
+            </view>
+            <view class="msg-content">
+              <view class="msg-title-row">
+                <text class="msg-title {{msg.read ? 'msg-title-read' : ''}}">{{msg.title}}</text>
+                <text class="msg-time">{{msg.time}}</text>
+              </view>
+              <view wx:if="{{msg.type === 'driver' && msg.driverInfo}}" class="msg-driver-meta">
+                <text class="msg-driver-line">
+                  <text class="msg-driver-name">{{msg.driverInfo.name}}</text>
+                  <text class="msg-driver-rate">★ {{msg.driverInfo.rating}}</text>
+                </text>
+                <text class="msg-driver-car">{{msg.driverInfo.car}} · {{msg.driverInfo.carModel}}</text>
+              </view>
+              <text wx:else class="msg-text {{msg.read ? 'msg-text-read' : ''}}">{{msg.content}}</text>
+              <view wx:if="{{msg.type === 'promo' && msg.coupons}}" class="msg-promo-stack">
+                <view class="msg-promo-head">
+                  <text class="msg-promo-tip">您有 {{msg.couponCount || msg.coupons.length}} 张优惠卷待使用</text>
+                  <view wx:if="{{msg.couponCount > 0}}" class="msg-promo-badge">{{msg.couponCount}}</view>
+                </view>
+                <view class="msg-promo-list">
+                  <view wx:for="{{msg.coupons}}" wx:for-item="cp" wx:key="name" class="msg-promo-item">
+                    <view class="msg-promo-amount">
+                      <text class="msg-promo-cur">¥</text>
+                      <text class="msg-promo-num">{{cp.amount}}</text>
+                    </view>
+                    <view class="msg-promo-info">
+                      <text class="msg-promo-name">{{cp.name}}</text>
+                      <text class="msg-promo-cond">满{{cp.minAmount}}元可用 · {{cp.expire}}</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view wx:if="{{msg.action && !selectMode}}" class="msg-action" catchtap="onActionClick" data-id="{{msg.id}}">
+                <text class="msg-action-text">{{msg.action.label || '查看详情'}}</text>
+                <text class="msg-action-arrow">›</text>
+              </view>
+            </view>
+            <view wx:if="{{!msg.read && !selectMode}}" class="msg-dot"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 指定 type 视图:沿用按日期分组的明细(原版式,便于逐条浏览) -->
+  <view wx:elif="{{currentCategory !== 'all' && grouped.length > 0}}" class="msg-list">
+    <view wx:for="{{grouped}}" wx:for-item="group" wx:key="label" class="msg-group">
+      <view class="msg-group-label">{{group.label}}</view>
+      <view
+        wx:for="{{group.items}}"
+        wx:for-item="msg"
+        wx:key="id"
+        class="msg-item {{msg.read ? '' : 'msg-unread'}} {{msg.highlight ? 'msg-highlight' : ''}} {{selectMode ? 'msg-select-mode' : ''}}"
+        data-id="{{msg.id}}"
+        bindtap="onItemTap"
+        bindlongpress="onItemLongPress"
+      >
+        <view wx:if="{{selectMode}}" class="msg-checkbox {{selectedIds.indexOf(msg.id) > -1 ? 'msg-checked' : ''}}">
+          <view wx:if="{{selectedIds.indexOf(msg.id) > -1}}" class="msg-checked-mark"></view>
+        </view>
+        <view wx:if="{{msg.type === 'driver' && msg.driverInfo}}" class="msg-driver-avatar">
+          <text class="msg-driver-emoji">{{msg.driverInfo.avatar || '🚗'}}</text>
+        </view>
+        <view wx:else class="msg-icon-wrap msg-type-{{msg.type}}">
+          <view class="msg-icon-inner">
+            <view wx:if="{{msg.type === 'system'}}" class="mi-bell"></view>
+            <view wx:elif="{{msg.type === 'promo'}}" class="mi-gift"></view>
+            <view wx:elif="{{msg.type === 'order'}}" class="mi-car"></view>
+            <view wx:elif="{{msg.type === 'safety'}}" class="mi-shield"></view>
+            <view wx:elif="{{msg.type === 'service'}}" class="mi-service"></view>
+          </view>
+        </view>
+        <view class="msg-content">
+          <view class="msg-title-row">
+            <text class="msg-title {{msg.read ? 'msg-title-read' : ''}}">{{msg.title}}</text>
+            <text class="msg-time">{{msg.time}}</text>
+          </view>
+          <view wx:if="{{msg.type === 'driver' && msg.driverInfo}}" class="msg-driver-meta">
+            <text class="msg-driver-line">
+              <text class="msg-driver-name">{{msg.driverInfo.name}}</text>
+              <text class="msg-driver-rate">★ {{msg.driverInfo.rating}}</text>
+            </text>
+            <text class="msg-driver-car">{{msg.driverInfo.car}} · {{msg.driverInfo.carModel}}</text>
+          </view>
+          <text wx:else class="msg-text {{msg.read ? 'msg-text-read' : ''}}">{{msg.content}}</text>
+          <view wx:if="{{msg.type === 'promo' && msg.coupons}}" class="msg-promo-stack">
+            <view class="msg-promo-head">
+              <text class="msg-promo-tip">您有 {{msg.couponCount || msg.coupons.length}} 张优惠卷待使用</text>
+              <view wx:if="{{msg.couponCount > 0}}" class="msg-promo-badge">{{msg.couponCount}}</view>
+            </view>
+            <view class="msg-promo-list">
+              <view wx:for="{{msg.coupons}}" wx:for-item="cp" wx:key="name" class="msg-promo-item">
+                <view class="msg-promo-amount">
+                  <text class="msg-promo-cur">¥</text>
+                  <text class="msg-promo-num">{{cp.amount}}</text>
+                </view>
+                <view class="msg-promo-info">
+                  <text class="msg-promo-name">{{cp.name}}</text>
+                  <text class="msg-promo-cond">满{{cp.minAmount}}元可用 · {{cp.expire}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view wx:if="{{msg.action && !selectMode}}" class="msg-action" catchtap="onActionClick" data-id="{{msg.id}}">
+            <text class="msg-action-text">{{msg.action.label || '查看详情'}}</text>
+            <text class="msg-action-arrow">›</text>
+          </view>
+        </view>
+        <view wx:if="{{!msg.read && !selectMode}}" class="msg-dot"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:else class="empty-wrap">
+    <view class="empty-illu">
+      <view class="empty-envelope">
+        <view class="empty-envelope-flap"></view>
+        <view class="empty-envelope-body"></view>
+        <view class="empty-envelope-line"></view>
+      </view>
+    </view>
+    <text class="empty-text">暂无消息</text>
+    <text class="empty-sub">下拉刷新试试，或前往设置调整通知</text>
+    <view class="empty-actions">
+      <view class="empty-btn" bindtap="onOpenSettings">
+        <text>通知设置</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部辅助操作（仅在有消息时） -->
+  <view wx:if="{{grouped.length > 0 && !selectMode}}" class="msg-foot">
+    <text class="msg-foot-link" bindtap="onClearRead">清空已读</text>
+    <view class="msg-foot-divider"></view>
+    <text class="msg-foot-link msg-foot-danger" bindtap="onClearAll">清空全部</text>
+  </view>
+</view>
+
+<!-- 详情弹窗 -->
+<view wx:if="{{detail}}" class="detail-mask" bindtap="onCloseDetail">
+  <view class="detail-card">
+    <view class="detail-header">
+      <view class="detail-icon msg-type-{{detail.type}}">
+        <view class="msg-icon-inner">
+          <view wx:if="{{detail.type === 'system'}}" class="mi-bell"></view>
+          <view wx:elif="{{detail.type === 'promo'}}" class="mi-gift"></view>
+          <view wx:elif="{{detail.type === 'order'}}" class="mi-car"></view>
+          <view wx:elif="{{detail.type === 'safety'}}" class="mi-shield"></view>
+          <view wx:elif="{{detail.type === 'driver'}}" class="mi-driver"></view>
+          <view wx:else class="mi-service"></view>
+        </view>
+      </view>
+      <view class="detail-close" bindtap="onCloseDetail">✕</view>
+    </view>
+    <text class="detail-title">{{detail.title}}</text>
+    <text class="detail-time">{{detail.time}}</text>
+    <view class="detail-content">{{detail.content}}</view>
+    <view class="detail-actions">
+      <button class="detail-btn detail-btn-secondary" bindtap="onDetailDelete">删除</button>
+      <button wx:if="{{detail.action}}" class="detail-btn detail-btn-primary" bindtap="onDetailAction">{{detail.action.label || '查看详情'}}</button>
+      <button wx:else class="detail-btn detail-btn-primary" bindtap="onCloseDetail">知道了</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+{
+  "name": "didi-learning-version",
+  "version": "1.0.0",
+  "private": true,
+  "description": "滴滴学习版 - 微信小程序(教学项目,不进行任何商业化)",
+  "scripts": {
+    "deploy": "npm run deploy:all && npm run deploy:storage",
+    "deploy:all": "wxcloud functions deploy --all",
+    "deploy:baidu": "wxcloud functions deploy baiduMap",
+    "deploy:order": "wxcloud functions deploy orderFunctions",
+    "deploy:user": "wxcloud functions deploy userFunctions",
+    "deploy:match": "wxcloud functions deploy matchFunctions",
+    "deploy:wxpay": "wxcloud functions deploy wxpayFunctions",
+    "deploy:quickstart": "wxcloud functions deploy quickstartFunctions",
+    "deploy:storage": "wxcloud storage upload ./i18n cloud://didi-learning/i18n/",
+    "function:list": "wxcloud functions list",
+    "function:log": "wxcloud functions log",
+    "function:detail": "wxcloud functions detail",
+    "storage:list": "wxcloud storage list",
+    "env:list": "wxcloud env list",
+    "env:login": "wxcloud login",
+    "env:logout": "wxcloud logout",
+    "lint": "echo '请使用微信开发者工具的内置 lint 功能'",
+    "doc:tdesign": "echo 'TDesign 组件文档: miniprogram/components/tdesign/README.md'",
+    "doc:security": "echo '安全规范: SECURITY.md'",
+    "doc:deploy": "echo '部署文档: DEPLOY.md'"
+  },
+  "devDependencies": {
+    "@wxcloud/cli": "^2.0.0"
+  },
+  "keywords": [
+    "wechat",
+    "miniprogram",
+    "cloudbase",
+    "tdesign",
+    "didi-clone",
+    "educational"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,74 @@
+<!-- pages/fav-addresses/fav-addresses.wxml — 收藏地址 -->
+<view class="page-fav">
+  <!-- 顶部说明 -->
+  <view class="page-tip">
+    <text>· 长按地址可编辑或删除</text>
+    <text>· 收藏地址将在叫车时显示在推荐列表</text>
+  </view>
+
+  <!-- 列表 -->
+  <view wx:if="{{addresses.length > 0}}" class="address-list">
+    <view
+      wx:for="{{addresses}}"
+      wx:key="id"
+      class="address-item {{item.using ? 'address-using' : ''}}"
+      data-id="{{item.id}}"
+      bindlongpress="onItemLongPress"
+    >
+      <view class="address-icon" data-tag="{{item.tag}}">
+        <view wx:if="{{item.tag === 'home'}}" class="addr-home"></view>
+        <view wx:elif="{{item.tag === 'company'}}" class="addr-office"></view>
+        <view wx:else class="addr-pin"></view>
+      </view>
+      <view class="address-info">
+        <view class="address-line1">
+          <text class="address-name">{{item.name}}</text>
+          <view wx:if="{{item.using}}" class="address-using-badge">当前使用</view>
+        </view>
+        <text class="address-detail">{{item.address}}</text>
+        <text wx:if="{{item.distance}}" class="address-distance">距您 {{item.distance}}</text>
+      </view>
+      <view class="address-arrow" catchtap="onItemTap" data-id="{{item.id}}">›</view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:else class="empty-wrap">
+    <view class="empty-illu">
+      <view class="empty-pin">
+        <view class="empty-pin-circle"></view>
+        <view class="empty-pin-tail"></view>
+      </view>
+    </view>
+    <text class="empty-text">还没有收藏地址</text>
+    <text class="empty-sub">点击下方按钮添加常用地址</text>
+  </view>
+
+  <!-- 添加按钮 -->
+  <view class="add-section">
+    <view class="add-btn" bindtap="onAddAddress">
+      <view class="mi-plus"></view>
+      <text>添加新地址</text>
+    </view>
+  </view>
+
+  <!-- 编辑/删除操作菜单 -->
+  <view wx:if="{{actionMenuAddr}}" class="action-mask" bindtap="onCloseAction">
+    <view class="action-card">
+      <view class="action-title">{{actionMenuAddr.name}}</view>
+      <view class="action-item" catchtap="onActionEdit">
+        <view class="action-icon mi-edit"></view>
+        <text>编辑地址</text>
+      </view>
+      <view class="action-item" catchtap="onActionUse">
+        <view class="action-icon mi-check"></view>
+        <text>{{actionMenuAddr.using ? '取消当前使用' : '设为常用'}}</text>
+      </view>
+      <view class="action-item action-danger" catchtap="onActionDelete">
+        <view class="action-icon mi-trash"></view>
+        <text>删除地址</text>
+      </view>
+      <view class="action-cancel" catchtap="onCloseAction">取消</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,138 @@
+/* 
+使用方法：
+在 emergency-contact.wxss 文件末尾引入样式
+```
+@import "./emergency-contact-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .page-emg {
+        background: rgb(23, 22, 20);
+    }
+
+    .page-tip {
+        background: rgb(20, 18, 15);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .page-tip text {
+        color: rgb(99, 99, 99);
+    }
+
+    .emg-item {
+        background: rgb(20, 18, 15);
+        border: rgb(0, 0, 0);
+    }
+
+    .emg-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .emg-avatar {
+        background: rgb(0, 0, 0);
+    }
+
+    .emg-avatar-letter {
+        color: rgb(17, 17, 17);
+    }
+
+    .emg-name {
+        color: rgb(223, 219, 214);
+    }
+
+    .emg-relation {
+        color: rgb(77, 67, 53);
+        background: rgb(23, 22, 20);
+    }
+
+    .emg-phone {
+        color: rgb(174, 165, 155);
+    }
+
+    .emg-call {
+        background: rgb(23, 22, 20);
+        border: rgb(0, 0, 0);
+    }
+
+    .emg-call:active {
+        background: rgb(31, 29, 26);
+    }
+
+    .mi-phone {
+        border: rgb(0, 0, 0);
+    }
+
+    .mi-phone::after {
+        border: rgb(0, 0, 0);
+    }
+
+    .empty-illu {
+        background: rgb(30, 27, 21);
+    }
+
+    .empty-phone-handle {
+        background: rgb(77, 67, 53);
+    }
+
+    .empty-phone-body {
+        background: rgb(77, 67, 53);
+    }
+
+    .empty-text {
+        color: rgb(126, 118, 108);
+    }
+
+    .empty-sub {
+        color: rgb(77, 67, 53);
+    }
+
+    .add-section {
+        background: rgb(0, 0, 0);
+    }
+
+    .add-btn {
+        background: rgb(223, 219, 214);
+        color: rgb(20, 18, 15);
+    }
+
+    .add-btn:active {
+        background: rgb(241, 238, 233);
+    }
+
+    .mi-plus::before, .mi-plus::after {
+        background: rgb(20, 18, 15);
+    }
+
+    .action-mask {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    .action-card {
+        background: rgb(20, 18, 15);
+    }
+
+    .action-title {
+        color: rgb(99, 99, 99);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .action-item {
+        color: rgb(255, 255, 255);
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .action-item:active {
+        background: rgb(26, 24, 21);
+    }
+
+    .action-danger {
+        color: rgb(213, 59, 47);
+    }
+
+    .action-cancel {
+        color: rgb(99, 99, 99);
+        background: rgb(23, 22, 20);
+        border-top: rgb(0, 0, 0);
+    }
+}

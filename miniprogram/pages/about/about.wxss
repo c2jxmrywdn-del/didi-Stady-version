@@ -1,0 +1,398 @@
+/* pages/about/about.wxss — 关于我们 / 团队 / 联系方式 */
+.page-about {
+  min-height: 100vh;
+  background: #FAF8F5;
+  padding-bottom: 60rpx;
+}
+
+.about-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 24rpx 40rpx;
+  background: linear-gradient(180deg, #F5F0E8 0%, #FAF8F5 100%);
+}
+.logo {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 28rpx;
+  background: #FFFDF9;
+  border: 2rpx solid #EDE8E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24rpx;
+  overflow: hidden;
+}
+.logo-icon {
+  position: relative;
+  width: 80rpx;
+  height: 56rpx;
+}
+.car-deco {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.car-lower {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 18rpx;
+  background: #2D2A26;
+  border-radius: 4rpx 4rpx 0 0;
+}
+.car-upper {
+  position: absolute;
+  top: 6rpx;
+  left: 14rpx;
+  right: 14rpx;
+  height: 18rpx;
+  background: #5C554C;
+  border-radius: 6rpx 6rpx 0 0;
+}
+.car-windshield {
+  position: absolute;
+  top: 8rpx;
+  left: 22rpx;
+  width: 14rpx;
+  height: 14rpx;
+  background: #c5d0d8;
+  border-radius: 4rpx 4rpx 0 0;
+}
+.car-hood {
+  position: absolute;
+  top: 14rpx;
+  right: 0;
+  width: 14rpx;
+  height: 8rpx;
+  background: #2D2A26;
+}
+.car-headlight {
+  position: absolute;
+  top: 14rpx;
+  right: 2rpx;
+  width: 4rpx;
+  height: 6rpx;
+  background: #f5e6a0;
+  border-radius: 2rpx;
+}
+.car-grille {
+  position: absolute;
+  top: 22rpx;
+  right: 4rpx;
+  width: 8rpx;
+  height: 4rpx;
+  background: #FFFDF9;
+  border-radius: 1rpx;
+}
+.car-mirror {
+  position: absolute;
+  top: 18rpx;
+  left: 0;
+  width: 4rpx;
+  height: 6rpx;
+  background: #2D2A26;
+  border-radius: 2rpx;
+}
+.car-arch-front {
+  position: absolute;
+  bottom: -4rpx;
+  left: 8rpx;
+  width: 12rpx;
+  height: 8rpx;
+  background: #FFFDF9;
+  border-radius: 50%;
+}
+.car-arch-rear {
+  position: absolute;
+  bottom: -4rpx;
+  right: 14rpx;
+  width: 12rpx;
+  height: 8rpx;
+  background: #FFFDF9;
+  border-radius: 50%;
+}
+.car-wheel-front {
+  position: absolute;
+  bottom: -6rpx;
+  left: 10rpx;
+  width: 8rpx;
+  height: 8rpx;
+  background: #2D2A26;
+  border-radius: 50%;
+}
+.car-wheel-rear {
+  position: absolute;
+  bottom: -6rpx;
+  right: 16rpx;
+  width: 8rpx;
+  height: 8rpx;
+  background: #2D2A26;
+  border-radius: 50%;
+}
+
+.app-name {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #2D2A26;
+  letter-spacing: 2rpx;
+}
+.app-version {
+  font-size: 22rpx;
+  color: #C5B9A8;
+  background: #FFFDF9;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+  border: 1rpx solid #EDE8E0;
+  margin-top: 8rpx;
+}
+.app-slogan {
+  font-size: 24rpx;
+  color: #8A8278;
+  margin-top: 12rpx;
+  letter-spacing: 1rpx;
+}
+
+.section {
+  background: #FFFDF9;
+  margin: 16rpx 12rpx 0;
+  border-radius: 12rpx;
+  border: 1rpx solid #EDE8E0;
+  overflow: hidden;
+}
+.section-title {
+  font-size: 22rpx;
+  color: #999;
+  padding: 24rpx 24rpx 8rpx;
+  letter-spacing: 1rpx;
+}
+.section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 24rpx 8rpx;
+}
+.section-title-row .section-title {
+  padding: 0;
+}
+.section-hint {
+  font-size: 20rpx;
+  color: #C5B9A8;
+  letter-spacing: 0.5rpx;
+  background: #FAF8F5;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+  border: 1rpx solid #EDE8E0;
+}
+.section-hint-link {
+  color: #FF7B00;
+  background: rgba(255, 123, 0, 0.08);
+  border-color: rgba(255, 123, 0, 0.2);
+  font-weight: 500;
+}
+.section-title-row-hover {
+  background: #F2EEE7;
+}
+.section-content {
+  padding: 0 24rpx 24rpx;
+  font-size: 28rpx;
+  color: #5C554C;
+  line-height: 1.7;
+}
+
+/* 数据网格 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 16rpx 12rpx 0;
+  background: #FFFDF9;
+  border-radius: 12rpx;
+  border: 1rpx solid #EDE8E0;
+  padding: 24rpx 0;
+}
+.stats-item {
+  text-align: center;
+  border-right: 1rpx solid #EDE8E0;
+}
+.stats-item:last-child { border-right: none; }
+.stats-num {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2D2A26;
+  display: block;
+}
+.stats-label {
+  font-size: 22rpx;
+  color: #8A8278;
+  display: block;
+  margin-top: 4rpx;
+}
+
+/* 功能特色 */
+.feature-row {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.feature-row:last-child { border-bottom: none; }
+.feature-num {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: #2D2A26;
+  color: #fff;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+.feature-content {
+  flex: 1;
+}
+.feature-name {
+  font-size: 28rpx;
+  color: #2D2A26;
+  display: block;
+  font-weight: 500;
+}
+.feature-desc {
+  font-size: 24rpx;
+  color: #999;
+  display: block;
+  margin-top: 4rpx;
+  line-height: 1.5;
+}
+
+/* ============ 开发团队卡片 ============ */
+.team-card {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.team-card:last-child { border-bottom: none; }
+.team-avatar {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF7B00 0%, #E55A00 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+  box-shadow: 0 4rpx 12rpx rgba(255, 123, 0, 0.18);
+}
+.team-info {
+  flex: 1;
+  min-width: 0;
+}
+.team-name-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+.team-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2D2A26;
+  margin-right: 12rpx;
+  letter-spacing: 0.5rpx;
+}
+.team-role {
+  font-size: 20rpx;
+  color: #FF7B00;
+  background: rgba(255, 123, 0, 0.1);
+  padding: 4rpx 10rpx;
+  border-radius: 4rpx;
+  font-weight: 500;
+  letter-spacing: 0.5rpx;
+}
+.team-desc {
+  font-size: 22rpx;
+  color: #8A8278;
+  display: block;
+  line-height: 1.55;
+  letter-spacing: 0.3rpx;
+}
+
+/* ============ 团队(可点击跳转) ============ */
+.team-block {
+  border-bottom: 1rpx solid #F2EEE7;
+}
+.team-block:last-child {
+  border-bottom: none;
+}
+
+.team-block-link { transition: background 0.12s; }
+.team-block-link:active { background: #FAF8F5; }
+
+.team-block-arrow {
+  font-size: 40rpx;
+  color: #C5B9A8;
+  margin-left: 12rpx;
+  flex-shrink: 0;
+  font-weight: 300;
+  transition: transform 0.15s, color 0.15s;
+}
+.team-block-link:active .team-block-arrow {
+  transform: translateX(6rpx);
+  color: #FF7B00;
+}
+
+/* 关于信息(精简) */
+.about-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.about-item:last-child { border-bottom: none; }
+.about-item:active { background: #f7f5f0; }
+.about-label {
+  font-size: 28rpx;
+  color: #2D2A26;
+  flex: 1;
+}
+.about-value {
+  font-size: 28rpx;
+  color: #999;
+}
+.about-value-copy {
+  color: #8A8278;
+  font-size: 24rpx;
+  margin-right: 8rpx;
+}
+.about-arrow {
+  font-size: 32rpx;
+  color: #c7c7cc;
+}
+.about-copyright-wrap {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.about-foot {
+  text-align: center;
+  font-size: 22rpx;
+  color: #C5B9A8;
+  padding: 48rpx 24rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+.about-foot-declare {
+  font-size: 20rpx;
+  color: #C5B9A8;
+  letter-spacing: 0.5rpx;
+}
+
+@import 'about-wxa-auto-dark.wxss'

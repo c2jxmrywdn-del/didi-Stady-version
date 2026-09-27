@@ -1,0 +1,269 @@
+/* pages/trip/trip.wxss — 暖白行程页 */
+.page-trip {
+  min-height: 100vh;
+  background: #FAF8F5;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+}
+
+.tab-bar {
+  display: flex;
+  background: #FFFDF9;
+  padding: 0 24rpx;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1rpx solid #EDE8E0;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28rpx 0 20rpx;
+  position: relative;
+}
+
+.tab-text {
+  font-size: 28rpx;
+  color: #C5B9A8;
+}
+
+.tab-active .tab-text {
+  color: #2D2A26;
+  font-weight: 600;
+}
+
+.tab-indicator {
+  width: 24rpx;
+  height: 4rpx;
+  background: #2D2A26;
+  border-radius: 2rpx;
+  margin-top: 8rpx;
+}
+
+.loading-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 200rpx;
+}
+
+.loading-spinner {
+  width: 48rpx;
+  height: 48rpx;
+  border: 2rpx solid #EDE8E0;
+  border-top-color: #2D2A26;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: #8A8278;
+}
+
+.empty-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 240rpx;
+}
+
+.empty-line {
+  width: 48rpx;
+  height: 3rpx;
+  background: #EDE8E0;
+  margin-bottom: 16rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #C5B9A8;
+}
+
+.order-list {
+  padding: 8rpx 0;
+}
+
+.order-card {
+  margin: 12rpx 24rpx;
+  padding: 28rpx;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.order-car-type {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #2D2A26;
+  letter-spacing: 1rpx;
+}
+
+.order-status {
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+  letter-spacing: 1rpx;
+}
+
+.status-waiting {
+  background: #FAF8F5;
+  color: #8A8278;
+}
+
+.status-riding {
+  background: #2D2A26;
+  color: #fff;
+}
+
+.status-completed {
+  background: #FAF8F5;
+  color: #2D2A26;
+}
+
+.status-cancelled {
+  background: #FAF8F5;
+  color: #C5B9A8;
+}
+
+.order-route {
+  padding: 4rpx 0;
+}
+
+.route-point {
+  display: flex;
+  align-items: center;
+  padding: 6rpx 0;
+}
+
+.route-dot {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.dot-green { background: #5CAA5C; }
+.dot-dark { background: #2D2A26; }
+
+.route-text {
+  font-size: 28rpx;
+  color: #2D2A26;
+  max-width: 500rpx;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #FAF8F5;
+}
+
+.order-time {
+  font-size: 24rpx;
+  color: #8A8278;
+}
+
+.order-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.order-share-btn {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FAF8F5;
+  border-radius: 50%;
+  border: 1rpx solid #EDE8E0;
+}
+
+.share-mini-icon {
+  width: 16rpx;
+  height: 12rpx;
+  border: 2rpx solid #8A8278;
+  border-radius: 2rpx;
+  position: relative;
+}
+.share-mini-icon::after {
+  content: "";
+  position: absolute;
+  top: -4rpx;
+  right: -5rpx;
+  width: 0;
+  height: 0;
+  border-left: 4rpx solid #8A8278;
+  border-bottom: 2rpx solid transparent;
+  border-top: 2rpx solid transparent;
+}
+
+.order-price {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2D2A26;
+}
+
+/* ============ 订单操作按钮 ============ */
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 16rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #FAF8F5;
+}
+.action-btn {
+  height: 56rpx;
+  line-height: 54rpx;
+  padding: 0 24rpx;
+  border-radius: 28rpx;
+  font-size: 24rpx;
+  color: #2D2A26;
+  background: #FAF8F5;
+  border: 1rpx solid #EDE8E0;
+}
+.action-btn:active { background: #f0ede8; }
+.action-btn-primary {
+  background: linear-gradient(135deg, #FF7B00 0%, #FF5500 100%);
+  color: #fff;
+  border-color: #FF7B00;
+}
+.action-btn-primary:active { opacity: 0.85; }
+
+.order-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+.order-meta {
+  font-size: 22rpx;
+  color: #8A8278;
+  font-weight: 400;
+}
+
+.empty-hint {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: #FF7B00;
+  font-weight: 500;
+}
+.empty-hint:active { opacity: 0.6; }
+@import 'trip-wxa-auto-dark.wxss'

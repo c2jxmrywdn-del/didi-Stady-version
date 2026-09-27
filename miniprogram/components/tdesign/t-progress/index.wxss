@@ -1,0 +1,38 @@
+/* components/tdesign/t-progress/index.wxss */
+.t-progress {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 16rpx;
+}
+.t-progress__bar {
+  flex: 1;
+  height: 12rpx;
+  background: #F0F0F2;
+  border-radius: 6rpx;
+  overflow: hidden;
+  position: relative;
+}
+.t-progress--small .t-progress__bar  { height: 6rpx;  border-radius: 3rpx; }
+.t-progress--medium .t-progress__bar { height: 12rpx; border-radius: 6rpx; }
+.t-progress--large .t-progress__bar  { height: 20rpx; border-radius: 10rpx; }
+
+.t-progress__fill {
+  height: 100%;
+  width: var(--pct, 0%);
+  border-radius: inherit;
+  transition: width 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: linear-gradient(90deg, #FF7B00 0%, #FF5500 100%);
+  box-shadow: 0 1rpx 4rpx rgba(255, 123, 0, 0.32);
+}
+.t-progress--success .t-progress__fill { background: linear-gradient(90deg, #5CAA5C 0%, #4A8A4A 100%); box-shadow: 0 1rpx 4rpx rgba(92, 170, 92, 0.32); }
+.t-progress--warning .t-progress__fill { background: linear-gradient(90deg, #F1C40F 0%, #D4AC0D 100%); box-shadow: 0 1rpx 4rpx rgba(241, 196, 15, 0.32); }
+.t-progress--danger  .t-progress__fill { background: linear-gradient(90deg, #E74C3C 0%, #C0392B 100%); box-shadow: 0 1rpx 4rpx rgba(231, 76, 60, 0.32); }
+
+.t-progress__label {
+  font-size: 24rpx;
+  color: #5C554C;
+  letter-spacing: 0.3rpx;
+  flex-shrink: 0;
+  font-weight: 500;
+}

@@ -1,0 +1,110 @@
+<!-- pages/agreement/agreement.wxml — 用户协议 -->
+<view class="page-agreement">
+  <!-- 顶部声明 -->
+  <view class="top-notice">
+    <view class="notice-icon">
+      <view class="mi-info"></view>
+    </view>
+    <view class="notice-content">
+      <text class="notice-title">重要声明</text>
+      <text class="notice-text">本小程序仅用于学习交流使用，不提供任何真实的商业服务</text>
+    </view>
+  </view>
+
+  <!-- 最后更新 -->
+  <view class="update-info">
+    <text>最后更新时间：2026 年 5 月 15 日</text>
+  </view>
+
+  <!-- 协议内容 -->
+  <view class="content-section">
+    <view class="content-title">一、特别说明</view>
+    <view class="content-text">
+      <text>1. 本小程序（滴滴学习版）由开发者 @ouyang jason 出于学习交流目的独立开发，仅作为微信小程序开发技术的学习演示项目。</text>
+      <text>2. 本项目 <text class="text-bold">仅用于学习交流使用</text>，不提供任何真实的出行服务、车辆调度或商业运营功能。</text>
+      <text>3. 本项目中所展示的司机信息、车辆信息、订单信息、价格信息、用户信息等所有数据均为模拟数据，不对应任何真实个人或车辆。</text>
+      <text>4. 本项目与"滴滴出行"无任何关联，如需使用真实的出行服务，请下载官方正版应用。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">二、服务声明</view>
+    <view class="content-text">
+      <text>1. 本项目提供的所有功能（包括但不限于：叫车、订单管理、用户管理、优惠卷、消息推送、客服等）均为模拟功能，仅用于演示微信小程序的开发流程和交互设计。</text>
+      <text>2. 开发者不对本项目中模拟数据、模拟功能、模拟交互的真实性、准确性、可靠性做任何承诺或保证。</text>
+      <text>3. 因使用本项目进行的任何行为（包括但不限于：上传个人信息、模拟支付、模拟订单等）所产生的任何法律后果，由用户自行承担。</text>
+      <text>4. 开发者保留随时修改、中断或终止本项目的权利，恕不另行通知。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">三、用户行为规范</view>
+    <view class="content-text">
+      <text>1. 用户应遵守中华人民共和国法律法规，不得利用本项目从事任何违法违规活动。</text>
+      <text>2. 用户不得利用本项目从事任何商业活动或谋取商业利益。</text>
+      <text>3. 用户不得利用本项目传播任何违法、违规、违反公序良俗的内容。</text>
+      <text>4. 用户不得对本项目进行反向工程、反编译、篡改或攻击。</text>
+      <text>5. 用户不得利用本项目进行任何侵犯第三方合法权益的行为。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">四、知识产权</view>
+    <view class="content-text">
+      <text>1. 本项目的源代码、UI 设计、文档等内容归开发者 @ouyang jason 所有。</text>
+      <text>2. 本项目使用的开源组件、第三方库、图标、字体等，其知识产权归原作者所有。</text>
+      <text>3. 未经开发者书面许可，任何单位或个人不得将本项目用于商业用途。</text>
+      <text>4. 本项目仅供个人学习使用，如需引用、二次开发或分享，请注明原作者及来源。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">五、免责声明</view>
+    <view class="content-text">
+      <text>1. 本项目按"现状"提供，开发者不对项目的适用性、可靠性、准确性、完整性做任何明示或暗示的保证。</text>
+      <text>2. 因使用本项目导致的任何直接或间接损失（包括但不限于：数据丢失、利润损失、业务中断等），开发者不承担任何责任。</text>
+      <text>3. 因第三方原因（包括但不限于：网络故障、服务器故障、微信平台调整等）导致的服务中断或数据丢失，开发者不承担任何责任。</text>
+      <text>4. 因不可抗力（包括但不限于：自然灾害、战争、政策变化等）导致的项目无法使用，开发者不承担任何责任。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">六、协议变更</view>
+    <view class="content-text">
+      <text>1. 开发者有权根据需要随时修改本协议，修改后的协议自发布之日起生效。</text>
+      <text>2. 用户继续使用本项目即视为同意接受修改后的协议。</text>
+      <text>3. 如用户不同意修改后的协议，应立即停止使用本项目。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">七、法律适用</view>
+    <view class="content-text">
+      <text>1. 本协议的订立、执行、解释及争议解决均适用中华人民共和国法律。</text>
+      <text>2. 如因本协议产生任何争议，应通过友好协商解决；协商不成的，任何一方均有权将争议提交至开发者所在地有管辖权的人民法院。</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="content-title">八、联系方式</view>
+    <view class="content-text">
+      <text>如对本协议有任何疑问或建议，请通过以下方式联系开发者：</text>
+      <text>开发者：@ouyang jason</text>
+      <text>项目类型：微信小程序学习交流项目</text>
+      <text>使用目的：仅用于学习交流</text>
+    </view>
+  </view>
+
+  <!-- 底部确认 -->
+  <view class="bottom-agree">
+    <view class="agree-row">
+      <view class="agree-check {{agreed ? 'agree-checked' : ''}}" bindtap="onToggleAgree">
+        <view wx:if="{{agreed}}" class="agree-check-mark"></view>
+      </view>
+      <text class="agree-text" bindtap="onToggleAgree">我已阅读并同意上述用户协议</text>
+    </view>
+    <button class="agree-btn {{agreed ? 'agree-btn-active' : ''}}" bindtap="onConfirm" disabled="{{!agreed}}">
+      {{agreed ? '已同意' : '请先阅读并同意协议'}}
+    </button>
+  </view>
+</view>

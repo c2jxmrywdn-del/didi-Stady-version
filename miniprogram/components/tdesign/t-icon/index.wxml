@@ -1,0 +1,37 @@
+<view class="t-icon t-icon--{{name}}" style="width: {{sizeMap[size] || size}}rpx; height: {{sizeMap[size] || size}}rpx; {{color ? 'color:' + color : ''}}">
+  <block wx:if="{{name === 'check'}}"><view class="t-icon__check"></view></block>
+  <block wx:elif="{{name === 'close'}}"><view class="t-icon__close-l1"></view><view class="t-icon__close-l2"></view></block>
+  <block wx:elif="{{name === 'arrow-right'}}"><view class="t-icon__arrow"></view></block>
+  <block wx:elif="{{name === 'arrow-down'}}"><view class="t-icon__arrow t-icon__arrow--down"></view></block>
+  <block wx:elif="{{name === 'arrow-up'}}"><view class="t-icon__arrow t-icon__arrow--up"></view></block>
+  <block wx:elif="{{name === 'arrow-left'}}"><view class="t-icon__arrow t-icon__arrow--left"></view></block>
+  <block wx:elif="{{name === 'search'}}"><view class="t-icon__search-circle"></view><view class="t-icon__search-line"></view></block>
+  <block wx:elif="{{name === 'plus'}}"><view class="t-icon__plus-h"></view><view class="t-icon__plus-v"></view></block>
+  <block wx:elif="{{name === 'minus'}}"><view class="t-icon__minus"></view></block>
+  <block wx:elif="{{name === 'edit'}}"><view class="t-icon__edit-pen"></view><view class="t-icon__edit-body"></view></block>
+  <block wx:elif="{{name === 'delete'}}"><view class="t-icon__del-body"></view><view class="t-icon__del-line"></view></block>
+  <block wx:elif="{{name === 'lock'}}"><view class="t-icon__lock-body"></view><view class="t-icon__lock-shackle"></view></block>
+  <block wx:elif="{{name === 'unlock'}}"><view class="t-icon__lock-body"></view><view class="t-icon__lock-shackle t-icon__lock-shackle--open"></view></block>
+  <block wx:elif="{{name === 'eye'}}"><view class="t-icon__eye"></view><view class="t-icon__eye-pupil"></view></block>
+  <block wx:elif="{{name === 'eye-close'}}"><view class="t-icon__eye"></view><view class="t-icon__eye-line"></view></block>
+  <block wx:elif="{{name === 'heart'}}"><view class="t-icon__heart"></view></block>
+  <block wx:elif="{{name === 'star'}}"><view class="t-icon__star"></view></block>
+  <block wx:elif="{{name === 'bell'}}"><view class="t-icon__bell"></view></block>
+  <block wx:elif="{{name === 'user'}}"><view class="t-icon__user-head"></view><view class="t-icon__user-body"></view></block>
+  <block wx:elif="{{name === 'home'}}"><view class="t-icon__home"></view><view class="t-icon__home-door"></view></block>
+  <block wx:elif="{{name === 'setting'}}"><view class="t-icon__setting-gear"></view></block>
+  <block wx:elif="{{name === 'location'}}"><view class="t-icon__loc-pin"></view><view class="t-icon__loc-dot"></view></block>
+  <block wx:elif="{{name === 'phone'}}"><view class="t-icon__phone"></view><view class="t-icon__phone-line"></view></block>
+  <block wx:elif="{{name === 'message'}}"><view class="t-icon__msg"></view></block>
+  <block wx:elif="{{name === 'image'}}"><view class="t-icon__img"></view><view class="t-icon__img-sun"></view><view class="t-icon__img-mountain"></view></block>
+  <block wx:elif="{{name === 'cart'}}"><view class="t-icon__cart"></view><view class="t-icon__cart-handle"></view><view class="t-icon__cart-w1"></view><view class="t-icon__cart-w2"></view></block>
+  <block wx:elif="{{name === 'wallet'}}"><view class="t-icon__wallet"></view><view class="t-icon__wallet-coin"></view></block>
+  <block wx:elif="{{name === 'gift'}}"><view class="t-icon__gift"></view><view class="t-icon__gift-ribbon-v"></view><view class="t-icon__gift-ribbon-h"></view></block>
+  <block wx:elif="{{name === 'star-fill'}}"><view class="t-icon__star t-icon__star--fill"></view></block>
+  <block wx:elif="{{name === 'chevron-right'}}"><view class="t-icon__chevron t-icon__chevron--right"></view></block>
+  <block wx:elif="{{name === 'info-circle'}}"><view class="t-icon__info-circle"></view><view class="t-icon__info-i"></view></block>
+  <block wx:elif="{{name === 'error-circle'}}"><view class="t-icon__info-circle t-icon__info-circle--error"></view><view class="t-icon__close-l1 t-icon__close-l1--white"></view><view class="t-icon__close-l2 t-icon__close-l2--white"></view></block>
+  <block wx:elif="{{name === 'success-circle'}}"><view class="t-icon__info-circle t-icon__info-circle--success"></view><view class="t-icon__check t-icon__check--white"></view></block>
+  <block wx:elif="{{name === 'warning-circle'}}"><view class="t-icon__info-circle t-icon__info-circle--warning"></view><view class="t-icon__bang"></view></block>
+  <block wx:else><view class="t-icon__placeholder"></view></block>
+</view>

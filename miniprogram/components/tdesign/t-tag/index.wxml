@@ -1,0 +1,7 @@
+<view class="t-tag t-tag--{{theme}} t-tag--{{variant}} t-tag--{{size}} t-tag--{{shape}}">
+  <slot></slot>
+  <view wx:if="{{closable}}" class="t-tag__close" bindtap="onClose">
+    <view class="t-tag__close-line t-tag__close-line-1"></view>
+    <view class="t-tag__close-line t-tag__close-line-2"></view>
+  </view>
+</view>
